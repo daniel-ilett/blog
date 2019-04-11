@@ -7,3 +7,7 @@ tags: [shaders, unity]
 nice-slug: Getting Deep
 date: 2019-04-12 03:00:00
 ---
+
+# Silhouette
+
+![Silhouette](/img/tut1/part3-silhouette.png)
