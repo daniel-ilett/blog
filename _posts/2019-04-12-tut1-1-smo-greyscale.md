@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Image Effects - Part 1 - Colour Transforms
-subtitle: Emulating SMO's Greyscale and Sepia Tone effects in Unity
+subtitle: Emulating Odyssey's Greyscale and Sepia Tone effects in Unity
 bigimg: /img/tut1/part1-banner.png
 tags: [shaders, unity]
 nice-slug: Colour Transforms
