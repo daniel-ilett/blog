@@ -1,25 +1,14 @@
 ---
 layout: post
-title: Image Effects - An Introduction
-subtitle: The shaders used in Super Mario Odyssey's Snapshot Mode
+title: Image Effects - Part 0 - Shader Primer
+subtitle: A quick primer on how to write shaders in Unity
 bigimg: /img/tut1/part0-banner.png
 tags: [shaders, unity]
-nice-slug: Image Effects
+nice-slug: Shader Primer
 date: 2019-04-12 00:00:00
 ---
 
-Shaders are a bit of a passion within a passion for me. Out of everything involved in game development, shaders are the one thing that call out to me the strongest - making things pretty with maths! I’ve wanted to improve my skills for a long time, so on top of making experimental games, this Patreon will involve creating tutorial projects for a bunch of shader effects. I hope you’ll stick with me on this journey - if you’re not intrigued yet, I’ll be giving away FREE CODE with each post!
-
-Snapshot Mode in Super Mario Odyssey pauses your game and gives you full control of the camera, letting you frame Mario in the perfect pose. Additionally, you can throw filters on top of the image to tweak or transform how it looks. Those effects are the focus of this first series; how would you recreate the effects using shaders in Unity? Each effect employs the same pattern - render the image as normal and then apply a post-processing shader on top of that image to modify it in any way you want. This tutorial series explores the theory behind each effect and demonstrates the flexibility of these effects. By the end, you’ll be able to create fun effects like these!
-
-Look out in the next few days for the launch of this series of tutorials. The rest of this post will outline some of the basics of image effects in Unity and some of the fundamentals of shader-writing.
-
-- Part 1: [Colour Transforms]({% post_url 2019-04-12-tut1-1-smo-greyscale %})
-- Part 2: Blurring Algorithms
-- Part 3: Getting Deep
-- Part 4: Edgy Talk
-- Part 5: Something Fishy
-- Part 6: Old-School
+In preparation for this series, this article will provide some foundational material to get you ready to write shaders. Most of these topics will be revisited as the series goes on, so don't worry if it doesn't all click just yet - many of the upcoming tutorials will provide a skeleton for you to work with as you go along.
 
 # Writing shaders
 
@@ -70,9 +59,9 @@ Subshader
 
 A ShaderLab file consists of a list of `Subshader`s; Unity will pick the first subshader in the list that is supported by the hardware. For the sake of simplicity, most of the shaders we write will only have one `Subshader`.
 
-A `Subshader` contains one or more `Pass`es. A `Pass` will render something to the screen once - that could be a model with a shader attached, or in the case of an image effect, the screen itself is redrawn. When there's more than one `Pass`, they are executed in turn - the same object can be rendered to the screen multiple times by different shader passes.
+A `Subshader` contains one or more `Pass`es. A `Pass` will render something to the screen once - that could be a model with a shader attached, or in the case of an image effect, the screen itself is redrawn. When there's more than one pass inside a subshader, they are executed in turn - the same object can be rendered to the screen multiple times by different shader passes.
 
-Now we'll cover some of the special features of a `Pass`. We can `Name` our pass, as you see here - that's not usually important, although it's possible to use a `Pass` seen in a different shader file by using its `Name`. The meaty bit is the stuff after that - some bona-fide shader code, enclosed in `CGPROGRAM ... ENDCG` blocks.
+Now we'll cover some of the special features of `Pass`. We can `Name` our pass, as you see here - that's not usually important, although it's possible to use a pass seen in a different shader file by referencing it by name. The meaty bit is the stuff after that - some bona-fide shader code, enclosed in `CGPROGRAM ... ENDCG` blocks.
 
 ~~~glsl
 ...
@@ -143,7 +132,7 @@ struct v2f
 
 We use `struct`s to pass data between shaders. These names are also just convention, but the `appdata` struct is used to pass data to the vertex shader, and the `v2f` struct is used to pass the output of the vertex shader to the fragment shader as an input.
 
-The `appdata` struct contains two variables - a four-element vector called `vertex`, denoting vertex positions, and a two-element vector called `uv`, denoting texture coordinates. As it turns out, the `v2f` struct passes these exact same variables to the fragment shader (after some processing); for now, you don;t need to worry about the difference between `POSITION` and `SV_POSITION` - just nod and agree.
+The `appdata` struct contains two variables - a four-element vector called `vertex`, denoting vertex positions, and a two-element vector called `uv`, denoting texture coordinates. As it turns out, the `v2f` struct passes these exact same variables to the fragment shader (after some processing); for now, you don't need to worry about the difference between `POSITION` and `SV_POSITION` - just nod and agree.
 
 ~~~glsl
 sampler2D _MainTex;

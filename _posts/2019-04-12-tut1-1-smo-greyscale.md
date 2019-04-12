@@ -19,7 +19,7 @@ Assuming no additional effects like color blindness or tetrachromacy, the human 
 
 The conversion to a single luminance value looks a little like this:
 
-~~~
+~~~glsl
 float lum = tex.r * 0.3 + tex.g * 0.59 + tex.b * 0.11;
 ~~~
 
@@ -29,7 +29,7 @@ float lum = tex.r * 0.3 + tex.g * 0.59 + tex.b * 0.11;
 
 The sepia tone filter aims to emulate the yellowing effect seen on some old-timey photographs - this means the filter is a little more involved than the Greyscale effect. Because the end result isn't greyscale, it’s not sufficient to find a single luminance value - each of the input red, green and blue channels will feed into the resulting red channel, and each input feeds into the output green, and so on. For that, we’ll need a matrix of coefficients, instead of a simple vector, as seen in the previous image effect. We can multiply the input RGB values of each pixel with this matrix to obtain three values - our output RGB values:
 
-~~~
+~~~glsl
 half3x3 sepiaVals = half3x3
 (
     0.393, 0.349, 0.272,    // Red
