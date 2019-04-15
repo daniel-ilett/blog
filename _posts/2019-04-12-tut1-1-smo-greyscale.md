@@ -57,6 +57,108 @@ half3x3 sepiaVals = half3x3
 half3 sepiaResult = mul(tex.rgb, sepiaVals);
 ~~~
 
+From there, it's a short step to using that value as the output of the fragment shader.
+
+~~~glsl
+return half4(sepia, tex.a);
+~~~
+
+## A small note about floating-points
+
+You'll have noticed - and may have been confused - throughout these tutorials that I seem to be using all sorts of different names for some types - sometimes I use `float`, other times `fixed` and in this last instance, `half`. I've kind of been deliberately annoying so I could make this point, but they're all floating-point number representations of different precision but, on most PC hardware, there is [absolutely no difference](https://docs.unity3d.com/Manual/SL-DataTypesAndPrecision.html) between them; they're often all taken to mean full 32-bit precision.
+
 # Conclusion
 
 You’ve had a taste of the power of image effects in Unity. We’ve only talked about simple colour transformations so far and introduced vector and matrix operations - next time, we’ll be taking a look at buffers other than the framebuffer to help us recreate the Silhouette effect.
+
+## Complete code listing
+
+<details><summary markdown="span">Greyscale.shader</summary>
+
+~~~glsl
+Shader "SMO/Complete/Greyscale"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+    }
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" }
+
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert_img
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            sampler2D _MainTex;
+            float4    _MainTex_ST;
+
+            fixed4 frag (v2f_img i) : SV_Target
+            {
+                fixed4 tex = tex2D(_MainTex, i.uv);
+
+                // Constants represent human eye sensitivity to each colour.
+                float lum = tex.r * 0.3 + tex.g * 0.59 + tex.b * 0.11;
+                float4 greyscale = float4(lum, lum, lum, tex.a);
+
+                return greyscale;
+            }
+            ENDCG
+        }
+    }
+}
+~~~
+
+</details>
+
+<details><summary markdown="span">Sepia.shader</summary>
+
+~~~glsl
+Shader "SMO/Complete/Sepia"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+    }
+    SubShader
+    {
+        Tags { "RenderType" = "Opaque" }
+
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert_img
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            sampler2D _MainTex;
+            float4    _MainTex_ST;
+
+            fixed4 frag (v2f_img i) : SV_Target
+            {
+                fixed4 tex = tex2D(_MainTex, i.uv);
+
+                // These coefficients represent the sepia-tone transform.
+                half3x3 sepiaMatrix = half3x3
+                (
+                    0.393, 0.349, 0.272,	// Red.
+                    0.769, 0.686, 0.534,	// Green.
+                    0.189, 0.168, 0.131		// Blue.
+                );
+
+                half3 sepia = mul(tex.rgb, sepiaMatrix);
+
+                return half4(sepia, tex.a);
+            }
+            ENDCG
+        }
+    }
+}
+~~~
+
+</details>
