@@ -26,6 +26,8 @@ Let's go over the implementation details of the depth buffer. Usually, depth val
 
 The resulting volume in which objects get drawn ends up shaped like a square-based pyramid with the top cut off - a rectangular frustum. Pixels positioned exactly on the near clip plane have a depth of 0, pixels on the far clip plane have a depth of 1, and all positions in between have depths between 0 and 1. Those are the values in the depth buffer. But to throw one more curveball into the mix, depth values typically aren't stored in the depth buffer as-is; the actual value stored in the buffer is usually a reciprocal, as explained [here](https://developer.nvidia.com/content/depth-precision-visualized). That might seem counter-intuitive at first, but because of floating-point precision issues, we want to represent objects near the camera with more precision than objects far away from the camera - this lets us do that. Don't worry about the implementation details too much, as we'll use pre-defined functions that worry about it on our behalf.
 
+Before we start, make sure to set your camera's far clip plane value to something sensible - I used a value of 125, but this will likely require a bit of tweaking based on the size of your scene. If it's too large, you'll barely see the difference between close objects when the shader is complete, and if it's not large enough, some objects in your scene will not be rendered.
+
 We can retrieve the depth buffer as a texture to use in shaders in Unity. Open up the shader template found in `Shaders/Silhouette.shader` and take a look at the fragment shader - I've defined a depth varaible, which is instantly returned. Running this shader now will result in a completely black screen - let's fix this. First off, let's grab the texture containing the depth buffer values. Remember that an image effect is drawn after the camera has finished rendering to a texture - that texture is passed to the image effect shader in `_MainTex`. Similarly, we can retrieve another texture called `_CameraDepthTexture`, like this:
 
 ~~~glsl
@@ -39,4 +41,41 @@ There are no special settings to modify to obtain the depth texture - by default
 float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv));
 ~~~
 
-`UNITY_SAMPLE_DEPTH` is a special function which we can use, alongside sampling the depth texture as usual, to get a depth value out.
+`UNITY_SAMPLE_DEPTH` is a special function which we can use, alongside sampling the depth texture as usual, to get a depth value out. If you apply this shader now, it still wouldn't look too great - the colours are the wrong way round. Let's change the depth value with an extra line of code.
+
+~~~glsl
+float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv));
+depth = Linear01Depth(depth);
+~~~
+
+Now the background is fully white and the foreground elements are clearly shaded correctly. I tweaked this line further to make the effect a bit more pronounced, but this is likely going to be down to personal preference:
+
+~~~glsl
+depth = pow(Linear01Depth(depth), 3);
+~~~
+
+By using a power function, the distances between objects close to the screen will be exaggerated even more. We now have a depth effect, but it's entirely greyscale, so let's add a bit of colour.
+
+~~~glsl
+// Properties.
+_NearColour ("Near Clip Colour", Color) = (0.75, 0.35, 0, 1)
+_FarColour  ("Far Clip Colour", Color)  = (1, 1, 1, 1)
+
+// Shader variables.
+fixed4 _NearColour;
+fixed4 _FarColour;
+~~~
+
+We'll define two colours - one is the colour value for pixels at the near clip plane, and the other for pixels at the far clip plane. Now we'll need a bit of code in our shader to pick a colour between those two, based on the depth value. The `lerp()` function is perfect for this - it takes in two colours and some floating-point decimal between 0 and 1, and returns a colour blended between the first and second colour, based on that decimal. The name is short for "linear interpolation", and here we'll se it in action:
+
+~~~glsl
+return lerp(_NearColour, _FarColour, depth);
+~~~
+
+It's easy to overwrite the return value with this new function. Now if you run the shader with those values, you'll get a lovely yellow-orange blend reminiscent of the Sand Kingdom's silhouette effect.
+
+# Conclusion
+
+Those are the basics of using the depth buffer and depth textures to achieve an effect based on how far away pixels are. If you'd like to play around with the effect a bit, you could probably find a way to implement a cheap fog effect by keeping the base pixel colours but making them lighter the further away they are.
+
+Next tutorial, we'll be taking a look at the Blur effect and a few different approaches we could take to achieve the effect.
