@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image Effects - Part 1 - Colour Transforms
+title: Image Effects | Part 1 - Colour Transforms
 subtitle: Emulating Odyssey's Greyscale and Sepia Tone effects in Unity
 bigimg: /img/tut1/part1-banner.png
 tags: [shaders, unity]
@@ -39,6 +39,8 @@ float4 frag(v2f_img i) : COLOR
 ~~~
 
 If you followed the shader primer, you'll notice the struct passed into this fragment shader, `v2f_img`, is slightly different to the one I described before; this one is predefined in `UnityCG.cginc`, so there's no need to reimplement it ourselves. That's also why the template has no vertex shader defined - the include file defines one called `vert_img`.
+
+<hr/>
 
 # Sepia Tone Filter
 
@@ -162,3 +164,4 @@ Shader "SMO/Complete/Sepia"
 ~~~
 
 </details>
+<hr/>

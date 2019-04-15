@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image Effects - Part 2 - Getting Deep
+title: Image Effects | Part 2 - Getting Deep
 subtitle: Introducing a new kind of buffer to take data from
 bigimg: /img/tut1/part2-banner.png
 tags: [shaders, unity]
@@ -79,3 +79,5 @@ It's easy to overwrite the return value with this new function. Now if you run t
 Those are the basics of using the depth buffer and depth textures to achieve an effect based on how far away pixels are. If you'd like to play around with the effect a bit, you could probably find a way to implement a cheap fog effect by keeping the base pixel colours but making them lighter the further away they are.
 
 Next tutorial, we'll be taking a look at the Blur effect and a few different approaches we could take to achieve the effect.
+
+<hr/>

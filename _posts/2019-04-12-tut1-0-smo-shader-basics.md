@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image Effects - Part 0 - Shader Primer
+title: Image Effects | Part 0 - Shader Primer
 subtitle: A quick primer on how to write shaders in Unity
 bigimg: /img/tut1/part0-banner.png
 tags: [shaders, unity]

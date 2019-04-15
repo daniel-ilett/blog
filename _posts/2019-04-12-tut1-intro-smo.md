@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image Effects - Series Introduction
+title: Image Effects | Series Introduction
 subtitle: The shaders used in Super Mario Odyssey's Snapshot Mode
 bigimg: /img/tut1/intro-banner.png
 tags: [shaders, unity]
