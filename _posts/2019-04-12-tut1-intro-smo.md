@@ -16,8 +16,8 @@ Look out in the next few days for the launch of this series of tutorials. The re
 
 - Part 0: [Shader Primer]({% post_url 2019-04-12-tut1-0-smo-shader-basics %})
 - Part 1: [Colour Transforms]({% post_url 2019-04-12-tut1-1-smo-greyscale %})
-- Part 2: [Blurring Algorithms]({% post_url 2019-04-12-tut1-2-smo-blur %})
-- Part 3: [Getting Deep]({% post_url 2019-04-12-tut1-3-smo-silhouette %})
+- Part 2: [Getting Deep]({% post_url 2019-04-12-tut1-2-smo-silhouette %})
+- Part 3: [Blurring Algorithms]({% post_url 2019-04-12-tut1-3-smo-blur %})
 - Part 4: [Edgy Talk]({% post_url 2019-04-12-tut1-4-smo-edge-detect %})
 - Part 5: Something Fishy
 - Part 6: Old-School

@@ -196,3 +196,19 @@ public class MyImageEffect : MonoBehaviour
     }
 }
 ~~~
+
+Just drag the shader we wrote into the `shader` slot in the Inspector in Unity, and you're all set. You'll notice that the shader doesn't actually do anything yet, but play around with the values inside the fragment shader. For fun, try messing with this sample fragment shader:
+
+~~~glsl
+fixed4 frag(v2f i): SV_TARGET
+{
+    fixed4 col = tex2D(_MainTex, i.uv);
+
+    // Modify any of the four values inside the fixed4() constructor.
+    fixed4 returnCol = fixed4(col.r, col.g, col.b, col.a);
+
+    return returnCol;
+}
+~~~
+
+You should now have the prerequisite knowledge to tackle the upcoming shader projects for this series. Next time, we'll be writing some basic image effect shaders to modify the colour of the image to greyscale and sepia-tone.

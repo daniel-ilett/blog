@@ -23,6 +23,23 @@ The conversion to a single luminance value looks a little like this:
 float lum = tex.r * 0.3 + tex.g * 0.59 + tex.b * 0.11;
 ~~~
 
+We can tie this formula into the image effect skeleton we developed in the Shader Primer. If we use this function inside the fragment shader, then we can convert our input image into greyscale:
+
+~~~glsl
+float4 frag(v2f_img i) : COLOR
+{
+    float4 tex = tex2D(_MainTex, i.uv);
+
+    // Constants represent human eye sensitivity to each colour.
+    float lum = tex.r * 0.3 + tex.g * 0.59 + tex.b * 0.11;
+    float4 result = float4(lum, lum, lum, tex.a);
+
+    return result;
+}
+~~~
+
+If you followed the shader primer, you'll notice the struct passed into this fragment shader, `v2f_img`, is slightly different to the one I described before; this one is predefined in `UnityCG.cginc`, so there's no need to reimplement it ourselves. That's also why the template has no vertex shader defined - the include file defines one called `vert_img`.
+
 # Sepia Tone Filter
 
 ![Sepia-tone Filter](/img/tut1/part1-sepia.png)
@@ -42,4 +59,4 @@ half3 sepiaResult = mul(tex.rgb, sepiaVals);
 
 # Conclusion
 
-You’ve had a taste of the power of image effects in Unity. We’ve only talked about simple colour transformations so far and introduced vector and matrix operations - next time, we’ll be implementing blurring algorithms, which take into account neighbouring pixels when calculating each pixel’s colour value.
+You’ve had a taste of the power of image effects in Unity. We’ve only talked about simple colour transformations so far and introduced vector and matrix operations - next time, we’ll be taking a look at buffers other than the framebuffer to help us recreate the Silhouette effect.
