@@ -112,9 +112,9 @@ Shader code, finally! But there's a lot to look at here, so let's go through thi
 #include "UnityCG.cginc"
 ~~~
 
-We start off defining which functions are our shaders. We'll be writing old-school `vertex` and `fragment` shaders - Unity also provides functionality for its own kinds of shaders like `surface` shaders, but we won't be needing those. Our `vertex` shader is going to be called `vert`, and our `fragment` shader will be called `frag`. Those are just conventions - you can name them whatever you'd like.
+We start off defining which functions are our shaders. We'll be writing old-school `vertex` and `fragment` shaders - Unity also provides functionality for its own kinds of shaders like `surface` shaders, but we won't be needing those. Our `vertex` shader is going to be called `vert`, and our `fragment` shader will be called `frag`. Those are just conventions - you can name them whatever you'd like. If some of those words sound scary, no worries - the important ones are discussed just a little further down.
 
-The included file contains a few helper functions, some of which we use later in the code.
+The included file contains a few helper functions, some of which we use later in the code; this file is a freebie and can be included in any Unity shader in this manner.
 
 ~~~glsl
 struct appdata
@@ -165,7 +165,7 @@ fixed4 frag(v2f i): SV_TARGET
 }
 ~~~
 
-The last part of our code, the fragment shader. A fragment shader is sometimes also called a pixel shader, because it essentially runs once for each pixel of the object. Okay, it sometimes runs on sub-pixel elements, but for the sake of simplicity, we're going with just pixels.
+The last part of our code, the fragment shader. A fragment shader is often also called a pixel shader, because it essentially runs once for each pixel of the object. There are special cases where it runs on sub-pixel elements, but for the sake of simplicity, we're going with just pixels.
 
 It takes in the `v2f` that was output by the vertex shader, and calls it `i`, for "input". The output is of type `fixed4` - this is a four-element vector of floating-point values, which in this case denotes an RGBA colour (red, green, blue, alpha), where the alpha is transparency.
 

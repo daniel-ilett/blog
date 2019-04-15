@@ -23,7 +23,7 @@ The conversion to a single luminance value looks a little like this:
 float lum = tex.r * 0.3 + tex.g * 0.59 + tex.b * 0.11;
 ~~~
 
-We can tie this formula into the image effect skeleton we developed in the Shader Primer. If we use this function inside the fragment shader, then we can convert our input image into greyscale:
+We can tie this formula into the image effect skeleton we developed in the Shader Primer. If you downloaded the project source code, you'll find a template for this shader in `Shaders/Greyscale.shader`. If we use this function inside the fragment shader, then we can convert our input image into greyscale:
 
 ~~~glsl
 float4 frag(v2f_img i) : COLOR
