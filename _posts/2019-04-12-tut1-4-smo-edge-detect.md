@@ -108,7 +108,63 @@ return float4(col * s, 1.0);
 
 Run the shader now, and the neon effect should look pretty decent now! The conversion makes pixels that were near-greyscale look much more colourful than before, so the whole scene might look very different to what you were expecting.
 
+The neon effect looks great, but we would usually expect such an effect to glow, especially the brightest parts of the image. We can do that by implementing another step on top of what we've done so far - let's discuss a simplified bloom shader.
+
 <hr/>
+
+# Bloom
+
+At its core, Bloom is used to make bright light sources stand out in a scene by adding a glowing effect around them. Neon sure is a bright light source! In this section, we'll introduce a powerful new concept that allows us to use a Pass from a different shader.
+
+Let's go over the theory behind Bloom. We'll want to isolate the parts of the image that have a high brightness value - those are the 'light sources' - then blur them a little to imitate the glowing effect. Once we have the blurred version of the image, we shall composite that image on top of the original image to obtain the final Bloom result.
+
+Now let's implement this all in a shader. Open up `Shaders/Bloom.shader` and take a look at what we've got - two passes, the first of which uses the same RGB-HSV conversion functions we saw back in the `Neon` filter, and the second of which is just sampling a texture. You might have spotted something new, too - both of these new passes have names. They aren't actually going to be required, and I'm just using them to foreshadow something coming up shortly.
+
+Let's start with the first pass, named "ThresholdPass", which is going to compare the brightness value with some threshold value. Let's define this in `Properties`.
+
+~~~glsl
+// Properties.
+_Threshold("Bloom Threshold", Range(0, 1)) = 0.5
+
+// Variable declarations.
+float _Threshold;
+~~~
+
+Now, instead of returning the original texture unscathed, we'll do a comparison between the brightness of the pixel and the threshold. We can use the ternary operator in shader language, just like you would in C#, so we'll use that to avoid lengthy if-statements and return either the original pixel or a completely black pixel.
+
+~~~glsl
+float brightness = rgb2hsv(tex).y;
+return (brightness > _Threshold) ? tex : float4(0.0, 0.0, 0.0, 1.0);
+~~~
+
+That's it for the first pass. Now we should turn our attention to the script being used to control the shader, since it will act a little differently to the others we have implemented so far. Let's create a new C# script called `ImageEffectBloom.cs` and inherit from `ImageEffectBase.cs`, as we did for `ImageEffectGaussian.cs`:
+
+~~~csharp
+using UnityEngine;
+
+public class ImageEffectBloom : ImageEffectBase
+{
+	protected override void OnRenderImage(RenderTexture src, RenderTexture dst)
+	{
+		
+	}
+}
+~~~
+
+First off, we shall need a temporary RenderTexture to hold the result of the thresholding pass. We will also define variables to keep track of the pass IDs for the shader so we don't throw too many magic numbers in our code.
+
+~~~csharp
+// Above the function.
+private const int thresholdPass = 0;
+
+// Inside the function.
+RenderTexture thresholdTex = 
+	RenderTexture.GetTemporary(src.width, src.height, 0, src.format);
+~~~
+
+## Multiple image effects
+
+I've avoided discussing how to run multiple image effects at once, but it's actually really easy - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
 
 # Conclusion
 
