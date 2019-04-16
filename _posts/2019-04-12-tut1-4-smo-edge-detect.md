@@ -71,7 +71,44 @@ float3 tex = tex2D(_MainTex, i.uv);
 return float4(tex * s, 1.0);
 ~~~
 
-Already it's looking a bit neon! But if the source file has muted colours, then the 
+Already it's looking a bit neon! But if the source file has muted colours, then the end result will also look fairly dull. Increasing the saturation of the colours will help inject a little more life into the scene. I won't go into too much detail about colour theory, but we'll need to convert from RGB colour space to some other space such as HSV - which stands for "hue, saturation, value" - then modify the saturation and convert back to RGB. There isn't code built into the shader language or Unity to perform this conversion for us, so instead let's use [code from elsewhere](http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl). The code in that example is written in GLSL, so I've also converted it into HLSL so we can splice it into our shader.
+
+~~~glsl
+// Credit for these two functions:
+// http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl
+float3 rgb2hsv(float3 c)
+{
+    float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    float4 p = c.g < c.b ? float4(c.bg, K.wz) : float4(c.gb, K.xy);
+    float4 q = c.r < p.x ? float4(p.xyw, c.r) : float4(c.r, p.yzx);
+
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return float3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+float3 hsv2rgb(float3 c)
+{
+    float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    float3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * lerp(K.xxx, saturate(p - K.xxx), c.y);
+}
+~~~
+
+Now let's perform the conversions. As well as modifying the saturation, I also modify the value/lightness so that the bright colours pop even more.
+
+~~~glsl
+float3 hsvTex = rgb2hsv(tex);
+hsvTex.y = 1.0;		// Modify saturation.
+hsvTex.z = 1.0;		// Modify lightness/value.
+float3 col = hsv2rgb(hsvTex);
+
+return float4(col * s, 1.0);
+~~~
+
+Run the shader now, and the neon effect should look pretty decent now! The conversion makes pixels that were near-greyscale look much more colourful than before, so the whole scene might look very different to what you were expecting.
+
+<hr/>
 
 # Conclusion
 
