@@ -34,11 +34,44 @@ G_y =
 \end{bmatrix}
 $$
 
+Now let's take a look at this in a shader - the template for this can be found in `Shaders/EdgeDetect.shader`. I've defined a `sobel()` function which will do the heavy lifting for us - the fragment shader is already complete. Running the shader now will give you a very underwhelming black screen, so let's add some calculation to the `sobel()` function.
 
+We've defined accumulator variables for the horizontal (x) and vertical (y) passes, and for the sake of saving on some typing, `texelSize` is its own variable. For each of the kernel values, we will want to multiply them by the corresponding pixel values, similar to the Blur shaders, but since we know the kernel is always 3x3, there's no point writing everything in a complex loop - let's just hard-code the calculations. Between the `texelSize` variable definition and the return statement, splice in this code:
+
+~~~glsl
+x += tex2D(_MainTex, uv + float2(-texelSize.x, -texelSize.y)) * -1.0;
+x += tex2D(_MainTex, uv + float2(-texelSize.x,            0)) * -2.0;
+x += tex2D(_MainTex, uv + float2(-texelSize.x,  texelSize.y)) * -1.0;
+
+x += tex2D(_MainTex, uv + float2( texelSize.x, -texelSize.y)) *  1.0;
+x += tex2D(_MainTex, uv + float2( texelSize.x,            0)) *  2.0;
+x += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
+
+y += tex2D(_MainTex, uv + float2(-texelSize.x, -texelSize.y)) * -1.0;
+y += tex2D(_MainTex, uv + float2(           0, -texelSize.y)) * -2.0;
+y += tex2D(_MainTex, uv + float2( texelSize.x, -texelSize.y)) * -1.0;
+
+y += tex2D(_MainTex, uv + float2(-texelSize.x,  texelSize.y)) *  1.0;
+y += tex2D(_MainTex, uv + float2(           0,  texelSize.y)) *  2.0;
+y += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
+~~~
+
+If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the ones which are multiplied by zero since they won't have an effect on the final value anyway. Run the shader now, and you should see some lovely edge detection!
 
 <hr/>
 
 # Neon
+
+The Edge Detect shader was a bit of a breeze compared to the Blur shaders, so let's take things up a notch and consider the Neon effect. It's easy to see this is based on Edge Detect with a bit of added colour, so as a first step let's try multiplying the original image colours by the edge detect values. You'll find the template in `Shaders/Neon.shader`, although it's essentially the same as `EdgeDetect.shader`. Modify the fragment shader like this:
+
+~~~glsl
+float3 s = sobel(i.uv);
+float3 tex = tex2D(_MainTex, i.uv);
+
+return float4(tex * s, 1.0);
+~~~
+
+Already it's looking a bit neon! But if the source file has muted colours, then the 
 
 # Conclusion
 
