@@ -3,7 +3,7 @@ layout: post
 title: Image Effects | Part 2 - Getting Deep
 subtitle: Introducing a new kind of buffer to take data from
 bigimg: /img/tut1/part2-banner.png
-tags: [shaders, unity]
+tags: [shaders, unity, image-effects, silhouette]
 nice-slug: Getting Deep
 date: 2019-04-12 02:00:00
 ---
