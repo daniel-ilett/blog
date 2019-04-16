@@ -56,7 +56,7 @@ y += tex2D(_MainTex, uv + float2(           0,  texelSize.y)) *  2.0;
 y += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
 ~~~
 
-If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the ones which are multiplied by zero since they won't have an effect on the final value anyway. Run the shader now, and you should see some lovely edge detection!
+If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the ones which are multiplied by zero since they won't have an effect on the final value anyway. Run the shader now, and you should see some lovely edge detection! I'd suggest that if you intend to use this effect in a game as-is, then consider turning off shadows, because they'll also be edge-detected and could look strange. Alternatively, use that as your aesthetic - be creative!
 
 <hr/>
 
