@@ -8,13 +8,13 @@ nice-slug: Edgy Talk
 date: 2019-04-12 04:00:00
 ---
 
-Detecting edges in images allows developers to write cartoon shaders to boldly outline objects. Typically, they would use object geometry, but we can achieve a cheap edge-detection effect using image effects. In this tutorial, we shall explore the Sobel-Feldman operator and take a look at bloom effects to implement the Neon effect in Super Mario Odyssey.
+Detecting edges in images allows developers to write cartoon shaders to boldly outline objects. Typically, they would use object geometry, but we can achieve a cheap edge-detection effect using image effects. In this tutorial, we shall explore the Sobel-Feldman operator and take a look at bloom effects to implement the Line Drawing and Neon effects in Super Mario Odyssey.
 
 <hr/>
 
-![Edge Detection](/img/tut1/part4-edge-detect.png)
+![Line Drawing](/img/tut1/part4-edge-detect.png)
 
-# Edge Detection
+# Line Drawing
 
 To detect edges using an image effect, let's think about what an edge actually is. Without being able to use object geometry to decide where an edge is, we will consider edges in the image to be places where the colour changes suddenly in lightness or hue. That means we will have to consider multiple pixels as we did with the Blur filters, but using a different kernel. Let's take a look at the Sobel filter.
 
@@ -59,6 +59,8 @@ y += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
 ~~~
 
 If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the ones which are multiplied by zero since they won't have an effect on the final value anyway. Run the shader now, and you should see some lovely edge detection! I'd suggest that if you intend to use this effect in a game as-is, then consider turning off shadows, because they'll also be edge-detected and could look strange. Alternatively, use that as your aesthetic - be creative!
+
+If you wanted it to look more like the Line Drawing effect in Super Mario Odyssey, then try inverting the colours and perhaps make the lines grey.
 
 <hr/>
 
