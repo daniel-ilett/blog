@@ -10,6 +10,8 @@ date: 2019-04-12 00:00:00
 
 In preparation for this series, this article will provide some foundational material to get you ready to write shaders. Most of these topics will be revisited as the series goes on, so don't worry if it doesn't all click just yet - many of the upcoming tutorials will provide a skeleton for you to work with as you go along.
 
+<hr/>
+
 # Writing shaders
 
 Shaders in Unity are a bit of a weird beast. Unity uses a proprietary language called ShaderLab, which is more like a middleman between the properties exposed by Unity and a shading language - the actual shader code. We'll explore the basics of ShaderLab syntax so you'll have enough to understand the upcoming tutorials - for a complete guide, see the [Unity Manual Shader Reference](https://docs.unity3d.com/Manual/SL-Reference.html). If this all gets a bit much, then no worries: this gets easier as you go!
@@ -211,4 +213,10 @@ fixed4 frag(v2f i): SV_TARGET
 }
 ~~~
 
+<hr/>
+
+# Conclusion
+
 You should now have the prerequisite knowledge to tackle the upcoming shader projects for this series. Next time, we'll be writing some basic image effect shaders to modify the colour of the image to greyscale and sepia-tone.
+
+<hr/>

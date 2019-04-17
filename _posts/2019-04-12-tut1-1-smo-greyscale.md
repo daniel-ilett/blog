@@ -7,11 +7,14 @@ tags: [shaders, unity, image-effects, greyscale, sepia]
 nice-slug: Colour Transforms
 date: 2019-04-12 01:00:00
 ---
+
 This tutorial discusses two fairly simple effects seen in Snapshot Mode - Greyscale and Sepia Tone. Both of these effects require nothing more than just modifying the input colour of each pixel individually. By the end of this tutorial, you should understand the basics of manipulating colours in shaders in Unity.
 
-# Greyscale Filter
+<hr/>
 
 ![Greyscale Filter](/img/tut1/part1-greyscale.png)
+
+# Greyscale Filter
 
 The Greyscale filter is one of the simplest filters used in Super Mario Odyssey. The effect operates on each individual pixel of the image independently of all others, and it’s a simple linear transformation from one domain of values to another. To understand how to convert to greyscale, we need to first understand how the eyes perceive and process colour.
 
@@ -42,9 +45,9 @@ If you followed the shader primer, you'll notice the struct passed into this fra
 
 <hr/>
 
-# Sepia Tone Filter
-
 ![Sepia-tone Filter](/img/tut1/part1-sepia.png)
+
+# Sepia Tone Filter
 
 The sepia tone filter aims to emulate the yellowing effect seen on some old-timey photographs - this means the filter is a little more involved than the Greyscale effect. Because the end result isn't greyscale, it’s not sufficient to find a single luminance value - each of the input red, green and blue channels will feed into the resulting red channel, and each input feeds into the output green, and so on. For that, we’ll need a matrix of coefficients, instead of a simple vector, as seen in the previous image effect. We can multiply the input RGB values of each pixel with this matrix to obtain three values - our output RGB values:
 
@@ -69,11 +72,15 @@ return half4(sepia, tex.a);
 
 You'll have noticed - and may have been confused - throughout these tutorials that I seem to be using all sorts of different names for some types - sometimes I use `float`, other times `fixed` and in this last instance, `half`. I've kind of been deliberately annoying so I could make this point, but they're all floating-point number representations of different precision but, on most PC hardware, there is [absolutely no difference](https://docs.unity3d.com/Manual/SL-DataTypesAndPrecision.html) between them; they're often all taken to mean full 32-bit precision.
 
+<hr/>
+
 # Conclusion
 
 You’ve had a taste of the power of image effects in Unity. We’ve only talked about simple colour transformations so far and introduced vector and matrix operations - next time, we’ll be taking a look at buffers other than the framebuffer to help us recreate the Silhouette effect.
 
-## Complete code listing
+<hr/>
+
+# Code listing
 
 <details><summary markdown="span">Greyscale.shader</summary>
 

@@ -10,9 +10,11 @@ date: 2019-04-12 02:00:00
 
 Today we'll look at the Silhouette effect, which draws objects close to the camera in a darker shade than those far back in the distance. So far, we've been interacting with the framebuffer - the 2D array of values that pixel colour values are rendered into - and today another buffer, the depth buffer, will be analysed.
 
-# Silhouette
+<hr/>
 
 ![Silhouette](/img/tut1/part2-silhouette.png)
+
+# Silhouette
 
 The Silhouette filter is a striking effect which emphasizes objects in the foreground, bringing the eye's focus towards those elements. With this shader, we're going to develop some metric to determine how far away from the screen each pixel is.
 
@@ -73,6 +75,8 @@ return lerp(_NearColour, _FarColour, depth);
 ~~~
 
 It's easy to overwrite the return value with this new function. Now if you run the shader with those values, you'll get a lovely yellow-orange blend reminiscent of the Sand Kingdom's silhouette effect.
+
+<hr/>
 
 # Conclusion
 
