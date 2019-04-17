@@ -151,7 +151,7 @@ public class ImageEffectBloom : ImageEffectBase
 }
 ~~~
 
-First off, we shall need a temporary RenderTexture to hold the result of the thresholding pass. We will also define variables to keep track of the pass IDs for the shader so we don't throw too many magic numbers in our code.
+First off, we shall need a temporary RenderTexture to hold the result of the thresholding pass. We will also define variables to keep track of the pass IDs for the shader so we don't throw too many magic numbers in our code. Then, we can use that pass ID in a `Graphics.Blit()` in order to perform the thresholding step.
 
 ~~~csharp
 // Above the function.
@@ -160,12 +160,140 @@ private const int thresholdPass = 0;
 // Inside the function.
 RenderTexture thresholdTex = 
 	RenderTexture.GetTemporary(src.width, src.height, 0, src.format);
+
+Graphics.Blit(src, thresholdTex, material, thresholdPass);
 ~~~
+
+Back in Unity's Scene View, remove all Image Effect scripts from your camera for now, and attach this brand new script. Place the Bloom shader in the shader slot, and hit Play - all that should be visible are the brightest scene elements.
+
+The second component of the Bloom effect is blurring the thresholded image. This is where we'll unlock the secrets of using `Pass`es from other shaders: `UsePass`. From here on, I'll assume you've followed Part 3 and implemented the Blur shaders the same way I have - if not, you'll have to tweak a few names.
+
+By using [UsePass](https://docs.unity3d.com/Manual/SL-UsePass.html) we can reference other shader passes by name. To do this, we're going to have to go back and make sure the shader passes we plan to use actually have names. Open up the source files for the shader you're going to use - either `GaussianBlurSinglepass` or `GaussianBlurMultipass` will do - and give their passes sensible names by using `Name` at the top of the pass. I'm actually going to do both simultaneously and add functionality to `ImageEffectBloom` to switch between both.
+
+~~~glsl
+// Singlepass:
+Name "BlurPass"
+
+// Multipass first pass:
+Name "HorizontalPass"
+
+// Multipass second pass:
+Name "VerticalPass"
+~~~
+
+I've been very sneaky and already did this in the versions of these shaders found in `Complete`. We'll now be able to reference these three shader passes inside the `Bloom` shader using `UsePass`. The syntax is pretty simple - it's `UsePass` followed by the name of the shader and shader pass. We'll put these `Pass`es in between the two already in the file.
+
+~~~glsl
+// If using single-pass blur.
+UsePass "SMO/Complete/GaussianBlurSinglepass/BLURPASS"
+
+// If using multipass blur.
+UsePass "SMO/Complete/GaussianBlurMultipass/HORIZONTALPASS"
+UsePass "SMO/Complete/GaussianBlurMultipass/VERTICALPASS"
+~~~
+
+The only modification you need to make is to state the name of the shader pass in all-caps, because this is the name that Unity gives to those passes internally. It's important to note that you should treat these as if they are full-fat passes - they will be given their own IDs - and that all `Properties` or `CGINCLUDE`s need to be redefined inside `Bloom` to work as intended. The template already copied over the properties used by the Gaussian blur filters, but to refresh your memory, here they are again.
+
+~~~glsl
+// In Properties.
+_KernelSize("Kernel Size (N)", Int) = 21
+_Spread("St. dev. (sigma)", Float) = 5.0
+~~~
+
+Let's go back over to `ImageEffectBloom.cs`. We have a few new passes, so we'll add their IDs to variables with similar names to those used by the passes.
+
+~~~csharp
+// Single-pass.
+private const int blurPass = 1;
+
+// Multi-pass.
+private const int horizontalPass = 2;
+private const int verticalPass = 3;
+~~~
+
+We won't ever be using both versions of the Gaussian filter at the same time, so let's add a 'switch' we can use to pick the one we're working with. Somewhere outside the class definition, let's add an `enum` that defines the two modes of operation. Alongside it, we'll also keep track of the state using a variable.
+
+~~~csharp
+// Below class definition.
+enum BlurMode
+{
+	SinglePass, MultiPass
+}
+
+// Above class definition.
+[SerializeField]
+private BlurMode blurMode = BlurMode.MultiPass;
+~~~
+
+If you've never seen `[SerializeField]` before, it lets us define a private variable and expose it in the Inspector in Unity. Now that we're tracking the mode, let's apply the blurring step based on the mode. We'll need to tweak the material properties outside the shader, which we can do with a few functions available in Unity.
+
+~~~csharp
+// Tweak material properties.
+material.SetInt("_KernelSize", 21);
+material.SetFloat("_Spread", 5.0f);
+
+if(blurMode == BlurMode.SinglePass)
+{
+    Graphics.Blit(thresholdTex, blurTex, material, blurPass);
+
+    RenderTexture.ReleaseTemporary(thresholdTex);
+}
+else
+{
+    RenderTexture temp =
+        RenderTexture.GetTemporary(src.width, src.height, 0, src.format);
+
+    Graphics.Blit(thresholdTex, temp, material, horizontalPass);
+    Graphics.Blit(temp, blurTex, material, verticalPass);
+
+    RenderTexture.ReleaseTemporary(thresholdTex);
+    RenderTexture.ReleaseTemporary(temp);
+}
+~~~
+
+We base the number of, and IDs of, the blurring passes on the mode, like this. Now if we were to call `Graphics.Blit(blurTex, dst)` and take a look at the screen output, we get a blurred version of the threshold texture, as expected. This is almost what we want, but far too blurry!
+
+Let's return to the `Bloom` shader and fill in the final pass. This one is going to composite the original source image and the blurred threshold image together, so we'll have to make sure both are passed into the function. We'll pass in the threshold image as the first parameter to `Graphics.Blit()`, which gets passed into `_MainTex`, so we'll add another variable for the source texture in this pass below the other variables.
+
+~~~glsl
+// Texture representing the result of the bloom blur.
+sampler2D _SrcTex;
+~~~
+
+Now all we'll do is sample both textures and add them together in the fragment shader - it's really as easy as that.
+
+~~~glsl
+float3 originalTex = tex2D(_SrcTex, i.uv);
+float3 blurredTex  = tex2D(_MainTex, i.uv);
+
+return float4(originalTex + blurredTex, 1.0);
+~~~
+
+The final thing we must do is pass the correct data to this shader pass and execute it. First off, add another shader pass ID constant for this final pass. Then, we'll simply put the source image into the correct shader variable and perform the final `Blit()`. Do make sure you release the last temporary `RenderTexture` too!
+
+~~~csharp
+// Set the source texture.
+material.SetTexture("_SrcTex", src);
+
+// Do the final Blit().
+Graphics.Blit(blurTex, dst, material, bloomPass);
+
+// Release the final temp texture.
+RenderTexture.ReleaseTemporary(blurTex);
+~~~
+
+Now run the shader - it's the bloom we've been seeking all this time! We opted to write a cheap blur effect because we really don't need the highest fidelity, nor are we paying particular attention to HDR (High Dynamic Range) rendering in this example, but if you'd like to iterate on this design and create a better bloom effect, there are [plenty of resources](https://catlikecoding.com/unity/tutorials/advanced-rendering/bloom/) to take a look at. Good luck if you attempt something cool!
 
 ## Multiple image effects
 
-I've avoided discussing how to run multiple image effects at once, but it's actually really easy - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
+We haven't yet discussed how to run multiple image effects at once, but it's actually really easy - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
+
+<hr/>
 
 # Conclusion
+
+Today we learned how to detected the edges of objects using screen-space image gradients, then took those edges and used them to implement a neon effect. A layer of bloom on top of that, obtained by using our previous work on blur shaders with UsePass, resulted in a more refined look for the neaon shader.
+
+That brings us almost to the end of the Super Mario Odyssey image effects shader series - there will be one final post going over some of the topics we glossed over during these tutorials. It should wrap up the series and answer some of the questions you may have had so far.
 
 <hr/>
