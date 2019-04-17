@@ -55,12 +55,12 @@ layout: base
       <ul class="pager blog-pager">
         {% if page.previous.url %}
         <li class="previous">
-          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="Previous Post">&larr; {{ page.previous.title }}</a>
+          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="Previous Post">&larr; {{ page.previous.nice-slug }}</a>
         </li>
         {% endif %}
         {% if page.next.url %}
         <li class="next">
-          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="Next Post">{{ page.next.title }} &rarr;</a>
+          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="Next Post">{{ page.next.nice-slug }} &rarr;</a>
         </li>
         {% endif %}
       </ul>

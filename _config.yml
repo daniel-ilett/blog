@@ -17,7 +17,9 @@ baseurl: ""
 title: Daniel Ilett
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: Gamedev | Shaders | Compsci
+
+future: true
 
 # --- Navigation bar options --- #
 
@@ -67,24 +69,12 @@ author:
 # You can reorder the items to define the link order.
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
-  rss: true
-  email: "D.Ilett@warwick.ac.uk"
-# facebook: daattali
+  # rss: true
+  # email: "D.Ilett@warwick.ac.uk"
   github: daniel-ilett
   twitter: daniel_ilett
-#  reddit: yourname
-#  google-plus: +DeanAttali
+  reddit: daniel_ilett
   linkedin: daniel-ilett-548871106
-#  xing: yourname
-#  stackoverflow: "3943160/daattali"
-#  snapchat: deanat78
-#  instagram: deanat78
-#  youtube: user/deanat78
-#  spotify: yourname
-#  telephone: +14159998888
-#  steam: deanat78
-#  twitch: yourname
-#  yelp: yourname
   itch: danielilett
   patreon: danielilett
 
@@ -156,14 +146,16 @@ title-separator: "-"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Vancouver"
+timezone: "Europe/London"
 markdown: kramdown
+mathjax: true
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
-paginate: 5
+paginate: 10
 
 kramdown:
   input: GFM
+  parse_block_html: true
 
 # Default YAML values (more information on Jekyll's site)
 defaults:

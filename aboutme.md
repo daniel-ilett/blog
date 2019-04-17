@@ -4,13 +4,12 @@ title: About me
 subtitle: A story of a gamer obsessed with shaders
 ---
 
-I'm Daniel Ilett. I make games.
+I'm Daniel Ilett. I make games. Here's a few fast facts about me:
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+- I'm a PhD candidate at the University of Warwick, working with HDR video delivery to mobile devices
+- I graduated with a Computer Science MEng in 2018
+- I started making games in 2013 and haven't stopped since
+- I'm President of Warwick Game Design Society from 2018-present
+- I co-founded Warwick Nintendo Society in 2014 - it became an official Warwick SU Society in 2017
 
-What else do you need?
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+I think that just about sums me up!
