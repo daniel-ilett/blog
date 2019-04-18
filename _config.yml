@@ -19,6 +19,8 @@ title: Daniel Ilett
 # Short description of your site
 description: Gamedev | Shaders | Compsci
 
+future: true
+
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
