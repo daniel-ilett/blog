@@ -5,7 +5,7 @@ subtitle: A quick primer on how to write shaders in Unity
 bigimg: /img/tut1/part0-banner.png
 tags: [shaders, unity, image-effects, primer]
 nice-slug: Shader Primer
-date: 2019-04-12 00:00:00
+date: 2019-04-27
 ---
 
 In preparation for this series, this article will provide some foundational material to get you ready to write shaders. Most of these topics will be revisited as the series goes on, so don't worry if it doesn't all click just yet - many of the upcoming tutorials will provide a skeleton for you to work with as you go along.

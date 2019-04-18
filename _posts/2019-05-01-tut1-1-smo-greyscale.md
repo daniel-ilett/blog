@@ -5,7 +5,7 @@ subtitle: Emulating Odyssey's Greyscale and Sepia Tone effects in Unity
 bigimg: /img/tut1/part1-banner.png
 tags: [shaders, unity, image-effects, greyscale, sepia]
 nice-slug: Colour Transforms
-date: 2019-04-12 01:00:00
+date: 2019-05-01
 ---
 
 This tutorial discusses two fairly simple effects seen in Snapshot Mode - Greyscale and Sepia Tone. Both of these effects require nothing more than just modifying the input colour of each pixel individually. By the end of this tutorial, you should understand the basics of manipulating colours in shaders in Unity.

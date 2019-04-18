@@ -5,7 +5,7 @@ subtitle: The shaders used in Super Mario Odyssey's Snapshot Mode
 bigimg: /img/tut1/intro-banner.png
 tags: [shaders, unity, image-effects, intro]
 nice-slug: Image Effects Series
-date: 2019-04-11 23:00:00
+date: 2019-04-24
 ---
 
 Shaders are a bit of a passion within a passion for me. Out of everything involved in game development, shaders are the one thing that call out to me the strongest - making things pretty with maths! I’ve wanted to improve my skills for a long time, so on top of making experimental games, this Patreon will involve creating tutorial projects for a bunch of shader effects. I hope you’ll stick with me on this journey - if you’re not intrigued yet, I’ll be giving away FREE CODE with each post!
@@ -16,8 +16,9 @@ Snapshot Mode in Super Mario Odyssey pauses your game and gives you full control
 
 Look out in the next few days for the launch of this series of tutorials. The first will be a special crash course on how to write shaders in Unity.
 
-- Part 0: [Shader Primer]({% post_url 2019-04-12-tut1-0-smo-shader-basics %})
-- Part 1: [Colour Transforms]({% post_url 2019-04-12-tut1-1-smo-greyscale %})
-- Part 2: [Getting Deep]({% post_url 2019-04-12-tut1-2-smo-silhouette %})
-- Part 3: [Blurring Algorithms]({% post_url 2019-04-12-tut1-3-smo-blur %})
-- Part 4: [Edgy Talk]({% post_url 2019-04-12-tut1-4-smo-edge-detect %})
+- Part 0: [Shader Primer]({% post_url 2019-04-27-tut1-0-smo-shader-basics %})
+- Part 1: [Colour Transforms]({% post_url 2019-05-01-tut1-1-smo-greyscale %})
+- Part 2: [Getting Deep]({% post_url 2019-05-04-tut1-2-smo-silhouette %})
+- Part 3: [Blurring Algorithms]({% post_url 2019-05-08-tut1-3-smo-blur %})
+- Part 4: [Edgy Talk]({% post_url 2019-05-11-tut1-4-smo-edge-detect %})
+- Part 5: [Wrapping Up]({% post_url 2019-05-15-tut1-5-smo-end %})

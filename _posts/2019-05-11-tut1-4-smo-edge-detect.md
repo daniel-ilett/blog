@@ -5,7 +5,7 @@ subtitle: Calculating image gradients and drawing some edges
 bigimg: /img/tut1/part4-banner.png
 tags: [shaders, unity, image-effects, edge-detect]
 nice-slug: Edgy Talk
-date: 2019-04-12 04:00:00
+date: 2019-05-11
 ---
 
 Detecting edges in images allows developers to write cartoon shaders to boldly outline objects. Typically, they would use object geometry, but we can achieve a cheap edge-detection effect using image effects. In this tutorial, we shall explore the Sobel-Feldman operator and take a look at bloom effects to implement the Line Drawing and Neon effects in Super Mario Odyssey.
