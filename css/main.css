@@ -787,3 +787,31 @@ td.gutter {
   font-style: italic;
   font-size: 16px;
 }
+
+#gh-button-link {
+  text-decoration: none;
+}
+
+.gh-button-header {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #007fff;
+  border-radius: 4px;
+  color: #dfdfdf;
+  font-size: small;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+}
+
+.gh-button {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #007fff;
+  border-radius: 4px;
+  color: #dfdfdf;
+  padding: 8px;
+  margin-top:-10px;
+}
+
+.gh-icon {
+  padding-left: 10px;
+  padding-right: 10px;
+}
