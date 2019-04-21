@@ -14,7 +14,10 @@ layout: base
         {% assign gh_repo =  gh_split[1]  %}
 
         <a href="https://github.com/{{ gh_user }}/{{ gh_repo }}" id="gh-button-link" target="_blank">
-          <div id="gh-button">
+          <div class="gh-button-header">
+            Get the code!
+          </div>
+          <div class="gh-button">
             <i class="fab fa-github gh-icon"></i><span>{{ page.gh-repo }}</span>
           </div>
         </a>
