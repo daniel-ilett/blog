@@ -3,6 +3,8 @@ layout: post
 title: Image Effects | Part 0 - Shader Primer
 subtitle: A quick primer on how to write shaders in Unity
 bigimg: /img/tut1/part0-banner.png
+gh-repo: daniel-ilett/smo-shaders
+gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, primer]
 nice-slug: Shader Primer
 date: 2019-04-27

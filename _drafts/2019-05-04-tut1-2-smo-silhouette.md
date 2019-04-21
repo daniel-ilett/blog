@@ -3,6 +3,8 @@ layout: post
 title: Image Effects | Part 2 - Getting Deep
 subtitle: Introducing a new kind of buffer to take data from
 bigimg: /img/tut1/part2-banner.png
+gh-repo: daniel-ilett/smo-shaders
+gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, silhouette]
 nice-slug: Getting Deep
 date: 2019-05-04

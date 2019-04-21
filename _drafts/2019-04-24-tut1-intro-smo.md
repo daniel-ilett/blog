@@ -18,7 +18,7 @@ Super Mario Odyssey was one of my absolute favourite games of 2017. Despite bein
 
 Snapshot Mode pauses the game and gives you more control of the camera, letting you frame Mario in the perfect pose. Additionally, you can throw filters on top of the image to tweak or transform how it looks. Those effects are the focus of this first series; how would you recreate those effects using shaders in Unity? Each effect employs the same pattern - render the image as normal and then apply a post-processing shader on top of that image to modify it in any way you want. This tutorial series explores the theory behind each effect and demonstrates the flexibility of these effects.
 
-Look out in the next few days for the launch of this series of tutorials. The first will be a special crash course on how to write shaders in Unity.
+Look out in the next few days for the launch of this series of tutorials. The first will be a special crash course on how to write shaders in Unity. You can take a peek at the template project by clicking the GitHub link near the top of this page.
 
 - Part 0: **Shader Primer** - *April 27th*
 - Part 1: **Colour Transforms** - *May 1st*
