@@ -34,12 +34,16 @@ int b = 1;
 return float4(r, g, b, 1.0);
 ~~~
 
-We're going to exploit integers to quantise the image. Since we know we want four colours per channel, we'll multiply the individual R, G and B values by four, truncate them to integers, then divide to get our values back into the \[0, 1\] range. I've subtracted a tiny amount off the original RGB values during the calculation because otherwise a value of 1.0 would be quantised to 4, but we only want four possible values: 0, 1, 2 and 3. Remember that truncation will turn a floating-point value of 3.999 into an integer value of 3.
+We're going to exploit integers to quantise the image. Since we know we want four colours per channel, we'll multiply the individual R, G and B values by four, truncate them to integers, then divide to get our values back into the \[0, 1\] range. I've subtracted a tiny amount - an 'epsilon' value - off the original RGB values during the calculation because otherwise a value of 1.0 would be quantised to 4, but we only want four possible values: 0, 1, 2 and 3. Remember that truncation will turn a floating-point value of 3.999 into an integer value of 3.
 
 ~~~glsl
-int r = (tex.r - 0.001) * 4;
-int g = (tex.g - 0.001) * 4;
-int b = (tex.b - 0.001) * 4;
+// With other variable definitions.
+static const float EPSILON = 1e-10;
+
+// Inside fragment shader.
+int r = (tex.r - EPSILON) * 4;
+int g = (tex.g - EPSILON) * 4;
+int b = (tex.b - EPSILON) * 4;
 ~~~
 
 We'll then divide each channel by the maximum value - 3 - to obtain the final RGB values.
@@ -100,9 +104,9 @@ The shader takes exactly the same form as the NES shader, but with different con
 ~~~glsl
 fixed4 tex = tex2D(_MainTex, i.uv);
 
-int r = (tex.r - 0.001) * 6;
-int g = (tex.g - 0.001) * 6;
-int b = (tex.b - 0.001) * 6;
+int r = (tex.r - EPSILON) * 6;
+int g = (tex.g - EPSILON) * 6;
+int b = (tex.b - EPSILON) * 6;
 
 return float4(r / 5.0, g / 5.0, b / 5.0, 1.0);
 ~~~
