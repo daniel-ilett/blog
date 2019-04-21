@@ -5,7 +5,7 @@ subtitle: Calculating image gradients and drawing some edges
 bigimg: /img/tut1/part4-banner.png
 gh-repo: daniel-ilett/smo-shaders
 gh-badge: [star, fork, follow]
-tags: [shaders, unity, image-effects, edge-detect]
+tags: [shaders, unity, image-effects, edge-detect, neon, bloom]
 nice-slug: Edgy Talk
 date: 2019-05-11
 ---

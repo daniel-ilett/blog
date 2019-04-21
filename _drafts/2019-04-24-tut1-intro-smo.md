@@ -27,6 +27,8 @@ Look out in the next few days for the launch of this series of tutorials. The fi
 - Part 4: **Edgy Talk** - *May 11th*
 - Part 5: **Wrapping Up** - *May 15th*
 
+A second half of this series is planned for the future, exploring a few more of the shader effects found in Snapshot Mode.
+
 <!---
 - Part 0: [Shader Primer]({% post_url 2019-04-27-tut1-0-smo-shader-basics %})
 - Part 1: [Colour Transforms]({% post_url 2019-05-01-tut1-1-smo-greyscale %})

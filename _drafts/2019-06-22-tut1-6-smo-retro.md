@@ -5,7 +5,7 @@ subtitle: Going back in time for that CRT feel
 bigimg: /img/tut1/part6-banner.png
 gh-repo: daniel-ilett/smo-shaders-2
 gh-badge: [star, fork, follow]
-tags: [shaders, unity, image-effects, greyscale, sepia]
+tags: [shaders, unity, image-effects, nes, snes, gb, crt]
 nice-slug: Colour Transforms
 date: 2019-06-22
 ---
