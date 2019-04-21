@@ -117,6 +117,47 @@ Looking good so far! Together with `ImageEffectPixelate`, the effect is looking 
 
 CRT stands for "cathode ray tube"; a CRT TV uses one of these to fire electrons into a phosphorescent screen to generate light and, by extension, images. There are three colours of phosphor used - red, green and blue - which is very convenient for us. Images are produced by scanning left-to-right, top-to-bottom, row-by-row, until all pixels have been displayed, then the process starts over again. The gaps between the phosphor zones and the action of the CRT scanning along rows means that visible scanlines appear horizontally on the screen. What we're going to do is split the screen into those phosphor zones with a dead zone where the scanlines would appear - in effect, the screen will be segmented into 3x3 sections, with three 1x2 vertical lines for each of red, green and blue, with a 3x1 black horizontal line below them. We'll multiply the source image by this 'grid' to obtain the final image.
 
+Take a look at the `Shaders/CRTScreen.shader` template file. This time, we're going to have to add something to the vertex shader - exciting, I know! We need to know the screen coordinates of each fragment later on, so we're going to calculate them in the vertex shader and then they'll be interpolated later on. We'll use `appdata_img` included in `UnityCG.cginc` to pass data into the vertex shader, but we can't use `v2f_img` or `vert_img` because we need to pass over the screen position.
+
+~~~glsl
+struct v2f
+{
+	float2 uv : TEXCOORD0;
+	float4 vertex : SV_POSITION;
+	float4 screenPos : TEXCOORD1;
+}
+
+v2f vert (appdata_img v)
+{
+	v2f o;
+	o.vertex = UnityObjectToClipPos(v.vertex);
+	o.screenPos = ComputeScreenPos(o.vertex);
+	o.uv = v.texcoord;
+	return o;
+}
+~~~
+
+In the vertex shader, after we've transformed the vertex in appdata_img to clip space, we'll use the clipped vertex position in the `ComputeScreenPos()` function to determine the screen position. This will be passed to the fragment shader inside `v2f`'s `screenPos` variable.
+
+Now let's look at the fragment shader. As usual, we calculate the pixel colour using the normal uv coordinates. We're going to need a way to determine if this is a 'red pixel', or a 'blue pixel' and so on, and we're also going to determine whether this is a 'scanline pixel'. For that, we'll populate two 3x3 matrices with colour data, and then use the screen pixel coordinates to determine which row we need to multiply our original colours by.
+
+~~~glsl
+fixed2 sp = i.screenPos.xy * _ScreenParams.xy;
+~~~
+
+The first step after reading the input texture is to calculate the screen pixel coordinates - this is what we'll be using later on. The `screenPos` variable denotes where our pixel is on the screen, normalised in the x- and y-axes in the range \[0, 1\], and `_ScreenParams` is a [built in variable](https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html) whose x and y members contain the pixel width and pixel height of the camera's target texture (which in this case, is the entire screen texture). The result of multiplying them is the pixel coordinate on the screen of this fragment.
+
+Now we'll handle the matrices we'll need. My original draft for this shader defined the RGB colours as such:
+
+~~~glsl
+float3 r = float3(col.r, 0, 0);
+float3 g = float3(0, col.g, 0);
+float3 b = float3(0, 0, col.b);
+float3x3 colormap = float3x3(r, g, b);
+~~~
+
+For each float defined here, we take the
+
 <hr/>
 
 ![GB Filter](/img/tut1/part6-gb.png)
