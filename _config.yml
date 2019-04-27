@@ -36,6 +36,10 @@ navbar-links:
 # then specify the following parameter
 # title-img: /path/to/image
 
+# Exclude some items from being included in the build.
+exclude:
+  - links.txt
+
 # --- Background colour/image options --- #
 
 # Personalize the colors in your website. Colour values can be any valid CSS colour

@@ -20,7 +20,7 @@ Snapshot Mode pauses the game and gives you more control of the camera, letting 
 
 Look out in the next few days for the launch of this series of tutorials. The first will be a special crash course on how to write shaders in Unity. You can take a peek at the template project by clicking the GitHub link near the top of this page.
 
-- Part 0: **Shader Primer** - *April 27th*
+- Part 0: [Shader Primer]({% post_url 2019-04-27-tut1-0-smo-shader-basics %})
 - Part 1: **Colour Transforms** - *May 1st*
 - Part 2: **Getting Deep** - *May 4th*
 - Part 3: **Blurring Algorithms** - *May 8th*
@@ -28,12 +28,3 @@ Look out in the next few days for the launch of this series of tutorials. The fi
 - Part 5: **Wrapping Up** - *May 15th*
 
 A second half of this series is planned for the future, exploring a few more of the shader effects found in Snapshot Mode.
-
-<!---
-- Part 0: [Shader Primer]({% post_url 2019-04-27-tut1-0-smo-shader-basics %})
-- Part 1: [Colour Transforms]({% post_url 2019-05-01-tut1-1-smo-greyscale %})
-- Part 2: [Getting Deep]({% post_url 2019-05-04-tut1-2-smo-silhouette %})
-- Part 3: [Blurring Algorithms]({% post_url 2019-05-08-tut1-3-smo-blur %})
-- Part 4: [Edgy Talk]({% post_url 2019-05-11-tut1-4-smo-edge-detect %})
-- Part 5: [Wrapping Up]({% post_url 2019-05-15-tut1-5-smo-end %})
---->
