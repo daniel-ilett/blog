@@ -155,8 +155,17 @@ float3 r = float3(col.r, 0, 0);
 float3 g = float3(0, col.g, 0);
 float3 b = float3(0, 0, col.b);
 
-float3x3 colormap = float3x3(r, g, b);
+float3x3 colorMap = float3x3(r, g, b);
 ~~~
+
+$$ 
+colorMap = 
+\begin{bmatrix}
+    col.r & 0 & 0 \\
+    0 & col.g & 0 \\
+    0 & 0 & col.b
+\end{bmatrix}
+$$
 
 We'll separate each colour channel into their own vectors with the other colour channels zeroed out. Then, we can collate them together into a 3x3 matrix - this step will become clearer in a little while.
 
@@ -168,6 +177,15 @@ float3 bl = 0.0;
 
 float3x3 scanlineMap = float3x3(wh, wh, bl);
 ~~~
+
+$$ 
+scanlineMap = 
+\begin{bmatrix}
+    1 & 1 & 1 \\
+    1 & 1 & 1 \\
+    0 & 0 & 0
+\end{bmatrix}
+$$
 
 A row will either get multiplied by full white or full black. We'll do the same thing as above by putting those row colours into a matrix.
 
