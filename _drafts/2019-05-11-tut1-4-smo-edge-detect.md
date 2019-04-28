@@ -38,6 +38,8 @@ G_y =
 \end{bmatrix}
 $$
 
+In fact, unlike the kernels we used for blurring in the last tutorial, the horizontal and vertical steps can't be combined into one matrix easily - we must complete them independently and use Pythagoras' Theorem on the x-gradient and y-gradient to calculate an overall gradient. In theory, you can pick any pair of perpendicular directions such as the diagonals, but it's far more convenient to pick the x- and y-directions.
+
 Now let's take a look at this in a shader - the template for this can be found in `Shaders/EdgeDetect.shader`. I've defined a `sobel()` function which will do the heavy lifting for us - the fragment shader is already complete. Running the shader now will give you a very underwhelming black screen, so let's add some calculation to the `sobel()` function.
 
 We've defined accumulator variables for the horizontal (x) and vertical (y) passes, and for the sake of saving on some typing, `texelSize` is its own variable. For each of the kernel values, we will want to multiply them by the corresponding pixel values, similar to the Blur shaders, but since we know the kernel is always 3x3, there's no point writing everything in a complex loop - let's just hard-code the calculations. Between the `texelSize` variable definition and the return statement, splice in this code:
@@ -61,6 +63,14 @@ y += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
 ~~~
 
 If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the ones which are multiplied by zero since they won't have an effect on the final value anyway. Run the shader now, and you should see some lovely edge detection! I'd suggest that if you intend to use this effect in a game as-is, then consider turning off shadows, because they'll also be edge-detected and could look strange. Alternatively, use that as your aesthetic - be creative!
+
+![Edge Detection](/img/tut1/part4-scene-edge-detect.png)
+
+You'll also notice the `sqrt()` function that we use at the end - it's short for 'square root', as you'd expect - this line is just doing Pythagoras' Theorem on the independent horixontal and vertical gradients to get the magnitude of the overall gradient.
+
+~~~glsl
+return sqrt(x * x + y * y);
+~~~
 
 If you wanted it to look more like the Line Drawing effect in Super Mario Odyssey, then try inverting the colours and perhaps make the lines grey.
 
@@ -115,6 +125,8 @@ return float4(col * s, 1.0);
 ~~~
 
 Run the shader now, and the neon effect should look pretty decent now! The conversion makes pixels that were near-greyscale look much more colourful than before, so the whole scene might look very different to what you were expecting.
+
+![Neon](/img/tut1/part4-scene-neon.png){: .center-image }
 
 The neon effect looks great, but we would usually expect such an effect to glow, especially the brightest parts of the image. We can do that by implementing another step on top of what we've done so far - let's discuss a simplified bloom shader.
 
@@ -200,7 +212,7 @@ UsePass "SMO/Complete/GaussianBlurMultipass/HORIZONTALPASS"
 UsePass "SMO/Complete/GaussianBlurMultipass/VERTICALPASS"
 ~~~
 
-The only modification you need to make is to state the name of the shader pass in all-caps, because this is the name that Unity gives to those passes internally. It's important to note that you should treat these as if they are full-fat passes - they will be given their own IDs - and that all `Properties` or `CGINCLUDE`s need to be redefined inside `Bloom` to work as intended. The template already copied over the properties used by the Gaussian blur filters, but to refresh your memory, here they are again.
+The only modification you need to make is to state the name of the shader pass in all-caps, because this is the name that Unity gives to those passes internally. It's important to note that you should treat these as if they are full-fat passes - they will be given their own IDs - and that all `Properties` or `CGINCLUDE`s need to be redefined inside `Bloom.shader` to work as intended. The template already copied over the properties used by the Gaussian blur filters, but to refresh your memory, here they are again.
 
 ~~~glsl
 // In Properties.
@@ -222,18 +234,18 @@ private const int verticalPass = 3;
 We won't ever be using both versions of the Gaussian filter at the same time, so let's add a 'switch' we can use to pick the one we're working with. Somewhere outside the class definition, let's add an `enum` that defines the two modes of operation. Alongside it, we'll also keep track of the state using a variable.
 
 ~~~csharp
+// Above class definition.
+[SerializeField]
+private BlurMode blurMode = BlurMode.MultiPass;
+
 // Below class definition.
 enum BlurMode
 {
 	SinglePass, MultiPass
 }
-
-// Above class definition.
-[SerializeField]
-private BlurMode blurMode = BlurMode.MultiPass;
 ~~~
 
-If you've never seen `[SerializeField]` before, it lets us define a private variable and expose it in the Inspector in Unity. Now that we're tracking the mode, let's apply the blurring step based on the mode. We'll need to tweak the material properties outside the shader, which we can do with a few functions available in Unity.
+If you've never seen `[SerializeField]` before, it lets us define a private variable that's still exposed in the Inspector in Unity. Now that we're tracking the mode, let's apply the blurring step based on the mode. We'll need to tweak the material properties outside the shader, which we can do with a few functions available in Unity.
 
 ~~~csharp
 // Tweak material properties.
@@ -292,9 +304,13 @@ RenderTexture.ReleaseTemporary(blurTex);
 
 Now run the shader - it's the bloom we've been seeking all this time! We opted to write a cheap blur effect because we really don't need the highest fidelity, nor are we paying particular attention to HDR (High Dynamic Range) rendering in this example, but if you'd like to iterate on this design and create a better bloom effect, there are [plenty of resources](https://catlikecoding.com/unity/tutorials/advanced-rendering/bloom/) to take a look at. Good luck if you attempt something cool!
 
+![Bloom](/img/tut1/part4-scene-bloom.png){: .center-image }
+
 ## Multiple image effects
 
 We haven't yet discussed how to run multiple image effects at once, but it's actually really easy - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
+
+![Neon Bloom](/img/tut1/part4-scene-neon-bloom.png){: .center-image }
 
 <hr/>
 
