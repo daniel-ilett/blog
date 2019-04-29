@@ -54,6 +54,8 @@ return float4(r / 3.0, g / 3.0, b / 3.0, 1.0);
 
 Run the shader effect by dragging an `ImageEffectBase` component onto your main camera and attaching the shader - it should result in an effective colour transformation. However, we're missing the pixelated feeling of an old NES game.
 
+![NES](/img/tut1/part7-scene-nes.png){: .center-image }
+
 ## Pixelation
 
 We looked at downsampling an image back in the Blur tutorial. The effect we're looking for is to make our image smaller, perform the colour transformation on the smaller image, then expand the image back to screen size - but if we did this the same way as before, it'd blur the result. As a starting point, we shall do the same as before and then discuss how to avoid the blurring. We'll create a new C# script called `ImageEffectPixelate.cs` and let it inherit from `ImageEffectBase`.
@@ -92,6 +94,8 @@ temp.filterMode = FilterMode.Point;
 
 Now attach this script to the camera instead of `ImageEffectBase` and insert the `PixelNES` shader. You can change the amount of downsampling by modifying the `pixelSize` in the Inspector - my recommended value is 3. This is looking a lot more like the effect we want.
 
+![NES with Pixelation](/img/tut1/part7-scene-nes-pixel.png){: .center-image }
+
 <hr/>
 
 ![SNES Filter](/img/tut1/part7-snes.png)
@@ -113,6 +117,8 @@ return float4(r / 5.0, g / 5.0, b / 5.0, 1.0);
 ~~~
 
 Looking good so far! Together with `ImageEffectPixelate`, the effect is looking quite strong. However, I think we can go one step further with the effect - NES and SNES games were played on CRTs, which certainly don't look this crisp. We're going to implement features to make our effect more similar to the Snapshot Mode effect, then go above and beyond.
+
+![SNES](/img/tut1/part7-scene-snes.png){: .center-image }
 
 ## CRT
 
@@ -258,18 +264,62 @@ public class ImageEffectCRT : ImageEffectBase
 
 Instead of attaching the `CRTScreen` shader to an `ImageEffectBase` component, try attaching it to an `ImageEffectCRT` component instead. All being well, the CRT effect is complete! Play around with the values until you find something you like - the values in the script were my preferred values.
 
+![CRT Effect](/img/tut1/part7-scene-crt.png){: .center-image }
+
 To emulate the look and feel of an NES or SNES game, I recommend attaching - in order - an NES/SNES filter, a CRT filter and then a Bloom filter to the camera. For this reason, I've included the Bloom shaders and script from the first half of this series in the template project for you to use. The bloom filter emulates the glare you might get from an old CRT.
+
+![SNES with CRT & Bloom](/img/tut1/part7-scene-snes-crt-bloom.png){: .center-image }
 
 <hr/>
 
 ![GB Filter](/img/tut1/part7-gb.png)
 
-# Gameboy
+# Game Boy
+
+The Game Boy (GB) had a comparatvely much simpler colour palette than either the NES or SNES - four shades of green (or, on the Game Boy Pocket, four shades of grey). We'll use a simlar technique as in the Greyscale shader to map the original pixel colour values to GB colours.
+
+Take a look at the `Shaders/PixelGB.shader` template file. Our fragment shader calculates the luminance of the input pixel to use as our 'base' value. We'll need to posterise the image as before, so we'll exploit integers again.
+
+~~~glsl
+float lum = dot(tex, float3(0.3, 0.59, 0.11));
+
+int gb = lum * 3;
+~~~
+
+This gives each pixel one of four values for the `gb` variable: 0, 1, 2 or 3. Those will each map to an output colour. If we were using the GB Pocket colour palette, we'd just divide through by three and output that as the colour, but all we'd get is a quantised greyscale effect - that's not too interesting. Instead, we'll output the original GB green shades.
+
+~~~glsl
+// In Properties.
+_GBDarkest("GB (Darkest)", Color) = (0.06, 0.22, 0.06, 1.0)
+_GBDark("GB (Dark)", Color) = (0.19, 0.38, 0.19, 1.0)
+_GBLight("GB (Light)", Color) = (0.54, 0.67, 0.06, 1.0)
+_GBLightest("GB (Lightest)", Color) = (0.61, 0.73, 0.06, 1.0)
+
+// After _MainTex definition inside shader.
+float4 _GBDarkest;
+float4 _GBDark;
+float4 _GBLight;
+float4 _GBLightest;
+~~~
+
+This gives us four colours to use as reference. Those default values are close to those used in the Game Boy, but feel free to tweak them. Now that we have four colours, let's use our calculated `gb` value to pick between them. We haven't discussed this before, but in shaders it's usually bad practice to use if-statements in the same way you would in a CPU-based programming language. Because GPU hardware is very good at running the same instructions thousands of times in parallel, it's not very good at switching branches in a statement like that. Instead, we can use built-in functions such as `lerp` and `saturate` - which are optimised for GPUs - to pick our values. In fact, using `lerp` and `saturate` together is a common idiom for switching between several values based on some factor.
+
+~~~glsl
+float3 col = lerp(_GBDarkest, _GBDark, saturate(gb));
+col = lerp(col, _GBLight, saturate(gb - 1.0));
+col = lerp(col, _GBLightest, saturate(gb - 2.0));
+
+return float4(col, 1.0);
+~~~
+
+We have seen `saturate` before - it bounds the value passed into it between 0 and 1. We have also seen `lerp` before, which gives us a value between its first and second parameters based on its third parameter. Since our input is an integer, the first line here asks the question "is `gb` greater than 0" - if not, set `col` equal to `_GBDarkest`, and if so, set `col` to `_GBDark` (since the third parameter to `lerp` is bounded to 1 by `saturate`). We then do this again, but after subracting 1 from `gb`. Now we're asking "is `gb` greater than 1" - if not, don't change the value of `col`, and if so, set `col` to `_GBLight`. This process of cascading through `lerp` calls and subtracting from a `saturate` is something you may see often.
+
+![Game Boy](/img/tut1/part7-scene-gb.png){: .center-image }
 
 <hr/>
 
 # Conclusion
 
-We've looked into some relatively simple shaders that only considered pixels one-at-a-time, but are more in-depth than the Greyscale shaders from before. Perhaps you now have more of an appreciation for the difference between CRT and LCD screens, too. In the next tutorial, we'll use a new type of kernel function to imitate the Oil Painting effect.
+We've looked at a few more shaders that take each pixel one at a time, but they're a lot more in-depth than the Greyscale shaders of old. Perhaps you now have more of an appreciation for the difference between CRT and LCD screens, too. In the next tutorial, we'll use a new type of kernel function to imitate the Oil Painting effect.
 
 <hr/>
