@@ -88,6 +88,9 @@ We'll use that in combination with the `smoothstep` function, which can be thoug
 // In Properties.
 _Antialiasing("Band Smoothing", Float) = 5.0
 
+// With other variable declarations.
+float _Antialiasing;
+
 // In LightingCel.
 float diffuse = dot(normal, lightDir);
 
@@ -105,7 +108,50 @@ You should now have a very small lighting falloff that gives our object a less h
 
 Diffuse lighting doesn't take the view direction into account. Specular lighting, on the other hand, does. Specular highlights are the "shiny" parts of an object - if you think of a well-polished ball, you might imagine a small circle on the top of the ball that reflects really brightly - that's a specular highlight, and it manifests due to the light source reflecting off that part of the ball into your eyes directly.
 
-It's relatively easy to implement this.
+It's relatively easy to implement this. Our lighting model can use the view direction by passing it into the model function; the `viewDir` variable in this exampel denotes the vector from the camera's position pointing forward into the centre of the screen.
+
+~~~glsl
+float4 LightingCel(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten)
+...
+~~~
+
+For diffuse lighting, we specified a base albedo colour to use as a base. Similarly for a specular lighting component, we must know how "shiny" our material is - this controls the size of the specular highlight. We'll also want to know the colour of the specular highlights, but we can use the directional light's colour in the same way as our diffuse component, so we'll only need one more entry in `Properties`.
+
+~~~glsl
+// In Properties.
+_Glossiness("Glossiness/Shininess", Float) = 400
+
+// With other variable declarations.
+float _Glossiness;
+~~~
+
+How exactly do we take into account the view direction? First of all, we calculate what's called the "half vector" - a vector that points exactly halfway between the view direction and the light direction. Then , similarly to how we calculated the diffuse lighting, we perform the dot product on the normal vector and the half vector. We'll put our specular calculation code between the diffuse calculations and the final colour calculation.
+
+~~~glsl
+float3 halfVec = normalize(lightDir + viewDir);
+float specular = dot(normal, halfVec);
+~~~
+
+By adding the vectors together and normalising the result, we get the half vector. However, this would result in a very large pecular highlight and doesn't yet take the `_Glossiness` property into account; we'll use a power function to get the best result. We don't want specular highlights to appear on the shaded sections of the object, so we'll also multiply our specular coefficient by the existing smooth diffuse value.
+
+~~~glsl
+specular = pow(specular * diffuseSmooth, _Glossiness);
+~~~
+
+The `pow` function raises the first parameter to the power of the second parameter. By multiplying `specular` together with `diffuseSmooth`, we'll only get specular highlights on the lit sections of the object, and by raising to the power of `_Glossiness`, we can control the specularity with a value in the Inspector.
+
+We'll also do a smoothing step like we did with the diffuse component of the lighting. We won't use the same trick with `fwidth` because the rate of change between pixels is too high and the results aren't very pleasant. Instead, we'll just use `smoothstep` directly and define our own upper bound, controlled by the `_Antialiasing` property.
+
+~~~glsl
+float specularSmooth = smoothstep(0, 0.01 * _Antialiasing, specular);
+~~~
+
+All that's left is to include the specular highlights in the final lighting calculation. We'll just add the diffuse and specular light values together, since both types of lighting are additive in nature.
+
+~~~glsl
+float3 col = s.Albedo * ((diffuseSmooth + specularSmooth) * _LightColor0 + unity_AmbientSky);
+return float4(col, s.Alpha);
+~~~
 
 <hr/>
 
