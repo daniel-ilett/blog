@@ -24,7 +24,7 @@ For this tutorial, we'll be using the Diffuse shaders from the previous part as 
 
 Take a look at `Shaders/CelShadedSurf.shader`. It's currently the same as the the finished `DiffuseSurf` shader we wrote in the last tutorial. However, we'll need to write our own lighting model instead of using a built-in one. 
 
-##Lighting Models
+## Lighting Models
 
 Right now, we're using the `Standard` lighting model, which includes the `SurfaceOutputStandard` struct to hold its parameters. With our new lighting model, we won't use that - intead we'll use the more basic `SurfaceOutput` struct. To build a lighting model, we supply a function with a name beginning `Lighting` - the exact semantics we must use can be found [here](https://docs.unity3d.com/Manual/SL-SurfaceShaderLighting.html). We'll write our shader to only interact with Unity's forward rendering pipeline.
 
@@ -104,6 +104,8 @@ You'll see I've kept the same `diffuse` calculation, but I've used it to calcula
 
 You should now have a very small lighting falloff that gives our object a less harsh transition from light to dark. It's fully controllable from the material in the Inspector. Beware that large values for the `_Antialiasing` variable (called `Band smoothing` in the Inspector) look atrocious, so keep it low!
 
+![Smooth Falloff Surf](/img/tut2/part2-cel-shaded-falloff-surf.png){: .center-image }
+
 ## Specular lighting
 
 Diffuse lighting doesn't take the view direction into account. Specular lighting, on the other hand, does. Specular highlights are the "shiny" parts of an object - if you think of a well-polished ball, you might imagine a small circle on the top of the ball that reflects really brightly - that's a specular highlight, and it manifests due to the light source reflecting off that part of the ball into your eyes directly.
@@ -152,6 +154,12 @@ All that's left is to include the specular highlights in the final lighting calc
 float3 col = s.Albedo * ((diffuseSmooth + specularSmooth) * _LightColor0 + unity_AmbientSky);
 return float4(col, s.Alpha);
 ~~~
+
+![Specular Surf](/img/tut2/part2-cel-shaded-surf.png){: .center-image }
+
+<hr/>
+
+# Fragment Shader
 
 <hr/>
 
