@@ -161,8 +161,69 @@ return float4(col, s.Alpha);
 
 # Fragment Shader
 
+Now's let's go over all that again with a vertex and fragment shader variant. Almost everything will be the same or very similar, with only a couple of steps unique to the fragment shader. Take a look at the `Shaders/CelShadedFrag.shader` file.
+
+We'll add the `_Antialiasing` and `_Glossiness` variables exactly the same as for the surface shader.
+
+~~~glsl
+// In Properties.
+_Antialiasing("Band Smoothing", Float) = 5.0
+_Glossiness("Glossiness/Shininess", Float) = 400
+
+// With other variable declarations.
+float _Antialiasing;
+float _Glossiness;
+~~~
+
+On top of that, remember to include the `Lighting.cginc` file.
+
+~~~glsl
+// Below UnityCG include statement.
+#include "Lighting.cginc"
+~~~
+
+Then, we shall deal with sending the view direction through the pipeline. In the surface shader, we passed this as an extra parameter to the lighting model function, but for this shader we're going to have to go all traditional and calculate it ourselves. There's a function Unity provides called `WorldSpaceViewDir()` to which we can provide a vertex as an argument and it'll return a vector pointing from the camera to that vertex. We'll declare the new `viewDir` variable inside the `v2f` struct and calculate it inside the vertex shader.
+
+~~~glsl
+// Add to v2f.
+float3 viewDir : TEXCOORD1;
+
+// Inside vertex shader, just above the return statement.
+o.viewDir = WorldSpaceViewDir(v.vertex);
+~~~
+
+Wonderful - that's most of the differences between this shader and the surface shader version dealt with. The rest of the code looks pretty much the same - here's the fragment shader in its entirety.
+
+~~~glsl
+fixed4 frag (v2f i) : SV_Target
+{
+    fixed4 albedo = tex2D(_MainTex, i.uv) * _Color;
+
+    float3 normal = normalize(i.worldNormal);
+    float diffuse = dot(normal, _WorldSpaceLightPos0);
+
+    float delta = fwidth(diffuse) * _Antialiasing;
+    float diffuseSmooth = smoothstep(0, delta, diffuse);
+
+    float3 halfVec = normalize(_WorldSpaceLightPos0 + i.viewDir);
+    float specular = dot(normal, halfVec);
+    specular = pow(specular * diffuseSmooth, _Glossiness);
+
+    float specularSmooth = smoothstep(0, 0.01 * _Antialiasing, specular);
+
+    fixed4 col = albedo * ((diffuseSmooth + specularSmooth) * _LightColor0 + unity_AmbientSky);
+    return col;
+}
+~~~
+
+With that, you should see a cel-shaded object similar to the surface shader version.
+
+![Specular Frag](/img/tut2/part2-cel-shaded-frag.png){: .center-image }
+
 <hr/>
 
 # Conclusion
+
+In this tutorial, we learned how to implement a very simple two-tone cel shader. We then iterated upon it to make the cut slightly smoother using `smoothstep` and added a specular highlight. Next time, we'll look at a more complex model and implement normal/bump mapping and fresnel lighting.
 
 <hr/>
