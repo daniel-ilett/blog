@@ -62,11 +62,11 @@ y += tex2D(_MainTex, uv + float2(           0,  texelSize.y)) *  2.0;
 y += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
 ~~~
 
-If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the ones which are multiplied by zero since they won't have an effect on the final value anyway. Run the shader now, and you should see some lovely edge detection! I'd suggest that if you intend to use this effect in a game as-is, then consider turning off shadows, because they'll also be edge-detected and could look strange. Alternatively, use that as your aesthetic - be creative!
+If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the parts of the calculation where the kernel value is zero. Run the shader now, and you should see some lovely edge detection! I'd suggest that if you intend to use this effect in a game as-is, then consider turning off shadows, because they'll also be edge-detected and could look strange. Alternatively, use that as your aesthetic - be creative!
 
 ![Edge Detection](/img/tut1/part4-scene-edge-detect.png)
 
-You'll also notice the `sqrt()` function that we use at the end - it's short for 'square root', as you'd expect - this line is just doing Pythagoras' Theorem on the independent horixontal and vertical gradients to get the magnitude of the overall gradient.
+You'll also notice the `sqrt()` function that we use at the end - it's short for 'square root', as you'd expect. This line is just doing Pythagoras' Theorem on the independent horizontal and vertical gradients to get the overall gradient magnitude, and therefore the 'edginess' of the pixel.
 
 ~~~glsl
 return sqrt(x * x + y * y);
@@ -113,7 +113,7 @@ float3 hsv2rgb(float3 c)
 }
 ~~~
 
-Now let's perform the conversions. As well as modifying the saturation, I also modify the value/lightness so that the bright colours pop even more.
+Now let's perform the conversions. As well as modifying the saturation, I also modify the value (lightness) so that the bright colours pop even more.
 
 ~~~glsl
 float3 hsvTex = rgb2hsv(tex);
@@ -136,9 +136,9 @@ The neon effect looks great, but we would usually expect such an effect to glow,
 
 At its core, Bloom is used to make bright light sources stand out in a scene by adding a glowing effect around them. Neon sure is a bright light source! In this section, we'll introduce a powerful new concept that allows us to use a Pass from a different shader.
 
-Let's go over the theory behind Bloom. We'll want to isolate the parts of the image that have a high brightness value - those are the 'light sources' - then blur them a little to imitate the glowing effect. Once we have the blurred version of the image, we shall composite that image on top of the original image to obtain the final Bloom result.
+Let's go over the theory behind Bloom. We'll want to isolate the parts of the image that have a high brightness value - those are the 'light sources' - then blur them a little to imitate the glowing effect. Once we have the blurred version of the image, we shall composite that image on top of the original image to obtain the final Bloom result. There are many more in-depth ways of implementing bloom, but this will suffice for our needs.
 
-Now let's implement this all in a shader. Open up `Shaders/Bloom.shader` and take a look at what we've got - two passes, the first of which uses the same RGB-HSV conversion functions we saw back in the `Neon` filter, and the second of which is just sampling a texture. You might have spotted something new, too - both of these new passes have names. They aren't actually going to be required, and I'm just using them to foreshadow something coming up shortly.
+Now let's implement this all in a shader. Open up `Shaders/Bloom.shader` and take a look at what we've got - two passes, the first of which uses the same RGB-HSV conversion functions we saw back in the `Neon` filter, and the second of which is just sampling a texture. You might have spotted something new, too - both of these new passes have names. These names are not required, but we will see an instance where we must `Name` a pass very soon.
 
 Let's start with the first pass, named "ThresholdPass", which is going to compare the brightness value with some threshold value. Let's define this in `Properties`.
 
@@ -201,7 +201,7 @@ Name "HorizontalPass"
 Name "VerticalPass"
 ~~~
 
-I've been very sneaky and already did this in the versions of these shaders found in `Complete`. We'll now be able to reference these three shader passes inside the `Bloom` shader using `UsePass`. The syntax is pretty simple - it's `UsePass` followed by the name of the shader and shader pass. We'll put these `Pass`es in between the two already in the file.
+I've been very sneaky and already did this in the versions of these shaders found in the `Complete` folder. We'll now be able to reference these three shader passes inside the `Bloom` shader using `UsePass`. The syntax is pretty simple - it's `UsePass` followed by the name of the shader and shader pass. We'll put these `Pass`es in between the two already in the file.
 
 ~~~glsl
 // If using single-pass blur.
@@ -234,11 +234,11 @@ private const int verticalPass = 3;
 We won't ever be using both versions of the Gaussian filter at the same time, so let's add a 'switch' we can use to pick the one we're working with. Somewhere outside the class definition, let's add an `enum` that defines the two modes of operation. Alongside it, we'll also keep track of the state using a variable.
 
 ~~~csharp
-// Above class definition.
+// At the top of class definition.
 [SerializeField]
 private BlurMode blurMode = BlurMode.MultiPass;
 
-// Below class definition.
+// Below ImageEffectBloom class definition.
 enum BlurMode
 {
 	SinglePass, MultiPass
@@ -248,6 +248,10 @@ enum BlurMode
 If you've never seen `[SerializeField]` before, it lets us define a private variable that's still exposed in the Inspector in Unity. Now that we're tracking the mode, let's apply the blurring step based on the mode. We'll need to tweak the material properties outside the shader, which we can do with a few functions available in Unity.
 
 ~~~csharp
+// After last Graphics.Blit().
+RenderTexture blurTex =
+	RenderTexture.GetTemporary(src.width, src.height, 0, src.format);
+
 // Tweak material properties.
 material.SetInt("_KernelSize", 21);
 material.SetFloat("_Spread", 5.0f);
@@ -292,6 +296,7 @@ return float4(originalTex + blurredTex, 1.0);
 The final thing we must do is pass the correct data to this shader pass and execute it. First off, add another shader pass ID constant for this final pass. Then, we'll simply put the source image into the correct shader variable and perform the final `Blit()`. Do make sure you release the last temporary `RenderTexture` too!
 
 ~~~csharp
+// After if-else statement.
 // Set the source texture.
 material.SetTexture("_SrcTex", src);
 
