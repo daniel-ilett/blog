@@ -817,6 +817,10 @@ td.gutter {
   padding-right: 10px;
 }
 
+#patreon-button-link {
+  text-decoration: none;
+}
+
 .patreon-button {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
