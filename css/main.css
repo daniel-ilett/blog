@@ -804,6 +804,7 @@ td.gutter {
 
 .gh-button {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
   background-color: #007fff;
   border-radius: 4px;
   color: #dfdfdf;
@@ -812,6 +813,22 @@ td.gutter {
 }
 
 .gh-icon {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.patreon-button {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  background-color: #f96854;
+  border-radius: 4px;
+  color: #dfdfdf;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.patreon-icon {
   padding-left: 10px;
   padding-right: 10px;
 }
