@@ -121,17 +121,17 @@ When comparing between regions, we'll aim to avoid if-statements again. The `ste
 float testVal;
 
 // Test region B.
-testVal = step(minVar, regionB.variance);
+testVal = step(regionB.variance, minVar);
 col = lerp(col, regionB.mean, testVal);
 minVar = lerp(minVar, regionB.variance, testVal);
 
 // Test region C.
-testVal = step(minVar, regionC.variance);
+testVal = step(regionC.variance, minVar);
 col = lerp(col, regionC.mean, testVal);
 minVar = lerp(minVar, regionC.variance, testVal);
 
 // Text region D.
-testVal = step(minVar, regionD.variance);
+testVal = step(regionD.variance, minVar);
 col = lerp(col, regionD.mean, testVal);
 
 return fixed4(col, 1.0);
