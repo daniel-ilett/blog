@@ -323,6 +323,6 @@ We haven't yet discussed how to run multiple image effects at once, but it's act
 
 Today we learned how to detected the edges of objects using screen-space image gradients, then took those edges and used them to implement a neon effect. A layer of bloom on top of that, obtained by using our previous work on blur shaders with UsePass, resulted in a more refined look for the neaon shader.
 
-That brings us almost to the end of the Super Mario Odyssey image effects shader series - there will be one final post going over some of the topics we glossed over during these tutorials. It should wrap up the series and answer some of the questions you may have had so far.
+The next article in this series will explore some pixelated effects to emulate the NES, SNES and Game Boy filters. Together with those filters, I'll also show you how to write a CRT TV effect to bring the effect right into the late 20th century.
 
 <hr/>

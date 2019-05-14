@@ -23,8 +23,8 @@ Look out in the next few days for the launch of this series of tutorials. The fi
 - Part 0: [Shader Primer]({% post_url 2019-04-27-tut1-0-smo-shader-basics %})
 - Part 1: [Colour Transforms]({% post_url 2019-05-01-tut1-1-smo-greyscale %})
 - Part 2: [Getting Deep]({% post_url 2019-05-04-tut1-2-smo-silhouette %})
-- Part 3: **Blurring Algorithms** - *May 8th*
-- Part 4: **Edgy Talk** - *May 11th*
-- Part 5: **Wrapping Up** - *May 15th*
-
-A second half of this series is planned for the future, exploring a few more of the shader effects found in Snapshot Mode.
+- Part 3: [Blurring Algorithms]({% post_url 2019-05-08-tut1-3-smo-blur %})
+- Part 4: [Edgy Talk]({% post_url 2019-05-11-tut1-4-smo-edge-detect %})
+- Part 5: **Retro Arcade** - *May 15th*
+- Part 6: **Painting Joy** - *May 18th*
+- Part 7: **Wrapping Up** - *May 22nd*
