@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Image Effects | Part 6 - Painting Joy
-subtitle: Going back in time for that CRT feel
+subtitle: Brushing over a new kind of filter
 bigimg: /img/tut1/part6-banner.png
 gh-repo: daniel-ilett/smo-shaders
 gh-badge: [star, fork, follow]
