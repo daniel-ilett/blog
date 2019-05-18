@@ -9,6 +9,11 @@ use-site-title: true
   {% for post in paginator.posts %}
   <article class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
+      
+    {% if post.bigimg %}
+      <img src="{{ post.bigimg }}" class="post-bigimg">
+    {% endif %}
+
 	  <h2 class="post-title">{{ post.title }}</h2>
 
 	  {% if post.subtitle %}
