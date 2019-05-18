@@ -10,7 +10,7 @@ nice-slug: Painting Joy
 date: 2019-05-18
 ---
 
-This tutorial takes a look at the Oil Painting effect seen in Snapshot Mode. For this, we'll use a type of filter traditionally used to denoise images without losing fidelity around edges, which has the peculiar property of introducing painting-like artefacts.
+This tutorial takes a look at the Oil Painting effect seen in Snapshot Mode, which makes your snapshot look like it's been painted on a canvas. Mario Paint, anyone? For this, we'll use a type of filter traditionally used to de-noise images without losing fidelity around edges, which has the peculiar property of introducing painting-like artefacts.
 
 <hr/>
 
@@ -110,7 +110,9 @@ region regionC = calcRegion(int2(lower, 0), int2(0, upper), samples, i.uv);
 region regionD = calcRegion(int2(0, 0), int2(upper, upper), samples, i.uv);
 ~~~
 
-In this shader, region A is the bottom-left, B is bottom-right, C is top-left and D is top-right, corresponding to the diagram earlier in this article. The type of each of the four variables is `region`, which is the name we gave to the data-holding struct before. Now all that's left to do is pick the correct regional mean, and for that we're going to employ some shader tricks as we did in Part 5's Game Boy shader with `lerp` and `saturate`; this time we'll be using `step` instead of `saturate`.
+In this shader, region A is the bottom-left, B is bottom-right, C is top-left and D is top-right, corresponding to the diagram earlier in this article. The type of each of the four variables is `region`, which is the name we gave to the data-holding struct before. Now all that's left to do is pick the correct regional mean, and for that we're going to employ some shader tricks as we did in Part 5's Game Boy shader with `lerp` and `saturate`; this time we'll be using `step` instead of `saturate`. We're almost finished!
+
+![Painting Filter](/img/tut1/part6-scene-painting-bench.png){: .center-image }
 
 We'll start by assigning `regionA` as having the lowest variance and choose its mean to use as the colour value. Then, in turn, we'll check if the other three regions have a lower variance and if so, pick that region and set the minimum variance and chosen colour accordingly.
 

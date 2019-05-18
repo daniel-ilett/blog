@@ -26,5 +26,5 @@ Look out in the next few days for the launch of this series of tutorials. The fi
 - Part 3: [Blurring Algorithms]({% post_url 2019-05-08-tut1-3-smo-blur %})
 - Part 4: [Edgy Talk]({% post_url 2019-05-11-tut1-4-smo-edge-detect %})
 - Part 5: [Retro Arcade]({% post_url 2019-05-15-tut1-5-smo-retro %})
-- Part 6: **Painting Joy** - *May 18th*
+- Part 6: [Painting Joy]({% post_url 2019-05-18-tut1-6-smo-painting %})
 - Part 7: **Wrapping Up** - *May 22nd*
