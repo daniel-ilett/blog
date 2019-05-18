@@ -265,6 +265,16 @@ img {
   }
 }
 
+.navbar-header
+{
+  padding-left: 15px;
+}
+
+.navbar-right
+{
+  padding-right: 15px;
+}
+
 /* --- Footer --- */
 
 footer {
