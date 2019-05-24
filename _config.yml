@@ -25,6 +25,7 @@ description: Gamedev | Shaders | Compsci
 
 # List of links in the navigation bar
 navbar-links:
+  Tutorials: "tutorials"
   About: "aboutme"
   CV: "files/danielilett_cv.pdf"
 
