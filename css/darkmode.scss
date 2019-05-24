@@ -1,0 +1,22 @@
+---
+layout: null
+---
+// See https://derekkedziora.com/blog/dark-mode.
+// Dark Mode colours.
+
+$main-background-color: hsl(0, 0, 1%);
+$second-background-color: hsl(0, 0, 5%);
+
+$main-text-color:  hsl(0, 0, 85%);
+$light-text-color: hsl(0, 0, 70%);
+$lighter-text-color: hsl(0, 0, 55%);
+$dark-text-color: hsl(0, 0, 95%);
+$light-border-color: hsl(0, 0, 20%);
+$link-col: rgb(0, 110, 255);
+$underline-color: hsl(0, 0, 50%);
+$box-background-color: hsl(0, 0, 10%);
+$highlight-color: hsl(0, 0, 40%);
+
+// Include common CSS for both modes.
+
+{% include main.scss %}

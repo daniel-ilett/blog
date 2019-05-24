@@ -1,7 +1,3 @@
----
-layout: null
----
-
 @import url("pygment_highlights.css");
 
 /* --- General --- */
@@ -9,9 +5,9 @@ layout: null
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 18px;
-  color: #404040;
+  color: $main-text-color;
   position: relative;
-  background-color: {{ site.page-col }};
+  background-color: $main-background-color;
   {% if site.page-img %}
   background-image: url({{ site.page-img }});
   background-attachment: fixed;
@@ -26,14 +22,14 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 800;
 }
 a {
-  color: {{ site.link-col }};
+  color: $link-col;
 }
 a:hover,
 a:focus {
-  color: {{ site.hover-col }};
+  color: $link-col;
 }
 blockquote {
-  color: #808080;
+  color: $box-background-color;
   font-style: italic;
 }
 blockquote p:first-child {
@@ -70,12 +66,12 @@ hr.small {
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background-color: {{ site.hover-col }};
+  background-color: $link-col;
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background-color: {{ site.hover-col }};
+  background-color: $link-col;
 }
 img::selection {
   color: white;
@@ -98,7 +94,7 @@ img {
 /* --- Navbar --- */
 
 .navbar-custom {
-  background-color: {{ site.navbar-col }};
+  background-color: $second-background-color;
   border-bottom: 1px solid #EAEAEA;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   {% if site.navbar-img %}
@@ -116,14 +112,14 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
   font-weight: 800;
-  color: {{ site.navbar-text-col }};
+  color: $light-text-color;
 }
 
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus ,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: {{ site.hover-col }};
+  color: $link-col;
 }
 
 .navbar-custom .navbar-brand-logo {
@@ -272,7 +268,7 @@ footer {
   border-top: 1px #EAEAEA solid;
   margin-top: 50px;
   font-size: 14px;
-  background-color: {{ site.footer-col }};
+  background-color: $second-background-color;
   {% if site.footer-img %}
   background-image: url({{ site.footer-img }});
   background-attachment: fixed;
@@ -280,7 +276,7 @@ footer {
 }
 
 footer p.text-muted {
-  color: {{ site.footer-text-col }};
+  color: $lighter-text-color;
 }
 
 footer a {
@@ -332,13 +328,13 @@ footer .theme-by {
 
 .post-preview a {
   text-decoration: none;
-  color: #404040;
+  color: $main-text-color;
 }
 
 .post-preview a:focus,
 .post-preview a:hover {
   text-decoration: none;
-  color: {{ site.hover-col }};
+  color: $link-col;
 }
 
 .post-preview .post-title {
@@ -402,14 +398,14 @@ footer .theme-by {
 }
 
 .blog-tags a {
-  color: {{ site.link-col }};
+  color: $link-col;
   text-decoration: none;
   padding: 0px 5px;
 }
 
 .blog-tags a:hover {
   border-radius: 2px;
-  color: {{ site.hover-col }};
+  color: $link-col;
   background-color: #EEE;
 }
 
@@ -615,8 +611,8 @@ footer .theme-by {
 .pager li a:hover,
 .pager li a:focus {
   color: #FFF;
-  border: 1px solid {{ site.hover-col }};
-  background-color: {{ site.hover-col }};
+  border: 1px solid $link-col;
+  background-color: $link-col;
 }
 
 .pager {
