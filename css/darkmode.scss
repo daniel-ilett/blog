@@ -4,13 +4,16 @@ layout: null
 // See https://derekkedziora.com/blog/dark-mode.
 // Dark Mode colours.
 
-$main-background-color: hsl(0, 0, 1%);
+$main-background-color: hsl(0, 0, 10%);
 $second-background-color: hsl(0, 0, 5%);
+$code-background-color: hsl(0, 0, 85%);
 
-$main-text-color:  hsl(0, 0, 85%);
-$light-text-color: hsl(0, 0, 70%);
-$lighter-text-color: hsl(0, 0, 55%);
+$main-text-color:  hsl(0, 0, 95%);
+$light-text-color: hsl(0, 0, 80%);
+$lighter-text-color: hsl(0, 0, 65%);
 $dark-text-color: hsl(0, 0, 95%);
+$code-text-color: hsl(0, 0, 90%);
+
 $light-border-color: hsl(0, 0, 20%);
 $link-col: rgb(0, 110, 255);
 $underline-color: hsl(0, 0, 50%);

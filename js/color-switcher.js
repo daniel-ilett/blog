@@ -1,3 +1,5 @@
+// Based on https://derekkedziora.com/blog/dark-mode
+
 // looks for the ?darkmode parameter 
 // sets global variable darkMode to true or false
 
@@ -39,5 +41,3 @@ if (darkMode === false) {
 	document.getElementById('colorChanger').innerHTML="Dark Mode";
 	document.getElementById('colorChanger').href=darkModeLink;
 }
-
-console.log("run")
