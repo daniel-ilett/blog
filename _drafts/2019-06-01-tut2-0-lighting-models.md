@@ -7,5 +7,5 @@ gh-repo: daniel-ilett/cel-shading
 gh-badge: [star, fork, follow]
 tags: [shaders, unity, lighting, cel-shading, primer]
 nice-slug: Lighting Models
-date: 2019-05-25
+date: 2019-06-01
 ---
