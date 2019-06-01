@@ -8,6 +8,7 @@ gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, kuwahara, painting]
 nice-slug: Painting Joy
 date: 2019-05-18
+idnum: 9
 ---
 
 This tutorial takes a look at the Oil Painting effect seen in Snapshot Mode, which makes your snapshot look like it's been painted on a canvas. Mario Paint, anyone? For this, we'll use a type of filter traditionally used to de-noise images without losing fidelity around edges, which has the peculiar property of introducing painting-like artefacts.

@@ -8,6 +8,7 @@ gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, intro]
 nice-slug: Image Effects Series
 date: 2019-04-24
+idnum: 2
 ---
 
 Shaders are a bit of a passion within a passion for me. Out of everything involved in game development, shaders are the one thing that call out to me the strongest - they're making things pretty with maths! I’ve wanted to improve my skills for a long time, so on top of making experimental games, my Patreon will involve creating tutorial projects for a bunch of shader effects. I hope you’ll stick with me on this journey - I’ll be giving away FREE CODE with each post!

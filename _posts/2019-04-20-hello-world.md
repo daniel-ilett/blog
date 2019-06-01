@@ -6,6 +6,7 @@ bigimg: /img/hello-world.png
 tags: [intro]
 nice-slug: Hello World
 date: 2019-04-20
+idnum: 1
 ---
 
 Hello everyone, and welcome to this site! This is where I'll be hosting various game development tutorials, with a specific focus on shader programming. This site will be inextricably linked to my [Patreon](https://www.patreon.com/danielilett) - if you enjoy the work I do, I'd be extremely grateful if you could pledge just a little a month to motivate me to keep creating tutorials and experimental games.
