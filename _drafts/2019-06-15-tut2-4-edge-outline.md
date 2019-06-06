@@ -22,7 +22,7 @@ It's a fine-looking effect for sure, and wouldn't look out of place in a cartoon
 
 The methodology is simple. We'll draw Ethan as usual in a first pass, then in a second pass we will use a vertex shader to extrude each vertex position slightly along its normal, so that the object is rendered slightly larger than normal. The fragment shader will draw the entire second pass in a single colour, which could be hard-coded into the shader or passed in `Properties` like a well-written shader should do. Finally, we'll have to find a way to avoid drawing over the first pass - for this, we'll use a stencil to mask out the pixels drawn in the first pass.
 
-Our template, found in `Shaders/OutlineCelShaded.shader`, uses the results of `RimCelShaded.shader` as a base - the first pass is already defined and a skeleton second pass is included. Our first step will be to populate the second pass with a vertex and fragment shader.
+Our template, found in `Shaders/OutlineCelShaded.shader`, uses `Shaders/Complete/RimCelShaded.shader` as a base - the first pass is already defined and a skeleton second pass is included. Our first step will be to populate the second pass with a vertex and fragment shader.
 
 ~~~glsl
 CGPROGRAM

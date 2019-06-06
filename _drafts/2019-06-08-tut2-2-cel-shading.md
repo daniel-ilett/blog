@@ -16,7 +16,7 @@ This tutorial builds on what we learned in the Diffuse lighting tutorial and int
 
 # Cel Shading
 
-You're probably aware of cel-shading from popular games such as Jet Set Radio and The Legend of Zelda: The Wind Waker, both of which are seen as pioneers of the aesthetic, to more recent games such as the Borderlands franchise. The effect is characterised by hard shadows with very little smoothing between lit and unlit sections of an object's surface.
+You're probably seen cel-shading in popular games such as Jet Set Radio and The Legend of Zelda: The Wind Waker, both of which are seen as pioneers of the aesthetic, and recent titles like the Borderlands franchise. The effect is characterised by hard shading with very little smoothing between lit and unlit sections of an object's surface.
 
 For this tutorial, we'll be using the Diffuse shaders from the previous part as a base. However, before get started, we'll need to make a few modifications to the surface shader variant. Much of the power and utility of surface shaders comes from the fact they can be used to specify surface properties and leave the lighting to Unity, but since we're going to be manipulating lighting directly, we'll need to build our own lighting model.
 
@@ -161,7 +161,7 @@ return float4(col, s.Alpha);
 
 # Fragment Shader
 
-Now's let's go over all that again with a vertex and fragment shader variant. Almost everything will be the same or very similar, with only a couple of steps unique to the fragment shader. Take a look at the `Shaders/CelShadedFrag.shader` file.
+Now's let's go over all that again with a vertex and fragment shader variant. Almost everything will be the same or very similar, with only a couple of steps unique to the fragment shader. Take a look at the `Shaders/CelShadedFrag.shader` file - it's essentially the same as `Shaders/Complete/DiffuseFrag`.
 
 We'll add the `_Antialiasing` and `_Glossiness` variables exactly the same as for the surface shader.
 
