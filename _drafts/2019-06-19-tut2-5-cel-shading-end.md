@@ -8,4 +8,5 @@ gh-badge: [star, fork, follow]
 tags: [shaders, unity, lighting, cel-shading, outro]
 nice-slug: Wrapping Up
 date: 2019-06-19
+idnum: 17
 ---
