@@ -25,7 +25,7 @@ Looks a bit weird, doesn't it? When we use a stencil buffer in this way, both Et
 
 ![Ethan's Glasses](/img/tut2/part4-ethan-complete.png){: .center-image }
 
-Let's say we want to use several different reference values for different meshes. Right now, we've hardcoded the reference value into the shader, but we won't have to write a new shader file for every value we want to use - we can set this in `Properties` very easily.
+Let's say we want to use several different reference values for different meshes. Right now, we've hardcoded the reference value into the shader, but we won't have to write a new shader file for every value we want to use - we can set this in `Properties` very easily. Take a look at `FinalCelShaded.shader`, based upon the outline shader from the previous tutorial, and let's add an `ID` property.
 
 ~~~glsl
 // In Properties.
@@ -42,6 +42,16 @@ Ref[_ID]
 We've replaced the `Ref 1` lines and linked the `_ID` property to the stencils. Now, by creating two materials - one for Ethan and one for the cube behind him - we can set different IDs to each and fix the problem of stencil overlapping.
 
 ![Stencil Fixed](/img/tut2/part5-stencil-fixed.png){: .center-image }
+
+This gives us a lot more control of how outlines appear on objects. I'd recommend taking a Borderlands style approach for this - bold outlines over the edge of the object as a whole, setting individual meshes to have the same ID values, while baking finer outline details into individual textures for performance.
+
+<hr/>
+
+# Lighting Texture Ramp
+
+Our implementation of the lighting ramp so far introduces a single cut in the diffuse lighting. Sometimes, we would prefer to have many cuts, which might be more difficult to do with a pure shader application - we'd need to pass in a bunch of new properties to determine where they should go. Instead, the approach we'll take is to use a texture to encode the lighting we prefer. This is a little expensive because of the added texture lookup, but adds a layer of flexibility that's hard to represent in pure code.
+
+Let's return to our shader. 
 
 <hr/>
 
