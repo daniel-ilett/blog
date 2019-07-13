@@ -51,7 +51,34 @@ This gives us a lot more control of how outlines appear on objects. I'd recommen
 
 Our implementation of the lighting ramp so far introduces a single cut in the diffuse lighting. Sometimes, we would prefer to have many cuts, which might be more difficult to do with a pure shader application - we'd need to pass in a bunch of new properties to determine where they should go. Instead, the approach we'll take is to use a texture to encode the lighting we prefer. This is a little expensive because of the added texture lookup, but adds a layer of flexibility that's hard to represent in pure code.
 
-Let's return to our shader. 
+Let's return to our shader. In our previous iterations, we calculated a `diffuse` value using the dot product, then smoothed the result using `fwidth` and `smoothstep`. Now, we'll be using the `diffuse` value to read from a texture. Essentially, we provide a texture representing a mapping between the minimum and maximum lighting values, with the left-hand side of the image representing the minimum lighting and the right-hand side representing maximum lighting. We could even introduce colour into the lighting ramp if we wished, but we're already including the object albedo, directional lighting and ambient sky lighting colours in our calculations.
+
+![Lighting Ramp Texture](/img/tut2/part5-lighting-ramp-src.png){: .center-image }
+
+First, we'll include the new texture in the `Properties` block and our variable declarations.
+
+~~~glsl
+// In Properties.
+_LightingRamp("Lighting Ramp", 2D) = "white" {}
+
+// Alongside variable declarations.
+sampler2D _LightingRamp;
+~~~
+
+Let's replace the two lines of calculation of `delta` and `diffuseSmooth`. We'll set the UVs used to sample the texture based on the value of `diffuse`, which ranges between -1 and 1. We're sampling along the u-axis between 0 and 1, and will pick a constant of 0.5 for our v-axis value, because out information is only encoded horizontally.
+
+~~~glsl
+// Replace these lines:
+//float delta = fwidth(diffuse) * _Antialiasing;
+//float diffuseSmooth = smoothstep(0, delta, diffuse);
+
+// With this line:
+float3 diffuseSmooth = tex2D(_LightingRamp, float2(diffuse * 0.5 + 0.5, 0.5));
+~~~
+
+That's actually all we need to do inside the shader. The other key thing is to set the Wrap Mode of the ramp texture in the Inspector importer to 'Clamp', else you'll encounter strange artefacts on the model where the `diffuse` dot product equals -1 or 1.
+
+![Lighting Ramp](/img/tut2/part5-lighting-ramp.png){: .center-image }
 
 <hr/>
 
