@@ -21,7 +21,7 @@ Today we'll look at the Silhouette effect, which draws objects close to the came
 
 The Silhouette filter is a striking effect which emphasizes objects in the foreground, bringing the eye's focus towards those elements. With this shader, we're going to develop some metric to determine how far away from the screen each pixel is.
 
-Imagine a complex scene with many objects obscuring other objects from view, in whole or in part. How exactly does the GPU decide to render the objects in front, but ignore those behind? A naive implementation of a rendering algorithm might just read every object in the scene in some indeterminate order and draw them all in turn, and it'd be a mess - objects would likely be erroneously drawn in front of object that they ought to be behind. Our graphics pipeline should keep track of what has already been drawn to the screen - lucky for us, generations of smart graphics people thought up some neat ways of doing this! The image below shows a red cube that's actually positioned behind the yellow one in 3D space, but drawn in front of it; both cubes are the same size.
+Imagine a complex scene with many objects obscuring other objects from view, in whole or in part. How exactly does the GPU decide to render the objects in front, but ignore those behind? A naive implementation of a rendering algorithm might just read every object in the scene in some indeterminate order and draw them all in turn, and it'd be a mess - objects would likely be erroneously drawn in front of object that they ought to be behind. Our graphics pipeline should keep track of what has already been drawn to the screen - lucky for us, generations of smart graphics people thought up some neat ways of doing this! The image below shows a red cube that's positioned behind the yellow one in 3D space but drawn in front of it; both cubes are the same size.
 
 ![ZTest Greater](/img/tut1/part2-ztest.png){: .center-image }
 
@@ -39,7 +39,7 @@ To throw one more complexity into the equation, depth values aren't calculated l
 
 Before we start, make sure to set your camera's far clip plane distance to a reasonable value - I used a value of 75, which should keep the example scene all in frame, but this will likely require a bit of tweaking based on the size of your scene. If it's too large, you'll barely see the colour difference between close objects when the shader is complete, and if it's not large enough, some objects in your scene will end up outside the camera frustum and are culled.
 
-We can retrieve the depth buffer as a texture to use in shaders in Unity. Open up the shader template found in `Shaders/Silhouette.shader` and take a look at the fragment shader - I've defined a depth varaible that we'll be modifying. Running this shader now will result in a completely black screen - let's fix this. Remember how the texture rendered by the camera is passed to the image effect shader in `_MainTex`? Similarly, we can retrieve the camera depth texture called `_CameraDepthTexture`, like this:
+We can retrieve the depth buffer as a texture to use in shaders in Unity. Open the shader template found in `Shaders/Silhouette.shader` and look at the fragment shader - I've defined a depth varaible that we'll be modifying. Running this shader now will result in a completely black screen - let's fix this. Remember how the texture rendered by the camera is passed to the image effect shader in `_MainTex`? Similarly, we can retrieve the camera depth texture called `_CameraDepthTexture`, like this:
 
 ~~~glsl
 // Other variable definitions.
@@ -53,14 +53,14 @@ We don't need to do anything special to enable this functionality - by default, 
 float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv));
 ~~~
 
-`UNITY_SAMPLE_DEPTH` is a special function which we can use to get a depth value out of the depth texture. We'll sample the depth texture the same way we would sample any other texture with `tex2D`, then use `UNITY_SAMPLE_DEPTH()` to convert it from a colour to a single depth value. If you apply this shader now, the colours will be the wrong way round - we want the background to be white. Let's change the depth value with an extra line of code.
+`UNITY_SAMPLE_DEPTH` is a special function which we can use to get a depth value out of the depth texture. We'll sample the depth texture the same way we would sample any other texture with `tex2D`, then use `UNITY_SAMPLE_DEPTH()` to convert it from a colour to a single depth value. If you apply this shader now, the colours will be the wrong way around - we want the background to be white. Let's change the depth value with an extra line of code.
 
 ~~~glsl
 float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv));
 depth = Linear01Depth(depth);
 ~~~
 
-Before applying the `Linear01Depth` function, the depth value actually represents the reciprocal of the true depth, as per the article I linked earlier. By using the function, we make the depth value linear between 0 and 1; now the background is fully white and the foreground elements are easier to distinguish from one another. I tweaked this line with a power function (`pow()`) to make the effect a bit more pronounced, but this is likely going to be down to personal preference:
+Before applying the `Linear01Depth` function, the depth value represents the reciprocal of the true depth, as per the article I linked earlier. By using the function, we make the depth value linear between 0 and 1; now the background is fully white, and the foreground elements are easier to distinguish from one another. I tweaked this line with a power function (`pow()`) to make the effect a bit more pronounced, but this is likely going to be down to personal preference:
 
 ~~~glsl
 depth = pow(Linear01Depth(depth), 0.75);
@@ -98,6 +98,6 @@ When I introduced the depth buffer at the start of this post, I described the pr
 
 Those are the basics of using the depth buffer and depth textures to achieve an effect based on how far away pixels are. If you'd like to play around with the effect a bit, you could probably find a way to implement a cheap fog effect by keeping the base pixel colours but making them lighter the further away they are.
 
-Next tutorial, we'll be taking a look at the Blur effect and a few different approaches we could take to implement a blur.
+Next tutorial, we'll be looking at the Blur effect and a few different approaches we could take to implement a blur.
 
 <hr/>

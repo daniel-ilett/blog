@@ -45,7 +45,7 @@ Shader "SMO/ExampleShader"
 }
 ~~~
 
-Imagine `Properties` as being data your shader requires to function as expected. In this hypothetical shader, three properties are declared: a 2D texture/image, an albedo colour, and some floating-point number. The syntax for properties can get a bit finicky, but bear with it - you won't need to interact with this section too frequently, as the 'meat' of the shader comes later. Just know that there are a [handful of types of data](https://docs.unity3d.com/Manual/SL-Properties.html) you can pass directly between Unity and your shader.
+Imagine `Properties` as being data your shader requires to function as expected. In this hypothetical shader, three properties are declared: a 2D texture/image, an albedo colour, and some floating-point number. The syntax for properties can get a bit finicky but bear with it - you won't need to interact with this section too frequently, as the 'meat' of the shader comes later. Just know that there are a [handful of types of data](https://docs.unity3d.com/Manual/SL-Properties.html) you can pass directly between Unity and your shader.
 
 Next up, we will introduce the `Subshader`.
 
@@ -64,7 +64,7 @@ Subshader
 }
 ~~~
 
-A ShaderLab file consists of a list of `Subshader`s; Unity will pick the first subshader in the list that is supported by the hardware. For the sake of simplicity, the shaders we write will only have one `Subshader`.
+A ShaderLab file consists of a list of `Subshader` sections; Unity will pick the first subshader in the list that is supported by the hardware. For the sake of simplicity, the shaders we write will only have one `Subshader`.
 
 A `Subshader` contains one or more `Pass`es. A `Pass` will render something to the screen once - that could be a model with a shader attached, or in the case of an image effect, the screen itself is redrawn. When there's more than one pass inside a subshader, they are executed in turn - the same object can be rendered to the screen multiple times by different shader passes.
 
@@ -160,7 +160,7 @@ v2f vert(appdata v)
 
 It's our vertex shader! A vertex shader operates on all the vertices of a mesh; in the case of an image effect, the four vertices are effectively the corners of the screen.
 
-The syntax of shading language is deliberately similar to C. Our function, called `vert`, returns a `v2f`, and takes an `appdata` called `v` as input. The very first step is to define the output `v2f` and name it `o`, then the members of `o` are calculated. Here we see two helper functions found inside `UnityCG.cginc` - `UnityObjectToClipPos` transforms the input vertices, defined in Unity world space, to the screen clip space, and `TRANSFORM_TEX` takes the UV offset and scaling values we discussed above and uses them to modify the `uv` coordinates for the image.
+The syntax of shading language is deliberately similar to C. Our function, called `vert`, returns a `v2f`, and takes an `appdata` called `v` as input. The very first step is to define the output `v2f` and name it `o`, then the members of `o` are calculated. Here we see two facilities provided by `UnityCG.cginc` - the `UnityObjectToClipPos` function transforms the input vertices, defined in Unity world space, to the screen clip space, and the `TRANSFORM_TEX` macro takes the UV offset and scaling values we discussed above and uses them to modify the `uv` coordinates for the image.
 
 In between the vertex and fragment shaders is a step called "rasterisation" - I won't go into detail, but this converts the space between all the vertices into "fragments". That leads us nicely to the fragment shader.
 
@@ -174,7 +174,7 @@ fixed4 frag(v2f i): SV_TARGET
 
 A fragment shader is often called a pixel shader, because it essentially runs once for each pixel of the object. There are special cases where it runs on sub-pixel elements, but for the sake of simplicity, assume it's just pixels.
 
-It takes in the `v2f` that was output by the vertex shader, and calls it `i`, for "input". The output of the shader is of type `fixed4` - this is a four-element vector of floating-point values, which in this case denotes an RGBA colour (red, green, blue, alpha), where the alpha channel is transparency. In HLSL, `float`, `fixed` and `half` are each types of floating-point decimal numbers with decreasing precision, but they are often used interchangably in cases where precision isn't important, so you may also see a fragment shader that returns a `float4` rather than a `fixed4`.
+It takes in the `v2f` that was output by the vertex shader, and calls it `i`, for "input". The output of the shader is of type `fixed4` - this is a four-element vector of floating-point values, which in this case denotes an RGBA colour (red, green, blue, alpha), where the alpha channel is transparency. In HLSL, `float`, `fixed` and `half` are each types of floating-point decimal numbers with decreasing precision, but they are often used interchangeably in cases where precision isn't important, so you may also see a fragment shader that returns a `float4` rather than a `fixed4`.
 
 The `tex2D` function just samples the `_MainTex` image at the `uv` position output by the vertex shader, returning the colour of the pixel at that position.
 
@@ -204,9 +204,9 @@ public class MyImageEffect : MonoBehaviour
 }
 ~~~
 
-`OnRenderImage()` is an event function available to all `MonoBehaviour`s. If attached to a `GameObject` with a `Camera` component attached - a condition enforced by the `RequireComponent` attribute - then it will provide two `RenderTexture` objects I've called `src` and `dst`, representing the image as rendered by the camera and the image that will be output to the screen, respectively. We create a material using a shader, then use `Graphics.Blit()` to apply the shader to `src` and output the result into `dst`.
+`OnRenderImage()` is an event function available to all classes that extend `MonoBehaviour`. If attached to a `GameObject` with a `Camera` component attached - a condition enforced by the `RequireComponent` attribute - then it will provide two `RenderTexture` objects I've called `src` and `dst`, representing the image as rendered by the camera and the image that will be output to the screen, respectively. We create a material using a shader, then use `Graphics.Blit()` to apply the shader to `src` and output the result into `dst`.
 
-Just drag the shader we wrote into the `shader` slot in the Inspector in Unity, and you're all set. You'll notice that the shader doesn't actually do anything yet, but play around with the values inside the fragment shader. For fun, try messing with this sample fragment shader:
+Just drag the shader we wrote into the `shader` slot in the Inspector in Unity, and you're all set. You'll notice that the shader doesn't actually do anything yet but play around with the values inside the fragment shader. For fun, try messing with this sample fragment shader:
 
 ~~~glsl
 fixed4 frag(v2f i): SV_TARGET

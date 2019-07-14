@@ -19,7 +19,7 @@ We're almost at the end of our journey with Ethan - as of the end of the fresnel
 
 ![Fresnel Ethan](/img/tut2/part3-ethan-bump-fresnel.png){: .center-image }
 
-It's a fine-looking effect for sure, and wouldn't look out of place in a cartoonish game. However, we sometimes want an extra bit of contract to make some characters or objects stand out; for this, we'll capture the comic book aesthetic a little with a thick, bold outline.
+It's a fine-looking effect for sure and wouldn't look out of place in a cartoonish game. However, we sometimes want an extra bit of contract to make some characters or objects stand out; for this, we'll capture the comic book aesthetic a little with a thick, bold outline.
 
 The methodology is simple. We'll draw Ethan as usual in a first pass, then in a second pass we will use a vertex shader to extrude each vertex position slightly along its normal, so that the object is rendered slightly larger than normal. The fragment shader will draw the entire second pass in a single colour, which could be hard-coded into the shader or passed in `Properties` like a well-written shader should do. Finally, we'll have to find a way to avoid drawing over the first pass - for this, we'll use a stencil to mask out the pixels drawn in the first pass.
 
@@ -71,7 +71,7 @@ struct v2f
 };
 ~~~
 
-The vertex shader will read the vertex positions passed in `appdata`, and will add the normalised normal vector multiplied by the `_OutlineSize` we defined in `Properties` to that position.
+The vertex shader will read the vertex positions passed in `appdata` and will add the normalised normal vector multiplied by the `_OutlineSize` we defined in `Properties` to that position.
 
 ~~~glsl
 v2f vert(appdata v)
@@ -108,7 +108,7 @@ Something's not right. If you look very closely, you'll notice the entirety of E
 
 A stencil buffer is a way of remembering a section of pixels so that we can modify only a specific section of an image or discard a subset of pixels at a later stage. In our example, we're interested in the latter case; we want to draw Ethan as usual, remember which pixels he was drawn on, then draw Ethan's outline on top, but discard the pixels where Ethan was already drawn. We can do this by writing a stencil when drawing Ethan the first time, then reading that stencil during the outline pass.
 
-The syntax for stencils is fairly straightforward, and ShaderLab holds our hand for the most part. A stencil runs over the whole image alongside the rest of the Pass, so each of the following stages happen on a per-pixel basis. At the top of the first Pass, between our Tags and CGPROGRAM block, we define a `Stencil`.
+The syntax for stencils is straightforward and ShaderLab holds our hand for the most part. A stencil runs over the whole image alongside the rest of the Pass, so each of the following stages happen on a per-pixel basis. At the top of the first Pass, between our Tags and CGPROGRAM block, we define a `Stencil`.
 
 ~~~glsl
 Stencil
@@ -136,7 +136,7 @@ Then, we define what stencil behaviour should occur if the stencil test and dept
 Pass replace
 ~~~
 
-Finally, we'll define what happens to the stencil buffer value if the stencil test fails, using the `Fail` keyword. The default behaviour is to `keep` the reference value inside the stencil buffer. The same is true of `ZFail` when the stencil test passed but the depth test fails; the default behavious is to `keep`. We'll keep both defaults.
+Finally, we'll define what happens to the stencil buffer value if the stencil test fails, using the `Fail` keyword. The default behaviour is to `keep` the reference value inside the stencil buffer. The same is true of `ZFail` when the stencil test passed but the depth test fails; the default behaviour is to `keep`. We'll keep both defaults.
 
 ~~~glsl
 Fail keep

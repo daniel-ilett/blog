@@ -11,7 +11,7 @@ date: 2019-05-11
 idnum: 7
 ---
 
-Detecting edges in images allows developers to write cartoon shaders to boldly outline objects. Typically, they would use object geometry, but we can achieve a cheap edge-detection effect using image effects. In this tutorial, we shall explore the Sobel-Feldman operator and take a look at bloom effects to implement the Line Drawing and Neon effects in Super Mario Odyssey.
+Detecting edges in images allows developers to write cartoon shaders to boldly outline objects. Typically, they would use object geometry, but we can achieve a cheap edge-detection effect using image effects. In this tutorial, we shall explore the Sobel-Feldman operator and look at bloom effects to implement the Line Drawing and Neon effects in Super Mario Odyssey.
 
 <hr/>
 
@@ -19,9 +19,9 @@ Detecting edges in images allows developers to write cartoon shaders to boldly o
 
 # Line Drawing
 
-To detect edges using an image effect, let's think about what an edge actually is. Without being able to use object geometry to decide where an edge is, we will consider edges in the image to be places where the colour changes suddenly in lightness or hue. That means we will have to consider multiple pixels as we did with the Blur filters, but using a different kernel. Let's take a look at the Sobel filter.
+To detect edges using an image effect, let's think about how we define an edge. Without being able to use object geometry to decide where an edge is, we will consider edges in the image to be places where the colour changes suddenly in lightness or hue. That means we will have to consider multiple pixels as we did with the Blur filters but using a different kernel. Let's look at the Sobel filter.
 
-A Sobel operator calculates "gradients" across an image and then uses the magnitude of those gradients to decide where there are edges. Since a gradient is inherently something we can only do in one direction at a time, we shall perform two calculations in the x- and y-directions - but this time, we thankfully won't need to do them in separate passes, as you'll see. Each calculation involves a 3x3 kernel.
+A Sobel operator calculates "gradients" across an image and then uses the magnitude of those gradients to decide where there are edges. Since gradient calculations are inherently one-directional, we shall perform two calculations in the x- and y-directions - but this time, we thankfully won't need to do them in separate passes, as you'll see. Each calculation involves a 3x3 kernel.
 
 $$ 
 G_x = 
@@ -41,9 +41,9 @@ $$
 
 In fact, unlike the kernels we used for blurring in the last tutorial, the horizontal and vertical steps can't be combined into one matrix easily - we must complete them independently and use Pythagoras' Theorem on the x-gradient and y-gradient to calculate an overall gradient. In theory, you can pick any pair of perpendicular directions such as the diagonals, but it's far more convenient to pick the x- and y-directions.
 
-Now let's take a look at this in a shader - the template for this can be found in `Shaders/EdgeDetect.shader`. I've defined a `sobel()` function which will do the heavy lifting for us - the fragment shader is already complete. Running the shader now will give you a very underwhelming black screen, so let's add some calculation to the `sobel()` function.
+Now let's look at this in a shader - the template for this can be found in `Shaders/EdgeDetect.shader`. I've defined a `sobel()` function which will do the heavy lifting for us - the fragment shader is already complete. Running the shader now will give you a very underwhelming black screen, so let's add some calculation to the `sobel()` function.
 
-We've defined accumulator variables for the horizontal (x) and vertical (y) passes, and for the sake of saving on some typing, `texelSize` is its own variable. For each of the kernel values, we will want to multiply them by the corresponding pixel values, similar to the Blur shaders, but since we know the kernel is always 3x3, there's no point writing everything in a complex loop - let's just hard-code the calculations. Between the `texelSize` variable definition and the return statement, splice in this code:
+We've defined accumulator variables for the horizontal (x) and vertical (y) passes, and for the sake of saving on some typing, `texelSize` is its own variable. For each of the kernel values, we will want to multiply them by the corresponding pixel values, like the Blur shaders, but since we know the kernel is always 3x3, there's no point writing everything in a complex loop - let's just hard-code the calculations. Between the `texelSize` variable definition and the return statement, splice in this code:
 
 ~~~glsl
 x += tex2D(_MainTex, uv + float2(-texelSize.x, -texelSize.y)) * -1.0;
@@ -90,7 +90,7 @@ float3 tex = tex2D(_MainTex, i.uv);
 return float4(tex * s, 1.0);
 ~~~
 
-Already it's looking a bit neon! But if the source file has muted colours, then the end result will also look fairly dull. Increasing the saturation of the colours will help inject a little more life into the scene. I won't go into too much detail about colour theory, but we'll need to convert from RGB colour space to some other space such as HSV - which stands for "hue, saturation, value" - then modify the saturation and convert back to RGB. There isn't code built into the shader language or Unity to perform this conversion for us, so instead let's use [code from elsewhere](http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl). The code in that example is written in GLSL, so I've also converted it into HLSL so we can splice it into our shader.
+Already it's looking a bit neon! But if the source file has muted colours, then the result will also look fairly dull. Increasing the saturation of the colours will help inject a little more life into the scene. I won't go into too much detail about colour theory, but we'll need to convert from RGB colour space to some other space such as HSV - which stands for "hue, saturation, value" - then modify the saturation and convert back to RGB. There isn't code built into the shader language or Unity to perform this conversion for us, so instead let's use [code from elsewhere](http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl). The code in that example is written in GLSL, so I've also converted it into HLSL so we can splice it into our shader.
 
 ~~~glsl
 // Credit for these two functions:
@@ -125,7 +125,7 @@ float3 col = hsv2rgb(hsvTex);
 return float4(col * s, 1.0);
 ~~~
 
-Run the shader now, and the neon effect should look pretty decent now! The conversion makes pixels that were near-greyscale look much more colourful than before, so the whole scene might look very different to what you were expecting.
+Run the shader now, and the neon colours should pop! The conversion makes pixels that were near greyscale look much more colourful than before, so the whole scene might look very different to what you were expecting.
 
 ![Neon](/img/tut1/part4-scene-neon.png){: .center-image }
 
@@ -139,7 +139,7 @@ At its core, Bloom is used to make bright light sources stand out in a scene by 
 
 Let's go over the theory behind Bloom. We'll want to isolate the parts of the image that have a high brightness value - those are the 'light sources' - then blur them a little to imitate the glowing effect. Once we have the blurred version of the image, we shall composite that image on top of the original image to obtain the final Bloom result. There are many more in-depth ways of implementing bloom, but this will suffice for our needs.
 
-Now let's implement this all in a shader. Open up `Shaders/Bloom.shader` and take a look at what we've got - two passes, the first of which uses the same RGB-HSV conversion functions we saw back in the `Neon` filter, and the second of which is just sampling a texture. You might have spotted something new, too - both of these new passes have names. These names are not required, but we will see an instance where we must `Name` a pass very soon.
+Now let's implement this all in a shader. Open `Shaders/Bloom.shader` and take a look at what we've got - two passes, the first of which uses the same RGB-HSV conversion functions we saw back in the `Neon` filter, and the second of which is just sampling a texture. You might have spotted something new, too - both new passes have names. These names are not required, but we will see an instance where we must `Name` a pass very soon.
 
 Let's start with the first pass, named "ThresholdPass", which is going to compare the brightness value with some threshold value. Let's define this in `Properties`.
 
@@ -185,11 +185,11 @@ RenderTexture thresholdTex =
 Graphics.Blit(src, thresholdTex, material, thresholdPass);
 ~~~
 
-Back in Unity's Scene View, remove all Image Effect scripts from your camera for now, and attach this brand new script. Place the Bloom shader in the shader slot, and hit Play - all that should be visible are the brightest scene elements.
+Back in Unity's Scene View, remove all Image Effect scripts from your camera for now, and attach this brand-new script. Place the Bloom shader in the shader slot and hit Play - all that should be visible are the brightest scene elements.
 
 The second component of the Bloom effect is blurring the thresholded image. This is where we'll unlock the secrets of using `Pass`es from other shaders: `UsePass`. From here on, I'll assume you've followed Part 3 and implemented the Blur shaders the same way I have - if not, you'll have to tweak a few names.
 
-By using [UsePass](https://docs.unity3d.com/Manual/SL-UsePass.html) we can reference other shader passes by name. To do this, we're going to have to go back and make sure the shader passes we plan to use actually have names. Open up the source files for the shader you're going to use - either `GaussianBlurSinglepass` or `GaussianBlurMultipass` will do - and give their passes sensible names by using `Name` at the top of the pass. I'm actually going to do both simultaneously and add functionality to `ImageEffectBloom` to switch between both.
+By using [UsePass](https://docs.unity3d.com/Manual/SL-UsePass.html) we can reference other shader passes by name. To do this, we're going to have to go back and make sure the shader passes we plan to use have names. Open the source files for the shader you're going to use - either `GaussianBlurSinglepass` or `GaussianBlurMultipass` will do - and give their passes sensible names by using `Name` at the top of the pass. I'm going to do both simultaneously and add functionality to `ImageEffectBloom` to switch between both.
 
 ~~~glsl
 // Singlepass:
@@ -202,7 +202,7 @@ Name "HorizontalPass"
 Name "VerticalPass"
 ~~~
 
-I've been very sneaky and already did this in the versions of these shaders found in the `Complete` folder. We'll now be able to reference these three shader passes inside the `Bloom` shader using `UsePass`. The syntax is pretty simple - it's `UsePass` followed by the name of the shader and shader pass. We'll put these `Pass`es in between the two already in the file.
+I've been very sneaky and already did this in the versions of these shaders found in the `Complete` folder. We'll now be able to reference these three shader passes inside the `Bloom` shader using `UsePass`. The syntax is simple - it's `UsePass` followed by the name of the shader and shader pass. We'll put these `Pass`es in between the two already in the file.
 
 ~~~glsl
 // If using single-pass blur.
@@ -285,7 +285,7 @@ Let's return to the `Bloom` shader and fill in the final pass. This one is going
 sampler2D _SrcTex;
 ~~~
 
-Now all we'll do is sample both textures and add them together in the fragment shader - it's really as easy as that.
+Now all we'll do is sample both textures and add them together in the fragment shader - it's as easy as that.
 
 ~~~glsl
 float3 originalTex = tex2D(_SrcTex, i.uv);
@@ -314,7 +314,7 @@ Now run the shader - it's the bloom we've been seeking all this time! We opted t
 
 ## Multiple image effects
 
-We haven't yet discussed how to run multiple image effects at once, but it's actually really easy - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
+We haven't yet discussed how to run multiple image effects at once, but it's simple - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
 
 ![Neon Bloom](/img/tut1/part4-scene-neon-bloom.png){: .center-image }
 
@@ -322,7 +322,7 @@ We haven't yet discussed how to run multiple image effects at once, but it's act
 
 # Conclusion
 
-Today we learned how to detected the edges of objects using screen-space image gradients, then took those edges and used them to implement a neon effect. A layer of bloom on top of that, obtained by using our previous work on blur shaders with UsePass, resulted in a more refined look for the neaon shader.
+Today we learned how to detected the edges of objects using screen-space image gradients, then took those edges and used them to implement a neon effect. A layer of bloom on top of that, obtained by using our previous work on blur shaders with `UsePass`, resulted in a more refined look for the neon shader.
 
 The next article in this series will explore some pixelated effects to emulate the NES, SNES and Game Boy filters. Together with those filters, I'll also show you how to write a CRT TV effect to bring the effect right into the late 20th century.
 

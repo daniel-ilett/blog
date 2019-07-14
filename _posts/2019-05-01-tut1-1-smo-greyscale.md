@@ -11,7 +11,7 @@ date: 2019-05-01
 idnum: 4
 ---
 
-This tutorial discusses two fairly simple effects seen in Snapshot Mode - Greyscale and Sepia Tone. Both of these effects require nothing more than just modifying the colour of each pixel individually. By the end of this tutorial, you should understand the basics of manipulating colours in shaders in Unity.
+This tutorial discusses two simple effects seen in Snapshot Mode - Greyscale and Sepia Tone. Both effects require nothing more than just modifying the colour of each pixel individually. By the end of this tutorial, you should understand the basics of manipulating colours in shaders in Unity.
 
 <hr/>
 
@@ -21,7 +21,7 @@ This tutorial discusses two fairly simple effects seen in Snapshot Mode - Greysc
 
 The Greyscale filter is one of the simplest filters in Snapshot Mode. The effect operates on each individual pixel of the image independently of all others, and it’s a simple linear transformation from RGB colours to greyscale values. To understand how to convert to greyscale, we need to first understand how the eyes perceive and process colour.
 
-Assuming no additional effects like color blindness or tetrachromacy, the human eye detects three colours - red, green and blue - corresponding to three types of cone cell in the eye. The eye is more sensitive to green light than red or blue, which our greyscale conversion must take into account. We'll calculate a luminance value for each pixel, keeping the different RGB sensitivities in mind, and use those to determine a greyscale value - since luminance is a measure of lightness, we'll just use that value without modification. Conveniently, a greyscale colour is one that has the same value for each of the red, green and blue colour channels, so once we have obtained a luminance value, we're essentially done.
+Assuming no additional effects like colour-blindness or tetrachromacy, the human eye detects three colours - red, green and blue - corresponding to three types of cone cell in the eye. The eye is more sensitive to green light than red or blue, which our greyscale conversion must consider. We'll calculate a luminance value for each pixel, keeping the different RGB sensitivities in mind, and use those to determine a greyscale value - since luminance is a measure of lightness, we'll just use that value without modification. Conveniently, a greyscale colour is one that has the same value for each of the red, green and blue colour channels, so once we have obtained a luminance value, we're essentially done.
 
 Without going into detail about how the coefficients are obtained, the luminance calculation like this:
 
@@ -52,7 +52,7 @@ If you followed the shader primer, you'll notice the struct passed into this fra
 
 # Sepia Tone Filter
 
-The sepia tone filter aims to emulate the yellowing effect seen on some old-timey photographs - this means the filter is a little more involved than the Greyscale effect. Because the end result isn't greyscale, it’s not sufficient to find a single luminance value - each of the input red, green and blue channels will feed into the output red channel, and each input feeds into the output green, and so on. For that, we’ll need a matrix of coefficients, instead of a simple vector, as seen in the previous image effect. We can multiply the input RGB values of each pixel with this matrix to obtain our output RGB values.
+The sepia tone filter aims to emulate the yellowing effect seen on some old-timey photographs - this means the filter is a little more involved than the Greyscale effect. Because the result isn't greyscale, it’s not sufficient to find a single luminance value - each of the input red, green and blue channels will feed into the output red channel, and each input feeds into the output green, and so on. For that, we’ll need a matrix of coefficients, instead of a simple vector, as seen in the previous image effect. We can multiply the input RGB values of each pixel with this matrix to obtain our output RGB values.
 
 ~~~glsl
 half3x3 sepiaVals = half3x3
@@ -75,12 +75,12 @@ If you're looking to further your shader-writing skills, I'd recommend brushing 
 
 ## A small note about floating-points
 
-As mentioned, the keywords `float`, `fixed` and `half` all denote floating-point numbers of different precision. You'll have noticed that the Greyscale fragment shader used `float`, while the Sepia Tone fragment shader used `half`; both are capable of representing colours, so both are valid in this context. In fact, on most desktop and laptop GPU hardware, there is [absolutely no difference](https://docs.unity3d.com/Manual/SL-DataTypesAndPrecision.html) between the types; they're often all taken to mean full 32-bit precision unless they are being used on mobile GPUs.
+As mentioned, the keywords `float`, `fixed` and `half` all denote floating-point numbers of different precision. You'll have noticed that the Greyscale fragment shader used `float`, while the Sepia Tone fragment shader used `half`; both can represent colours, so both are valid in this context. In fact, on most desktop and laptop GPU hardware, there is [absolutely no difference](https://docs.unity3d.com/Manual/SL-DataTypesAndPrecision.html) between the types; they're often all taken to mean full 32-bit precision unless they are being used on mobile GPUs.
 
 <hr/>
 
 # Conclusion
 
-You’ve had a taste of the power of image effects in Unity. We’ve only talked about simple colour transformations so far and introduced vector and matrix operations - next time, we’ll be taking a look at buffers other than the framebuffer to help us recreate the Silhouette effect.
+You’ve had a taste of the power of image effects in Unity. We’ve only talked about simple colour transformations so far and introduced vector and matrix operations - next time, we’ll be exploring buffers other than the framebuffer to help us recreate the Silhouette effect.
 
 <hr/>

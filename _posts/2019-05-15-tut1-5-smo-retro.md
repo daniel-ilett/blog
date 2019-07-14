@@ -11,7 +11,7 @@ date: 2019-05-15
 idnum: 8
 ---
 
-This tutorial explores the retro console shaders found in Snapshot Mode, which emulate the look and feel of the Nintendo Entertainment System (NES), Super NES (SNES), and Game Boy (GB). We will look into the colour transformations involved and implement an effect that makes the image appear as if it is being displayed on an old-style CRT screen.
+This tutorial explores the retro console shaders found in Snapshot Mode, which emulate the look and feel of the Nintendo Entertainment System (NES), Super NES (SNES), and Game Boy (GB). We will explore the colour transformations involved and implement an effect that makes the image appear as if it is being displayed on an old-style CRT screen.
 
 <hr/>
 
@@ -21,7 +21,7 @@ This tutorial explores the retro console shaders found in Snapshot Mode, which e
 
 The [NES colour palette](https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#NES) is strange when compared to modern hardware. There are 64 colours in the palette, some of which are either duplicates or unusable, leaving 54 effective colours. On top of that, there are three colour emphasis 'modes', which arguably pushes the range to 432 colours across 8 modes, although we can only use 54 at a time. Worse for us, these colours are in the YIQ colour space - not RGB. If we wished to emulate the NES colours exactly, we would convert the screen image to YIQ, pick the closest colour in our small range of available colours, then convert back to RGB.
 
-But there's no point in worrying about all this - after all, most of computer graphics is made up of trickery and faking things. Instead, we're going to stay in the RGB colour space. We'll quantise each colour channel from a continuous range between 0.0 and 1.0 into four values - quantisation is the process of mapping some set of values to a smaller set of values - leaving us with 64 possible colours. There's a few more possible colours than the NES could handle, but it won't be noticeable. It'll feel "retro".
+But there's no point in worrying about all this - after all, most of computer graphics is made up of trickery and faking things. Instead, we're going to stay in the RGB colour space. We'll quantise each colour channel from a continuous range between 0.0 and 1.0 into four values - quantisation is the process of mapping some set of values to a smaller set of values - leaving us with 64 possible colours. There are a few more possible colours than the NES could handle, but it won't be noticeable. It'll feel "retro".
 
 Let's look at the template shader file found in `Shaders/PixelNES.shader`. It's very simple - like the old Greyscale and Sepia Tone templates, all this shader does is output the main texture without modification. All our work will be done in the fragment shader - we don't need to add anything to `Properties`.
 
@@ -103,9 +103,9 @@ Now attach this script to the camera instead of `ImageEffectBase` and insert the
 
 # SNES
 
-Now let's take a look at the SNES filter. The colour palette was, of course, more advanced than that of the NES - there's now support for 32,768 colours, with 256 at once. However, the hardware also supported additive and subtractive colour blending, so the "256 at once" becomes "any combination of two of those 256 colours at once". It gets very complicated beyond that, so we're going to give each of the three colour channels six possible colours, giving us only 216 colours on the screen at once - but it's notieably more than the NES effect, so we'll go with that.
+Now let's look at the SNES filter. The colour palette was, of course, more advanced than that of the NES - there's now support for 32,768 colours, with 256 at once. However, the hardware also supported additive and subtractive colour blending, so the "256 at once" becomes "any combination of two of those 256 colours at once". It gets very complicated beyond that, so we're going to give each of the three colour channels six possible colours, giving us only 216 colours on the screen at once - but it's noticeably more than the NES effect, so we'll go with that.
 
-The shader takes exactly the same form as the NES shader, but with different constants in the calculation. Open up `Shaders/PixelSNES.shader` and modify the fragment shader.
+The shader takes the same form as the NES shader, but with different constants in the calculation. Open `Shaders/PixelSNES.shader` and modify the fragment shader.
 
 ~~~glsl
 fixed4 tex = tex2D(_MainTex, i.uv);
@@ -117,7 +117,7 @@ int b = (tex.b - EPSILON) * 6;
 return float4(r / 5.0, g / 5.0, b / 5.0, 1.0);
 ~~~
 
-Looking good so far! Together with `ImageEffectPixelate`, the effect is looking quite strong. However, I think we can go one step further with the effect - NES and SNES games were played on CRTs, which certainly don't look this crisp. We're going to implement features to make our effect more similar to the Snapshot Mode effect, then go above and beyond.
+Looking good so far! Together with `ImageEffectPixelate`, the effect is looking quite strong. However, I think we can go one step further with the effect - NES and SNES games were played on CRTs, which certainly don't look this crisp. We're going to implement features to make our effect more like the Snapshot Mode effect, then go above and beyond.
 
 ![SNES](/img/tut1/part5-scene-snes.png){: .center-image }
 
@@ -125,7 +125,7 @@ Looking good so far! Together with `ImageEffectPixelate`, the effect is looking 
 
 CRT stands for "cathode ray tube"; a CRT TV operates by firing electrons into a phosphorescent screen to generate light and, by extension, images. There are three colours of phosphor used - red, green and blue - which is very convenient for us. Images are produced by scanning left-to-right, top-to-bottom, row-by-row, until all pixels have been displayed, then the process starts over again. The gaps between the phosphor zones and the action of the CRT scanning along rows means that visible scanlines appear horizontally on the screen. What we're going to do is split the screen into those phosphor zones with a dead zone where the scanlines would appear - in effect, the screen will be segmented into 3x3 sections, with three 1x2 vertical lines for each of red, green and blue, with a 3x1 black horizontal line below them. We'll multiply the source image by this 'grid' to obtain the final image.
 
-Take a look at the `Shaders/CRTScreen.shader` template file. This time, we're going to have to add something to the vertex shader - exciting, I know! We need to know the screen coordinates of each fragment later on, so we're going to calculate them in the vertex shader and then they'll be interpolated later on. We'll use `appdata_img` included in `UnityCG.cginc` to pass data into the vertex shader, but we can't use `v2f_img` or `vert_img` because we need to pass over the screen position.
+Open the `Shaders/CRTScreen.shader` template file. This time, we're going to have to add something to the vertex shader - exciting, I know! We need to know the screen coordinates of each fragment later, so we're going to calculate them in the vertex shader and then they'll be interpolated later. We'll use `appdata_img` included in `UnityCG.cginc` to pass data into the vertex shader, but we can't use `v2f_img` or `vert_img` because we need to pass over the screen position.
 
 ~~~glsl
 struct v2f
@@ -145,7 +145,7 @@ v2f vert (appdata_img v)
 }
 ~~~
 
-In the vertex shader, after we've transformed the vertex in appdata_img to clip space, we'll use the clipped vertex position in the `ComputeScreenPos()` function to determine the screen position. This will be passed to the fragment shader inside `v2f`'s `screenPos` variable. If you'll recall from Part 5 of this series, one of the things I talked about was `TEXCOORD` semantics - for compatability with some DirectX-based systems, we need to specify a semantic on each variable inside this struct. I could have chosen another semantic like `COLOR0` to hold `screenPos`, but I've chosen `TEXCOORD1` because it's generally higher precision. It gets confusing since this data is neither a colour nor a texture coordinate, but just roll with it - you can pass arbitrary data with these named semantics.
+In the vertex shader, after we've transformed the vertex in appdata_img to clip space, we'll use the clipped vertex position in the `ComputeScreenPos()` function to determine the screen position. This will be passed to the fragment shader inside `v2f`'s `screenPos` variable. If you'll recall from Part 5 of this series, one of the things I talked about was `TEXCOORD` semantics - for compatibility with some DirectX-based systems, we need to specify a semantic on each variable inside this struct. I could have chosen another semantic like `COLOR0` to hold `screenPos`, but I've chosen `TEXCOORD1` because it's generally higher precision. It gets confusing since this data is neither a colour nor a texture coordinate, but just roll with it - you can pass arbitrary data with these named semantics.
 
 Now let's look at the fragment shader. As usual, we calculate the pixel colour using the normal uv coordinates. We're going to need a way to determine if this is a 'red pixel', or a 'blue pixel' and so on, and we're also going to determine whether this is a 'scanline pixel'. We'll modify our input pixel colours based on where on the screen the pixel is situated.
 
@@ -153,7 +153,7 @@ Now let's look at the fragment shader. As usual, we calculate the pixel colour u
 fixed2 sp = i.screenPos.xy * _ScreenParams.xy;
 ~~~
 
-The first step after reading the input texture is to calculate the screen pixel coordinates - this is what we'll be using later on. The `screenPos` variable denotes where our pixel is on the screen, normalised in the x- and y-axes in the range \[0, 1\], and `_ScreenParams` is a [built in variable](https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html) whose x and y members contain the pixel width and pixel height of the camera's target texture (which in this case, is the entire screen texture). The result of multiplying them is the pixel coordinate on the screen of this fragment.
+The first step after reading the input texture is to calculate the screen pixel coordinates - this is what we'll be using later. The `screenPos` variable denotes where our pixel is on the screen, normalised in the x- and y-axes in the range \[0, 1\], and `_ScreenParams` is a [built in variable](https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html) whose x and y members contain the pixel width and pixel height of the camera's target texture (which in this case, is the entire screen texture). The result of multiplying them is the pixel coordinate on the screen of this fragment.
 
 Now we'll exploit some nice features of matrices.
 
@@ -239,7 +239,7 @@ returnVal = returnVal - _Contrast * (returnVal - 1.0) * returnVal * (returnVal -
 return fixed4(returnVal, 1.0);
 ~~~
 
-If you run the shader effect now, nothing will be different because the brightness and contrast values haven't been set. We'll write another simple C# script to handle this for us. It should already be there in your template project, but it's really simple anyway. Call it `ImageEffectCRT.cs` and put it in the `Scripts` folder if you're working from scratch.
+If you run the shader effect now, nothing will be different because the brightness and contrast values haven't been set. We'll write another simple C# script to handle this for us. It should already be there in your template project, but if you're writing from scratch then it's a short script. Call it `ImageEffectCRT.cs` and put it in the `Scripts` folder.
 
 ~~~csharp
 using UnityEngine;
@@ -277,9 +277,9 @@ To emulate the look and feel of an NES or SNES game, I recommend attaching - in 
 
 # Game Boy
 
-The Game Boy (GB) had a comparatvely much simpler colour palette than either the NES or SNES - four shades of green (or, on the Game Boy Pocket, four shades of grey). We'll use a simlar technique as in the Greyscale shader to map the original pixel colour values to GB colours.
+The Game Boy (GB) had a comparatively much simpler colour palette than either the NES or SNES - four shades of green (or, on the Game Boy Pocket, four shades of grey). We'll use a similar technique as in the Greyscale shader to map the original pixel colour values to GB colours.
 
-Take a look at the `Shaders/PixelGB.shader` template file. Our fragment shader calculates the luminance of the input pixel to use as our 'base' value. We'll need to posterise the image as before, so we'll exploit integers again.
+Open the `Shaders/PixelGB.shader` template file. Our fragment shader calculates the luminance of the input pixel to use as our 'base' value. We'll need to posterise the image as before, so we'll exploit integers again.
 
 ~~~glsl
 float lum = dot(tex, float3(0.3, 0.59, 0.11));

@@ -17,17 +17,17 @@ This tutorial builds on what we learned in the Diffuse lighting tutorial and int
 
 # Cel Shading
 
-You're probably seen cel-shading in popular games such as Jet Set Radio and The Legend of Zelda: The Wind Waker, both of which are seen as pioneers of the aesthetic, and recent titles like the Borderlands franchise. The effect is characterised by hard shading with very little smoothing between lit and unlit sections of an object's surface.
+You're probably seen cel-shading in popular games such as Jet Set Radio and The Legend of Zelda: The Wind Waker, both of which are pioneers of the aesthetic, and recent titles like the Borderlands franchise. The effect is characterised by hard shading with very little smoothing between lit and unlit sections of an object's surface.
 
-For this tutorial, we'll be using the Diffuse shaders from the previous part as a base. However, before get started, we'll need to make a few modifications to the surface shader variant. Much of the power and utility of surface shaders comes from the fact they can be used to specify surface properties and leave the lighting to Unity, but since we're going to be manipulating lighting directly, we'll need to build our own lighting model.
+For this tutorial, we'll be using the Diffuse shaders from the previous part as a base. Before we get started, we'll need to make a few modifications to the surface shader variant. Much of the power and utility of surface shaders comes from the fact they can be used to specify surface properties and leave the lighting to Unity, but since we're going to be manipulating lighting directly, we'll need to build our own lighting model.
 
 # Surface Shader
 
-Take a look at `Shaders/CelShadedSurf.shader`. It's currently the same as the the finished `DiffuseSurf` shader we wrote in the last tutorial. However, we'll need to write our own lighting model instead of using a built-in one. 
+Open `Shaders/CelShadedSurf.shader`. It's currently the same as the finished `DiffuseSurf` shader we wrote in the last tutorial. However, we'll need to write our own lighting model instead of using a built-in one. 
 
 ## Lighting Models
 
-Right now, we're using the `Standard` lighting model, which includes the `SurfaceOutputStandard` struct to hold its parameters. With our new lighting model, we won't use that - intead we'll use the more basic `SurfaceOutput` struct. To build a lighting model, we supply a function with a name beginning `Lighting` - the exact semantics we must use can be found [here](https://docs.unity3d.com/Manual/SL-SurfaceShaderLighting.html). We'll write our shader to only interact with Unity's forward rendering pipeline.
+Right now, we're using the `Standard` lighting model, which includes the `SurfaceOutputStandard` struct to hold its parameters. With our new lighting model, we won't use that - instead we'll use the more basic `SurfaceOutput` struct. To build a lighting model, we supply a function with a name beginning `Lighting` - the exact semantics we must use can be found [here](https://docs.unity3d.com/Manual/SL-SurfaceShaderLighting.html). We'll write our shader to only interact with Unity's forward rendering pipeline.
 
 ~~~glsl
 // Above the Input struct definition.
@@ -50,7 +50,7 @@ void surf (Input IN, inout SurfaceOutput o)
 ...
 ~~~
 
-With that out of the way, we can now define the behaviour of the new `Cel` lighting model. It's going to look very similar to the lighting calculations we wrte in the fragment shader during the last tutorial - we use the dot product to calculate the angle between the normal vector and the directional light's direction. It ought to look very familiar!
+With that out of the way, we can now define the behaviour of the new `Cel` lighting model. It's going to look very similar to the lighting calculations we wrote in the fragment shader during the last tutorial - we use the dot product to calculate the angle between the normal vector and the directional light's direction. It ought to look very familiar!
 
 ~~~glsl
 float4 LightingCel(SurfaceOutput s, half3 lightDir, half atten)
@@ -77,7 +77,7 @@ float diffuse = dot(normal, lightDir);
 diffuse = diffuse > 0 ? 1 : 0;
 ~~~
 
-The resulting effect definitely counts as cel-shading. Hurray, we can all go home now, we're done! ...except I think we can do a little better. After all, we don't even have specular lighting, and we might want more flexibility with the cut-off points. We could implement more cut-off points, which would give us more lighting "bands". We could implement fresnel shading - which we'll explore in the next tutorial. And the cutoff results in a very sharp change from fully-lit to fully-shaded; it'd look better with a very small falloff to prevent aliasing artefacts.
+The resulting effect certainly reaches the cel-shading requirements. Hurray, we can all go home now, we're done! ...except I think we can do a little better. After all, we don't even have specular lighting, and we might want more flexibility with the cut-off points. We could implement more cut-off points, which would give us more lighting "bands". We could implement fresnel shading - which we'll explore in the next tutorial. And the cutoff results in a very sharp change from fully lit to fully shaded; it'd look better with a very small falloff to prevent aliasing artefacts.
 
 ## Smooth falloff
 
@@ -101,7 +101,7 @@ float diffuseSmooth = smoothstep(0, delta, diffuse);
 float3 col = s.Albedo * (diffuseSmooth * _LightColor0 + unity_AmbientSky);
 ~~~
 
-You'll see I've kept the same `diffuse` calculation, but I've used it to calculate a `delta` value using `fwidth`. I multiply this by a new property called `_Antialiasing`, because it's nice to give control to your artists by exposing things in the Inspector, and the `delta` value is pretty small and rarely noticeable by itself. The `diffuseSmooth` calculation replaces our old cel-shading calculation, which utilised the ternary operator. Remember to use the new `diffuseSmooth` variable in the colour calculation instead of the old `diffuse` variable!
+You'll see I've kept the same `diffuse` calculation, but I've used it to calculate a `delta` value using `fwidth`. I multiply this by a new property called `_Antialiasing`, because it's nice to give control to your artists by exposing things in the Inspector, and the `delta` value is too small to be noticeable by itself. The `diffuseSmooth` calculation replaces our old cel-shading calculation, which utilised the ternary operator. Remember to use the new `diffuseSmooth` variable in the colour calculation instead of the old `diffuse` variable!
 
 You should now have a very small lighting falloff that gives our object a less harsh transition from light to dark. It's fully controllable from the material in the Inspector. Beware that large values for the `_Antialiasing` variable (called `Band smoothing` in the Inspector) look atrocious, so keep it low!
 
@@ -111,14 +111,14 @@ You should now have a very small lighting falloff that gives our object a less h
 
 Diffuse lighting doesn't take the view direction into account. Specular lighting, on the other hand, does. Specular highlights are the "shiny" parts of an object - if you think of a well-polished ball, you might imagine a small circle on the top of the ball that reflects really brightly - that's a specular highlight, and it manifests due to the light source reflecting off that part of the ball into your eyes directly.
 
-It's relatively easy to implement this. Our lighting model can use the view direction by passing it into the model function; the `viewDir` variable in this exampel denotes the vector from the camera's position pointing forward into the centre of the screen.
+It's relatively easy to implement this. Our lighting model can use the view direction by passing it into the model function; the `viewDir` variable in this example denotes the vector from the camera's position pointing forward into the centre of the screen.
 
 ~~~glsl
 float4 LightingCel(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten)
 ...
 ~~~
 
-For diffuse lighting, we specified a base albedo colour to use as a base. Similarly for a specular lighting component, we must know how "shiny" our material is - this controls the size of the specular highlight. We'll also want to know the colour of the specular highlights, but we can use the directional light's colour in the same way as our diffuse component, so we'll only need one more entry in `Properties`.
+For diffuse lighting, we specified a base albedo colour to use as a base. Similarly, for a specular lighting component, we must know how "shiny" our material is - this controls the size of the specular highlight. We'll also want to know the colour of the specular highlights, but we can use the directional light's colour in the same way as our diffuse component, so we'll only need one more entry in `Properties`.
 
 ~~~glsl
 // In Properties.
@@ -128,14 +128,14 @@ _Glossiness("Glossiness/Shininess", Float) = 400
 float _Glossiness;
 ~~~
 
-How exactly do we take into account the view direction? First of all, we calculate what's called the "half vector" - a vector that points exactly halfway between the view direction and the light direction. Then , similarly to how we calculated the diffuse lighting, we perform the dot product on the normal vector and the half vector. We'll put our specular calculation code between the diffuse calculations and the final colour calculation.
+How exactly do we consider the view direction? First, we calculate what's called the "half vector" - a vector that points exactly halfway between the view direction and the light direction. Then we perform the dot product on the normal vector and the half vector. We'll put our specular calculation code between the diffuse calculations and the final colour calculation.
 
 ~~~glsl
 float3 halfVec = normalize(lightDir + viewDir);
 float specular = dot(normal, halfVec);
 ~~~
 
-By adding the vectors together and normalising the result, we get the half vector. However, this would result in a very large pecular highlight and doesn't yet take the `_Glossiness` property into account; we'll use a power function to get the best result. We don't want specular highlights to appear on the shaded sections of the object, so we'll also multiply our specular coefficient by the existing smooth diffuse value.
+By adding the vectors together and normalising the result, we get the half vector. However, this would result in a very large specular highlight and doesn't yet take the `_Glossiness` property into account; we'll use a power function to get the best result. We don't want specular highlights to appear on the shaded sections of the object, so we'll also multiply our specular coefficient by the existing smooth diffuse value.
 
 ~~~glsl
 specular = pow(specular * diffuseSmooth, _Glossiness);
@@ -162,9 +162,9 @@ return float4(col, s.Alpha);
 
 # Fragment Shader
 
-Now's let's go over all that again with a vertex and fragment shader variant. Almost everything will be the same or very similar, with only a couple of steps unique to the fragment shader. Take a look at the `Shaders/CelShadedFrag.shader` file - it's essentially the same as `Shaders/Complete/DiffuseFrag`.
+Now's let's go over all that again with a vertex and fragment shader variant. Almost everything will be the same or very similar, with only a couple of steps unique to the fragment shader. Open the `Shaders/CelShadedFrag.shader` file - it's essentially the same as `Shaders/Complete/DiffuseFrag`.
 
-We'll add the `_Antialiasing` and `_Glossiness` variables exactly the same as for the surface shader.
+We'll add the `_Antialiasing` and `_Glossiness` variables like we did for the surface shader.
 
 ~~~glsl
 // In Properties.
@@ -217,7 +217,7 @@ fixed4 frag (v2f i) : SV_Target
 }
 ~~~
 
-With that, you should see a cel-shaded object similar to the surface shader version.
+With that, you should see a cel-shaded object like the surface shader version.
 
 ![Specular Frag](/img/tut2/part2-cel-shaded-frag.png){: .center-image }
 
