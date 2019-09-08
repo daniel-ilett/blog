@@ -5,7 +5,7 @@ subtitle: Smoothing between values
 bigimg: /img/unity-tips/part3-banner.png
 tags: [unity, unity-tips, interpolation, lerp, slerp, quaternions]
 nice-slug: Interpolation
-date: 2019-09-02
+date: 2019-09-08
 idnum: 20
 ---
 
@@ -104,7 +104,7 @@ The `t` variable inside the loop is used to control the third parameter of the `
 By default, Unity physics does not interpolate. Due to the way Unity calculates physics in fixed timesteps that do not always match up to graphics rendering frames, object motion sometimes appears jittery. In order to avoid this problem, `Rigidbody` components – those which are controlled by the Unity physics engine – can be made to `extrapolate` or `interpolate` their positions.
 
 {: .box-note}
-“Interpolation allows you to smooth out the effect of running physics at a fixed frame rate.” - Unity Documentation
+“Interpolation allows you to smooth out the effect of running physics at a fixed frame rate.” - **Unity Documentation**
 
 Under normal behaviour, the position of an object is calculated immediately after `FixedUpdate` and the last recorded position is used when the object is rendered in subsequent `Update`s. If several frames are rendered before the next `FixedUpdate` runs, then each frame will display the object in the same location.
 
