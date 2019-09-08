@@ -5,7 +5,7 @@ subtitle: Suspend execution over multiple frames
 bigimg: /img/unity-tips/part2-banner.png
 tags: [unity, unity-tips, coroutines, concurrency]
 nice-slug: Coroutines
-date: 2019-08-19
+date: 2019-08-20
 idnum: 19
 ---
 
