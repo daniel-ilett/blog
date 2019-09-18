@@ -5,8 +5,8 @@ subtitle: Data driven development in Unity
 bigimg: /img/unity-tips/part4-banner.png
 tags: [unity, unity-tips, scriptable-objects, monobehaviour]
 nice-slug: Scriptable Objects
-date: 2019-09-16
-idnum: 21
+date: 2019-09-23
+idnum: 22
 ---
 
 The `MonoBehaviour` class is probably the class you most commonly inherit from in Unity. It derives ultimately from `UnityEngine.Object` through a couple of other classes and represents an object which must be attached to a `GameObject` to function properly – they are user-created `Components`. However, there is another core class built into Unity which inherits directly from `UnityEngine.Object` but does not need to be attached to a `GameObject` to function: `ScriptableObject`. Let’s explore this powerful class and its features.
