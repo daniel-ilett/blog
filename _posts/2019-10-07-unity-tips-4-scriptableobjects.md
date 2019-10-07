@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Unity Tips | Part 4 - Scriptable Objects
-subtitle: Data driven development in Unity
+subtitle: Creating assets from behaviour in Unity
 bigimg: /img/unity-tips/part4-banner.png
 tags: [unity, unity-tips, scriptable-objects, monobehaviour]
 nice-slug: Scriptable Objects
-date: 2019-09-23
+date: 2019-10-07
 idnum: 22
 ---
 
