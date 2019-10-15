@@ -2,6 +2,8 @@
 layout: post
 title: Ultra Effects | Series Introduction
 subtitle: More image effect shaders
+gh-repo: daniel-ilett/image-ultra
+gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, intro]
 nice-slug: Ultra Effects Series
 date: 2019-09-18

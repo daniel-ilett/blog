@@ -49,7 +49,7 @@ The menu is available by right-clicking in the **Project view** or using the **A
 
 ![New scriptable object](/img/unity-tips/part4-so-inspector.png){: .center-image }
 
-Used like this, scriptable objects facilitate **data-driven development**. Let’s look at specific use cases and why they improve on other techniques.
+Let's look at a few ways we can use this powerful tool to overhaul our projects.
 
 <hr/>
 
