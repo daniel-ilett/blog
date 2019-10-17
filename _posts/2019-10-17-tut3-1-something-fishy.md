@@ -147,7 +147,7 @@ This is the simplest `Render` functionality - just call `Graphics.Blit` using th
 
 # Putting it together
 
-We'll create a new `FisheyeEffect` asset. Inside the **Effects** folder, by either right-clicking or using the Assets menu in the toolbar, select **Create>Image Effects Ultra>Fisheye**. A new asset will created and you can modify the `pow` variable in the **Inspector** like any other Unity object. Now, let's add the final piece of the puzzle - a short `MonoBehaviour` we can attach to our camera to drive the effect.
+We'll create a new `FisheyeEffect` asset. Inside the **Effects** folder, by either right-clicking or using the Assets menu in the toolbar, select **Create>Image Effects Ultra>Fisheye**. A new asset will be created, and you can modify the `pow` variable in the **Inspector** like any other Unity object. Now, let's add the final piece of the puzzle - a short `MonoBehaviour` we can attach to our camera to drive the effect.
 
 ~~~csharp
 using UnityEngine;
