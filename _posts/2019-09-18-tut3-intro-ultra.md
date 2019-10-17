@@ -18,12 +18,12 @@ The philosophy of the series was to take apart each effect and get to the fundam
 
 The posting schedule for this series is as follows:
 
-**Part 1**: Something Fishy | **25th September** | `Fish-eye`
-**Part 2**: Sinking Feeling |  **2nd October** | `Underwater`
-**Part 3**: Tiling Trouble | **9th October** | `Mosaic`
-**Part 4**: The Next Dimension | **16th October** | `Anaglyph 3D`
-**Part 5**: Filmic Filters | **23rd October** | `Cinematic`
-**Part 6**: Chromatic Course | **30th October** | `Invert`, `Channel Separation`
+**Part 1**: Something Fishy | [Out now!](https://danielilett.com/2019-10-17-tut3-1-something-fishy/) | `Fish-eye`
+**Part 2**: Sinking Feeling |  **23rd October** | `Underwater`
+**Part 3**: Tiling Trouble | **30th October** | `Mosaic`
+**Part 4**: The Next Dimension | **6th November** | `Anaglyph 3D`
+**Part 5**: Filmic Filters | **13td November** | `Cinematic`
+**Part 6**: Chromatic Course | **20th November** | `Invert`, `Channel Separation`
 
 This schedule is fluid - it will change as I develop more effects. I will aim for regular Wednesday uploads.
 
