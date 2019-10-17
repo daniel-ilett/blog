@@ -15,6 +15,8 @@ idnum: 23
 
 ![Fisheye Image](/img/tut3/part1-fisheye-example.jpg){: .center-image }
 
+[Photo taken by The Squirrels.](https://commons.wikimedia.org/wiki/File:The_Squirrels_0048.jpg)
+
 <hr/>
 
 # Virtual lenses
