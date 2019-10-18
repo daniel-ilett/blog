@@ -55,7 +55,7 @@ This would be sufficient, but we also want to animate the waves. Instead, we wil
 half3 normal = UnpackNormal(tex2D(_BumpMap, (i.uv + _Time.x) % 1.0));
 ~~~
 
-We want a designer to have the ability to change the strength of the waves, so we'll add a `_Strength` property.
+Note here that adding a scalar value, `_Time.x`, to a `float2`, `i.uv`, adds the scalar to both components of the vector. We want a designer to have the ability to change the strength of the waves, so we'll add a `_Strength` property.
 
 ~~~glsl
 // In Properties.
@@ -159,7 +159,7 @@ With a little creativity, we can create an effect that's not strictly to do with
 
 # Composite Effects
 
-Now that we've seen two effects, we can take a look at composition of effects. I've written a super-simple extra script that allows you to add as many effects as you'd like to a list, which are then executed in order each frame. If you've used Unity's Post-Processing Stack, then this is my (simplified) answer to that.
+Now that we've seen two effects, we can look at composition of effects. I've written a super-simple extra script that allows you to add as many effects as you'd like to a list, which are then executed in order each frame. If you've used Unity's Post-Processing Stack, then this is my (simplified) answer to that.
 
 ~~~csharp
 using System.Collections.Generic;
