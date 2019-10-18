@@ -212,6 +212,10 @@ Here's the entire class definition. Its `OnCreate` method initialises each of th
 
 # Conclusion
 
+Building on the work from last tutorial, we've implemented a pleasing underwater effect with customisable strength and colour. We've also seen how easy it is to create assets that combine multiple effects together.
+
+In the next tutorial, we will move on to a Mosaic shader which turns your image into a series of small tiles.
+
 <hr/>
 
 # Acknowledgements
