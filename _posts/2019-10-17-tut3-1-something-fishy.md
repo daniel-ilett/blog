@@ -96,7 +96,7 @@ That's all we need to do for the shader code itself. Let's now look at the scrip
 
 # Scripting
 
-As mentioned, we will create a script that inherits another script I've called `BaseEffect`. That script inherits `ScriptableObject`, so we can create instances of this object in the **Project pane**. The following code is available in **Scripts/Image Effects/BaseEffect.cs**.
+As mentioned, we will create a script that inherits another script I've called `BaseEffect`. That script inherits `ScriptableObject`, so we can create instances of this object in the **Project pane**. The following code is available in **Scripts/Image Effects/FisheyeEffect.cs**.
 
 ~~~csharp
 using UnityEngine;
