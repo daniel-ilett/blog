@@ -7,7 +7,7 @@ gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, underwater, normals, uvs]
 nice-slug: Sinking Feeling
-date: 2019-10-23
+date: 2019-10-22
 idnum: 24
 ---
 
@@ -23,7 +23,7 @@ A common trope in videogames is the infamous water level. All good games must ha
 
 Analysing the photo, we see that the water is tinted a deep blue that gets stronger the further away from the camera you get. The surface of the water is covered in ripples. These two properties will feature heavily in our effect, with a little creative license. Since our effect is intended to give arbitrary scenes the feeling of being underwater, we won't include ripples on the water's surface and will instead animate ripples and waves across the entire screen. We will, however, take cues from the real world when considering colouration of the scene. The density of the water makes it a lot harder to see further away.
 
-In order to recreate an underwater feeling as part of a postprocessing effect, we'll need some device for emulating a wave pattern, one that tiles well and is animated. For the fog pattern, we will need to deterine how far pixels are from the camera and blend the original pixel colours with the water tint. Let's look at the waves first.
+In order to recreate an underwater feeling as part of a postprocessing effect, we'll need some device for emulating a wave pattern, one that tiles well and is animated. For the fog pattern, we will need to determine how far pixels are from the camera and blend the original pixel colours with the water tint. Let's look at the waves first.
 
 <hr/>
 
