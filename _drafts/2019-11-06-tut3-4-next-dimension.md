@@ -8,7 +8,7 @@ gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, 3d, anaglyph]
 nice-slug: The Next Dimension
 date: 2019-11-06
-idnum: 26
+idnum: 27
 ---
 
 3D films have always felt like a technical novelty to me. The fun factor of slapping on a pair of cheap red-blue 3D glasses to make stuff pop out of the screen has captured the minds of inventors, printers and filmmakers throughout the 19th and 20th centuries. Anaglyph 3D, the kind you need red-blue glasses for, is an outdated technology - but the novelty aesthetic makes it perfect for a shader effect!
