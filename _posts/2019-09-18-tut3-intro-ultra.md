@@ -22,7 +22,7 @@ The posting schedule for this series is as follows:
 **Part 2**: Sinking Feeling |  [Out now!](https://danielilett.com/2019-10-22-tut3-2-sinking-feeling/) | `Underwater`
 **Part 3**: Tiling Trouble | **30th October** | `Mosaic`
 **Part 4**: The Next Dimension | **6th November** | `Anaglyph 3D`
-**Part 5**: Filmic Filters | **13td November** | `Cinematic`
+**Part 5**: Filmic Filters | **13th November** | `Cinematic`
 **Part 6**: Chromatic Course | **20th November** | `Invert`, `Channel Separation`
 
 This schedule is fluid - it will change as I develop more effects. I will aim for regular Wednesday uploads.
