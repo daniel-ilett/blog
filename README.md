@@ -5,7 +5,10 @@ A Jekyll-powered blog site to host all my tutorial and blog content.
 This repository contains all the content used on my website and blog, [danielilett.com](https://danielilett.com). Much of the content includes tutorial series linked to my Patreon account; other content includes games I've released.
 
 So far, the following series are live on the site:
-- Image Effects - Super Mario Odyssey shaders.
+- Image Effects - Super Mario Odyssey shaders;
+- Cel-shading - Lighting and shaders in Unity;
+- Unity Tips - Deep dives about Unity;
+- Ultra Effects - More image effect shaders.
 
 ## Software
 This website is comprised of static webpages created using Jekyll. Each page is created using a combination of HTML and Markdown.
