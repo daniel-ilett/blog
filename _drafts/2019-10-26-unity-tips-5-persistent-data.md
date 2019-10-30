@@ -5,7 +5,7 @@ subtitle: Saving data between game sessions
 bigimg: /img/unity-tips/part5-banner.png
 tags: [unity, unity-tips, scriptable-objects, monobehaviour]
 nice-slug: Persistent Data
-date: 2019-10-16
+date: 2019-10-26
 idnum: 25
 ---
 
