@@ -25,6 +25,9 @@ Contemporary display technology already displays your image as a series of tiny 
 
 However, mosaics aren't just made up of the tiles - there's space in between for whatever binding material holds those tiles together. For that, we'll overlay a texture on top of the pixelated image, tiled such that the pixelated image lines up with the overlay.
 
+{: .box-note}
+Please download the project repository from [GitHub](https://github.com/daniel-ilett/image-ultra) if you'd like to follow along!
+
 <hr/>
 
 # Pixelation

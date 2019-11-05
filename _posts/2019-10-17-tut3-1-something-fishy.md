@@ -25,6 +25,9 @@ Conventional virtual cameras capture **rectilinear images** - features such as w
 
 For those that haven't come across **UVs** before, they are a type of coordinate system that allow us to map 2D textures (images) to 3D objects. In our case, our "3D object" is the screen, which we can consider to be a 2D object for simplicity. The UV coordinates, then, map a 2D texture to a 2D screen. That 2D texture will be the result of rendering the scene, right before our fisheye shader is put into action. Before we look at how such a shader would work, let's talk about the shader system I've developed for this series.
 
+{: .box-note}
+Please download the project repository from [GitHub](https://github.com/daniel-ilett/image-ultra) if you'd like to follow along!
+
 <hr/>
 
 # Shader system

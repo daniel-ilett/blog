@@ -20,8 +20,8 @@ The posting schedule for this series is as follows:
 
 **Part 1**: Something Fishy | [Out now!](https://danielilett.com/2019-10-17-tut3-1-something-fishy/) | `Fish-eye`
 **Part 2**: Sinking Feeling |  [Out now!](https://danielilett.com/2019-10-22-tut3-2-sinking-feeling/) | `Underwater`
-**Part 3**: Tiling Trouble | **30th October** | `Mosaic`
-**Part 4**: The Next Dimension | **6th November** | `Anaglyph 3D`
+**Part 3**: Tiling Trouble | [Out now!](https://danielilett.com/2019-10-30-tut3-3-tiling-trouble/) | `Mosaic`
+**Part 4**: The Next Dimension | [Out now!](https://danielilett.com/2019-11-05-tut3-4-next-dimension/) | `Anaglyph 3D`
 **Part 5**: Filmic Filters | **13th November** | `Cinematic`
 **Part 6**: Chromatic Course | **20th November** | `Invert`, `Channel Separation`
 

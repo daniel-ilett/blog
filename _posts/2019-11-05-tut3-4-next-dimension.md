@@ -7,7 +7,7 @@ gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, 3d, anaglyph]
 nice-slug: The Next Dimension
-date: 2019-11-06
+date: 2019-11-05
 idnum: 27
 ---
 
@@ -24,6 +24,9 @@ idnum: 27
 Many animals, including humans, are able to perceive depth through **stereopsis** - essentially, different information is received by each of two eyes and combined in the brain to detect depth. Anaglyph 3D exploits this by controlling which information from a 2D image will be seen by each eye, resulting in the brain perceiving depth where it doesn't truly exist. Out of the multitude of techniques for faking 3D - the [Nintendo 3DS](https://www.tomsguide.com/us/Nintendo-3DS-3D-Glasses-DS,news-6237.html), for example, angles alternating columns of pixels towards each eye for true stereoscopic vision without glasses - anaglyph 3D is one of the easiest and cheapest to recreate because the only equipment required is a pair of cheap 3D glasses.
 
 There are several ways of recreating the effect in Unity, and all of them involve separating two images and tinting them different colours. We'll look at two approaches.
+
+{: .box-note}
+Please download the project repository from [GitHub](https://github.com/daniel-ilett/image-ultra) if you'd like to follow along!
 
 <hr/>
 

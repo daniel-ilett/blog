@@ -25,6 +25,9 @@ Analysing the photo, we see that the water is tinted a deep blue that gets stron
 
 In order to recreate an underwater feeling as part of a postprocessing effect, we'll need some device for emulating a wave pattern, one that tiles well and is animated. For the fog pattern, we will need to determine how far pixels are from the camera and blend the original pixel colours with the water tint. Let's look at the waves first.
 
+{: .box-note}
+Please download the project repository from [GitHub](https://github.com/daniel-ilett/image-ultra) if you'd like to follow along!
+
 <hr/>
 
 # Making Waves
