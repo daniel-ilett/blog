@@ -115,7 +115,7 @@ Our shader is complete! If we create an `Anaglyph` effect asset and give it a st
 
 ![UV Anaglyph](/img/tut3/part4-uv-anaglyph.png){: .center-image }
 
-The effect works, although there are some problems involving colours bleeding between each eye. Since we're just moving image UVs horizontally, the effect is more like an approximation than a true anaglyph - the real thing relies on angling two viewpoints so this version will always be slightly incorrect, although it is fairly effeicient since the screen only needs to be rendered once. Results may vary depending on the glasses you're using - but this effect can be improved a little.
+The effect works, although there are some problems involving colours bleeding between each eye. Since we're just moving image UVs horizontally, the effect is more like an approximation than a true anaglyph - the real thing relies on angling two viewpoints so this version will always be slightly incorrect, although it is efficient since the screen only needs to be rendered once. Results may vary depending on the glasses you're using - but this effect can be improved a little.
 
 ![Red-blue 3D Glasses](/img/tut3/part4-3d-glasses.png){: .center-image }
 
@@ -190,14 +190,14 @@ public override void Render(RenderTexture src, RenderTexture dst)
 }
 ~~~
 
-Next, we'll need to set up a location for the camera to render to. A temporary render texture seems like a good choice - we'll copy the format of the src texture to create the new one. Then, we'll assign the new texture as the camera's render target.
+Next, we'll need to set up a location for the camera to render to. A temporary render texture seems like a good choice - we'll copy the format of the `src` texture to create the new one. Then, we'll assign the new texture as the camera's render target.
 
 ~~~csharp
 var leftTexture = RenderTexture.GetTemporary(src.descriptor);
 camera.targetTexture = leftTexture;
 ~~~
 
-Now we'll render the camera. The render target is set to a texture - if it had been null, the output would get displayed on screen instead of sent to the texture. The final step is to send the image to the shader.
+Now we'll render the camera. The render target is set to a texture - if it had been `null`, the output would get displayed on screen instead of sent to the texture. The final step is to send the image to the shader.
 
 ~~~csharp
 camera.Render();
