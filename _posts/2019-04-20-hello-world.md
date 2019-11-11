@@ -2,7 +2,7 @@
 layout: post
 title: Site Launch | Hello, World!
 subtitle: The hub for my tutorial and gamedev content
-bigimg: /img/hello-world.png
+bigimg: /img/hello-world.jpg
 tags: [intro]
 nice-slug: Hello World
 date: 2019-04-20
