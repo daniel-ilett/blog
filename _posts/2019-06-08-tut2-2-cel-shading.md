@@ -2,7 +2,7 @@
 layout: post
 title: Cel Shading | Part 2 - Cel-shaded Lighting
 subtitle: Removing the smooth gradient lighting
-bigimg: /img/tut2/part2-banner.png
+bigimg: /img/tut2/part2-banner.jpg
 gh-repo: daniel-ilett/cel-shading
 gh-badge: [star, fork, follow]
 tags: [shaders, unity, lighting, cel-shading]
@@ -105,7 +105,7 @@ You'll see I've kept the same `diffuse` calculation, but I've used it to calcula
 
 You should now have a very small lighting falloff that gives our object a less harsh transition from light to dark. It's fully controllable from the material in the Inspector. Beware that large values for the `_Antialiasing` variable (called `Band smoothing` in the Inspector) look atrocious, so keep it low!
 
-![Smooth Falloff Surf](/img/tut2/part2-cel-shaded-falloff-surf.png){: .center-image }
+![Smooth Falloff Surf](/img/tut2/part2-cel-shaded-falloff-surf.jpg){: .center-image }
 
 ## Specular lighting
 
@@ -156,7 +156,7 @@ float3 col = s.Albedo * ((diffuseSmooth + specularSmooth) * _LightColor0 + unity
 return float4(col, s.Alpha);
 ~~~
 
-![Specular Surf](/img/tut2/part2-cel-shaded-surf.png){: .center-image }
+![Specular Surf](/img/tut2/part2-cel-shaded-surf.jpg){: .center-image }
 
 <hr/>
 
@@ -219,7 +219,7 @@ fixed4 frag (v2f i) : SV_Target
 
 With that, you should see a cel-shaded object like the surface shader version.
 
-![Specular Frag](/img/tut2/part2-cel-shaded-frag.png){: .center-image }
+![Specular Frag](/img/tut2/part2-cel-shaded-frag.jpg){: .center-image }
 
 <hr/>
 

@@ -2,7 +2,7 @@
 layout: post
 title: Cel Shading | Part 0 - Lighting Models
 subtitle: Exploring a range of lighting models
-bigimg: /img/tut2/part0-banner.png
+bigimg: /img/tut2/part0-banner.jpg
 gh-repo: daniel-ilett/cel-shading
 gh-badge: [star, fork, follow]
 tags: [shaders, unity, lighting, cel-shading, primer]
@@ -19,7 +19,7 @@ Before Phong shading, we had Gouraud shading - lighting calculations were made o
 
 Here is a diagram of the vectors associated with Phong lighting calculations - we'll explore each one in more detail.
 
-![Lighting vectors](/img/tut2/part0-lighting-model.png){: .center-image }
+![Lighting vectors](/img/tut2/part0-lighting-model.jpg){: .center-image }
 
 ## Ambient Light
 
@@ -35,7 +35,7 @@ $$
 
 If you imagine a surface that is perfectly matte, not shiny, then this is what `diffuse light` looks like: the amount of light is dependent only on the angle between the surface and the light rays. A light source could be a lamp or the Sun, and throughout the series we'll consider a singular Unity directional light which mimics the Sun. Lighting is additive, so if you had a scene with multiple lights shining directly on a surface, you'd add up the lighting contributions of all those lights. In fact, the light source doesn't have to be direct; some ray-tracers use the same calculations as Phong shading, but the incoming light rays could be indirect light bounces from another object.
 
-![Diffuse Light](/img/tut2/part1-diffuse-model.png){: .center-image }
+![Diffuse Light](/img/tut2/part1-diffuse-model.jpg){: .center-image }
 
 In practice, to calculate the amount of light incident on an object's surface, we use the `dot product`. In linear algebra, the dot product of two `vectors` is proportional to the angle between them.
 
@@ -61,7 +61,7 @@ $$
 
 Now think about shiny surfaces. Matte surfaces exist when there are micro-bumps and imperfections on the surface - it is not a perfectly smooth surface, so there is a large amount of light scattering in all directions. No matter what the angle between the viewer (a person's eyes or a camera) and the surface, there is a uniform amount of light reflecting directly from the light source, off the surface, and into the viewer. On a shiny surface, there is little to no scattering, so almost all the light incident on the surface is reflected in the same direction. When a viewer is positioned in that direction, they will see a bright highlight on the surface. This is `specular light`.
 
-![Specular Light](/img/tut2/part2-specular-model.png){: .center-image }
+![Specular Light](/img/tut2/part2-specular-model.jpg){: .center-image }
 
 We perform another dot product using a different pair of vectors. The first is the normal vector, as before. The second is called the `half-vector`, which is the mean average of the light ray direction and the view direction.
 
