@@ -2,7 +2,7 @@
 layout: post
 title: Image Effects | Part 4 - Edgy Talk
 subtitle: Calculating image gradients and drawing some edges
-bigimg: /img/tut1/part4-banner.png
+bigimg: /img/tut1/part4-banner.jpg
 gh-repo: daniel-ilett/smo-shaders
 gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, edge-detect, neon, bloom]
@@ -15,7 +15,7 @@ Detecting edges in images allows developers to write cartoon shaders to boldly o
 
 <hr/>
 
-![Line Drawing](/img/tut1/part4-edge-detect.png)
+![Line Drawing](/img/tut1/part4-edge-detect.jpg)
 
 # Line Drawing
 
@@ -65,7 +65,7 @@ y += tex2D(_MainTex, uv + float2( texelSize.x,  texelSize.y)) *  1.0;
 
 If you look over the values, you'll see they correspond to the kernel calculations, but I've missed out the parts of the calculation where the kernel value is zero. Run the shader now, and you should see some lovely edge detection! I'd suggest that if you intend to use this effect in a game as-is, then consider turning off shadows, because they'll also be edge-detected and could look strange. Alternatively, use that as your aesthetic - be creative!
 
-![Edge Detection](/img/tut1/part4-scene-edge-detect.png)
+![Edge Detection](/img/tut1/part4-scene-edge-detect.jpg)
 
 You'll also notice the `sqrt()` function that we use at the end - it's short for 'square root', as you'd expect. This line is just doing Pythagoras' Theorem on the independent horizontal and vertical gradients to get the overall gradient magnitude, and therefore the 'edginess' of the pixel.
 
@@ -77,7 +77,7 @@ If you wanted it to look more like the Line Drawing effect in Super Mario Odysse
 
 <hr/>
 
-![Neon](/img/tut1/part4-neon.png)
+![Neon](/img/tut1/part4-neon.jpg)
 
 # Neon
 
@@ -127,7 +127,7 @@ return float4(col * s, 1.0);
 
 Run the shader now, and the neon colours should pop! The conversion makes pixels that were near greyscale look much more colourful than before, so the whole scene might look very different to what you were expecting.
 
-![Neon](/img/tut1/part4-scene-neon.png){: .center-image }
+![Neon](/img/tut1/part4-scene-neon.jpg){: .center-image }
 
 The neon effect looks great, but we would usually expect such an effect to glow, especially the brightest parts of the image. We can do that by implementing another step on top of what we've done so far - let's discuss a simplified bloom shader.
 
@@ -310,13 +310,13 @@ RenderTexture.ReleaseTemporary(blurTex);
 
 Now run the shader - it's the bloom we've been seeking all this time! We opted to write a cheap blur effect because we really don't need the highest fidelity, nor are we paying particular attention to HDR (High Dynamic Range) rendering in this example, but if you'd like to iterate on this design and create a better bloom effect, there are [plenty of resources](https://catlikecoding.com/unity/tutorials/advanced-rendering/bloom/) to take a look at. Good luck if you attempt something cool!
 
-![Bloom](/img/tut1/part4-scene-bloom.png){: .center-image }
+![Bloom](/img/tut1/part4-scene-bloom.jpg){: .center-image }
 
 ## Multiple image effects
 
 We haven't yet discussed how to run multiple image effects at once, but it's simple - just attach multiple image effect scripts to your main camera and add the shaders you wish to run to those components. The image effects will run in order from top to bottom, so do make sure the effects are listed in the correct order! To complete our Neon Bloom effect, add an `ImageEffectBase` script with the `Neon` shader attached, then add an `ImageEffectBloom` script below it and attach the `Bloom` shader. Now our effect is looking just the way we'd like it!
 
-![Neon Bloom](/img/tut1/part4-scene-neon-bloom.png){: .center-image }
+![Neon Bloom](/img/tut1/part4-scene-neon-bloom.jpg){: .center-image }
 
 <hr/>
 

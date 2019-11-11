@@ -2,7 +2,7 @@
 layout: post
 title: Image Effects | Part 1 - Colour Transforms
 subtitle: Emulating Odyssey's Greyscale and Sepia Tone effects in Unity
-bigimg: /img/tut1/part1-banner.png
+bigimg: /img/tut1/part1-banner.jpg
 gh-repo: daniel-ilett/smo-shaders
 gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, greyscale, sepia]
@@ -15,7 +15,7 @@ This tutorial discusses two simple effects seen in Snapshot Mode - Greyscale and
 
 <hr/>
 
-![Greyscale Filter](/img/tut1/part1-greyscale.png)
+![Greyscale Filter](/img/tut1/part1-greyscale.jpg)
 
 # Greyscale Filter
 
@@ -48,7 +48,7 @@ If you followed the shader primer, you'll notice the struct passed into this fra
 
 <hr/>
 
-![Sepia-tone Filter](/img/tut1/part1-sepia.png)
+![Sepia-tone Filter](/img/tut1/part1-sepia.jpg)
 
 # Sepia Tone Filter
 

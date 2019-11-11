@@ -2,7 +2,7 @@
 layout: post
 title: Image Effects | Series Introduction
 subtitle: The shaders used in Super Mario Odyssey's Snapshot Mode
-bigimg: /img/tut1/intro-banner.png
+bigimg: /img/tut1/intro-banner.jpg
 gh-repo: daniel-ilett/smo-shaders
 gh-badge: [star, fork, follow]
 tags: [shaders, unity, image-effects, intro]
