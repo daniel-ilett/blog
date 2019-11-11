@@ -2,7 +2,7 @@
 layout: post
 title: Unity Tips | Part 2 - Coroutines
 subtitle: Suspend execution over multiple frames
-bigimg: /img/unity-tips/part2-banner.png
+bigimg: /img/unity-tips/part2-banner.jpg
 tags: [unity, unity-tips, coroutines, concurrency]
 nice-slug: Coroutines
 date: 2019-08-20

@@ -2,7 +2,7 @@
 layout: post
 title: Ultra Effects | Part 1 - Something Fishy
 subtitle: Emulating wide-angle lenses using UVs
-bigimg: /img/tut3/part1-banner.png
+bigimg: /img/tut3/part1-banner.jpg
 gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, fish-eye, lens, uvs]
@@ -42,7 +42,7 @@ Each shader has a corresponding script that includes Inspector-accessible variab
 
 This tutorial assumes you have a little knowledge of shader syntax. For a low-down on how shaders work, check out the [first shader series](https://danielilett.com/2019-04-24-tut1-intro-smo/) - particularly the [shader primer](https://danielilett.com/2019-04-27-tut1-0-smo-shader-basics/). The shader uses a lot of standard shader code: the `appdata` and `v2f` structs and the vertex shader are basic Unity image effect shader parts. We're going to add **barrel distortion** in the fragment shader in order to convert the original image into a "fisheye-like" image - it's named as such because straight lines tend to curve away from the centre, as do the sides of a barrel.
 
-![Barrels](/img/tut3/part1-barrels.png){: .center-image }
+![Barrels](/img/tut3/part1-barrels.jpg){: .center-image }
 
 For the shader, we'll add a `_BarrelPower` variable to **Properties** and include it in the shader code. The following shader code is found at **Resources/Shaders/Fisheye.shader**.
 
@@ -175,7 +175,7 @@ public class ImageEffect : MonoBehaviour
 
 This script is essentially a wrapper around the assets we just created. Drag this script onto the camera and drag an effect onto the `effect` field in the **Inspector** and hit that play button. With a `pow` value of 2, you should see something similar to the screenshot below.
 
-![Fisheye Effect](/img/tut3/part1-fisheye-complete.png){: .center-image }
+![Fisheye Effect](/img/tut3/part1-fisheye-complete.jpg){: .center-image }
 
 <hr/>
 

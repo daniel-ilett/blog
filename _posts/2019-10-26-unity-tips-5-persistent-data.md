@@ -2,7 +2,7 @@
 layout: post
 title: Unity Tips | Part 5 - Persistent Data
 subtitle: Saving data between game sessions
-bigimg: /img/unity-tips/part5-banner.png
+bigimg: /img/unity-tips/part5-banner.jpg
 tags: [unity, unity-tips, scriptable-objects, monobehaviour]
 nice-slug: Persistent Data
 date: 2019-10-26

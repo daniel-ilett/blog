@@ -2,7 +2,7 @@
 layout: post
 title: Ultra Effects | Part 4 - The Next Dimension
 subtitle: Fully-featured 3D with glasses!
-bigimg: /img/tut3/part4-banner.png
+bigimg: /img/tut3/part4-banner.jpg
 gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, 3d, anaglyph]
@@ -113,11 +113,11 @@ return col;
 
 Our shader is complete! If we create an `Anaglyph` effect asset and give it a strength of 0.5, you'll get an output similar to this:
 
-![UV Anaglyph](/img/tut3/part4-uv-anaglyph.png){: .center-image }
+![UV Anaglyph](/img/tut3/part4-uv-anaglyph.jpg){: .center-image }
 
 The effect works, although there are some problems involving colours bleeding between each eye. Since we're just moving image UVs horizontally, the effect is more like an approximation than a true anaglyph - the real thing relies on angling two viewpoints so this version will always be slightly incorrect, although it is efficient since the screen only needs to be rendered once. Results may vary depending on the glasses you're using - but this effect can be improved a little.
 
-![Red-blue 3D Glasses](/img/tut3/part4-3d-glasses.png){: .center-image }
+![Red-blue 3D Glasses](/img/tut3/part4-3d-glasses.jpg){: .center-image }
 
 <hr/>
 
@@ -228,7 +228,7 @@ RenderTexture.ReleaseTemporary(rightTexture);
 
 Our effect should be complete now! Let's see what it looks like.
 
-![Camera Anaglyph](/img/tut3/part4-camera-anaglyph.png){: .center-image }
+![Camera Anaglyph](/img/tut3/part4-camera-anaglyph.jpg){: .center-image }
 
 <hr/>
 

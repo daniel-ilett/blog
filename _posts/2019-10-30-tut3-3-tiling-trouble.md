@@ -2,7 +2,7 @@
 layout: post
 title: Ultra Effects | Part 3 - Tiling Trouble
 subtitle: Pixelating and overlaying textures
-bigimg: /img/tut3/part3-banner.png
+bigimg: /img/tut3/part3-banner.jpg
 gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, tiling, textures]
@@ -71,7 +71,7 @@ Graphics.Blit(tmp, dst, baseMaterial);
 
 That's it for `Render`. Now, let's assume `baseMaterial` doesn't modify anything and you'll see screen output like this:
 
-![Pixelated Image](/img/tut3/part3-pixelation.png){: .center-image }
+![Pixelated Image](/img/tut3/part3-pixelation.jpg){: .center-image }
 
 <hr/>
 
@@ -133,7 +133,7 @@ col = lerp(col, overlayCol, overlayCol.a);
 
 Our shader is now complete! But we're going to have to return to the script because we haven't finished hooking up all our script variables to the shader. With an `xTileCount` of 75 set on our `MosaicEffect` asset, the overlay will still tile using the default values of 100 in both directions.
 
-![Overlay Incorrect](/img/tut3/part3-overlay-wrong.png){: .center-image }
+![Overlay Incorrect](/img/tut3/part3-overlay-wrong.jpg){: .center-image }
 
 ## Putting things in place
 
@@ -165,11 +165,11 @@ public override void OnCreate()
 
 It takes the same format as the other `XYZEffect.cs` scripts. We pass in the x- and y-tiling factors for the overlay texture because the alternative is passing in the screen height and calculating the y-tiling amount inside the **fragment shader**, which is less efficient (the y-resolution of the pixelated image snaps to an integer, so we need to do extra calculations here to make sure the overlay image UVs also snap to an 'integer'). In a real-world scenario, you would recalculate the `_YTileCount` whenever the screen is resized, but we'll skip that for simplicity. Now, when you run the shader you'll see the overlay matches exactly with the pixelated image.
 
-![Overlay Complete](/img/tut3/part3-mosaic-complete.png){: .center-image }
+![Overlay Complete](/img/tut3/part3-mosaic-complete.jpg){: .center-image }
 
 Looking at the scene using a smaller tile count and at a different angle, you'll get different results:
 
-![Overlay Small](/img/tut3/part3-mosaic-complete-small.png){: .center-image }
+![Overlay Small](/img/tut3/part3-mosaic-complete-small.jpg){: .center-image }
 
 <hr/>
 

@@ -2,7 +2,7 @@
 layout: post
 title: Unity Tips | Part 1 - Garbage Collection
 subtitle: Avoid interruptions to your game’s execution
-bigimg: /img/unity-tips/part1-banner.png
+bigimg: /img/unity-tips/part1-banner.jpg
 tags: [unity, unity-tips, garbage-collection, optimisation, performance]
 nice-slug: Garbage Collection
 date: 2019-08-05

@@ -2,7 +2,7 @@
 layout: post
 title: Ultra Effects | Part 2 - Sinking Feeling
 subtitle: Animating the scene with waves
-bigimg: /img/tut3/part2-banner.png
+bigimg: /img/tut3/part2-banner.jpg
 gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, underwater, normals, uvs]
@@ -34,7 +34,7 @@ Please download the project repository from [GitHub](https://github.com/daniel-i
 
 In scientific fluid simulations, it's common to describe a flow pattern as a series of **flow vectors** at discrete points so that an approximation algorithm can be run. We will be doing a similar thing; our simulation takes place on a 2D grid of pixels, so it makes sense for our "flow pattern" to be encoded as part of a 2D texture. We even have a well-understood and widely-used method for capturing vectors inside a 2D texture: a **normal map**! Normal maps are usually used to add lighting detail to models without the need for fine model geometry, and we can exploit Unity's built-in functions to encode and decode a flow pattern within a shader using the same functionality. Here is an example normal map - the one we will use for this effect, based on a tiled Perlin noise generator:
 
-![Normal Map](/img/tut3/part2-normal-tex.png){: .center-image }
+![Normal Map](/img/tut3/part2-normal-tex.jpg){: .center-image }
 
 Note that it's important that your normal texture is tileable so that the effect doesn't encounter jarring inaccuracies partway through. For the shader found at **Resources/Shaders/Underwater.shader**, the vertex shader and structs are standard, and we'll modify the fragment shader. We're going to accept a texture to act as our **normal map** (also known as a **bump map**).
 
@@ -79,7 +79,7 @@ return col;
 
 At this stage, we obtain an image like the one below.
 
-![Waves](/img/tut3/part2-waves.png){: .center-image }
+![Waves](/img/tut3/part2-waves.jpg){: .center-image }
 
 <hr/>
 
@@ -120,7 +120,7 @@ col = lerp(col, _WaterColour, depth * _FogStrength);
 
 Now, the output of the fragment shader looks a lot more like this:
 
-![Waves Complete](/img/tut3/part2-waves-complete.png){: .center-image }
+![Waves Complete](/img/tut3/part2-waves-complete.jpg){: .center-image }
 
 <hr/>
 
@@ -156,7 +156,7 @@ With this script in action - you can see the full script at **Scripts/Image Effe
 
 With a little creativity, we can create an effect that's not strictly to do with being underwater. If you'd like to create a hellish effect, you could turn the 'water colour' red and turn down the wave overlay strength a little to simulate a heat haze. This effect is included under **Effects/Hell.asset**.
 
-![Hell waves](/img/tut3/part2-waves-hell.png){: .center-image }
+![Hell waves](/img/tut3/part2-waves-hell.jpg){: .center-image }
 
 <hr/>
 
@@ -209,7 +209,7 @@ public class CompositeEffect : BaseEffect
 
 Here's the entire class definition. Its `OnCreate` method initialises each of the sub-effects, and the `Render` method evaluates each effect in turn by creating two temporary textures and constantly swapping between the two. This means we can create arbitrary composite effects in the Editor and add as many effects - even multiple of the same type of effect - to the effects list. This is what a hybrid underwater-fisheye effect looks like - note that the order of operations does matter so the underwater effect is applied first in this case.
 
-![Composite Effects](/img/tut3/part2-underwater-fisheye.png){: .center-image }
+![Composite Effects](/img/tut3/part2-underwater-fisheye.jpg){: .center-image }
 
 <hr/>
 

@@ -2,7 +2,7 @@
 layout: post
 title: Unity Tips | Part 4 - Scriptable Objects
 subtitle: Creating assets from behaviour in Unity
-bigimg: /img/unity-tips/part4-banner.png
+bigimg: /img/unity-tips/part4-banner.jpg
 tags: [unity, unity-tips, scriptable-objects, monobehaviour]
 nice-slug: Scriptable Objects
 date: 2019-10-07
@@ -43,11 +43,11 @@ You may use a scriptable object to store data at runtime like this, but you’d 
 public class NewSO : ScriptableObject
 ~~~
 
-![Create scriptable object](/img/unity-tips/part4-create-new-so.png){: .center-image }
+![Create scriptable object](/img/unity-tips/part4-create-new-so.jpg){: .center-image }
 
 The menu is available by right-clicking in the **Project view** or using the **Assets->Create** menu on the toolbar. You can tweak the location of the option using the `menuName` and `order` variables, and the default name of the resulting asset file using the `fileName` variable. The result will be a new object in the Project view in whichever folder is active.
 
-![New scriptable object](/img/unity-tips/part4-so-inspector.png){: .center-image }
+![New scriptable object](/img/unity-tips/part4-so-inspector.jpg){: .center-image }
 
 Let's look at a few ways we can use this powerful tool to overhaul our projects.
 
@@ -135,7 +135,7 @@ private void Update()
 
 Finally, we shall create the new `IntVariable` asset to store health by right-clicking the Project View and selecting it from the menu under **Variables/Int**. In the Inspector, you would drag this asset onto the `health` variable on a `Player` component so that it can write to the asset, and onto the `playerHealth` variable of a `PlayerUI` component that will read the asset.
 
-![IntVariable](/img/unity-tips/part4-intvariable-so.png){: .center-image }
+![IntVariable](/img/unity-tips/part4-intvariable-so.jpg){: .center-image }
 
 Let’s evaluate the changes we’ve made. `Player` and `PlayerUI` are now decoupled, with a layer of separation between them. A significant change to the way `Player` handles health requires no change to the way `PlayerUI` reads health. Furthermore, this is more designer friendly. If the designer needs to tweak the initial value for the player’s health, they can find the corresponding asset rather than having to deal with a `Player` prefab, assuming the project directory is structured well.
 
@@ -386,7 +386,7 @@ To properly reference the inventory, include a public variable on any class that
 
 There’s a couple other tips and comments I have that don’t really belong in the other sections of this article. Firstly, a good rule of thumb I’ve heard is to use scriptable objects only for things that could be changed at design time – much of the article so far has discussed these cases. Where you need to store complex data structures at runtime, you would be better served by using `struct`s or traditional class that don’t inherit from `ScriptableObject` or `MonoBehaviour`.
 
-Secondly, it’s possible to design custom gizmo icons for your custom scriptable object asset types. Save a file with the syntax \[Class name\]\[single space\]\[“icon”\]\[.png/.tif\] inside a folder named “Gizmos” at the root of your project’s **Assets** folder. For example, the InventorySystem asset type would have a custom icon saved under **“Gizmos/InventorySystem icon.png”** which would turn the icon for every `InventorySystem` asset inside the Project View into that icon.
+Secondly, it’s possible to design custom gizmo icons for your custom scriptable object asset types. Save a file with the syntax \[Class name\]\[single space\]\[“icon”\]\[.jpg/.tif\] inside a folder named “Gizmos” at the root of your project’s **Assets** folder. For example, the InventorySystem asset type would have a custom icon saved under **“Gizmos/InventorySystem icon.jpg”** which would turn the icon for every `InventorySystem` asset inside the Project View into that icon.
 
 <hr/>
 
