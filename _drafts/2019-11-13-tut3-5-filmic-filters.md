@@ -21,7 +21,13 @@ Several games could be described as 'cinematic'. Usually, that means heavy appli
 
 # Imperfect Film
 
-![Film Grain](/img/tut3/part5-film-grain.jpg){: .center-image }
+Before the age of digital film, each frame of a motion picture was captured on sections of a physical photographic film strip. The strip was coated with a thin emulsion containing **silver halide** crystals, which, alongside special dyes, react to light and form the image to be projected. It is those crystals and their varying sizes and distribution across the emulsion layer that cause **film grain** - the appearance of noise and texture on the base image. They also influence the image resolution. In digital photography, these artefacts no longer appear, although they can be digitally recreated and simulated - for some, a generated film grain effect is preferable to a "sterile" digital image.
+
+In this tutorial, we'll create our own noise to overlay on our images. While we could slap any noise function on the image and call it a day, we'll pay special attention to **Perlin noise**. 
+
+## Perlin Noise
+
+
 
 ![Film Grain](/img/tut3/part5-film-grain-anim.gif){: .center-image }
 
