@@ -21,7 +21,15 @@ Several games could be described as 'cinematic'. Usually, that means heavy appli
 
 # Imperfect Film
 
+![Film Grain](/img/tut3/part5-film-grain.jpg){: .center-image }
 
+![Film Grain](/img/tut3/part5-film-grain-anim.gif){: .center-image }
+
+![Film Bars](/img/tut3/part5-film-grain-bars.jpg){: .center-image }
+
+![Greyscale Film](/img/tut3/part5-film-greyscale.jpg){: .center-image }
+
+![Sepia Film](/img/tut3/part5-film-sepia.jpg){: .center-image }
 
 # Acknowledgements
 
