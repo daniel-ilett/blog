@@ -27,7 +27,32 @@ In this tutorial, we'll create our own noise to overlay on our images. While we 
 
 ## Perlin Noise
 
+When Ken Perlin was tasked with procedurally generating textures for the sci-fi movie *Tron*, he came up with a noise algorithm that would lead to him winning an Academy Award for contributions to CGI - that algorithm was **Perlin Noise**. The algorthm generates a grid of random vectors and then does some fancy stuff to end up with a smooth cloud-like texture. We'll step through the algorithm in detail while implementing it inside a shader.
 
+Let's kick of straight away with the shader, found at *Resources/Shaders/Cinematic.shader*. We'll need a handful of properties to start off with.
+
+~~~glsl
+_MainTex ("Texture", 2D) = "white" {}
+_Strength("Noise Strength", Float) = 0.1
+_Aspect("Aspect Ratio", Float) = 1.777
+~~~
+
+As with all image effects, we'll need `_MainTex`. On top of that, we'll have a _Strength property to control the amount of **film grain**, plus an `_Aspect` property to control the desired **aspect ratio** of the screen - we'll add black film bars above and below the screen to make the image fit this aspect ratio. It's represented as a decimal - here, the widescreen standard 16:9 aspect ratio is equal to 1.777 as a decimal.
+
+The next thing we'll need is a function to generate random numbers. There's no point in reinventing the wheel here - there's a [pseudorandom function](https://stackoverflow.com/questions/12964279/whats-the-origin-of-this-glsl-rand-one-liner) commonly used in shaders with a handful of variations, so we'll use that. This function collapses a 2D value into a single number - that's ideal for us.
+
+The one change I'm making to this function is to implement a time-sensitive component, as we'll need our film grain to change each frame. Unity provides a built-in `_Time` variable which includes the time since the game started in four different formats: t/20, t, 2t and 3t. `_Time.y` will give us unscaled time.
+
+~~~glsl
+// Generate time-sensitive random numbers.
+float rand(float2 st)
+{
+    return frac(sin(dot(st + float2(_Time.y, _Time.y), 
+        float2(12.9898f, 78.233f))) * 43758.5453123f);
+}
+~~~
+
+Now let's talk about the Perlin noise function in an abstract sense. 
 
 ![Film Grain](/img/tut3/part5-film-grain-anim.gif){: .center-image }
 
