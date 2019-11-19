@@ -25,9 +25,12 @@ Before the age of digital film, each frame of a motion picture was captured on s
 
 In this tutorial, we'll create our own noise to overlay on our images. While we could slap any noise function on the image and call it a day, we'll pay special attention to **Perlin noise**. 
 
+{: .box-note}
+Please download the project repository from [GitHub](https://github.com/daniel-ilett/image-ultra) if you'd like to follow along!
+
 ## Perlin Noise
 
-When Ken Perlin was tasked with procedurally generating textures for the sci-fi movie *Tron*, he came up with a noise algorithm that would lead to him winning an Academy Award for contributions to CGI - that algorithm was **Perlin Noise**. The algorthm generates a grid of random vectors and then does some fancy stuff to end up with a smooth cloud-like texture. We'll step through the algorithm in detail while implementing it inside a shader.
+When Ken Perlin was tasked with procedurally generating textures for the sci-fi movie *Tron*, he came up with a noise algorithm that would lead to him winning an Academy Award for contributions to CGI - that algorithm was **Perlin Noise**. The algorithm generates a grid of random vectors and then does some fancy stuff to end up with a smooth cloud-like texture. We'll step through the algorithm in detail while implementing it inside a shader.
 
 Let's kick off straight away with the shader, found at *Resources/Shaders/Cinematic.shader*. We'll need a handful of properties for the effect.
 
@@ -178,7 +181,7 @@ public class CinematicEffect : BaseEffect
 }
 ~~~
 
-As with many of the previous scripts, it just plugs in the values we'll need for the shader properties and performs a basic `Graphics.Blit` using the shader. Let's see it animated with a `strength` value of roughly 0.2. The GIF compression will make the effect look a little more grainy than running it on your own.
+As with many of the previous scripts, it just plugs in the values we'll need for the shader properties and performs a basic `Graphics.Blit` using the shader. Let's see it animated with a `strength` value of roughly 0.2. The GIF compression will make the effect look a little grainier than running it on your own.
 
 ![Film Grain](/img/tut3/part5-film-grain-anim.gif){: .center-image }
 
@@ -188,7 +191,7 @@ As with many of the previous scripts, it just plugs in the values we'll need for
 
 Aside from film grain, the other notable effect that 'cinematic' games like to add is black bars at the top and bottom of the screen to force the viewport into a different aspect ratio. It was widely used back when screens had an aspect ratio of 4:3 to force cutscenes into a widescreen aspect ratio such as 16:9, but now that almost every screen is now widescreen it's mostly fallen out of use. We'll still add the functionality in case someone wants a ridiculous aspect ratio of 32:9 or something.
 
-It's really simple to do this. We'll calculate the actual aspect ratio of the screen and compare with the desired aspect passed in via the `_Aspect` property, returning 0 or 1 depending on whether the pixel would end up inside the black region (0 if it is inside, 1 if the original image should be retained). This value is used to multiply the returned colour value. Let's return to the fragment shader - after calculating the Perlin value we will modify it:
+We'll calculate the actual aspect ratio of the screen and compare with the desired aspect passed in via the `_Aspect` property, returning 0 or 1 depending on whether the pixel would end up inside the black region (0 if it is inside, 1 if the original image should be retained). This value is used to multiply the returned colour value. Let's return to the fragment shader - after calculating the Perlin value we will modify it:
 
 ~~~glsl
 // Calculate cinematic bars.
@@ -245,7 +248,7 @@ I've created a composite effect in the *Effects* folder called **Old Filmic**, w
 
 ![Greyscale Film](/img/tut3/part5-film-greyscale.jpg){: .center-image }
 
-Let's also look at the Sepia-tone effect. The script is almost identical, so I won't paste it here. The shader does something slightly different to the Greyscale effect - it still uses the relative sensitivity of the eye to each colour component in its calculation, but they don't all feed into a single value - the output red is influenced by different degrees by the input RGB than the output green, and so on. That means we'll have a **3x3 matrix** of values rather than a 3-element vector.
+Let's also look at the **Sepia-tone** effect. The script is almost identical, so I won't paste it here. The shader does something slightly different to the **Greyscale** effect - it still uses the relative sensitivity of the eye to each colour component in its calculation, but they don't all feed into a single value - the output red is influenced by different degrees by the input RGB than the output green, and so on. That means we'll have a **3x3 matrix** of values rather than a 3-element vector.
 
 ~~~glsl
 fixed4 frag (v2f i) : SV_Target
