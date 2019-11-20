@@ -7,7 +7,7 @@ gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, filmic, cinematic, noise]
 nice-slug: Filmic Filters
-date: 2019-11-13
+date: 2019-11-20
 idnum: 28
 ---
 
