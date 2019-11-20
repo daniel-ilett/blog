@@ -272,6 +272,10 @@ When used in the **Old Filmic** composite effect, the screen looks like this:
 
 ![Sepia Film](/img/tut3/part5-film-sepia.jpg){: .center-image }
 
+# Conclusion
+
+Adding a film grain effect to your scene can make it look softer – many people like the appearance of film stock over digital film, as the latter can look sterile and artificial. For that reason, film grain is sometimes digitally simulated, as we have done today. For a more ‘filmic’ look, we can also add film bars and change the colour of the video. In the next tutorial, we will play around with individual **colour channels** and create a **chromatic aberration** effect.
+
 # Acknowledgements
 
 I'd like to thank my Patreon supporters for making this content possible. [Become a Patron](https://www.patreon.com/danielilett) for $1+ to receive PDF versions of all articles, or $5+ to get certain articles early!
