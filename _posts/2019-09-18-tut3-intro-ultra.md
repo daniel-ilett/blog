@@ -23,9 +23,7 @@ The posting schedule for this series is as follows:
 **Part 3**: Tiling Trouble | [Out now!](https://danielilett.com/2019-10-30-tut3-3-tiling-trouble/) | `Mosaic`
 **Part 4**: The Next Dimension | [Out now!](https://danielilett.com/2019-11-05-tut3-4-next-dimension/) | `Anaglyph 3D`
 **Part 5**: Filmic Filters | [Out now!](https://danielilett.com/2019-11-20-tut3-5-filmic-filters/) | `Cinematic`
-**Part 6**: Chromatic Course | **27th November** | `Invert`, `Channel Separation`
-
-This schedule is fluid - it will change as I develop more effects. I will aim for regular Wednesday uploads.
+**Part 6**: Chromatic Course | [Out now!](https://danielilett.com/2019-11-26-tut3-6-chromatic-course/) | `Chromatic Aberration`
 
 As always, there is a [GitHub repository](https://github.com/daniel-ilett/image-ultra) for the series. Feel free to poke around while development is ongoing.
 
