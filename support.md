@@ -22,9 +22,20 @@ I'm supported by kind people like you! I'd like to keep this site ad-free and I 
 If the idea of pledging money each month is off-putting for you, **Ko-fi** lets you give a one-off tip to the creators you want to support! Better still, **Ko-fi** takes *zero percent* of your pledge, unlike **Patreon**, which has platform fees. I'll use **Ko-fi** in a similar way to my **Patreon**: you'll get a small number of articles early and exclusive PDF copies of articles. All articles will make their way onto [danielilett.com](https://danielilett.com/).
 
 <div markdown="0">
+    <script type='text/javascript' src='https://ko-fi.com/widgets/CounterWidget.js'>
+    </script>
+    <script type='text/javascript'>
+        counterwidget.init('M4M2190VC');
+        counterwidget.draw();
+    </script>
+</div>
+
+<!--
+<div markdown="0">
     <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
     <script type='text/javascript'>
         kofiwidget2.init('Support Me on Ko-fi', '#3828e0', 'danielilett');
         kofiwidget2.draw();
     </script>
 </div>
+-->

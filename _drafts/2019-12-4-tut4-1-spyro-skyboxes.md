@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Portals | Part 1 - Spyro Skyboxes
-subtitle: 
+subtitle: Have you never seen a dragon before?
 bigimg: /img/tut4/part1-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, spyro, skybox]
 nice-slug: Spyro Skyboxes
-date: 2019-12-01
+date: 2019-12-04
 idnum: 31
 ---
 
@@ -203,6 +203,12 @@ All that's left to do is to swap the two materials once we've walked through the
 ![Finished Portal](/img/tut4/part1-spyro-complete.gif){: .center-image }
 
 <hr/>
+
+# Conclusion
+
+The portals in *Spyro* are purely aesthetic and serve as a good starting point for thinking about portals in games. The portal effect can be achieved by using a cubemap texture, a technology used to capture a 360-degree view of a scene, attached to the portal surface. It is then swapped when the player travels through the portal.
+
+In the next tutorial, we're going to move on to portals that capture the appearence of real world geometry "inside" the portal, focusing purely on non-recursive portals (i.e. portals where you won't see a portal inside a portal).
 
 # Acknowledgements
 
