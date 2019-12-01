@@ -6,7 +6,7 @@ gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, intro]
 nice-slug: Portals Series
-date: 2019-11-30
+date: 2019-12-01
 idnum: 30
 ---
 
@@ -18,14 +18,12 @@ This series will explore several complicated concepts: shaders, physics, maths. 
 
 The posting schedule for this series is as follows:
 
-**Part 1**: Spyro Skyboxes | **Coming December 4th** | `Spyro-style Portals`
-**Part 2**: Portal Rendering | **Coming December 7th** | `Camera Positioning`, `Stencil Rendering`
-**Part 3**: Matrix Matching | **Coming December 11th** | `Oblique Near-Plane Projection`
-**Part 4**: Portal Momentum | **Coming December 14th** | `Physics`
-**Part 5**: Placing Portals | **Coming December 18th** | `Raycasting`, `Rotations`
-**Part 6**: Prettier Portals | **Coming December 21st** | `Particles`, `Heat-haze`, `Dissolve`
-**Part 7**: Portal Recursion | **Coming December 24th** | `Recursion`
-**Part 8**: Light Through Portals | **Coming December 28th** | `Directional Lighting`
+**Part 1**: Spyro Skyboxes | **Coming December 11th** | `Spyro-style Portals`
+**Part 2**: Portal Rendering | **Coming December 14th** | `Camera Positioning`, `Stencil Rendering`
+**Part 3**: Matrix Matching | **Coming December 18th** | `Oblique Near-Plane Projection`
+**Part 4**: Portal Momentum | **Coming December 21st** | `Physics`
+**Part 5**: Placing Portals | **Coming December 24th** | `Raycasting`, `Rotations`
+**Part 6**: Prettier Portals | **Coming December 28th** | `Particles`, `Heat-haze`, `Dissolve`
 
 As always, there is a [GitHub repository](https://github.com/daniel-ilett/shaders-portal) for the series. Feel free to poke around while development is ongoing.
 
@@ -33,7 +31,7 @@ As always, there is a [GitHub repository](https://github.com/daniel-ilett/shader
 
 # Acknowledgements
 
-I'd like to thank my Patreon supporters for making this content possible. [Become a Patron](https://www.patreon.com/danielilett) for $1+ to receive PDF versions of all articles, or $5+ to get certain articles early!
+### Assets
 
 This tutorial series uses the following asset packs from various sources:
 
@@ -41,10 +39,18 @@ This tutorial series uses the following asset packs from various sources:
 ["Robot Sphere"](https://assetstore.unity.com/packages/3d/characters/robots/robot-sphere-136226) | [**Razgrizzz Demon**](https://assetstore.unity.com/publishers/27109)
 ["Low Poly Hand Painted Dungeon Arch"](https://sketchfab.com/3d-models/low-poly-hand-painted-dungeon-arch-0040f94c8efd43639d8010874e4fefb6) | **BitGem**
 
-## $20 Backers
+### Supporters
 
-Special thanks to my $20 backers:
+[Support me on Patreon](https://www.patreon.com/danielilett) or [buy me a coffee on Ko-fi](https://ko-fi.com/danielilett) for PDF versions of each article and to access certain articles early!
 
-- Gemma Louise Ilett
+Special thanks to my Patreon backers:
+
+- Gemma Louise Ilett ($20)
+- Jack Dixon ($5)
+- Christopher Pereira ($1)
+
+And a shout-out to my top Ko-fi supporters:
+
+- Hung Hoang
 
 <hr/>

@@ -7,7 +7,7 @@ gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, spyro, skybox]
 nice-slug: Spyro Skyboxes
-date: 2019-12-04
+date: 2019-12-11
 idnum: 31
 ---
 
@@ -212,7 +212,7 @@ In the next tutorial, we're going to move on to portals that capture the appeare
 
 # Acknowledgements
 
-I'd like to thank my Patreon supporters for making this content possible. [Become a Patron](https://www.patreon.com/danielilett) for $1+ to receive PDF versions of all articles, or $5+ to get certain articles early!
+### Assets
 
 This tutorial series uses the following asset packs from various sources:
 
@@ -220,10 +220,18 @@ This tutorial series uses the following asset packs from various sources:
 ["Robot Sphere"](https://assetstore.unity.com/packages/3d/characters/robots/robot-sphere-136226) | [**Razgrizzz Demon**](https://assetstore.unity.com/publishers/27109)
 ["Low Poly Hand Painted Dungeon Arch"](https://sketchfab.com/3d-models/low-poly-hand-painted-dungeon-arch-0040f94c8efd43639d8010874e4fefb6) | **BitGem**
 
-## $20 Backers
+### Supporters
 
-Special thanks to my $20 backers:
+[Support me on Patreon](https://www.patreon.com/danielilett) or [buy me a coffee on Ko-fi](https://ko-fi.com/danielilett) for PDF versions of each article and to access certain articles early!
 
-- Gemma Louise Ilett
+Special thanks to my Patreon backers:
+
+- Gemma Louise Ilett ($20)
+- Jack Dixon ($5)
+- Christopher Pereira ($1)
+
+And a shout-out to my top Ko-fi supporters:
+
+- Hung Hoang
 
 <hr/>
