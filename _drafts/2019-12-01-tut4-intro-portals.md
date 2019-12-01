@@ -18,12 +18,12 @@ This series will explore several complicated concepts: shaders, physics, maths. 
 
 The posting schedule for this series is as follows:
 
-**Part 1**: Spyro Skyboxes | **Coming December 11th** | `Spyro-style Portals`
-**Part 2**: Portal Rendering | **Coming December 14th** | `Camera Positioning`, `Stencil Rendering`
-**Part 3**: Matrix Matching | **Coming December 18th** | `Oblique Near-Plane Projection`
-**Part 4**: Portal Momentum | **Coming December 21st** | `Physics`
-**Part 5**: Placing Portals | **Coming December 24th** | `Raycasting`, `Rotations`
-**Part 6**: Prettier Portals | **Coming December 28th** | `Particles`, `Heat-haze`, `Dissolve`
+**Part 1**: Spyro Skyboxes | **Dec 11th** | `Spyro-style Portals`
+**Part 2**: Portal Rendering | **Dec 14th** | `Camera Positioning`, `Stencil Rendering`
+**Part 3**: Matrix Matching | **Dec 18th** | `Oblique Near-Plane Projection`
+**Part 4**: Portal Momentum | **Dec 21st** | `Physics`
+**Part 5**: Placing Portals | **Dec 24th** | `Raycasting`, `Rotations`
+**Part 6**: Prettier Portals | **Dec 28th** | `Particles`, `Heat-haze`, `Dissolve`
 
 As always, there is a [GitHub repository](https://github.com/daniel-ilett/shaders-portal) for the series. Feel free to poke around while development is ongoing.
 
