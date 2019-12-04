@@ -12,9 +12,11 @@ idnum: 30
 
 Ever since student project *Narbacular Drop* was adopted by Valve and spun into seminal puzzle-platformer *Portal* in 2007, the idea of mind-bending physics in games has captured the imaginations of players and developers alike; games that have followed it such as *Antichamber* and recent release *Manifold Garden* demonstrate that there is still unexplored space in the "brain-tickling physics" genre. The question I've always asked myself is: how could I create *Portal*'s portals from scratch?
 
-This series will explore several complicated concepts: shaders, physics, maths. *Portal* isn't the only game to feature portals, of course - the first article will act as a taster and will feature a portal effect similar to classic *Spyro* - in those games, portals were, visually, just a glimpse at the skybox of another level. Then, we'll ramp things up and move onto constructing *Portal*-style portals piece by piece, starting with non-recursive portals seen in games like *Manifold Garden* and building up to recursion-based portals, as seen in *Portal*. I'll do my best to explain each step in full.
+![Portal 2](/img/tut4/intro-portals.jpg){: .center-image }
 
-<hr/>
+*Image from Portal 2.*
+
+This series will explore several complicated concepts: shaders, physics, maths. *Portal* isn't the only game to feature portals, of course - the first article will act as a taster and will feature a portal effect similar to classic *Spyro* - in those games, portals were, visually, just a glimpse at the skybox of another level. Then, we'll ramp things up and move onto constructing *Portal*-style portals piece by piece, starting with non-recursive portals seen in games like *Manifold Garden* and building up to recursion-based portals, as seen in *Portal*. I'll do my best to explain each step in full.
 
 The posting schedule for this series is as follows:
 
@@ -24,6 +26,7 @@ The posting schedule for this series is as follows:
 **Part 4**: Portal Momentum | **Dec 21st** | `Physics`
 **Part 5**: Placing Portals | **Dec 24th** | `Raycasting`, `Rotations`
 **Part 6**: Prettier Portals | **Dec 28th** | `Particles`, `Heat-haze`, `Dissolve`
+**Part 7**: Portal Recursion | **Jan 1st** | `Recursion`, `Screenspace Sampling`
 
 As always, there is a [GitHub repository](https://github.com/daniel-ilett/shaders-portal) for the series. Feel free to poke around while development is ongoing.
 
