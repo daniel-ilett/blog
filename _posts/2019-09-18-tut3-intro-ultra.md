@@ -2,6 +2,7 @@
 layout: post
 title: Ultra Effects | Series Introduction
 subtitle: More image effect shaders
+bigimg: /img/tut3/tut3-banner.jpg
 gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, image-effects, ultra-effects, intro]
