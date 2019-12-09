@@ -468,6 +468,12 @@ footer .theme-by {
   margin-top: 51px; /* The small navbar is 50px tall + 1px border */
   margin-bottom: 35px;
 }
+
+.intro-header.big-img .container .row div
+{
+  backdrop-filter: brightness(50%) saturate(135%);
+}
+
 .intro-header.big-img  .big-img-transition {
   position: absolute;
   width: 100%;

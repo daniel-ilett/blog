@@ -2,7 +2,8 @@
 layout: post
 title: Portals | Series Introduction
 subtitle: Space-bending physics
-bigimg: /img/tut4/intro-banner.jpg
+bigimg: /img/tut4/intro-portals.jpg
+hdrimg: /img/tut4/intro-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, intro]

@@ -10,7 +10,9 @@ use-site-title: true
   <article class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
       
-    {% if post.bigimg %}
+    {% if post.hdrimg %}
+      <img src="{{ post.hdrimg }}" class="post-bigimg">
+    {% else if post.bigimg %}
       <img src="{{ post.bigimg }}" class="post-bigimg">
     {% endif %}
 

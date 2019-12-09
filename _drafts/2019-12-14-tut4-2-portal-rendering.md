@@ -90,7 +90,20 @@ Those transformations will put the camera in the correct position. Now, we'll de
 
 # Portal Rendering
 
-We're going to use the **stencil buffer** to render the portal surfaces - we've [discussed the stencil buffer in the past](https://danielilett.com/2019-06-15-tut2-4-edge-outline/) if you'd like to read more about them; they are used for storing special per-pixel **reference values** which allows us to implement impossible geometry inside shaders, amongst other things. A pair of shaders will use the stencil. We'll draw the portal surface mesh initially using a block-colour shader which also writes a reference value to the stencil buffer - a unique value for each portal surface. Then, a second shader will be used to write the images captured by the virtual camera to the screen as part of an image effect. That shader will read the stencil buffer to determine where to draw. Let's look at the shader we'll use for the portal surfaces, found at *Shaders/BasicPortal/PortalMask.shader*.
+We're going to use the **stencil buffer** to render the portal surfaces - we've [discussed the stencil buffer in the past](https://danielilett.com/2019-06-15-tut2-4-edge-outline/) if you'd like to read more about them; they are used for storing special per-pixel **reference values** which allows us to implement impossible geometry inside shaders, amongst other things. A pair of shaders will use the stencil. We'll draw the portal surface mesh initially using a block-colour shader which also writes a reference value to the stencil buffer - a unique value for each portal surface. Then, a second shader will be used to write the images captured by the virtual camera to the screen as part of an image effect. That shader will read the stencil buffer to determine where to draw. Let's look at the shader we'll use for the portal surfaces, found at *Shaders/BasicPortal/PortalMask.shader*. To start off, we'll name the shader `"Portals/PortalMask"` and define two properties: a base colour to fallback to whenever portal rendering is disabled, and an ID.
+
+~~~glsl
+Shader "Portals/PortalMask"
+{
+    Properties
+    {
+        _Colour("Base Colour", Color) = (1, 1, 1, 1)
+		_MaskID("Mask ID", Int) = 1
+    }
+}
+~~~
+
+Much of the rest of this shader is boilerplate code. 
 
 # Conclusion
 
