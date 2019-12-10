@@ -13,7 +13,10 @@
     <meta property="og:description" content="{{ page.subtitle }}" />
   {% endif %}
 
-  {% if page.bigimg %}
+  {% if page.hdrimg %}
+    <meta name="image"        content="{{ site.url }}/{{ page.hdrimg }}" />
+    <meta property="og:image" content="{{ site.url }}/{{ page.hdrimg }}" />
+  {% else if page.bigimg %}
     <meta name="image"        content="{{ site.url }}/{{ page.bigimg }}" />
     <meta property="og:image" content="{{ site.url }}/{{ page.bigimg }}" />
   {% endif %}
