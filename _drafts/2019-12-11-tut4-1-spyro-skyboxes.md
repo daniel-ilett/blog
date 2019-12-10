@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Portals | Part 1 - Spyro Skyboxes
-subtitle: Have you never seen a dragon before?
-bigimg: /img/tut4/part1-banner.jpg
+subtitle: You've never seen a dragon before?
+bigimg: /img/tut4/part1-portal.jpg
+hdrimg: /img/tut4/part1-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, spyro, skybox]
@@ -51,7 +52,7 @@ struct Input
 };
 ~~~
 
-Here, we are saying that our surface function will be named `surf`, we're using a lighting model called `Unlit` (which we will define in a moment), and `noforwardadd` means we don't wish to add per-pixel lights. Now, let's define the `Unlit` lighting model, which will preserve the **albedo** and **alpha** output by the surf function. It's a complicated way of doing nothing. The format for a lighting model in a surface shader is a function named `Lighting<NameOfLightingModel>`, with a `SurfaceOutput` parameter containing data from the surface function and `lightDir` and `atten` parameters containing lighting information we don't care about here.
+Here, we are saying that our surface function will be named `surf`, we're using a lighting model called `Unlit` (which we will define in a moment), and `noforwardadd` means we don't wish to add per-pixel lights. Now, let's define the `Unlit` lighting model, which will preserve the **albedo** and **alpha** output by the `surf` function. It's a complicated way of doing nothing. The format for a lighting model in a surface shader is a function named `Lighting<NameOfLightingModel>`, with a `SurfaceOutput` parameter containing data from the surface function, as well as `lightDir` and `atten` parameters containing lighting information (which we don't care about here).
 
 ~~~glsl
 fixed4 LightingUnlit(SurfaceOutput s, fixed3 lightDir, fixed atten)
@@ -128,7 +129,7 @@ private Vector3 lastPlayerPos;
 private new MeshRenderer renderer;
 ~~~
 
-We'll start off caching the renderer component.
+We'll start off caching the `renderer` component.
 
 ~~~csharp
 private void Awake()
@@ -160,7 +161,7 @@ private void OnTriggerExit(Collider other)
 }
 ~~~
 
-These functions are simple - set the `isInPortal` flag accordingly. Additionally, when the player enters the trigger, keep track of its position *relative to the local transform* - the "crossing point" of the portal is when the z-component of the position equals zero, so it's much easier to perform the check relative to this transform than in world space. For that purpose, we use the `InverseTransformPoint` function, which transforms a point in world space to a `Transform`'s local space. It'll be a bit easier to see when we write the `Update` function. Speaking of which!
+These functions are simple - set the `isInPortal` flag accordingly. Additionally, when the player enters the trigger, keep track of its position *relative to the local transform* - the "crossing point" of the portal is when the z-component of the position equals zero, so it's easier to perform the check relative to the transform's local space than world space. For that purpose, we use the `InverseTransformPoint` function, which transforms a point in world space to a `Transform`'s local space. It'll be a bit easier to see how this works when we write the `Update` function. Speaking of which!
 
 ~~~csharp
 // If the player is in the portal, see if we've crossed the boundary.

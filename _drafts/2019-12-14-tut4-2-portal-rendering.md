@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Portals | Part 2 - Stencil-based Portals
-subtitle: Impossible geometry via portals
+subtitle: Headache-inducing geometry
 bigimg: /img/tut4/part2-banner.jpg
 hdrimg: /img/tut4/part2-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
