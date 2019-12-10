@@ -8,17 +8,27 @@
 
   <meta name="author" content="{{ site.author.name }}" />
 
+  <meta name="twitter:site" content="@daniel_ilett" />
+  <meta name="twitter:creator" content="@daniel_ilett" />
+
+  <meta property="og:title" content="{{ page.title }}" />
+
+  <meta property="og:site_name" content="Daniel Ilett: Games | Shaders | Tutorials" />
+  <meta name="twitter:image:alt" content="{{ page.subtitle }}" />
+
   {% if page.subtitle %}
-    <meta name="description"        content="{{ page.subtitle }}" />
+    <meta name="description" content="{{ page.subtitle }}" />
     <meta property="og:description" content="{{ page.subtitle }}" />
   {% endif %}
 
   {% if page.hdrimg %}
-    <meta name="image"        content="{{ site.url }}/{{ page.hdrimg }}" />
+    <meta name="image" content="{{ site.url }}/{{ page.hdrimg }}" />
     <meta property="og:image" content="{{ site.url }}/{{ page.hdrimg }}" />
+    <meta name="twitter:card" content="summary_large_image">
   {% else if page.bigimg %}
-    <meta name="image"        content="{{ site.url }}/{{ page.bigimg }}" />
+    <meta name="image" content="{{ site.url }}/{{ page.bigimg }}" />
     <meta property="og:image" content="{{ site.url }}/{{ page.bigimg }}" />
+    <meta name="twitter:card" content="summary_large_image">
   {% endif %}
 
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ site.title-separator }} {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
