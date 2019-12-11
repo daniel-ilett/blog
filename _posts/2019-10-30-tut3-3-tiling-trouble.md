@@ -13,7 +13,7 @@ idnum: 26
 
 Mosaics have their roots in ancient culture. Floor mosaics comprised of tiny squares of stone and glass were commonly used as decorative art in the ancient world and are still used as a form of artistic expression in modern times. Perhaps you could even argue that pixel art is a type of digital mosaic born out of technical limitations! That's not as silly a suggestion as you'd think - and we're going to prove it today by turning arbitrary images into mosaics by using **pixelation** together with a tiled **texture overlay**.
 
-![Floor Mosaic](/img/tut3/part3-floor-mosaic.jpg){: .center-image }
+![Floor Mosaic](/img/tut3/part3-floor-mosaic.jpg){: .center-image .lazyload }
 
 [Photo found on Pixabay](https://pixabay.com/photos/mosaic-ruins-ephesus-ancient-roman-315841/)
 
@@ -71,7 +71,7 @@ Graphics.Blit(tmp, dst, baseMaterial);
 
 That's it for `Render`. Now, let's assume `baseMaterial` doesn't modify anything and you'll see screen output like this:
 
-![Pixelated Image](/img/tut3/part3-pixelation.jpg){: .center-image }
+![Pixelated Image](/img/tut3/part3-pixelation.jpg){: .center-image .lazyload }
 
 <hr/>
 
@@ -133,7 +133,7 @@ col = lerp(col, overlayCol, overlayCol.a);
 
 Our shader is now complete! But we're going to have to return to the script because we haven't finished hooking up all our script variables to the shader. With an `xTileCount` of 75 set on our `MosaicEffect` asset, the overlay will still tile using the default values of 100 in both directions.
 
-![Overlay Incorrect](/img/tut3/part3-overlay-wrong.jpg){: .center-image }
+![Overlay Incorrect](/img/tut3/part3-overlay-wrong.jpg){: .center-image .lazyload }
 
 ## Putting things in place
 
@@ -165,11 +165,11 @@ public override void OnCreate()
 
 It takes the same format as the other `XYZEffect.cs` scripts. We pass in the x- and y-tiling factors for the overlay texture because the alternative is passing in the screen height and calculating the y-tiling amount inside the **fragment shader**, which is less efficient (the y-resolution of the pixelated image snaps to an integer, so we need to do extra calculations here to make sure the overlay image UVs also snap to an 'integer'). In a real-world scenario, you would recalculate the `_YTileCount` whenever the screen is resized, but we'll skip that for simplicity. Now, when you run the shader you'll see the overlay matches exactly with the pixelated image.
 
-![Overlay Complete](/img/tut3/part3-mosaic-complete.jpg){: .center-image }
+![Overlay Complete](/img/tut3/part3-mosaic-complete.jpg){: .center-image .lazyload }
 
 Looking at the scene using a smaller tile count and at a different angle, you'll get different results:
 
-![Overlay Small](/img/tut3/part3-mosaic-complete-small.jpg){: .center-image }
+![Overlay Small](/img/tut3/part3-mosaic-complete-small.jpg){: .center-image .lazyload }
 
 <hr/>
 

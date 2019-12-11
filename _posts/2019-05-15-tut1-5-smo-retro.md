@@ -15,7 +15,7 @@ This tutorial explores the retro console shaders found in Snapshot Mode, which e
 
 <hr/>
 
-![NES Filter](/img/tut1/part5-nes.jpg)
+![NES Filter](/img/tut1/part5-nes.jpg){: .center-image .lazyload }
 
 # NES
 
@@ -55,7 +55,7 @@ return float4(r / 3.0, g / 3.0, b / 3.0, 1.0);
 
 Run the shader effect by dragging an `ImageEffectBase` component onto your main camera and attaching the shader - it should result in an effective colour transformation. However, we're missing the pixelated feeling of an old NES game.
 
-![NES](/img/tut1/part5-scene-nes.jpg){: .center-image }
+![NES](/img/tut1/part5-scene-nes.jpg){: .center-image .lazyload }
 
 ## Pixelation
 
@@ -95,7 +95,7 @@ temp.filterMode = FilterMode.Point;
 
 Now attach this script to the camera instead of `ImageEffectBase` and insert the `PixelNES` shader. You can change the amount of downsampling by modifying the `pixelSize` in the Inspector - my recommended value is 3. This is looking a lot more like the effect we want.
 
-![NES with Pixelation](/img/tut1/part5-scene-nes-pixel.jpg){: .center-image }
+![NES with Pixelation](/img/tut1/part5-scene-nes-pixel.jpg){: .center-image .lazyload }
 
 <hr/>
 
@@ -119,7 +119,7 @@ return float4(r / 5.0, g / 5.0, b / 5.0, 1.0);
 
 Looking good so far! Together with `ImageEffectPixelate`, the effect is looking quite strong. However, I think we can go one step further with the effect - NES and SNES games were played on CRTs, which certainly don't look this crisp. We're going to implement features to make our effect more like the Snapshot Mode effect, then go above and beyond.
 
-![SNES](/img/tut1/part5-scene-snes.jpg){: .center-image }
+![SNES](/img/tut1/part5-scene-snes.jpg){: .center-image .lazyload }
 
 ## CRT
 
@@ -265,11 +265,11 @@ public class ImageEffectCRT : ImageEffectBase
 
 Instead of attaching the `CRTScreen` shader to an `ImageEffectBase` component, try attaching it to an `ImageEffectCRT` component instead. All being well, the CRT effect is complete! Play around with the values until you find something you like - the values in the script were my preferred values.
 
-![CRT Effect](/img/tut1/part5-scene-crt.jpg){: .center-image }
+![CRT Effect](/img/tut1/part5-scene-crt.jpg){: .center-image .lazyload }
 
 To emulate the look and feel of an NES or SNES game, I recommend attaching - in order - an NES/SNES filter, a CRT filter and then a Bloom filter to the camera. For this reason, I've included the Bloom shaders and script from the first half of this series in the template project for you to use. The bloom filter emulates the glare you might get from an old CRT.
 
-![SNES with CRT & Bloom](/img/tut1/part5-scene-snes-crt-bloom.jpg){: .center-image }
+![SNES with CRT & Bloom](/img/tut1/part5-scene-snes-crt-bloom.jpg){: .center-image .lazyload }
 
 <hr/>
 
@@ -315,7 +315,7 @@ return float4(col, 1.0);
 
 We have seen `saturate` before - it bounds the value passed into it between 0 and 1. We have also seen `lerp` before, which gives us a value between its first and second parameters based on its third parameter. Since our input is an integer, the first line here asks the question "is `gb` greater than 0" - if not, set `col` equal to `_GBDarkest`, and if so, set `col` to `_GBDark` (since the third parameter to `lerp` is bounded to 1 by `saturate`). We then do this again, but after subracting 1 from `gb`. Now we're asking "is `gb` greater than 1" - if not, don't change the value of `col`, and if so, set `col` to `_GBLight`. This process of cascading through `lerp` calls and subtracting from a `saturate` is something you may see often.
 
-![Game Boy](/img/tut1/part5-scene-gb.jpg){: .center-image }
+![Game Boy](/img/tut1/part5-scene-gb.jpg){: .center-image .lazyload }
 
 <hr/>
 

@@ -15,7 +15,7 @@ This tutorial discusses two simple effects seen in Snapshot Mode - Greyscale and
 
 <hr/>
 
-![Greyscale Filter](/img/tut1/part1-greyscale.jpg)
+![Greyscale Filter](/img/tut1/part1-greyscale.jpg){: .center-image .lazyload }
 
 # Greyscale Filter
 
@@ -48,7 +48,7 @@ If you followed the shader primer, you'll notice the struct passed into this fra
 
 <hr/>
 
-![Sepia-tone Filter](/img/tut1/part1-sepia.jpg)
+![Sepia-tone Filter](/img/tut1/part1-sepia.jpg){: .center-image .lazyload }
 
 # Sepia Tone Filter
 

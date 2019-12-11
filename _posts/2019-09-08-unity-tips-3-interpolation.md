@@ -72,7 +72,7 @@ Color col2 = new Color(0.5f, 0.7f, 0.7f, 1.0f);
 Color output = Color.Lerp(col1, col2, 0.75f);
 ~~~
 
-![Colour lerp](/img/unity-tips/part3-color-lerp.jpg){: .center-image }
+![Colour lerp](/img/unity-tips/part3-color-lerp.jpg){: .center-image .lazyload }
 
 On the colour gradient above, the left and right edges represent `col1` and `col2` respectively and the black dot marks `75%` of the way between the two where the `output` colour lies.
 
@@ -181,7 +181,7 @@ $$
     Mathf.SmoothStep(a,b,t)=a+(b-a)(-2t^3+3t^2)
 $$
 
-![SmoothStep curve](/img/unity-tips/part3-smoothstep-curve.jpg){: .center-image }
+![SmoothStep curve](/img/unity-tips/part3-smoothstep-curve.jpg){: .center-image .lazyload }
 
 It’s a bit more complicated than `Lerp` was! The equation is similar, but the time parameter is swapped out for a third-order polynomial. A nice property of the curve is that the first derivative is equal to zero at the `t=0.0` and `t=1.0` endpoints so when calculated over one dimension – which, in our case, is time – it will look smooth, hence the name. The Wikipedia page for SmoothStep contains more detailed information and explores higher-order versions such as SmootherStep.
 
@@ -223,7 +223,7 @@ The functions described so far cover the most common cases, but it’s useful to
 [SerializeField] private AnimationCurve animCurve;
 ~~~
 
-![AnimCurve Inspector](/img/unity-tips/part3-animcurve-inspector.jpg){: .center-image }
+![AnimCurve Inspector](/img/unity-tips/part3-animcurve-inspector.jpg){: .center-image .lazyload }
 
 `AnimationCurve` objects can be exposed to the Unity Editor and come with a custom editor window. When its `Inspector` entry is clicked, a larger window will appear, allowing a designer to add or remove keyframes, augment the shape of the curve and modify the start and end times or values of the curve. You may also pick from a set of predefined curves in-editor or in code.
 
@@ -237,7 +237,7 @@ animCurve = AnimationCurve.Constant(0.0f, 1.0f, 1.0f);
 AnimationCurve.Constant(float startTime, float endTime, float constant);
 ~~~
 
-![AnimCurve.Constant](/img/unity-tips/part3-curve-constant.jpg){: .center-image }
+![AnimCurve.Constant](/img/unity-tips/part3-curve-constant.jpg){: .center-image .lazyload }
 
 The first type of `AnimationCurve` defines an animation with a constant value for its entire duration. The constructor for this type of curve has three parameters – the `startTime` and `endTime`, in seconds, which define the duration of the animation, and the `constant` value the curve will possess.
 
@@ -251,7 +251,7 @@ animCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
 AnimationCurve.Linear(float startTime, float startVal, float endTime, float endVal);
 ~~~
 
-![AnimCurve.Linear](/img/unity-tips/part3-curve-linear.jpg){: .center-image }
+![AnimCurve.Linear](/img/unity-tips/part3-curve-linear.jpg){: .center-image .lazyload }
 
 The next type looks a bit more useful! We may define a `Linear AnimationCurve` using a `startTime` and `endTime` to control the speed, and a `startVal` and `endVal` to define the endpoints of the curve. If the `startTime` and `endTime` are set to `0.0` and `1.0` respectively, this type of curve has the same practical effect as the `Lerp` function; this curve defines a `linear interpolation`.
 
@@ -266,7 +266,7 @@ AnimationCurve.EaseInOut(float startTime, float startVal, float endTime,
     float endVal);
 ~~~
 
-![AnimCurve.EaseInOut](/img/unity-tips/part3-curve-ease-in-ease-out.jpg){: .center-image }
+![AnimCurve.EaseInOut](/img/unity-tips/part3-curve-ease-in-ease-out.jpg){: .center-image .lazyload }
 
 If a `Linear` curve is parallel to `Lerp`, then `EaseInOut` is parallel to `SmoothStep`. This type of `AnimationCurve` takes the same parameters as the `Linear` curve but produces a curve with steeper gradient in the middle than the endpoints, making it useful for natural-looking movement in one dimension.
 
@@ -312,7 +312,7 @@ animCurve.postWrapMode = WrapMode.Loop;
 
 ### Custom Curves
 
-![AnimCurve Custom](/img/unity-tips/part3-curve-custom.jpg){: .center-image }
+![AnimCurve Custom](/img/unity-tips/part3-curve-custom.jpg){: .center-image .lazyload }
 
 We’re not restricted to the types of curve provided by Unity. Inside the editor, we can add `keyframes` wherever we like and mess with the shape of the curve by selecting one of the keyframe control points and moving the handles that appear either side of it. As with other types of curves, it’s possible to set the behaviour of the curve before the start and after the end – select the small cog drop-down menus next to the endpoint keyframes to pick an option. 
 
@@ -326,11 +326,11 @@ However, there is a key difference between bilinear interpolation and, say, perf
 
 You’ve probably encountered bilinear interpolation in Unity while importing textures. One of the options in the texture import menu is the ‘filter mode’ – the default value for which is `Bilinear`. One of the alternatives, `Point`, is common for pixel art as it performs no smoothing between pixels – you end up with a crisp, blocky texture. For photorealistic 3D games, though, you may prefer bilinear filtering.
 
-![FilterMode Inspector](/img/unity-tips/part3-blerp-import.jpg){: .center-image }
+![FilterMode Inspector](/img/unity-tips/part3-blerp-import.jpg){: .center-image .lazyload }
 
 A `texture` is a 2D grid of colour values. If the texture has a resolution of 128x128 but it’s mapped to geometry that spans 256x256 pixels on the screen, under bilinear filtering we need to ‘invent’ some bonus colour values for the extra pixels. There are four times as many pixels on the screen as in the texture, so between each 2x2 grid of existing texture pixels, we have three `interpolation factors`: $$ (\frac{0}{2},\frac{1}{2}) $$, $$ (\frac{1}{2},\frac{0}{2}) $$ and $$ (\frac{1}{2},\frac{1}{2}) $$.
 
-![Blerp Diagram](/img/unity-tips/part3-blerp-diagram.jpg){: .center-image }
+![Blerp Diagram](/img/unity-tips/part3-blerp-diagram.jpg){: .center-image .lazyload }
 
 For texture samples $$ T_{0,0} $$, $$ T_{0,1} $$, $$ T_{1,0} $$, $$ T_{1,1} $$ and each of the `interpolation factor` pairs $$ (I_x,I_y) $$ we do the following:
 
@@ -376,11 +376,11 @@ This extends to higher dimensions. [Trilinear interpolation](https://en.wikipedi
 
 Lerp works great for interpolating between positions. However, interpolating rotations using `Lerp` – while possible – may cause unintended effects. With Lerp, the distance between two interpolated points is proportional to the difference in their interpolation factors. To illustrate why this might not be desirable for a rotation, let’s chart an interpolation across a straight line superimposed on a quarter-circle.
 
-![Quarter Circle](/img/unity-tips/part3-lerp-circle.jpg){: .center-image }
+![Quarter Circle](/img/unity-tips/part3-lerp-circle.jpg){: .center-image .lazyload }
 
 Let’s analyse the diagram. The bold straight line has points on it at regular intervals – there are 15, including the two endpoints. The change in interpolation factor between any adjacent pair of points is the same. Lerping works great for a linear curve – a straight line. The quarter circle traced around it is, of course, not a straight line! That arc conceptually represents a `Lerp` carried out on a rotation – each pair of points still has the same difference in interpolation factor, but points get further away from each other as you go from an endpoint towards the middle of the curve.
 
-![Monotone Lerp](/img/unity-tips/part3-lerp-monotone.jpg){: .center-image }
+![Monotone Lerp](/img/unity-tips/part3-lerp-monotone.jpg){: .center-image .lazyload }
 
 This diagram illustrates that the difference in interpolation factor – above the line – of given points on the line is proportional to the difference in their distance from the endpoints; the distance increases `monotonically` with the interpolation factor.
 

@@ -43,11 +43,11 @@ You may use a scriptable object to store data at runtime like this, but you’d 
 public class NewSO : ScriptableObject
 ~~~
 
-![Create scriptable object](/img/unity-tips/part4-create-new-so.jpg){: .center-image }
+![Create scriptable object](/img/unity-tips/part4-create-new-so.jpg){: .center-image .lazyload }
 
 The menu is available by right-clicking in the **Project view** or using the **Assets->Create** menu on the toolbar. You can tweak the location of the option using the `menuName` and `order` variables, and the default name of the resulting asset file using the `fileName` variable. The result will be a new object in the Project view in whichever folder is active.
 
-![New scriptable object](/img/unity-tips/part4-so-inspector.jpg){: .center-image }
+![New scriptable object](/img/unity-tips/part4-so-inspector.jpg){: .center-image .lazyload }
 
 Let's look at a few ways we can use this powerful tool to overhaul our projects.
 
@@ -135,7 +135,7 @@ private void Update()
 
 Finally, we shall create the new `IntVariable` asset to store health by right-clicking the Project View and selecting it from the menu under **Variables/Int**. In the Inspector, you would drag this asset onto the `health` variable on a `Player` component so that it can write to the asset, and onto the `playerHealth` variable of a `PlayerUI` component that will read the asset.
 
-![IntVariable](/img/unity-tips/part4-intvariable-so.jpg){: .center-image }
+![IntVariable](/img/unity-tips/part4-intvariable-so.jpg){: .center-image .lazyload }
 
 Let’s evaluate the changes we’ve made. `Player` and `PlayerUI` are now decoupled, with a layer of separation between them. A significant change to the way `Player` handles health requires no change to the way `PlayerUI` reads health. Furthermore, this is more designer friendly. If the designer needs to tweak the initial value for the player’s health, they can find the corresponding asset rather than having to deal with a `Player` prefab, assuming the project directory is structured well.
 

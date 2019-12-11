@@ -13,7 +13,7 @@ idnum: 27
 
 3D films have always felt like a technical novelty to me. The fun factor of slapping on a pair of cheap red-blue 3D glasses to make stuff pop out of the screen has captured the minds of inventors, printers and filmmakers throughout the 19th and 20th centuries. Anaglyph 3D, the kind you need red-blue glasses for, is an outdated technology - but the novelty aesthetic makes it perfect for a shader effect!
 
-![Shinto Anaglyph](/img/tut3/part4-shinto-anaglyph.jpg){: .center-image }
+![Shinto Anaglyph](/img/tut3/part4-shinto-anaglyph.jpg){: .center-image .lazyload }
 
 [Photo by Nesnad on Wikimedia Commons](https://commons.wikimedia.org/wiki/Anaglyph#/media/File:Anaglyph-tabata-torii-2013.jpg)
 
@@ -113,11 +113,11 @@ return col;
 
 Our shader is complete! If we create an `Anaglyph` effect asset and give it a strength of 0.5, you'll get an output similar to this:
 
-![UV Anaglyph](/img/tut3/part4-uv-anaglyph.jpg){: .center-image }
+![UV Anaglyph](/img/tut3/part4-uv-anaglyph.jpg){: .center-image .lazyload }
 
 The effect works, although there are some problems involving colours bleeding between each eye. Since we're just moving image UVs horizontally, the effect is more like an approximation than a true anaglyph - the real thing relies on angling two viewpoints so this version will always be slightly incorrect, although it is efficient since the screen only needs to be rendered once. Results may vary depending on the glasses you're using - but this effect can be improved a little.
 
-![Red-blue 3D Glasses](/img/tut3/part4-3d-glasses.jpg){: .center-image }
+![Red-blue 3D Glasses](/img/tut3/part4-3d-glasses.jpg){: .center-image .lazyload }
 
 <hr/>
 
@@ -228,7 +228,7 @@ RenderTexture.ReleaseTemporary(rightTexture);
 
 Our effect should be complete now! Let's see what it looks like.
 
-![Camera Anaglyph](/img/tut3/part4-camera-anaglyph.jpg){: .center-image }
+![Camera Anaglyph](/img/tut3/part4-camera-anaglyph.jpg){: .center-image .lazyload }
 
 <hr/>
 
