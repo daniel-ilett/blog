@@ -12,7 +12,7 @@ date: 2019-12-11
 idnum: 31
 ---
 
-*Spyro* was one of my favourite series as a kid. I've played the original trilogy more times than I care to admit, replaying all three games at least once every couple years or so, and even as an adult I still find the vivid environments and gameplay loop captivating. One tiny detail I always liked was that the innards of each portal look like the sky of the level that portal leads to, and when Spyro flies through the portal there's a seamless transition into the portal. In *Spyro the Dragon*, the first entry in the series, the game even has titular hero Spyro fly in a loop-de-loop to obscure the new level as it seamlessly loads in below. Today, we will recreate the appearence of portals in Spyro.
+*Spyro* was one of my favourite series as a kid. I've played the original trilogy more times than I care to admit, and even as an adult I still find the vivid environments and gameplay loop captivating. One tiny detail I always liked was that the innards of each portal look like the sky of the level that portal leads to, and when Spyro flies through the portal there's a seamless transition into the portal. In *Spyro the Dragon*, the first entry in the series, the game even has titular hero Spyro fly in a loop-de-loop to obscure the new level as it seamlessly loads in below. Today, we will recreate the appearance of *Spyro*’s portals in Unity.
 
 ![Spyro Portal](/img/tut4/part1-spyro-portals.jpg){: .center-image }
 
@@ -20,11 +20,11 @@ idnum: 31
 
 # Skyboxes and Cubemaps
 
-There are many approaches a 3D game can take to simulate the appearence of a sky. At the most basic level, games can give the sky a block colour and be done with it. On the far end of technical overindulgence, games can physically simulate clouds and other atmospheric details. But the approach that's most widely used is the humble **skybox**, a method for mapping sky-like details onto a sphere, which is then rendered behind all other scene details. While there's a handful of approaches under the umbrella of "skybox", such as Unity's built-in procedural skyboxes, the approach we will use is to construct a **cubemap** texture. A cubemap takes six square images, corresponding to the sides of a cube, and combine them into a single entity. We can **sample** the cubemap by providing a direction in 3D space - conceptually, it's like morphing that textured cube into a sphere, then pointing from the centre towards a point on the sphere and picking the colour at that point.
+There are many approaches a 3D game can take to simulate the appearance of a sky. At the most basic level, games can give the sky a block colour and be done with it. On the far end of technical overindulgence, games can physically simulate clouds and other atmospheric details. But the approach that's most widely used is the humble **skybox**, a method for mapping sky-like details onto a sphere, which is then rendered behind all other scene details. While there's a handful of approaches under the umbrella of "skybox", such as Unity's built-in procedural skyboxes, the approach we will use is to construct a **cubemap** texture. A cubemap takes six square images, corresponding to the sides of a cube, and combine them into a single entity. We can **sample** the cubemap by providing a direction in 3D space - conceptually, it's like morphing that textured cube into a sphere, then pointing from the centre towards a point on the sphere and picking the colour at that point.
 
 ![Cubemap Textures](/img/tut4/part1-cubemap-tex.jpg){: .center-image }
 
-Let's look at this inside a shader. You'll find this shader code inside *Shaders/SpyroPortal/SpyroSkybox.shader*. We've sampled a lot of textures inside shaders using the `tex2D` function and a UV coordinate, but how do we sample cubemaps? There is a built-in type called `samplerCUBE` and a corresponding function called `texCUBE` which are parallels of `sampler2D` and `tex2D` respectively - we will use those to sample a cubemap. First of all, we need to pass the cubemap texture to the shader in **Properties**.
+Let's look at this inside a shader. You'll find this shader code inside *Shaders/SpyroPortal/SpyroSkybox.shader*. We've sampled a lot of textures inside shaders using the `tex2D` function and a UV coordinate, but how do we sample cubemaps? There is a built-in type called `samplerCUBE` and a corresponding function called `texCUBE` which are parallels of `sampler2D` and `tex2D` respectively - we will use those to sample a cubemap. First, we need to pass the cubemap texture to the shader in **Properties**.
 
 ~~~glsl
 Properties
@@ -34,7 +34,7 @@ Properties
 }
 ~~~
 
-Alongside a `_Color` parameter for tinting the portal, we're including a _WorldCube parameter with the `CUBE` type - this is where we'll pass in our cubemap texture. Inside the shader code, you'll see the corresponding variable declarations.
+Alongside a `_Color` parameter for tinting the portal, we're including a `_WorldCube` parameter with the `CUBE` type - this is where we'll pass in our cubemap texture. Inside the shader code, you'll see the corresponding variable declarations.
 
 ~~~glsl
 uniform fixed4 _Color;
@@ -75,7 +75,7 @@ void surf (Input IN, inout SurfaceOutput o)
 }
 ~~~
 
-Let's see what this looks like assigned to an object in Unity. First of all, we must create a cubemap - the option can be found under *Create->Legacy->Cubemap* - then all six source images should be assigned to the left, right, forward, back, top and bottom texture slots on that cubemap. Included in the GitHub repository for this series is an asset pack of space skyboxes, and I've assigned two of those to cubemaps named **DSB** and **DSR**, found in *Materials/SpyroPortal*. Then, we need to create materials using the `Portals/SpyroSkybox` shader and assign those cubemaps to the `World Cubemap` property slot - inside the same folder as the cubemaps are two materials called **SpyroPortal** and **SpyroSkybox**, corresponding to the **DSR** and **DSB** cubemaps respectively.
+Let's see what this looks like assigned to an object in Unity. First, we must create a cubemap - the option can be found under *Create->Legacy->Cubemap* - then all six source images should be assigned to the left, right, forward, back, top and bottom texture slots on that cubemap. Included in the GitHub repository for this series is an asset pack of space skyboxes, and I've assigned two of those to cubemaps named **DSB** and **DSR**, found in *Materials/SpyroPortal*. Then, we need to create materials using the `Portals/SpyroSkybox` shader and assign those cubemaps to the `World Cubemap` property slot - inside the same folder as the cubemaps are two materials called **SpyroPortal** and **SpyroSkybox**, corresponding to the **DSR** and **DSB** cubemaps respectively.
 
 In the `SpyroPortals` scene, found at *Scene/SpyroPortals.unity*, you'll find those materials attached to the portal and skybox already. The 'skybox' in this case is a huge sphere attached to the camera as a child object, and the portal surface is a flat plane in the centre of a portal frame model. Entering Play Mode and panning around the scene will let you see the innards of the portal in action - try looking into it at all sorts of angles!
 
@@ -209,7 +209,7 @@ All that's left to do is to swap the two materials once we've walked through the
 
 The portals in *Spyro* are purely aesthetic and serve as a good starting point for thinking about portals in games. The portal effect can be achieved by using a cubemap texture, a technology used to capture a 360-degree view of a scene, attached to the portal surface. It is then swapped when the player travels through the portal.
 
-In the next tutorial, we're going to move on to portals that capture the appearence of real world geometry "inside" the portal, focusing purely on non-recursive portals (i.e. portals where you won't see a portal inside a portal).
+In the next tutorial, we're going to move on to portals that capture the appearance of real-world geometry "inside" the portal, focusing purely on non-recursive portals (i.e. portals where you won't see a portal inside a portal).
 
 # Acknowledgements
 

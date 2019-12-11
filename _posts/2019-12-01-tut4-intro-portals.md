@@ -22,7 +22,7 @@ This series will explore several complicated concepts: shaders, physics, maths. 
 
 The posting schedule for this series is as follows:
 
-**Part 1**: Spyro Skyboxes | **Dec 11th** | `Spyro-style Portals`
+**Part 1**: Spyro Skyboxes | [Out now!](https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes) | `Spyro-style Portals`
 **Part 2**: Portal Rendering | **Dec 14th** | `Camera Positioning`, `Stencil Rendering`
 **Part 3**: Matrix Matching | **Dec 18th** | `Oblique Near-Plane Projection`
 **Part 4**: Portal Momentum | **Dec 21st** | `Physics`
