@@ -6,7 +6,7 @@ title: Tutorial Series
 <div class="posts-list" markdown="0">
     <article class="post-preview">
         <a href="/2019-12-01-tut4-intro-portals/">
-            <img src="/img/tut4/tut4-banner.jpg" class="post-bigimg"/>
+            <img src="/img/tut4/tut4-banner.jpg" class="post-bigimg lazyload"/>
             <h2 class="post-title">
                 Portals | Physics-Accurate Portals Series
             </h2>
@@ -25,7 +25,7 @@ title: Tutorial Series
     </article>
     <article class="post-preview">
         <a href="/2019-09-18-tut3-intro-ultra/">
-            <img src="/img/tut3/tut3-banner.jpg" class="post-bigimg"/>
+            <img src="/img/tut3/tut3-banner.jpg" class="post-bigimg lazyload"/>
             <h2 class="post-title">
                 Image Effects | Ultra Filters Series
             </h2>
@@ -44,7 +44,7 @@ title: Tutorial Series
     </article>
     <article class="post-preview">
         <a href="/2019-08-05-unity-tips-1-garbage-collection/">
-            <img src="/img/unity-tips/part2-banner.jpg" class="post-bigimg"/>
+            <img src="/img/unity-tips/part2-banner.jpg" class="post-bigimg lazyload"/>
             <h2 class="post-title">
                 Unity Tips | Deep Dives
             </h2>
@@ -61,7 +61,7 @@ title: Tutorial Series
     </article>
     <article class="post-preview">
         <a href="/2019-05-29-tut2-intro/">
-            <img src="/img/tut2/intro-banner.jpg" class="post-bigimg"/>
+            <img src="/img/tut2/intro-banner.jpg" class="post-bigimg lazyload"/>
             <h2 class="post-title">
                 Cel Shading | Toon Lighting Shaders
             </h2>
@@ -80,7 +80,7 @@ title: Tutorial Series
     </article>
     <article class="post-preview">
         <a href="/2019-04-24-tut1-intro-smo/">
-            <img src="/img/tut1/intro-banner.jpg" class="post-bigimg"/>
+            <img src="/img/tut1/intro-banner.jpg" class="post-bigimg lazyload"/>
             <h2 class="post-title">
                 Image Effects | Snapshot Mode Filters
             </h2>

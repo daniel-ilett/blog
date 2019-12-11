@@ -14,7 +14,7 @@ idnum: 30
 
 Ever since student project *Narbacular Drop* was adopted by Valve and spun into seminal puzzle-platformer *Portal* in 2007, the idea of mind-bending physics in games has captured the imaginations of players and developers alike; games that have followed it such as *Antichamber* and recent release *Manifold Garden* demonstrate that there is still unexplored space in the "brain-tickling physics" genre. The question I've always asked myself is: how could I create *Portal*'s portals from scratch?
 
-![Portal 2](/img/tut4/intro-portals.jpg){: .center-image }
+![Portal 2](/img/tut4/intro-portals.jpg){: .center-image .lazyload }
 
 *Image from Portal 2.*
 

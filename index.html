@@ -11,9 +11,9 @@ use-site-title: true
     <a href="{{ post.url | prepend: site.baseurl }}">
       
     {% if post.hdrimg %}
-      <img src="{{ post.hdrimg }}" class="post-bigimg">
+      <img src="{{ post.hdrimg }}" class="post-bigimg lazyload">
     {% else if post.bigimg %}
-      <img src="{{ post.bigimg }}" class="post-bigimg">
+      <img src="{{ post.bigimg }}" class="post-bigimg lazyload">
     {% endif %}
 
 	  <h2 class="post-title">{{ post.title }}</h2>
