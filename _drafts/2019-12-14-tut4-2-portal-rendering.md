@@ -22,7 +22,7 @@ I recently played *Manifold Garden*, a game based on Escher-esque architecture. 
 
 # Portal Surfaces
 
-There's several technologies we can use to create a portal effect, but they all include using a camera to capture what the world looks like from behind a portal's exit, then pasting the image over the portal's entrance. The first part of this article is going to be about positioning the camera properly in order to take that photo, and then in the second half we'll figure out how to use the rendered image to display something on the portal's surface. We'll only be talking about the basic visuals today - the mechanics of travelling through the portal and other effects will be described in later tutorials.
+There are several technologies we can use to create a portal effect, but they all include using a camera to capture what the world looks like from behind a portal's exit, then pasting the image over the portal's entrance. The first part of this article is going to be about positioning the camera properly in order to take that photo, and then in the second half we'll figure out how to use the rendered image to display something on the portal's surface. We'll only be talking about the basic visuals today - the mechanics of travelling through the portal and other effects will be described in later tutorials.
 
 {: .box-note}
 It is highly recommended to read this tutorial with a copy of the project open in Unity, as there are a lot of moving parts and we'll be jumping from script to script often. [Download it from GitHub now](https://github.com/daniel-ilett/shaders-portal)!
@@ -37,7 +37,7 @@ The player will be looking in an arbitrary direction, from an arbitrary position
 
 ![Space Conversion](/img/tut4/part2-local-space.jpg){: .center-image }
 
-Take that relative offset and imagine it is now relative to the other portal - the "out-portal". We want to reflect the positional offset in the out-portal's surface plane so that it is behind the portal. Then, we'll do the same with the relative rotation: rather than pointing towards the area behind the portal, rotate it 180 degrees such that it points to the world outside the portal. Now, convert the position and rotation from the out-portal's local space to world space and place a secondary camera in the scene with the new position and rotation. The end result will be the one seen in the diagram below:
+Take that relative offset and imagine it is now relative to the other portal - the "out-portal". We want to reflect the positional offset in the out-portal's surface plane so that it is behind the portal. Then, we'll do the same with the relative rotation: rather than pointing towards the area behind the portal, rotate it 180 degrees such that it points to the world outside the portal. Now, convert the position and rotation from the out-portal's local space to world space and place a secondary camera in the scene with the new position and rotation. The result is seen in the diagram below:
 
 ![Desired position](/img/tut4/part2-desired-position.jpg){: .center-image }
 
@@ -124,7 +124,7 @@ Stencil
 }
 ~~~
 
-Inside the stencil, we provide a **reference value** using the `Ref` keyword. In our case, we'll want to use the `_MaskID` property as our reference value. The stencil uses a comparison function, `Comp`, to determine whether it should render a pixel by comparing the value already in the stencil buffer to the reference value. In our case, we're using the `Always` function, which means the pixel will be drawn regardless of the stencil value (and provided it passes a depth test too). In the event that the stencil test passes (which it will) and so does the depth test, the `Pass` function determines what happens to the stencil buffer value for this pixel after the shader pass has completed. It's possible to increment or decrement it, or write a value of zero, but we'll want to replace the existing value with the reference value. For that, we use the `Replace` function.
+Inside the stencil, we provide a **reference value** using the `Ref` keyword. In our case, we'll want to use the `_MaskID` property as our reference value. The stencil uses a comparison function, `Comp`, to determine whether it should render a pixel by comparing the value already in the stencil buffer to the reference value. In our case, we're using the `Always` function, which means the pixel will be drawn regardless of the stencil value (and provided it passes a depth test too). If the stencil test passes (which it will) and so does the depth test, the `Pass` function determines what happens to the stencil buffer value for this pixel after the shader pass has completed. It's possible to increment or decrement it, or write a value of zero, but we'll want to replace the existing value with the reference value. For that, we use the `Replace` function.
 
 Inside the `CGPROGRAM...ENDCG` block, we'll use the standard image effect vertex shader and structs. For the fragment shader, all we do is output the `_Colour` we defined above.
 
@@ -160,7 +160,7 @@ private void Start()
 
 Remember that the `portalCamera` is inactive, so it will only render to its `targetTexture` when instructed to. In `Awake`, we need to set the `targetTexture` of the camera to something, so we create a render texture the same size of the screen, with a **24-bit depth buffer** (it's worth noting the depth and stencil buffers are the same buffer, but bit-depths of 16 or below store depth only, no stencil), and then assign that to the camera. The texture is stored in the `tempTexture` member variable because we'll need to access it elsewhere.
 
-The `Start` method assigns a stencil ID to each of the two portals. There's no need to go into much detail with the `Portal` script, found in *Scripts/Portal.cs*, but let's look at its `SetMaskID` method.
+The `Start` method assigns a **stencil ID** to each of the two portals. There's no need to go into much detail with the `Portal` script, found in *Scripts/Portal.cs*, but let's look at its `SetMaskID` method.
 
 ~~~csharp
 public void SetMaskID(int id)
@@ -205,7 +205,7 @@ private void OnRenderImage(RenderTexture src, RenderTexture dst)
 }
 ~~~
 
-Stepping through the method line-by-line, we're saying: if the player can see part or all of the first portal, then render that portal's viewpoint. Using a mask ID of 1, copy the portal texture to the main texture - but only where the portal can be seen on the main texture. Then, do the same thing for the second portal and a mask ID of 2. Finally, output the resulting main texture. The `IsRendererVisible` method is defined in the `Portal` script and looks like this:
+Stepping through the method line-by-line, we're saying: if the player can see part of the first portal, then render that portal's viewpoint. Using a mask ID of 1, copy the portal texture to the main texture - but only where the portal can be seen on the main texture. Then, do the same thing for the second portal and a mask ID of 2. Finally, output the resulting main texture. The `IsRendererVisible` method is defined in the `Portal` script and looks like this:
 
 ~~~csharp
 public bool IsRendererVisible()
@@ -237,7 +237,7 @@ The main issue with this portal is that it's not recursive, meaning it can't ren
 
 We've created a couple of shaders that allow us to create a non-recursive portal effect. Using the stencil buffer and some smart camera placement, we're able to capture the scene behind a portal's surface, then splice the correct part of the capture onto the screen where the other portal surface is situated. 
 
-In the next tutorial, we'll talk about an edge case: how do you make sure the objects between the `portalCamera` and the back of `outPortal` don't get rendererd?
+In the next tutorial, we'll talk about an edge case: how do you make sure the objects between the `portalCamera` and the back of `outPortal` don't get rendered?
 
 # Acknowledgements
 
