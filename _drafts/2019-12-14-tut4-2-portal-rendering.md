@@ -57,7 +57,7 @@ private Material portalMaterial;
 private Camera mainCamera;
 ~~~
 
-This script has a few methods. We'll skip over `Awake` and `Start` - the only thing relevant so far is setting the `mainCamera` reference inside `Awake`. There's the `OnRenderImage` method we'll talk about later, and the `RenderCamera` method we'll look at now. It takes in an `inPortal` and `outPortal` as parameters - the `inPortal` is the one we're rendering the view for.
+This script has a few methods. We'll look over `Awake` and `Start` later. There's also the `OnRenderImage` method we'll talk about later, and the `RenderCamera` method we'll look at now. It takes in an `inPortal` and `outPortal` as parameters - the `inPortal` is the one we're rendering the view for.
 
 ~~~csharp
 private void RenderCamera(Portal inPortal, Portal outPortal)
@@ -68,9 +68,9 @@ private void RenderCamera(Portal inPortal, Portal outPortal)
 
 The first step was to calculate the player camera's position and rotation relative to the in-portal. For that, we can use the `InverseTransformPoint` function, which converts a **world-space position** to a **local-space position**. The reverse process to convert from local-space to world-space uses the `TransformPoint` function. We'll use the `InverseTransformXPoint` function to convert the player's world-space position to inPortal's local space, then convert the result (after rotating around the portal) from outPortal's local space to world space using `TransformPoint`.
 
-Rotating the point is easy - we can build a rotation of 180 degrees around the local y-axis and multiply the relative point by that rotation. `Quaternion.Euler(0.0f, 180.0f, 0.0f)`
+Rotating the point is easy - we can build a rotation of 180 degrees around the local y-axis and multiply the relative point by that rotation. `Quaternion.Euler(0.0f, 180.0f, 0.0f)` gives us a 180-degree rotation around the y-axis. Then, between the point transformation steps, we slot in the rotation. The result is that the `portalCamera` is placed at the correct position behind the `outPortal`.
 
-To deal with the rotations, we'll need to use the built-in functions of the `Quaternion` class. To obtain the relative rotation in `inPortal`'s local space, we'll multiply the player's rotation by the `inPortal`'s inverse rotation; the `Quaternion.Inverse` function does this. Then, we rotate 180 degrees around the local y-axis, just as we did for the position, before finally converting back to world space by multiplying by the `outPortal`'s rotation.
+To deal with the rotations, we'll need to use the built-in functions of the `Quaternion` class. To obtain the relative rotation in `inPortal`'s local space, we'll multiply the player's rotation by the `inPortal`'s inverse rotation; the `Quaternion.Inverse` function does this. Then, we rotate 180 degrees around the local y-axis, just as we did for the position, before finally converting back to world space by multiplying by the `outPortal`'s rotation. The result is that the `portalCamera` points out of the portal and into the world.
 
 ~~~csharp
 Transform inTransform = inPortal.transform;
@@ -91,7 +91,7 @@ Those transformations will put the camera in the correct position. Now, we'll de
 
 # Portal Rendering
 
-We're going to use the **stencil buffer** to render the portal surfaces - we've [discussed the stencil buffer in the past](https://danielilett.com/2019-06-15-tut2-4-edge-outline/) if you'd like to read more about them; they are used for storing special per-pixel **reference values** which allows us to implement impossible geometry inside shaders, amongst other things. A pair of shaders will use the stencil. We'll draw the portal surface mesh initially using a block-colour shader which also writes a reference value to the stencil buffer - a unique value for each portal surface. Then, a second shader will be used to write the images captured by the virtual camera to the screen as part of an image effect. That shader will read the stencil buffer to determine where to draw. Let's look at the shader we'll use for the portal surfaces, found at *Shaders/BasicPortal/PortalMask.shader*. To start off, we'll name the shader `"Portals/PortalMask"` and define two properties: a base colour to fallback to whenever portal rendering is disabled, and an ID.
+We're going to use the **stencil buffer** to render the portal surfaces - we've [discussed the stencil buffer in the past](https://danielilett.com/2019-06-15-tut2-4-edge-outline/) if you'd like to read more about them; they are used for storing special per-pixel **reference values** which allows us to implement impossible geometry inside shaders, amongst other things. A pair of shaders will use the stencil. We'll draw the portal surface mesh initially using a block-colour shader which also writes a reference value to the stencil buffer - a unique value for each portal surface. Then, a second shader will be used to write the images captured by the virtual camera to the screen as part of a **post-processing image effect**. That shader will read the stencil buffer and only draw pixels which have the appropriate stencil reference value. Let's look at the shader we'll use for the portal surfaces, found at *Shaders/BasicPortal/PortalMask.shader*. To start off, we'll name the shader `"Portals/PortalMask"` and define two properties: a base colour to fallback to whenever portal rendering is disabled, and an ID.
 
 ~~~glsl
 Shader "Portals/PortalMask"
@@ -99,12 +99,109 @@ Shader "Portals/PortalMask"
     Properties
     {
         _Colour("Base Colour", Color) = (1, 1, 1, 1)
-		_MaskID("Mask ID", Int) = 1
+        _MaskID("Mask ID", Int) = 1
+    }
+    SubShader
+    {
+        ...
     }
 }
 ~~~
 
-Much of the rest of this shader is boilerplate code. 
+Inside the `SubShader`, we have the usual suspects - some `Tags`, and a `Pass` which includes a `CGPROGRAM...ENDCG` block. But the `Pass` contains the less-typical `Stencil` keyword, which is where we interact with the stencil buffer. Recall from previous discussions that the **stencil buffer** is the same size as the **framebuffer** (i.e. the image), and it contains a *value of zero* inside each pixel by default.
+
+~~~glsl
+Stencil
+{
+    Ref [_MaskID]
+    Comp Always
+    Pass replace
+}
+~~~
+
+Inside the stencil, we provide a **reference value** using the `Ref` keyword. In our case, we'll want to use the `_MaskID` property as our reference value. The stencil uses a comparison function, `Comp`, to determine whether it should render a pixel by comparing the value already in the stencil buffer to the reference value. In our case, we're using the `Always` function, which means the pixel will be drawn regardless of the stencil value (and provided it passes a depth test too). In the event that the stencil test passes (which it will) and so does the depth test, the `Pass` function determines what happens to the stencil buffer value for this pixel after the shader pass has completed. It's possible to increment or decrement it, or write a value of zero, but we'll want to replace the existing value with the reference value. For that, we use the `Replace` function.
+
+Let's look back at *BasicPortalCamera.cs*. We still need to add a final step to the `RenderCamera` method in order to instruct the `portalCamera` to render from the position we moved it to earlier. First, let's explain what `Awake` and `Start` do and introduce the remaining member variables that we skipped over earlier.
+
+~~~csharp
+private RenderTexture tempTexture;
+
+private const int maskID1 = 1;
+private const int maskID2 = 2;
+
+private void Awake()
+{
+    mainCamera = GetComponent<Camera>();
+    tempTexture = new RenderTexture(Screen.width, Screen.height, 24);
+
+    portalCamera.targetTexture = tempTexture;
+}
+
+private void Start()
+{
+    portals[0].SetMaskID(maskID1);
+    portals[1].SetMaskID(maskID2);
+}
+~~~
+
+Remember that the `portalCamera` is inactive, so it will only render to its `targetTexture` when instructed to. In `Awake`, we need to set the `targetTexture` of the camera to something, so we create a render texture the same size of the screen, with a **24-bit depth buffer** (it's worth noting the depth and stencil buffers are the same buffer, but bit-depths of 16 or below store depth only, no stencil), and then assign that to the camera. The texture is stored in the `tempTexture` member variable.
+
+The `Start` method assigns a stencil ID to each of the two portals. Theer's no need to go into lots of detail with the `Portal` script, found in *Scripts/Portal.cs*, but let's look at the `SetMaskID` method.
+
+~~~csharp
+public void SetMaskID(int id)
+{
+    material.SetInt("_MaskID", id);
+}
+~~~
+
+This method sets the mask ID to use within the `PortalMask` shader. We'll tell the first portal to use a stencil reference value of 1, and the other to use a reference value of 2. That means the portals won't interfere with one another while rendering. We'll also add the final bits of code to the `RenderCamera` method in `BasicPortalCamera`. We're ignoring some of the code in the middle of the method, which we will explore in a future tutorial; the final part of the method tells the camera to render its current viewpoint to its `targetTexture`.
+
+~~~csharp
+// Render the camera to its render target.
+portalCamera.Render();
+~~~
+
+Now let's handle the rendering strategy in OnRenderImage. This is a built-in Unity callback for postprocessing effects, so we're going to render the player's point of view, then if either of the portals is in the player's sight we'll render the portal view to a separate texture and paste a small section of the portal image over the base image. The bit that gets cut out depends on the stencil values.
+
+~~~csharp
+private void OnRenderImage(RenderTexture src, RenderTexture dst)
+{
+    if(portals[0].IsRendererVisible())
+    {
+        // Render the first portal output onto the image.
+        RenderCamera(portals[0], portals[1]);
+        portalMaterial.SetInt("_MaskID", maskID1);
+        Graphics.Blit(tempTexture, src, portalMaterial);
+    }
+
+    if(portals[1].IsRendererVisible())
+    {
+        // Render the second portal output onto the image.
+        RenderCamera(portals[1], portals[0]);
+        portalMaterial.SetInt("_MaskID", maskID2);
+        Graphics.Blit(tempTexture, src, portalMaterial);
+    }
+
+    // Output the combined texture.
+    Graphics.Blit(src, dst);
+}
+~~~
+
+Stepping through the method line-by-line, we're saying: if the player can see part or all of the first portal, then render that portal's viewpoint. Using a mask ID of 1, copy the portal texture to the main texture - but only where the portal can be seen on the main texture. Then, do the same thing for the second portal and a mask ID of 2. Finally, output the resulting main texture. The `IsRendererVisible` method is defined in the `Portal` script and looks like this:
+
+~~~csharp
+public bool IsRendererVisible()
+{
+    return renderer.isVisible;
+}
+~~~
+
+That's everything! Now, if we play the scene, you'll be able to see the correct view through the portal.
+
+# Limitations
+
+There's a handful of limitations and edge cases in the code we've written so far. Some of them will be fixed in future articles, so I'll talk about the specific limitations of this portal.
 
 # Conclusion
 
@@ -124,9 +221,9 @@ This tutorial series uses the following asset packs from various sources:
 
 Special thanks to my Patreon backers:
 
-- Gemma Louise Ilett ($20)
-- Jack Dixon ($5)
-- Christopher Pereira ($1)
+- Gemma Louise Ilett
+- Jack Dixon
+- Christopher Pereira
 
 And a shout-out to my top Ko-fi supporters:
 
