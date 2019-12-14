@@ -12,6 +12,10 @@ date: 2019-12-24
 idnum: 33
 ---
 
+*Notes for later:*
+
+First of all, if we comment out the bit of code in the middle of `RenderCamera` what we glossed over in this tutorial and run the scene again, the effect won't work properly. That's because we haven't considered the problem of `clipping`. When we place the camera behind 
+
 # Acknowledgements
 
 ### Assets
