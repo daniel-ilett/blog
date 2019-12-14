@@ -199,9 +199,16 @@ public bool IsRendererVisible()
 
 That's everything! Now, if we play the scene, you'll be able to see the correct view through the portal.
 
+<video loop autoplay class="lazyload">
+    <source src="/img/tut4/part2-portal-complete.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
 # Limitations
 
-There's a handful of limitations and edge cases in the code we've written so far. Some of them will be fixed in future articles, so I'll talk about the specific limitations of this portal.
+There's a handful of limitations and edge cases in the code we've written so far. Some of them will be fixed in future articles, so I'll talk about the specific limitations of this portal that won't be removed. A minor inconvenience is that, since we're using the stencil buffer, this effect could interfere with other stencil-based effects. It's a pedantic issue, as you can change the stencil IDs used by the effect, but it's something to consider if you're using stencils for something else.
+
+The main issue with this portal is that it's not recursive, meaning it can't render a portal seen inside a portal, inside a portal, and so on. It's feasible to use stencil rendering to achieve this, but it's a complex operation and not substantially more efficient than the alternative method we'll use in a future tutorial to write a recursive portal. That approach won't be a postprocessing effect.
 
 # Conclusion
 
