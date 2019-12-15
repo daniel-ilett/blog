@@ -43,11 +43,11 @@ You may use a scriptable object to store data at runtime like this, but you’d 
 public class NewSO : ScriptableObject
 ~~~
 
-![Create scriptable object](/img/unity-tips/part4-create-new-so.jpg){: .center-image .lazyload }
+<img data-src="/img/unity-tips/part4-create-new-so.jpg" class="center-image lazyload" alt="Create scriptable object">
 
 The menu is available by right-clicking in the **Project view** or using the **Assets->Create** menu on the toolbar. You can tweak the location of the option using the `menuName` and `order` variables, and the default name of the resulting asset file using the `fileName` variable. The result will be a new object in the Project view in whichever folder is active.
 
-![New scriptable object](/img/unity-tips/part4-so-inspector.jpg){: .center-image .lazyload }
+<img data-src="/img/unity-tips/part4-so-inspector.jpg" class="center-image lazyload" alt="New scriptable object">
 
 Let's look at a few ways we can use this powerful tool to overhaul our projects.
 
@@ -135,7 +135,7 @@ private void Update()
 
 Finally, we shall create the new `IntVariable` asset to store health by right-clicking the Project View and selecting it from the menu under **Variables/Int**. In the Inspector, you would drag this asset onto the `health` variable on a `Player` component so that it can write to the asset, and onto the `playerHealth` variable of a `PlayerUI` component that will read the asset.
 
-![IntVariable](/img/unity-tips/part4-intvariable-so.jpg){: .center-image .lazyload }
+<img data-src="/img/unity-tips/part4-intvariable-so.jpg" class="center-image lazyload" alt="IntVariable">
 
 Let’s evaluate the changes we’ve made. `Player` and `PlayerUI` are now decoupled, with a layer of separation between them. A significant change to the way `Player` handles health requires no change to the way `PlayerUI` reads health. Furthermore, this is more designer friendly. If the designer needs to tweak the initial value for the player’s health, they can find the corresponding asset rather than having to deal with a `Player` prefab, assuming the project directory is structured well.
 
@@ -378,7 +378,7 @@ public class InventorySystem : ScriptableObject
 }
 ~~~
 
-To properly reference the inventory, include a public variable on any class that uses it – for example, `Player` – instead of accessing it at runtime using a singleton. In the case of `Player`, you would probably have a prefab instance you can modify, which automatically rolls out the change to all instances of your player character in all scenes. Now, there is no need to add a near-empty `GameObject` to each scene. This reduces the build size because now, only a single instance of `InventorySystem` needs to be included in the compiled project instead of a GameObj`ect, associated variables and an `InventorySystem` per scene. Secondly, a designer could swap out the default `InventorySystem` asset for a test inventory to play around with specific items. As we have seen before, using a scriptable object has benefits for non-programmers without taking power away from the programmer.
+To properly reference the inventory, include a public variable on any class that uses it – for example, `Player` – instead of accessing it at runtime using a singleton. In the case of `Player`, you would probably have a prefab instance you can modify, which automatically rolls out the change to all instances of your player character in all scenes. Now, there is no need to add a near-empty `GameObject` to each scene. This reduces the build size because now, only a single instance of `InventorySystem` needs to be included in the compiled project instead of a `GameObject`, associated variables, and an `InventorySystem` per scene. Secondly, a designer could swap out the default `InventorySystem` asset for a test inventory to play around with specific items. As we have seen before, using a scriptable object has benefits for non-programmers without taking power away from the programmer.
 
 <hr/>
 

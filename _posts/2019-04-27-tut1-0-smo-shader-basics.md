@@ -19,7 +19,7 @@ In preparation for this series, this article will provide some foundational mate
 
 Shaders in Unity are a bit of a weird beast. Unity uses a proprietary language called ShaderLab, which is more like a middleman between the properties exposed by Unity and a shading language - the actual shader code. We'll explore the basics of ShaderLab syntax so you'll have enough to understand the upcoming tutorials - for a complete guide, see the [Unity Manual Shader Reference](https://docs.unity3d.com/Manual/SL-Reference.html). If this all gets a bit much, then no worries: this gets easier as you go!
 
-![Creating a Shader](/img/tut1/part0-create-shader.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part0-create-shader.jpg" class="center-image lazyload" alt="Creating a Shader">
 
 First of all, we'll create a shader file in Unity (with file extension .shader) by right-clicking in the Project view and selecting `Create -> Shader -> Image Effect Shader`. Name it whatever you'd like, and a template is generated for you. Depending on the version of Unity you're using, the generated code might differ, so from now on I'll refer to ShaderLab code generally, without basing it on this template. ShaderLab code begins with the name of your shader, like this:
 

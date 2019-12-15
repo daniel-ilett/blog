@@ -15,7 +15,7 @@ This tutorial looks at the Oil Painting effect seen in Snapshot Mode, which make
 
 <hr/>
 
-![Oil Painting](/img/tut1/part6-oil-painting.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part6-oil-painting.jpg" class="center-image lazyload" alt="Oil Painting">
 
 # Oil Painting
 
@@ -23,11 +23,11 @@ We talked in Part 3 of this series about blurring operators, namely the Box Blur
 
 The Kuwahara filter was originally developed for use in medical imaging as an operator that removes unwanted noise from an image while preserving object edges; other low-pass filters (one of which is the Gaussian filter) blur those edges. Those same properties are useful in artistic imaging; the filter removes texture from images, giving them a blocky, paintbrushed aesthetic. That's exactly what we're looking for!
 
-![Kuwahara Filter](/img/tut1/part6-scene-painting.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part6-scene-painting.jpg" class="center-image lazyload" alt="Kuwahara Filter">
 
 The Kuwahara filter uses a square kernel window, like the Gaussian kernel, with odd-numbered dimensions. The difference here is that the Kuwahara operator divides the window into four overlapping regions, such that the cross-shape of pixels in the middle of the window belong to multiple regions each. It's much easier to understand on a diagram; on a 5x5 kernel, the top-left 3x3 pixels constitute one region and the top-right 3x3 pixels are a separate region, with a strip of three pixels overlapping and belonging to both regions. The central pixel in a Kuwahara kernel belongs to all four regions.
 
-![Kuwahara Kernel](/img/tut1/part6-kuwahara-kernel.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part6-kuwahara-kernel.jpg" class="center-image lazyload" alt="Kuwahara Kernel">
 
 The operator calculates the variance of the colours of the pixels in each of the four regions. The region with the lowest variance is the most 'stable', and it's that region that is picked to be representative of the entire window; the mean of the pixel colours in that region is picked to be the colour for the central pixel in the output image. With me so far?
 
@@ -115,7 +115,7 @@ region regionD = calcRegion(int2(0, 0), int2(upper, upper), samples, i.uv);
 
 In this shader, region A is the bottom-left, B is bottom-right, C is top-left, and D is top-right, corresponding to the diagram earlier in this article. The type of each of the four variables is `region`, which is the name we gave to the data-holding struct before. Now all that's left to do is pick the correct regional mean, and for that we're going to employ some shader tricks as we did in Part 5's Game Boy shader with `lerp` and `saturate`; this time we'll be using `step` instead of `saturate`. We're almost finished!
 
-![Painting Filter](/img/tut1/part6-scene-painting-bench.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part6-scene-painting-bench.jpg" class="center-image lazyload" alt="Painting Filter">
 
 We'll start by assigning `regionA` as having the lowest variance and choose its mean to use as the colour value. Then, in turn, we'll check if the other three regions have a lower variance and if so, pick that region and set the minimum variance and chosen colour accordingly.
 
@@ -149,7 +149,7 @@ return fixed4(col, 1.0);
 
 I don't bother setting `minVar` on the final check, because there are no further checks that would use it. Pulling it all together, we've created a Kuwahara filter that should do what we want. Attach the shader to an `ImageEffectBase` component on your main camera and see the results speak for themselves! Like I mentioned, you'll probably find it works best on noisy, busy scenes with lots of details.
 
-![Kuwahara Trees](/img/tut1/part6-scene-painting-trees.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part6-scene-painting-trees.jpg" class="center-image lazyload" alt="Kuwahara Trees">
 
 <hr/>
 

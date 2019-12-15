@@ -15,7 +15,7 @@ Today we'll look at the Silhouette effect, which draws objects close to the came
 
 <hr/>
 
-![Silhouette](/img/tut1/part2-silhouette.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part2-silhouette.jpg" class="center-image lazyload" alt="Silhouette">
 
 # Silhouette
 
@@ -23,19 +23,19 @@ The Silhouette filter is a striking effect which emphasizes objects in the foreg
 
 Imagine a complex scene with many objects obscuring other objects from view, in whole or in part. How exactly does the GPU decide to render the objects in front, but ignore those behind? A naive implementation of a rendering algorithm might just read every object in the scene in some indeterminate order and draw them all in turn, and it'd be a mess - objects would likely be erroneously drawn in front of object that they ought to be behind. Our graphics pipeline should keep track of what has already been drawn to the screen - lucky for us, generations of smart graphics people thought up some neat ways of doing this! The image below shows a red cube that's positioned behind the yellow one in 3D space but drawn in front of it; both cubes are the same size.
 
-![ZTest Greater](/img/tut1/part2-ztest.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part2-ztest.jpg" class="center-image lazyload" alt="ZTest Greater">
 
 When the GPU wants to draw a pixel to the screen, we can calculate how far away from the camera the pixel is. We remember that value by recording it in a 2D array called the "depth buffer" or "z-buffer" - the distance recorded is called the "depth value", and each member of this array corresponds to a pixel position on the screen. The corresponding buffer used to hold all the screen pixel colours is called the "framebuffer". When we attempt to draw a pixel to the framebuffer, we'll do some "depth testing" - if there is already a depth value in the depth buffer lower than the one for the pixel we're trying to draw at that position, then we'll discard it instead. Else, we shall draw it to the framebuffer at that pixel position and record its depth value in the depth buffer.
 
 This is useful for us, as the silhouette effect is, essentially, colouring pixels based on their depth. If we can access the depth buffer in the fragment shader for our image effect, then we'll be able to apply colours based on how far away objects were when they were initially rendered to the framebuffer. This is all effectively "for free", because the depth buffer is going to be filled regardless of whether we want to use it for an image effect.
 
-![Camera Frustum](/img/tut1/part2-camera-frustum.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part2-camera-frustum.jpg" class="center-image lazyload" alt="Camera Frustum">
 
 Let's go over the implementation details of the depth buffer. Usually, depth values are floating-point decimals between 0 and 1, where 0 is very close to the camera, and 1 is far away. How close and how far, I hear you ask? Well, our camera is in perspective mode, so objects further away look smaller than objects close to you. We only want the camera to draw certain objects, so we define a volume shaped like a square-based pyramid with the top cut off - a rectangular frustum - to decide what is or isn't in the camera's view. The angle of the frustum is controlled by a "field of view" parameter, and the base and top of the pyramid are called the 'far' clip plane and 'near' clip plane respectively. Pixels resting exactly on the near plane have a depth of 0, and those on the far plane have a depth of 1. Anything outside that frustum shape won't be drawn at all.
 
 To throw one more complexity into the equation, depth values aren't calculated linearly between the near and far clip planes, as explained [here](https://developer.nvidia.com/content/depth-precision-visualized). That might seem counter-intuitive at first, but we can exploit the properties of floating-point numbers to store close objects with more precision than faraway objects. Don't worry about it too much - we'll be using pre-defined functions to handle the necessary conversions to sensible values for us.
 
-![Camera Parameters](/img/tut1/part2-camera-params.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part2-camera-params.jpg" class="center-image lazyload" alt="Camera Parameters">
 
 Before we start, make sure to set your camera's far clip plane distance to a reasonable value - I used a value of 75, which should keep the example scene all in frame, but this will likely require a bit of tweaking based on the size of your scene. If it's too large, you'll barely see the colour difference between close objects when the shader is complete, and if it's not large enough, some objects in your scene will end up outside the camera frustum and are culled.
 
@@ -86,7 +86,7 @@ return lerp(_NearColour, _FarColour, depth);
 
 The word 'lerp' is short for 'linear interpolation', and here we'll see it in action. If you run the shader with those values, you'll get a lovely yellow-orange blend reminiscent of the Sand Kingdom's silhouette effect. Play around with `_NearColour` and `_FarColour` to mimic other kingdoms!
 
-![Silhouette Effect](/img/tut1/part2-scene-silhouette.jpg){: .center-image .lazyload }
+<img data-src="/img/tut1/part2-scene-silhouette.jpg" class="center-image lazyload" alt="Silhouette Effect">
 
 ## A note about drawing transparent objects
 
