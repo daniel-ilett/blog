@@ -363,14 +363,13 @@ footer .theme-by {
 }
 .post-preview .post-subtitle {
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 10px;
 }
 .post-preview .post-meta,
 .post-heading .post-meta {
-  color: #808080;
+  color: $light-text-color;
   font-size: 18px;
-  font-style: italic;
   margin: 0 0 10px;
 }
 .post-preview .post-entry {
@@ -412,7 +411,7 @@ footer .theme-by {
 
 .blog-tags {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #999;
+  color: $light-text-color;
   font-size: 15px;
   margin-bottom: 30px;
 }
