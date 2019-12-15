@@ -13,7 +13,7 @@ idnum: 28
 
 Several games could be described as 'cinematic'. Usually, that means heavy application of film techniques to deliver the story or narrative of the game, although interpretations of the term differ - it's very subjective. It could mean throwing a film grain effect over the screen and using black bars to force the viewport into a wider aspect ratio. It might mean lots of cutscenes. And in this tutorial, we'll take it to mean the first - film grain and black bars! Many of these effects emulate the imperfections of cameras or photographic film, so today we're going to use a **noise function** to recreate the film grain effect.
 
-![Film Camera](/img/tut3/part5-film-camera.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part5-film-camera.jpg" class="center-image lazyload" alt="Film Camera">
 
 [Photo by Donald Tong on Pexels](https://www.pexels.com/@donaldtong94)
 
@@ -183,7 +183,7 @@ public class CinematicEffect : BaseEffect
 
 As with many of the previous scripts, it just plugs in the values we'll need for the shader properties and performs a basic `Graphics.Blit` using the shader. Let's see it animated with a `strength` value of roughly 0.2. The GIF compression will make the effect look a little grainier than running it on your own.
 
-![Film Grain](/img/tut3/part5-film-grain-anim.gif){: .center-image .lazyload }
+<img data-src="/img/tut3/part5-film-grain-anim.gif" class="center-image lazyload" alt="Film Grain">
 
 <hr/>
 
@@ -203,7 +203,7 @@ return (col - _Strength * n) * bars;
 
 The real aspect ratio, `aspect`, is just the x-resolution of the screen divided by the y-resolution. Stepping through the calculation of the `bars` variable, we're dividing the real (`aspect`) and desired (`_Aspect`) values, then using that as a 'threshold'. If the v-parameter of the pixel's UV coordinates crosses the threshold, then the value of `bars` becomes 0. Using the `step` function means that bars will take the value of 0 when its first parameter is greater than the other, and 1 otherwise, with no other return values in between. The output of the shader with an aspect ratio of 2.5 (or 5:2) looks like this:
 
-![Film Bars](/img/tut3/part5-film-grain-bars.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part5-film-grain-bars.jpg" class="center-image lazyload" alt="Film Bars">
 
 Remember than an aspect ratio of 1.777... is the same as an aspect ratio of 16:9 (with an imperceptible loss of accuracy due to floating-point errors).
 
@@ -246,7 +246,7 @@ public class GreyscaleEffect : BaseEffect
 
 I've created a composite effect in the *Effects* folder called **Old Filmic**, which applies the **Greyscale** or **Sepia** effect, followed by the **Cinematic** effect. When combined, it looks like this:
 
-![Greyscale Film](/img/tut3/part5-film-greyscale.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part5-film-greyscale.jpg" class="center-image lazyload" alt="Greyscale Film">
 
 Let's also look at the **Sepia-tone** effect. The script is almost identical, so I won't paste it here. The shader does something slightly different to the **Greyscale** effect - it still uses the relative sensitivity of the eye to each colour component in its calculation, but they don't all feed into a single value - the output red is influenced by different degrees by the input RGB than the output green, and so on. That means we'll have a **3x3 matrix** of values rather than a 3-element vector.
 
@@ -270,7 +270,7 @@ fixed4 frag (v2f i) : SV_Target
 
 When used in the **Old Filmic** composite effect, the screen looks like this:
 
-![Sepia Film](/img/tut3/part5-film-sepia.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part5-film-sepia.jpg" class="center-image lazyload" alt="Sepia Film">
 
 # Conclusion
 

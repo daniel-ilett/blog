@@ -14,7 +14,7 @@ idnum: 31
 
 *Spyro* was one of my favourite series as a kid. I've played the original trilogy more times than I care to admit, and even as an adult I still find the vivid environments and gameplay loop captivating. One tiny detail I always liked was that the innards of each portal look like the sky of the level that portal leads to, and when Spyro flies through the portal there's a seamless transition into the portal. In *Spyro the Dragon*, the first entry in the series, the game even has titular hero Spyro fly in a loop-de-loop to obscure the new level as it seamlessly loads in below. Today, we will recreate the appearance of *Spyro*’s portals in Unity.
 
-![Spyro Portal](/img/tut4/part1-spyro-portals.jpg){: .center-image .lazyload }
+<img data-src="/img/tut4/part1-spyro-portals.jpg" class="center-image lazyload" alt="Spyro Portal">
 
 <hr/>
 
@@ -22,7 +22,7 @@ idnum: 31
 
 There are many approaches a 3D game can take to simulate the appearance of a sky. At the most basic level, games can give the sky a block colour and be done with it. On the far end of technical overindulgence, games can physically simulate clouds and other atmospheric details. But the approach that's most widely used is the humble **skybox**, a method for mapping sky-like details onto a sphere, which is then rendered behind all other scene details. While there's a handful of approaches under the umbrella of "skybox", such as Unity's built-in procedural skyboxes, the approach we will use is to construct a **cubemap** texture. A cubemap takes six square images, corresponding to the sides of a cube, and combine them into a single entity. We can **sample** the cubemap by providing a direction in 3D space - conceptually, it's like morphing that textured cube into a sphere, then pointing from the centre towards a point on the sphere and picking the colour at that point.
 
-![Cubemap Textures](/img/tut4/part1-cubemap-tex.jpg){: .center-image .lazyload }
+<img data-src="/img/tut4/part1-cubemap-tex.jpg" class="center-image lazyload" alt="Cubemap Textures">
 
 Let's look at this inside a shader. You'll find this shader code inside *Shaders/SpyroPortal/SpyroSkybox.shader*. We've sampled a lot of textures inside shaders using the `tex2D` function and a UV coordinate, but how do we sample cubemaps? There is a built-in type called `samplerCUBE` and a corresponding function called `texCUBE` which are parallels of `sampler2D` and `tex2D` respectively - we will use those to sample a cubemap. First, we need to pass the cubemap texture to the shader in **Properties**.
 
@@ -79,7 +79,7 @@ Let's see what this looks like assigned to an object in Unity. First, we must cr
 
 In the `SpyroPortals` scene, found at *Scene/SpyroPortals.unity*, you'll find those materials attached to the portal and skybox already. The 'skybox' in this case is a huge sphere attached to the camera as a child object, and the portal surface is a flat plane in the centre of a portal frame model. Entering Play Mode and panning around the scene will let you see the innards of the portal in action - try looking into it at all sorts of angles!
 
-![Portal Frame](/img/tut4/part1-portal-frame.jpg){: .center-image .lazyload }
+<img data-src="/img/tut4/part1-portal-frame.jpg" class="center-image lazyload" alt="Portal Frame">
 
 <hr/>
 

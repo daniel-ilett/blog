@@ -15,7 +15,7 @@ As with last week's filmic effects, we can derive many pleasing postprocessing e
 
 Depending on the lens and the construction of the camera, a phenomenon called **vignetting** can occur where the field-of-view is restricted, causing shadows at the edges of the photo. On top of that, different wavelengths of light may not share the same focal point, resulting in different colour channels seemingly separating at the edge of the photo. This is called **chromatic aberration**, and today we'll look at that alongside **vignetting**.
 
-![Jewellery Photo](/img/tut3/part6-jewellery-example.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part6-jewellery-example.jpg" class="center-image lazyload" alt="Jewellery Photo">
 
 [Photo by Slavica Panova on Wikimedia Commons](https://en.wikipedia.org/wiki/File:Filigranski_nakit_02_edit.JPG)
 
@@ -120,7 +120,7 @@ We're exposing `strength`, `size` and `falloff` variables and then setting them 
 
 I've created two examples of the vignette effect inside the *Effects* folder - they're named *Vignette.asset* and *VignetteStrong.asset*. The former offers a very slight darkening effect at the corners, while the latter produces a much more obvious effect. Let's see what the strong version looks like in practice.
 
-![Vignette Effect](/img/tut3/part6-vignette-complete.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part6-vignette-complete.jpg" class="center-image lazyload" alt="Vignette Effect">
 
 A value of somewhere around 0.7 to 0.8 tends to work well for the `_Size` property, somewhere around 0.25 for the `_Falloff` property produces a smooth falloff and the value of `_Strength` depends on how intense you'd like the effect but I found that approximately 0.5 worked well.
 
@@ -183,15 +183,15 @@ For each texture sample, we're using the `dot` product to retrieve the value for
 return fixed4(r, g, b, 1.0f);
 ~~~
 
-![Chromatic Aberration](/img/tut3/part6-chr-ab-complete.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part6-chr-ab-complete.jpg" class="center-image lazyload" alt="Chromatic Aberration">
 
 You should be able to see the effect most strongly on the left-hand side of this screenshot (you may have to view it in a separate tab). The effect is subtle - and chromatic aberration is definitely an effect to use sparingly if you opt to add it to your scenes. The above screenshot was taken using the *ChromaticAberration.asset* effect attached to the camera. Stronger aberration effects are useful if you're going for something like a glitch effect, in which aberration could be combined with other effects. Stronger chromatic aberration looks like this:
 
-![Strong Aberration](/img/tut3/part6-strong-aberration.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part6-strong-aberration.jpg" class="center-image lazyload" alt="Strong Aberration">
 
 For funsies, I also included an effect inside the *Effects* folder called *VignetteAberration.asset*, which combines both effects.
 
-![Vignette Aberration](/img/tut3/part6-vignette-aberration.jpg){: .center-image .lazyload }
+<img data-src="/img/tut3/part6-vignette-aberration.jpg" class="center-image lazyload" alt="Vignette Aberration">
 
 <hr/>
 
