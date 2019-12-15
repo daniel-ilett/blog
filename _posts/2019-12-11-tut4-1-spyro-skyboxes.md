@@ -201,10 +201,12 @@ private void EnterPortal()
 
 All that's left to do is to swap the two materials once we've walked through the portal. For that, we're using the static singleton instance on `SpyroCamera` we defined before, although there are more elegant ways to do this outside of a tech demo scenario.
 
-<video loop autoplay class="lazyload">
+<div class="embed-responsive embed-responsive-16by9">
+<video loop autoplay class="lazyload embed-responsive-item">
     <source src="/img/tut4/part1-spyro-complete.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
+</div>
 
 <hr/>
 

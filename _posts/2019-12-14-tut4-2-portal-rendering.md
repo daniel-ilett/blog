@@ -2,7 +2,7 @@
 layout: post
 title: Portals | Part 2 - Stencil-based Portals
 subtitle: Headache-inducing geometry
-bigimg: /img/tut4/part2-banner.jpg
+bigimg: /img/tut4/part2-manifold-portals.jpg
 hdrimg: /img/tut4/part2-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
@@ -14,7 +14,7 @@ idnum: 32
 
 I recently played *Manifold Garden*, a game based on Escher-esque architecture. It's full of mind-blowing sequences, and one of my favourite technical elements was the game's portals, which are used heavily to explore the concept of impossible space. You walk into a small room, and there's a vast world inside! Today, we'll recreate the tech behind this type of portal.
 
-![Manifold Portal](/img/tut4/part2-manifold-portals.jpg){: .center-image }
+![Manifold Portal](/img/tut4/part2-manifold-portals.jpg){: .center-image .lazyload }
 
 *Screenshot from [Manifold Garden](https://manifold.garden/)*
 
@@ -35,11 +35,11 @@ There are a lot of moving parts (literally!) when it comes to positioning the ca
 
 The player will be looking in an arbitrary direction, from an arbitrary position, and we'll have two portal surfaces in the scene. We need each portal's surface to look like the world as seen from the other portal. So, for each portal - let's call the one being considered the "in-portal" - we'll retrieve the rotation of the player and their offset from the in-portal, then convert both of them from *world space* to the in-portal's *local space*. The position and rotation are now relative to the in-portal; the diagram below abstracts this idea to 2D.
 
-![Space Conversion](/img/tut4/part2-local-space.jpg){: .center-image }
+![Space Conversion](/img/tut4/part2-local-space.jpg){: .center-image .lazyload }
 
 Take that relative offset and imagine it is now relative to the other portal - the "out-portal". We want to reflect the positional offset in the out-portal's surface plane so that it is behind the portal. Then, we'll do the same with the relative rotation: rather than pointing towards the area behind the portal, rotate it 180 degrees such that it points to the world outside the portal. Now, convert the position and rotation from the out-portal's local space to world space and place a secondary camera in the scene with the new position and rotation. The result is seen in the diagram below:
 
-![Desired position](/img/tut4/part2-desired-position.jpg){: .center-image }
+![Desired position](/img/tut4/part2-desired-position.jpg){: .center-image .lazyload }
 
 That's the method for positioning the camera. Now let's look at some real code. Much of the code pertains to later tutorials, so for now I shall skip over those sections. For now, open up the *BasicPortals.unity* scene. The scene contains some basic level geometry, a lovely animated robot asset from the Unity Asset Store, our two portal surfaces, and a camera object called *BasicPortalCamera* containing the player camera and the 'virtual' portal camera. Observe that the virtual camera is **inactive**, so only the player camera will render directly to the screen every frame. We're going to use the virtual camera to capture the scene through the two portals at runtime.
 
@@ -216,10 +216,12 @@ public bool IsRendererVisible()
 
 That's everything! Now, if we play the scene, you'll be able to see the correct view through the portal.
 
-<video loop autoplay class="lazyload">
+<div class="embed-responsive embed-responsive-16by9">
+<video loop autoplay class="lazyload embed-responsive-item">
     <source src="/img/tut4/part2-portal-complete.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
+</div>
 
 <hr/>
 
@@ -227,7 +229,7 @@ That's everything! Now, if we play the scene, you'll be able to see the correct 
 
 There's a handful of limitations and edge cases in the code we've written so far. Some of them will be fixed in future articles, so I'll talk about the specific limitations of this portal that won't be removed. A minor inconvenience is that, since we're using the stencil buffer, this effect could interfere with other stencil-based effects. It's a pedantic issue, as you can change the stencil IDs used by the effect, but it's something to consider if you're using stencils for something else.
 
-![Non-recursive](/img/tut4/part2-non-recursive.jpg){: .center-image }
+![Non-recursive](/img/tut4/part2-non-recursive.jpg){: .center-image .lazyload }
 
 The main issue with this portal is that it's not recursive, meaning it can't render a portal seen inside a portal, inside a portal, and so on. It's feasible to use stencil rendering to achieve this, but it's a complex operation and not substantially more efficient than the alternative method we'll use in a future tutorial to write a recursive portal. That approach won't be a postprocessing effect.
 
