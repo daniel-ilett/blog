@@ -873,8 +873,12 @@ td.gutter {
 
 .series-part-list
 {
+  margin-top: -1em;
+  margin-bottom: 1em;
   display: block;
   width: 100%;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .series-part-list a
@@ -887,8 +891,6 @@ td.gutter {
   display: inline-block;
   background-color: #ffffff;
   color: #221144;
-  font-size: 18px;
-  font-weight: bold;
   height: 2em;
   line-height: 2em;
   width: 2em;

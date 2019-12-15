@@ -9,6 +9,9 @@ tags: [unity, shaders, image-effects, ultra-effects, underwater, normals, uvs]
 nice-slug: Sinking Feeling
 date: 2019-10-22
 idnum: 24
+
+part-label: 2
+series-name: Ultra Effects
 ---
 
 A common trope in videogames is the infamous water level. All good games must have one - who can say whether Ocarina of Time would have been the critical and commercial success it was without the Water Temple? Games emulate the feeling of being underwater in several ways - from tinting the screen blue to emulating the way foliage waves around in the undercurrents. In this tutorial, instead of a full simulation of the water's effect on objects, we'll build on the work from last tutorial and mess with the UVs we use to sample the image texture, albeit in a different manner. We'll also look at how to create composite effects.

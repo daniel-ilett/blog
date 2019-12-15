@@ -9,6 +9,9 @@ tags: [shaders, unity, lighting, cel-shading, outro]
 nice-slug: Finishing Touches
 date: 2019-06-23
 idnum: 17
+
+part-label: 5
+series-name: Cel-shading
 ---
 
 Last time we looked at stencil-based outlines, and today we're going to explore the quirks of the stencil buffer to fix a couple things in our cel-shading effect. We'll also look at once alternative way of providing diffuse lighting to our material, which becomes especially useful if you desire more than one cut in your lighting levels.

@@ -7,6 +7,9 @@ tags: [unity, unity-tips, coroutines, concurrency]
 nice-slug: Coroutines
 date: 2019-08-20
 idnum: 19
+
+part-label: 2
+series-name: Unity Tips
 ---
 
 Coroutines are special types of function that do not need to complete execution in a single frame. Using the `yield` keyword, they can suspend their operation at any point until the next frame or until a few seconds have elapsed. However, unlike threading, they are a lightweight way of performing asynchronous tasks. In this article we’ll explore a few ways of using coroutines in Unity.

@@ -9,6 +9,9 @@ tags: [unity, shaders, image-effects, ultra-effects, intro]
 nice-slug: Ultra Effects Series
 date: 2019-09-18
 idnum: 21
+
+part-label: i
+series-name: Ultra Effects
 ---
 
 Throughout May, I released [a series of image effect shaders]({% post_url 2019-04-24-tut1-intro-smo %}) aimed at emulating those found in Super Mario Odyssey's Snapshot Mode. It was met with a modest amount of traction - for the most part, people seemed happy with them! A few people starred the [repo on GitHub](https://github.com/daniel-ilett/smo-shaders), a handful of comments got left on my [Reddit posts](https://www.reddit.com/r/gamedev/comments/bpc4qx/unity_shaders_nes_snes_game_boy_pixelation_and/) and people showed off [stuff they've done with the shaders](https://twitter.com/TheSarahChimera/status/1130235493919027200) on Twitter. Eventually, I spun the collection of Snapshot Mode shaders into an Asset Store package, aptly named [Snapshot Shader Collection](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shader-collection-146666). Never ask me to name anything.

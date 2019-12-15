@@ -9,6 +9,9 @@ tags: [unity, shaders, image-effects, ultra-effects, fish-eye, lens, uvs]
 nice-slug: Something Fishy
 date: 2019-10-17
 idnum: 23
+
+part-label: 1
+series-name: Ultra Effects
 ---
 
 **Fisheye lenses** gained popularity throughout the 1900s for their ability to capture **ultrawide-angle views** using a spherical mapping, rather than a straight-line perspective. The name comes from how American physicist Robert W. Wood imagined a fish would view its environment underwater. Images created using a fisheye lens are characterised by objects in the centre appearing 'closer' than they otherwise would. Nowadays, we use fisheye lenses for a range of applications, from artistic choices in entertainment media to computer graphics, where we can use two 180-degree virtual lenses to create environment maps. Today, we'll combine artistic intent with computer graphics and look at a cheap way to convert computer-generated images into fisheye-style images.

@@ -9,6 +9,9 @@ tags: [shaders, unity, image-effects, silhouette]
 nice-slug: Getting Deep
 date: 2019-05-04
 idnum: 5
+
+part-label: 2
+series-name: Image Effects
 ---
 
 Today we'll look at the Silhouette effect, which draws objects close to the camera in a darker shade than those far back in the distance. So far, we've been interacting with the framebuffer (the 2D array of values that pixel colour values are rendered into) and now we'll introduce a new buffer - the depth buffer.

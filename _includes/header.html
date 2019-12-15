@@ -75,18 +75,23 @@
 <div class="intro-header"></div>
 {% endif %}
 
-{% if page.series-parts %}
+{% if page.part-label %}
   <div class="series-part-list text-center">
-  {% for part in page.series-parts %}
-    <a href="{{ part.link }}">
-      {% if page.this-label == part.label %}
-      <div class="series-part series-part-this">
-      {% else %}
-      <div class="series-part">
-      {% endif %}
-        {{ part.label }}
-      </div>
-    </a>
+  <span>{{ page.series-name }} Series | </span>
+  {% for series in site.series-list %}
+    {% if series.series-name == page.series-name %}
+      {% for part in series.series-parts %}
+        <a href="{{ part.link }}">
+          {% if page.part-label == part.label %}
+          <div class="series-part series-part-this">
+          {% else %}
+          <div class="series-part">
+          {% endif %}
+            {{ part.label }}
+          </div>
+        </a>
+      {% endfor %}
+    {% endif %}
   {% endfor %}
   </div>
 {% endif %}

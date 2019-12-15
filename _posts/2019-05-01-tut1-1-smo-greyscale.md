@@ -9,6 +9,9 @@ tags: [shaders, unity, image-effects, greyscale, sepia]
 nice-slug: Colour Transforms
 date: 2019-05-01
 idnum: 4
+
+part-label: 1
+series-name: Image Effects
 ---
 
 This tutorial discusses two simple effects seen in Snapshot Mode - Greyscale and Sepia Tone. Both effects require nothing more than just modifying the colour of each pixel individually. By the end of this tutorial, you should understand the basics of manipulating colours in shaders in Unity.

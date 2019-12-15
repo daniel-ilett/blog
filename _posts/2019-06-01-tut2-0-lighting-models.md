@@ -9,6 +9,9 @@ tags: [shaders, unity, lighting, cel-shading, primer]
 nice-slug: Lighting Models
 date: 2019-06-01
 idnum: 12
+
+part-label: 0
+series-name: Cel-shading
 ---
 
 There are several lighting models used in 3D graphics. With the advent of realtime photorealistic rendering, we've seen more complex lighting than ever, and modern lighting systems mimic the way real light interacts with objects - this is called physically based rendering (PBR). Ray-tracing, Nvidia's favourite buzzword of the day, simulates light as particles travelling in straight lines, bouncing off objects - hence, "ray-tracing". Today, we're going to look at some of the more traditional lighting models from a theoretical perspective; we'll build on and implement them throughout the series. We'll also look at a few new shader features we'll use throughout the series.

@@ -7,6 +7,9 @@ tags: [unity, unity-tips, interpolation, lerp, slerp, quaternions]
 nice-slug: Interpolation
 date: 2019-09-08
 idnum: 20
+
+part-label: 3
+series-name: Unity Tips
 ---
 
 Unity provides several functions for interpolation – the estimation of a value some fraction between two data points. It’s an invaluable tool for smoothing numbers, vectors and quaternions over time – this article will discuss interpolation on straight lines, flat surfaces and spheres.

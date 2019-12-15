@@ -9,6 +9,9 @@ tags: [shaders, unity, image-effects, nes, snes, gb, crt]
 nice-slug: Retro Arcade
 date: 2019-05-15
 idnum: 8
+
+part-label: 5
+series-name: Image Effects
 ---
 
 This tutorial explores the retro console shaders found in Snapshot Mode, which emulate the look and feel of the Nintendo Entertainment System (NES), Super NES (SNES), and Game Boy (GB). We will explore the colour transformations involved and implement an effect that makes the image appear as if it is being displayed on an old-style CRT screen.

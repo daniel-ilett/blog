@@ -10,6 +10,18 @@ tags: [unity, shaders, portals, matrix, clip-plane]
 nice-slug: Matrix Matching
 date: 2019-12-24
 idnum: 33
+
+this-label: 3
+series-name: Portals
+series-parts:
+    -   label: i
+        link: https://danielilett.com/2019-12-01-tut4-intro-portals/
+    -   label: 1
+        link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes/
+    -   label: 2
+        link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering/
+    -   label: 3
+        link: https://danielilett.com/2019-12-18-tut4-3-matrix-matching/
 ---
 
 In the last tutorial, we managed to render a realistic portal using stencil buffers. We skipped over a few things to talk about in future tutorials, but I asked one key question: what happens to all the stuff between the portal camera and the portal surface? Wouldn't the stuff behind the portal get rendered unless we do something to exclude it? The answer is yes - and today we're going to explore how to prevent the scene behind the out-portal being rendered onto the in-portal surface.

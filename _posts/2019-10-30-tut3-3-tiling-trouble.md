@@ -9,6 +9,9 @@ tags: [unity, shaders, image-effects, ultra-effects, tiling, textures]
 nice-slug: Tiling Trouble
 date: 2019-10-30
 idnum: 26
+
+part-label: 3
+series-name: Ultra Effects
 ---
 
 Mosaics have their roots in ancient culture. Floor mosaics comprised of tiny squares of stone and glass were commonly used as decorative art in the ancient world and are still used as a form of artistic expression in modern times. Perhaps you could even argue that pixel art is a type of digital mosaic born out of technical limitations! That's not as silly a suggestion as you'd think - and we're going to prove it today by turning arbitrary images into mosaics by using **pixelation** together with a tiled **texture overlay**.

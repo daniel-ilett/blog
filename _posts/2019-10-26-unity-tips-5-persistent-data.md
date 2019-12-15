@@ -7,6 +7,9 @@ tags: [unity, unity-tips, scriptable-objects, monobehaviour]
 nice-slug: Persistent Data
 date: 2019-10-26
 idnum: 25
+
+part-label: 5
+series-name: Unity Tips
 ---
 
 In ye olden times, games weren’t saved at all – once a session was over, you started from the beginning next time. Early “saving” systems used password entry screens to skip to certain sections of the game. But in the end, we devised ways of saving progress onto hardware. Expansion cards for consoles and hard drive space were the norm for a long time, and nowadays we have cloud-based saves that can be recovered on any device. This tutorial focuses on saving to a local disk, but in Unity, it turns out there are several ways of doing that, each with different quirks.

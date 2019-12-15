@@ -9,6 +9,9 @@ tags: [unity, shaders, image-effects, ultra-effects, chromatic-aberration, vigne
 nice-slug: Chromatic Course
 date: 2019-11-26
 idnum: 29
+
+part-label: 6
+series-name: Ultra Effects
 ---
 
 As with last week's filmic effects, we can derive many pleasing postprocessing effects by considering the limitations of camera technology. Last week, we talked about the imperfections of photographic film, and today we'll talk about the issues caused by camera lenses. Lenses work by focusing an incoming image onto a *focal point*. 

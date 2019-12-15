@@ -7,6 +7,9 @@ tags: [unity, unity-tips, garbage-collection, optimisation, performance]
 nice-slug: Garbage Collection
 date: 2019-08-05
 idnum: 18
+
+part-label: 1
+series-name: Unity Tips
 ---
 
 It's the launch of a new series today - Unity Tips! Whenever I need to do something in Unity, there are plenty of places I could go with high-quality information - but I also see a lot of misinformation, or instances where quality content is spread around, and I'd like there to be more resources that consolidate information into a single location. That's what Unity Tips is for - each article will be a substantial look at some portion of Unity. Of course, it will always be impossible to capture every tidbit of information on every topic - but I've done my best to research the key points. 

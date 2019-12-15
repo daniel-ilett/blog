@@ -11,14 +11,8 @@ nice-slug: Portals Series
 date: 2019-12-01
 idnum: 30
 
-this-label: i
-series-parts:
-    -   label: i
-        link: https://danielilett.com/2019-12-01-tut4-intro-portals/
-    -   label: 1
-        link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes/
-    -   label: 2
-        link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering/
+part-label: i
+series-name: Portals
 ---
 
 Ever since student project *Narbacular Drop* was adopted by Valve and spun into seminal puzzle-platformer *Portal* in 2007, the idea of mind-bending physics in games has captured the imaginations of players and developers alike; games that have followed it such as *Antichamber* and recent release *Manifold Garden* demonstrate that there is still unexplored space in the "brain-tickling physics" genre. The question I've always asked myself is: how could I create *Portal*'s portals from scratch?

@@ -9,6 +9,9 @@ tags: [shaders, unity, lighting, cel-shading, edge-outline]
 nice-slug: Edge Outlining
 date: 2019-06-15
 idnum: 16
+
+part-label: 4
+series-name: Cel-shading
 ---
 
 The final step of our cel-shading effect is to draw bold outlines around our object. There are several ways to do that, and the method we're about to explore involves drawing the object a second time in a second pass, slightly larger than the first time, and excluding the pixels that were drawn in the first pass.
