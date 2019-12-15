@@ -105,7 +105,7 @@ You'll see I've kept the same `diffuse` calculation, but I've used it to calcula
 
 You should now have a very small lighting falloff that gives our object a less harsh transition from light to dark. It's fully controllable from the material in the Inspector. Beware that large values for the `_Antialiasing` variable (called `Band smoothing` in the Inspector) look atrocious, so keep it low!
 
-![Smooth Falloff Surf](/img/tut2/part2-cel-shaded-falloff-surf.jpg){: .center-image .lazyload }
+<img data-src="/img/tut2/part2-cel-shaded-falloff-surf.jpg" class="center-image lazyload" alt="Smooth Falloff Surf">
 
 ## Specular lighting
 
@@ -156,7 +156,7 @@ float3 col = s.Albedo * ((diffuseSmooth + specularSmooth) * _LightColor0 + unity
 return float4(col, s.Alpha);
 ~~~
 
-![Specular Surf](/img/tut2/part2-cel-shaded-surf.jpg){: .center-image .lazyload }
+<img data-src="/img/tut2/part2-cel-shaded-surf.jpg" class="center-image lazyload" alt="Specular Surf">
 
 <hr/>
 
@@ -219,7 +219,7 @@ fixed4 frag (v2f i) : SV_Target
 
 With that, you should see a cel-shaded object like the surface shader version.
 
-![Specular Frag](/img/tut2/part2-cel-shaded-frag.jpg){: .center-image .lazyload }
+<img data-src="/img/tut2/part2-cel-shaded-frag.jpg" class="center-image lazyload" alt="Specular Frag">
 
 <hr/>
 

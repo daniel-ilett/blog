@@ -17,7 +17,7 @@ The final step of our cel-shading effect is to draw bold outlines around our obj
 
 We're almost at the end of our journey with Ethan - as of the end of the fresnel lighting tutorial, he looks like this:
 
-![Fresnel Ethan](/img/tut2/part3-ethan-bump-fresnel.jpg){: .center-image .lazyload }
+<img data-src="/img/tut2/part3-ethan-bump-fresnel.jpg" class="center-image lazyload" alt="Fresnel Ethan">
 
 It's a fine-looking effect for sure and wouldn't look out of place in a cartoonish game. However, we sometimes want an extra bit of contract to make some characters or objects stand out; for this, we'll capture the comic book aesthetic a little with a thick, bold outline.
 
@@ -98,7 +98,7 @@ float4 frag(v2f i) : SV_Target
 
 If we run the shader now, after setting the `_OutlineSize` to something like 0.01 and the `_OutlineColour` to black, the result is something like this:
 
-![Ethan Bad Outline](/img/tut2/part4-ethan-outline-wrong.jpg){: .center-image .lazyload }
+<img data-src="/img/tut2/part4-ethan-outline-wrong.jpg" class="center-image lazyload" alt="Ethan Bad Outline">
 
 Something's not right. If you look very closely, you'll notice the entirety of Ethan is shaded with the `_OutlineColour`, which might not be what you wanted. Let's fix it by introducing a powerful new tool: stencils.
 
@@ -176,7 +176,7 @@ Comp notequal
 
 We can modify `Pass` or `Fail` parameters if we wish, but the defaults are also fine. Now, when we run our shader, we should have the outline effect we've been aiming for!
 
-![Ethan Good Outline](/img/tut2/part4-ethan-complete.jpg){: .center-image .lazyload }
+<img data-src="/img/tut2/part4-ethan-complete.jpg" class="center-image lazyload" alt="Ethan Good Outline">
 
 <hr/>
 
