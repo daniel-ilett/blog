@@ -74,3 +74,19 @@
 {% else %}
 <div class="intro-header"></div>
 {% endif %}
+
+{% if page.series-parts %}
+  <div class="series-part-list text-center">
+  {% for part in page.series-parts %}
+    <a href="{{ part.link }}">
+      {% if page.this-label == part.label %}
+      <div class="series-part series-part-this">
+      {% else %}
+      <div class="series-part">
+      {% endif %}
+        {{ part.label }}
+      </div>
+    </a>
+  {% endfor %}
+  </div>
+{% endif %}

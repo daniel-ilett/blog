@@ -10,6 +10,15 @@ tags: [unity, shaders, portals, physics, manifold-garden, stencil]
 nice-slug: Stencil-based Portals
 date: 2019-12-14
 idnum: 32
+
+this-label: 2
+series-parts:
+    -   label: i
+        link: https://danielilett.com/2019-12-01-tut4-intro-portals/
+    -   label: 1
+        link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes/
+    -   label: 2
+        link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering/
 ---
 
 I recently played *Manifold Garden*, a game based on Escher-esque architecture. It's full of mind-blowing sequences, and one of my favourite technical elements was the game's portals, which are used heavily to explore the concept of impossible space. You walk into a small room, and there's a vast world inside! Today, we'll recreate the tech behind this type of portal.

@@ -10,6 +10,15 @@ tags: [unity, shaders, portals, physics, spyro, skybox]
 nice-slug: Spyro Skyboxes
 date: 2019-12-11
 idnum: 31
+
+this-label: 1
+series-parts:
+    -   label: i
+        link: https://danielilett.com/2019-12-01-tut4-intro-portals/
+    -   label: 1
+        link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes/
+    -   label: 2
+        link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering/
 ---
 
 *Spyro* was one of my favourite series as a kid. I've played the original trilogy more times than I care to admit, and even as an adult I still find the vivid environments and gameplay loop captivating. One tiny detail I always liked was that the innards of each portal look like the sky of the level that portal leads to, and when Spyro flies through the portal there's a seamless transition into the portal. In *Spyro the Dragon*, the first entry in the series, the game even has titular hero Spyro fly in a loop-de-loop to obscure the new level as it seamlessly loads in below. Today, we will recreate the appearance of *Spyro*’s portals in Unity.

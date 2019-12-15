@@ -645,12 +645,14 @@ footer .theme-by {
 }
 
 .pager.blog-pager {
-  margin-top: 0;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 768px) {
   .pager.blog-pager  {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
 }
 
@@ -867,4 +869,43 @@ td.gutter {
 .post-bigimg
 {
   margin-bottom: 1em;
+}
+
+.series-part-list
+{
+  display: block;
+  width: 100%;
+}
+
+.series-part-list a
+{
+  text-decoration: none;
+}
+
+.series-part
+{
+  display: inline-block;
+  background-color: #ffffff;
+  color: #221144;
+  font-size: 18px;
+  font-weight: bold;
+  height: 2em;
+  line-height: 2em;
+  width: 2em;
+  border: solid #221144;
+  border-radius: 100%;
+  border-width: 2px 2px;
+}
+
+.series-part-this
+{
+  background-color: #221144;
+  color: white;
+}
+
+.series-part:hover
+{
+  color: white;
+  text-shadow: none;
+  background-color: #005aff;
 }

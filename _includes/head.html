@@ -16,12 +16,6 @@
   <meta property="og:site_name" content="Daniel Ilett: Games | Shaders | Tutorials" />
   <meta name="twitter:image:alt" content="{{ page.subtitle }}" />
 
-  {% if layout.common-js %}
-    {% for js in layout.common-js %}
-        <script src="{{ js | prepend: site.baseurl | replace: '//', '/' }}"></script>
-    {% endfor %}
-  {% endif %}
-
   {% if page.subtitle %}
     <meta name="description" content="{{ page.subtitle }}" />
     <meta property="og:description" content="{{ page.subtitle }}" />

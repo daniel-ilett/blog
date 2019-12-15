@@ -12,6 +12,18 @@ date: 2019-12-24
 idnum: 33
 ---
 
+In the last tutorial, we managed to render a realistic portal using stencil buffers. We skipped over a few things to talk about in future tutorials, but I asked one key question: what happens to all the stuff between the portal camera and the portal surface? Wouldn't the stuff behind the portal get rendered unless we do something to exclude it? The answer is yes - and today we're going to explore how to prevent the scene behind the out-portal being rendered onto the in-portal surface.
+
+<hr/>
+
+# Camera Clipping
+
+Cameras don't render the entire world. We use occlusion culling to ignore objects behind other objects, back-face culling to exclude object geometry facing away from the screen, and frustum culling to 
+
+## Frustum Culling
+
+<hr/>
+
 *Notes for later:*
 
 First of all, if we comment out the bit of code in the middle of `RenderCamera` what we glossed over in this tutorial and run the scene again, the effect won't work properly. That's because we haven't considered the problem of `clipping`. When we place the camera behind 

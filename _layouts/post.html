@@ -8,6 +8,19 @@ layout: base
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
+      <ul class="pager blog-pager">
+        {% if page.previous.url %}
+        <li class="previous">
+          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="Previous Post">&larr; {{ page.previous.nice-slug }}</a>
+        </li>
+        {% endif %}
+        {% if page.next.url %}
+        <li class="next">
+          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="Next Post">{{ page.next.nice-slug }} &rarr;</a>
+        </li>
+        {% endif %}
+      </ul>
+
       {% if page.gh-repo %}
         {% assign gh_split =  page.gh-repo | split:'/'  %}
         {% assign gh_user =  gh_split[0]  %}
@@ -62,10 +75,6 @@ layout: base
       {% include become-patron.html %}
 
       <hr/>
-
-      {% if page.social-share %}
-        {% include social-share.html %}
-      {% endif %}
 
       <ul class="pager blog-pager">
         {% if page.previous.url %}
