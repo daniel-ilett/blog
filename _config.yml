@@ -100,6 +100,8 @@ series-list:
       link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes
     - label: 2
       link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering
+    - label: 3
+      link: https://danielilett.com/2019-12-18-tut4-3-matrix-matching
 
 # --- Background colour/image options --- #
 

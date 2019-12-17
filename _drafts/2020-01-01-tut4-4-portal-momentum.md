@@ -8,7 +8,7 @@ gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, momentum]
 nice-slug: Portal Momentum
-date: 2020-01-01
+date: 2019-12-28
 idnum: 34
 ---
 

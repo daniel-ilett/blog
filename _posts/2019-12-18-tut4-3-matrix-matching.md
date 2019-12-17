@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Portals | Part 3 - Matrix Matching
-subtitle:
+title: Portals | Part 3 - Matrix Clipping
+subtitle: Clipping the camera correctly
 bigimg: /img/tut4/part3-banner.jpg
 hdrimg: /img/tut4/part3-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, matrix, clip-plane]
-nice-slug: Matrix Matching
-date: 2019-12-24
+nice-slug: Matrix Clipping
+date: 2019-12-18
 idnum: 33
 
 part-label: 3
@@ -45,7 +45,9 @@ It'll be easier to demonstrate the problem if we scale the portals by 2x. Now, w
 
 <img data-src="/img/tut4/part3-wrong-clip-2.jpg" class="center-image lazyload" alt="Incorrect Clipping 2">
 
-So, what gives? When we set the near clipping plane as we did, it's **perpendicular** to the camera's **forward direction**. The artefacts we're seeing here where bits of the portal view are missing are parts of the portal surface that have been **clipped**, as they are behind the camera's near clipping plane. The bright colours that are getting rendered inside the portal are the ones we defined in `PortalMask` (see [Part 2](https://danielilett.com/2019-12-14-tut4-2-portal-rendering/)) - those parts are meant to be behind the near clipping plane, but they're being rendered erroneously. We need to angle the near plane slightly so it rests over the portal surface's plane - in most circumstances this won't be perpendicular to the camera's forward direction. This requires some complex maths.
+So, what gives? When we set the near clipping plane as we did, it's **perpendicular** to the camera's **forward direction**. The artefacts we're seeing here where bits of the portal view are missing are parts of the portal surface that have been **clipped**, as they are behind the camera's near clipping plane. The bright colours that are getting rendered inside the portal are the ones we defined in `PortalMask` (see [Part 2](https://danielilett.com/2019-12-14-tut4-2-portal-rendering/)) - those parts are meant to be behind the near clipping plane, but they're being rendered erroneously. We need to angle the near plane slightly, so it rests over the portal surface's plane - in most circumstances this won't be perpendicular to the camera's forward direction. This requires some complex maths.
+
+<hr/>
 
 # Oblique Projection Matrix
 
@@ -57,20 +59,20 @@ Let's scrap the code we just added and uncomment the code that was there before.
 Plane p = new Plane(-outTransform.forward, outTransform.position);
 ~~~
 
-From here on out, though, we have to define everything using the `Vector4` type. Conveniently, a plane can also be defined using a normal vector and a distance - and we can get that data directly from the `Plane` object we just created.
+From here on out, though, we must define everything using the `Vector4` type. Conveniently, a plane can also be defined using a normal vector and a distance - and we can get that data directly from the `Plane` object we just created.
 
 ~~~csharp
 Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
 ~~~
 
-Now we must convert this to the camera's local space. Annoyingly, there are several methods defined by Unity to transform `Vector3` from world to local space, but a total lack of easy ways to do this for `Vector4`. Instead, we're going to take `portalCamera`'s world-to-camera matrix - the matrix that transforms from world space to portalCamera's camera clip space during rendering - and calculate the **inverse transpose** of this matrix. By multiplying clipPlane by the inverse transpose, we will obtain the clipPlane in camera space - so I've named the variable `clipPlaneCameraSpace`. There's a lot of linear algebra in this section but I hope that makes sense! 
+Now we must convert this to the camera's local space. Annoyingly, there are several methods defined by Unity to transform `Vector3` from world to local space, but a total lack of easy ways to do this for `Vector4`. Instead, we're going to take `portalCamera`'s **world-to-camera matrix** - the matrix that transforms from world space to `portalCamera`'s camera clip space during rendering - and calculate the **inverse transpose** of this matrix. By multiplying `clipPlane` by the inverse transpose, we will obtain the `clipPlane` in camera space - so I've named the variable `clipPlaneCameraSpace`. There's a lot of linear algebra in this section but I hope that makes sense! 
 
 ~~~csharp
 Vector4 clipPlaneCameraSpace =
     Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
 ~~~
 
-Now we can use the `CalculateObliqueMatrix` method I mentioned by passing in the new clip plane. It's defined on the `Camera` type. Since the `portalCamera` and `mainCamera` should have the same far clip plane and field of view, we're going to use this method on `mainCamera` in order to use `mainCamera`'s projection matrix instead of `portalCamera`'s (which could result in errors due to portalCamera already having an oblique projection matrix from the previous frame). The final step is to replace the `projectionMatrix` of `portalCamera` with the new oblique matrix.
+Now we can use the `CalculateObliqueMatrix` method I mentioned by passing in the new clip plane. It's defined on the `Camera` type. Since the `portalCamera` and `mainCamera` should have the same **far clip plane** and **field of view**, we're going to use this method on `mainCamera` in order to use `mainCamera`'s projection matrix instead of `portalCamera`'s (which could result in errors due to portalCamera already having an oblique projection matrix from the previous frame). The final step is to replace the `projectionMatrix` of `portalCamera` with the new oblique matrix.
 
 ~~~csharp
 var newMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
@@ -90,7 +92,7 @@ If we run the scene now, there ought to be no rendering oddities!
 
 # Conclusion
 
-Rendering portals properly comes with tons of edge cases you might not have thought of. In order to clip the correct details, we have to make use of an **oblique projection matrix**, which involves modifying the near clip plane so it intersects the portal plane. It goes to show how much work just 5 lines or so of code can accomplish!
+Rendering portals properly comes with tons of edge cases you might not have thought of. In order to clip the correct details, we must  make use of an **oblique projection matrix**, which involves modifying the near clip plane so that it intersects the portal plane. It goes to show how much work just 5 lines or so of code can accomplish!
 
 In the next tutorial, we'll deal with **travelling through portals**. How do we warp an object across portals while faithfully **conserving momentum**?
 
