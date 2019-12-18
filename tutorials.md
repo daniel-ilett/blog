@@ -17,6 +17,19 @@ title: Tutorial Series
         <p class="post-meta">
             December 2019
         </p>
+        <div class="series-part-list text-center">
+        {% for series in site.series-list %}
+            {% if series.series-name == "Portals" %}
+            {% for part in series.series-parts %}
+                <a href="{{ part.link }}">
+                    <div class="series-part">
+                        {{ part.label }}
+                    </div>
+                </a>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
         <div class="post-entry">
             <span markdown="1">`Skyboxes`, `Stencil Rendering`, `Oblique Near-Plane Projection`, `Portal Physics`, `Particles`, `Recursion`, `Screenspace Sampling`</span>
             <br/>
@@ -36,6 +49,19 @@ title: Tutorial Series
         <p class="post-meta">
             September-November 2019
         </p>
+        <div class="series-part-list text-center">
+        {% for series in site.series-list %}
+            {% if series.series-name == "Ultra Effects" %}
+            {% for part in series.series-parts %}
+                <a href="{{ part.link }}">
+                    <div class="series-part">
+                        {{ part.label }}
+                    </div>
+                </a>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
         <div class="post-entry">
             <span markdown="1">`Fisheye`, `Underwater`, `Mosaic`, `Anaglyph 3D`, `Cinematic`, `Invert`, `Channel Separation`</span>
             <br/>
@@ -55,6 +81,19 @@ title: Tutorial Series
         <p class="post-meta">
             August-December 2019
         </p>
+        <div class="series-part-list text-center">
+        {% for series in site.series-list %}
+            {% if series.series-name == "Unity Tips" %}
+            {% for part in series.series-parts %}
+                <a href="{{ part.link }}">
+                    <div class="series-part">
+                        {{ part.label }}
+                    </div>
+                </a>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
         <div class="post-entry">
             Ever needed more of an in-depth look into parts of the Unity Engine? The intention of this series is to consolidate as much high-quality information on each topic into one place as possible. Topics include Interpolation, Garbage Collection, Persistent Data, ScriptableObjects and Coroutines.
         </div>
@@ -72,6 +111,19 @@ title: Tutorial Series
         <p class="post-meta">
             May-June 2019
         </p>
+        <div class="series-part-list text-center">
+        {% for series in site.series-list %}
+            {% if series.series-name == "Cel-shading" %}
+            {% for part in series.series-parts %}
+                <a href="{{ part.link }}">
+                    <div class="series-part">
+                        {{ part.label }}
+                    </div>
+                </a>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
         <div class="post-entry">
             <span markdown="1">`Diffuse`, `Specular`, `Cel-Shaded`, `Fresnel`, `Normal`, `Edge-Detect`</span>
             <br/>
@@ -91,6 +143,19 @@ title: Tutorial Series
         <p class="post-meta">
             April-May 2019
         </p>
+        <div class="series-part-list text-center">
+        {% for series in site.series-list %}
+            {% if series.series-name == "Image Effects" %}
+            {% for part in series.series-parts %}
+                <a href="{{ part.link }}">
+                    <div class="series-part">
+                        {{ part.label }}
+                    </div>
+                </a>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
         <div class="post-entry">
             <span markdown="1">`Greyscale`, `Sepia`, `Silhouette`, `Box Blur`, `Gaussian Blur`, `Line Drawing`, `Neon`, `Bloom`, `NES`, `SNES`, `Game Boy`, `CRT`, `Oil Painting`</span>
             <br/>

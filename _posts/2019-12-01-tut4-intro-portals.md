@@ -27,7 +27,7 @@ The posting schedule for this series is as follows:
 
 **Part 1**: Spyro Skyboxes | [Out now!](https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes) | `Spyro-style Portals`
 **Part 2**: Portal Rendering | [Out now!](https://danielilett.com/2019-12-14-tut4-2-portal-rendering) | `Camera Positioning`, `Stencil Rendering`
-**Part 3**: Matrix Clipping | **Dec 18th** | `Oblique Near-Plane Projection`
+**Part 3**: Matrix Clipping | [Out now!](https://danielilett.com/2019-12-18-tut4-3-matrix-matching/) | `Oblique Near-Plane Projection`
 **Part 4**: Portal Momentum | **Dec 28th** | `Physics`
 **Part 5**: Placing Portals | **Jan 1st** | `Raycasting`, `Rotations`
 **Part 6**: Prettier Portals | **Jan 4th** | `Particles`, `Heat-haze`, `Dissolve`

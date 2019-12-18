@@ -39,7 +39,7 @@ portalCamera.nearClipPlane =
     Vector3.Distance(portalCamera.transform.position, outTransform.position);
 ~~~
 
-It'll be easier to demonstrate the problem if we scale the portals by 2x. Now, when we run the scene, out two portals look like this:
+It'll be easier to demonstrate the problem if we scale the portals by 2x. Now, when we run the scene, our two portals look like this:
 
 <img data-src="/img/tut4/part3-wrong-clip-1.jpg" class="center-image lazyload" alt="Incorrect Clipping 1">
 
