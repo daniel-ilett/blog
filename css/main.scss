@@ -23,7 +23,7 @@ $highlight-color: hsl(0, 0, 60%);
 /* --- General --- */
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 18px;
   color: $main-text-color;
   position: relative;
@@ -38,7 +38,6 @@ p {
   margin: 30px 0;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 a {
@@ -75,7 +74,6 @@ hr.small {
 }
 
 .main-explain-area {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 15px inherit;
 }
 
@@ -116,7 +114,6 @@ img {
 .navbar-custom {
   background-color: $second-background-color;
   border-bottom: 1px solid #EAEAEA;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   {% if site.navbar-img %}
   background-image: url({{ site.navbar-img }});
   background-attachment: fixed;
@@ -308,7 +305,6 @@ footer .list-inline {
   padding: 0;
 }
 footer .copyright {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
   margin-bottom: 0;
 }
@@ -372,9 +368,6 @@ footer .theme-by {
   font-size: 18px;
   margin: 0 0 10px;
 }
-.post-preview .post-entry {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
 .post-entry-container {
   display: inline-block;
   width: 100%;
@@ -410,7 +403,6 @@ footer .theme-by {
 /* --- Tags --- */
 
 .blog-tags {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: $light-text-color;
   font-size: 15px;
   margin-bottom: 30px;
@@ -509,7 +501,6 @@ footer .theme-by {
   font-size: 27px;
   line-height: 1.1;
   display: block;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
@@ -534,7 +525,6 @@ footer .theme-by {
   padding: 5px 10px;
   font-size: 11px;
   color: #EEE;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   right: 0;
   bottom: 0;
   display: none;
@@ -618,7 +608,6 @@ footer .theme-by {
 /* --- Pager --- */
 
 .pager li a {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
@@ -793,10 +782,6 @@ td.gutter {
   margin: 5px;
 }
 
-#full-tags-list {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 #full-tags-list .tag-entry {
   margin: 0 0 15px 25px;
 }
@@ -816,21 +801,19 @@ td.gutter {
 }
 
 .gh-button-header {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #007fff;
   border-radius: 4px;
-  color: #dfdfdf;
+  color: #fff;
   font-size: small;
   padding: 5px 10px 5px 10px;
   display: inline-block;
 }
 
 .gh-button {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   background-color: #007fff;
   border-radius: 4px;
-  color: #dfdfdf;
+  color: #fff;
   padding: 8px;
   margin-top:-10px;
 }
@@ -845,11 +828,10 @@ td.gutter {
 }
 
 .patreon-button {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   background-color: #f96854;
   border-radius: 4px;
-  color: #dfdfdf;
+  color: #fff;
   padding: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
