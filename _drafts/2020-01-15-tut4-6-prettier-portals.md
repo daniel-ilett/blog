@@ -28,9 +28,9 @@ This tutorial series uses the following asset packs from various sources:
 
 Special thanks to my Patreon backers:
 
-- Gemma Louise Ilett ($20)
-- Jack Dixon ($5)
-- Christopher Pereira ($1)
+- Gemma Louise Ilett
+- Jack Dixon
+- Christopher Pereira
 
 And a shout-out to my top Ko-fi supporters:
 
