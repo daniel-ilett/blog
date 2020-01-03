@@ -1,18 +1,21 @@
 ---
 layout: post
 title: Portals | Part 4 - Portal Momentum
-subtitle:
+subtitle: Hole in the wall!
 bigimg: /img/tut4/part4-pbody-portal.jpg
 hdrimg: /img/tut4/part4-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, portals, physics, momentum]
 nice-slug: Portal Momentum
-date: 2019-12-28
+date: 2020-01-03
 idnum: 34
+
+part-label: 4
+series-name: Portals
 ---
 
-What happens when an object travels through a portal? There are tons of videos and articles online discussing the conservation of momentum when portals are in operation. Some common thought experiments include "what happens if a portal moves into another portal" or "what happens when a portal crushes an object", but it's simpler to resirict things to non-moving portals - as games often do. It's easier to design around a smaller possibility space so there's fewer cases to program. Thus, the portals in our universe can't move, and the only momentum we must consider is that of the object travelling through the portal.
+What happens when an object travels through a portal? There are tons of videos and articles online discussing the conservation of momentum when portals are in operation. Some common thought experiments include "what happens if a portal moves into another portal" or "what happens when a portal crushes an object", but it's simpler to restrict things to non-moving portals - as games often do. It's easier to design around a smaller possibility space so there's fewer cases to program. Thus, the portals in our universe can't move, and the only momentum we must consider is that of the object travelling through the portal.
 
 # Breaking the Law
 
@@ -22,7 +25,7 @@ But we're getting ahead of ourselves. Games are about suspending the player's di
 
 ## Local momentum
 
-When I say "local momentum", I mean that a box travelling at 5 meters per second to the right into a portal will have a velocity of 5 meters per second travelling out of the portal - but the direction might be up, or down, or left. We'll use similar code for transforming the position and velocity direction of the object as we did for transforming the position of the portal rendering cameras. Open up the *Scripts/PortalableObject.cs* file and scroll down to the `Warp` method. It assumes that references to the `inPortal` and `outPortal` have already been assigned and that we have access to the attached `Rigidbody` component. Since we perform a 180-degree rotation in multiple methods in this class, it's stored in a `static readonly` member variable named `halfTurn`.
+When I say "local momentum", I mean that a box travelling at 5 meters per second to the right into a portal will have a velocity of 5 meters per second travelling out of the portal - but the direction might be up, or down, or left. We'll use similar code for transforming the position and velocity direction of the object as we did for transforming the position of the portal rendering cameras. Open the *Scripts/PortalableObject.cs* file and scroll down to the `Warp` method. It assumes that references to the `inPortal` and `outPortal` have already been assigned and that we have access to the attached `Rigidbody` component. Since we perform a 180-degree rotation in multiple methods in this class, it's stored in a `static readonly` member variable named `halfTurn`.
 
 ~~~csharp
 // Member variables.
@@ -62,7 +65,7 @@ You might notice that the method is `virtual` - that's because `PlayerController
 
 Now, let's talk about how to detect when an object travels through the portal. In particular, let's consider **collision**. After all, the portal rests on a wall surface with collision enabled, so surely we need to cut a hole in the wall so that objects can travel through? A system that cuts a hole in the collision mesh of the wall at runtime would be the most "realistic" way of doing this, but it's complicated and might be slow if your level geometry contains many triangles. Instead, when an object is inside (or almost inside) the portal, we can disable the collision between the object and the wall.
 
-Both portals have a thin box **trigger collider** that covers its surface. On the **Portal** script (*Scripts/Portal.cs*), we'll keep track of object that enter and exit the collider using the `OnTriggerEnter` and `OnTriggerExit` methods.
+Both portals have a thin box **trigger collider** that covers its surface. On the `Portal` script (*Scripts/Portal.cs*), we'll keep track of object that enter and exit the collider using the `OnTriggerEnter` and `OnTriggerExit` methods.
 
 ~~~csharp
 // Member variables.
@@ -107,7 +110,7 @@ private void Update()
 }
 ~~~
 
-The `OnTriggerEnter` method notifies the `PortalableObject` which portal is the `inPortal` and which is the `outPortal`, and identifies the wall collider which should be ignored. On `PortalableObject`, we've written the `SetIsInPortal` method for this.
+The `OnTriggerEnter` method notifies the `PortalableObject` which portal is the `inPortal` and which is the `outPortal` and identifies which wall collider should be ignored. On `PortalableObject`, we've written the `SetIsInPortal` method for this.
 
 ~~~csharp
 public void SetIsInPortal(Portal inPortal, Portal outPortal, Collider wallCollider)
@@ -123,9 +126,9 @@ public void SetIsInPortal(Portal inPortal, Portal outPortal, Collider wallCollid
 }
 ~~~
 
-Here is where we set the `inPortal` and `outPortal`, which are used in the `Warp` function. The `Physics.IgnoreCollision` method tells the physics engine to disregard collisions between any two colliders in the scene - here, we'll disable collision between the portalable object and the wall the portal is on. This will allow the object to travel through the portal! We'll come back to `cloneObject` in a little while, and we're using `inPortalCount` to keep track of how many portals we're near. Instead of using a `bool`, counting is a failsafe in case we're ever nearby two portals at the same time so that we don't assume we exit all portals the moment `OnTriggerExit` is called between this object and only one portal. We'll only call code for exiting portals when `inPortalCount` reaches zero.
+Here is where we set the `inPortal` and `outPortal`, which are used in the `Warp` function. The `Physics.IgnoreCollision` method tells the physics engine to disregard collisions between any two colliders in the scene - here, we'll disable collision between the object and the wall the portal is on. This will allow the object to travel through the portal! We'll come back to `cloneObject` in a little while, and we're using `inPortalCount` to keep track of how many portals we're near. Instead of using a `bool`, counting is a failsafe in case we're ever nearby two portals at the same time so that we don't assume we exit all portals the moment `OnTriggerExit` is called between this object and only one portal. We'll only call code for exiting portals when `inPortalCount` reaches zero.
 
-We'll also need to re-enable collision when the object exits the portal's proximity trigger. In the ExitPortal method, which takes only the `wallCollider` as a parameter, we'll use `Physics.IgnoreCollision` between `wallCollider` and the object's collider along with the `false` flag, meaning collision will *not* be ignored any longer.
+We'll also need to re-enable collision when the object exits the portal's proximity trigger. In the `ExitPortal` method, which takes only the `wallCollider` as a parameter, we'll use `Physics.IgnoreCollision` between `wallCollider` and the object's collider along with the `false` flag, meaning collision will *not* be ignored any longer.
 
 ~~~csharp
 public void ExitPortal(Collider wallCollider)
@@ -157,7 +160,7 @@ The sphere physically exists on the right-hand side, falling downwards into the 
 
 ## Object cloning
 
-Let's talk about the `cloneObject` we skipped over, contained in the `PortalableObject` class. It's a **visual clone** of the object - a distinct `GameObject` with the same mesh and materials, but no other physical properties like rigidbodies or colliders, and no other scripts. It's created in Awake and immediately deactivated:
+Let's talk about the `cloneObject` we skipped over, contained in the `PortalableObject` class. It's a **visual clone** of the object - a distinct `GameObject` with the same mesh and materials, but no other physical properties like rigidbodies or colliders, and no other scripts. It's created in `Awake` and immediately deactivated:
 
 ~~~csharp
 protected virtual void Awake()
@@ -198,7 +201,7 @@ private void LateUpdate()
 }
 ~~~
 
-If either portal has not been placed (we'll cover this in the next tutorial), or if the object isn't near or intersecting the portal, then we won't attempt to position the clone. We'll just stick it at a far away location. Once we've made sure we're inside the portal and the clone is enabled (`cloneObject.activeSelf`) and that both portals have been placed in the scene, we'll position the clone relative to the other portal.
+If either portal has not been placed (we'll cover this in the next tutorial), or if the object isn't near or intersecting the portal, then we won't attempt to position the clone. We'll just stick it at a faraway location. Once we've made sure we're inside the portal and the clone is enabled (`cloneObject.activeSelf`) and that both portals have been placed in the scene, we'll position the clone relative to the other portal.
 
 ~~~csharp
 if(cloneObject.activeSelf && inPortal.IsPlaced() && outPortal.IsPlaced())
@@ -261,7 +264,7 @@ public void ResetTargetRotation()
 
 The `Quaternion.LookRotation` method builds a new rotation, where the first parameter becomes the **forward-direction** of the rotation. The **right-direction** of the rotation is the **cross-product** of the two parameters - that is, a new vector perpendicular to both vectors - and the up-direction of the new rotation is not `Vector3.up` in this example, as you might expect, but the cross-product of the forward-direction and right-direction we just calculated. The result is a new rotation that *kind of* points in the same direction as before, but oriented with a new up-direction.
 
-In the `Update` method, the actual rotation is spherically interpolated toward the `targetRotation` we just calculatednusing the `Quaternion.Slerp` method (for more on interpolation, see my [*Unity Tips* article on **Interpolation**](https://danielilett.com/2019-09-08-unity-tips-3-interpolation/)). The rotation delta is based on the mouse movement and the rotation around the x-axis - the 'vertical' camera movement - is clamped. There's other code regarding movement that we don't need to worry about.
+In the `Update` method, the actual rotation is spherically interpolated toward the `targetRotation` we just calculated using the `Quaternion.Slerp` method (for more on interpolation, see my [*Unity Tips* article on **Interpolation**](https://danielilett.com/2019-09-08-unity-tips-3-interpolation/)). The rotation delta is based on the mouse movement and the rotation around the x-axis - the 'vertical' camera movement - is clamped. There's other code regarding movement that we don't need to worry about.
 
 ~~~csharp
 private void Update()
@@ -294,13 +297,13 @@ Now let's see what the world looks like from a player's perspective. Note that t
 
 ## Large objects
 
-The other issue to deal with is large objects. If we disable collision between the wall and a large object, won't it clip through the wall partially while travelling through the portal? That's definitely possible - and to counteract this, the portal also contains a non-trigger collider frame around itself which blocks objects that are detected by the portal trigger, but are too large to fit through the portal. Here's what the mesh for the collider looks like in *Blender*:
+The other issue to deal with is large objects. If we disable collision between the wall and a large object, won't it clip through the wall partially while travelling through the portal? That's possible - and to counteract this, the portal also contains a non-trigger collider frame around itself which blocks objects that are detected by the portal trigger but are too large to fit through the portal. Here's what the mesh for the collider looks like in *Blender*:
 
 <img data-src="/img/tut4/part4-portal-frame.jpg" class="center-image lazyload" alt="Portal frame">
 
 # Conclusion
 
-We can handle the velocity of objects exiting a portal in several ways, but it's easiest to disregard real-world physics behaviour and pick the one that results in the best gameplay. It's also sufficient to use a simple solution to collisions rather than trying to engineer a solution that modifies the wall collider in realtime. The player controller is a special case, given a player's expectations of how their in-game character will behave. And we need to deal with the edge case when objects are clipping through the portal by adding a visual clone on the other side of the portal.
+We can handle the velocity of objects exiting a portal in several ways, but it's easiest to disregard real-world physics behaviour and pick the one that results in the best gameplay. It's also good enough to use a simple solution to collisions rather than trying to engineer a solution that modifies the wall collider in realtime. The player controller is a special case, given a player's expectations of how their in-game character will behave. And we need to deal with the edge case when objects are clipping through the portal by adding a visual clone on the other side of the portal.
 
 In the next tutorial, we'll deal with placing portals of our own, including raycasting and portal orientation.
 
