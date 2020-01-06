@@ -28,10 +28,10 @@ The posting schedule for this series is as follows:
 **Part 1**: Spyro Skyboxes | [Out now!](https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes) | `Spyro-style Portals`
 **Part 2**: Portal Rendering | [Out now!](https://danielilett.com/2019-12-14-tut4-2-portal-rendering) | `Camera Positioning`, `Stencil Rendering`
 **Part 3**: Matrix Clipping | [Out now!](https://danielilett.com/2019-12-18-tut4-3-matrix-matching/) | `Oblique Near-Plane Projection`
-**Part 4**: Portal Momentum | **Dec 28th** | `Physics`
-**Part 5**: Placing Portals | **Jan 1st** | `Raycasting`, `Rotations`
-**Part 6**: Prettier Portals | **Jan 4th** | `Particles`, `Heat-haze`, `Dissolve`
-**Part 7**: Portal Recursion | **Jan 8th** | `Recursion`, `Screenspace Sampling`
+**Part 4**: Portal Momentum | [Out now!](https://danielilett.com/2020-01-03-tut4-4-portal-momentum/) | `Physics`
+**Part 5**: Placing Portals | **Jan 11th** | `Raycasting`, `Rotations`
+**Part 6**: Prettier Portals | **Jan 15th** | `Particles`, `Heat-haze`, `Dissolve`
+**Part 7**: Portal Recursion | **Jan 18th** | `Recursion`, `Screenspace Sampling`
 
 As always, there is a [GitHub repository](https://github.com/daniel-ilett/shaders-portal) for the series. Feel free to poke around while development is ongoing.
 

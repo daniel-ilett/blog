@@ -14,6 +14,7 @@ description: Games | Shaders | Tutorials
 
 # List of links in the navigation bar
 navbar-links:
+  Assets: "assetpacks"
   Tutorials: "tutorials"
   Support me: "support"
   About: "aboutme"
