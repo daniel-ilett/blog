@@ -98,13 +98,15 @@ series-list:
     - label: i
       link: https://danielilett.com/2019-12-01-tut4-intro-portals/
     - label: 1
-      link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes
+      link: https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes/
     - label: 2
-      link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering
+      link: https://danielilett.com/2019-12-14-tut4-2-portal-rendering/
     - label: 3
-      link: https://danielilett.com/2019-12-18-tut4-3-matrix-matching
+      link: https://danielilett.com/2019-12-18-tut4-3-matrix-matching/
     - label: 4
-      link: https://danielilett.com/2020-01-03-tut4-4-portal-momentum
+      link: https://danielilett.com/2020-01-03-tut4-4-portal-momentum/
+    - label: 5
+      link: https://danielilett.com/2020-01-08-tut4-5-placing-portals/
 
 # --- Background colour/image options --- #
 
