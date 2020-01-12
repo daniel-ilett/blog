@@ -53,7 +53,7 @@ public class PortalPlacement : MonoBehaviour
 }
 ~~~
 
-This class needs access to each of the two portal objects so it can communicate when the player presses the left or right mouse button to place a portal. We're requesting the `PortalPair` object (storing it in the `portals` variable), which contains references to thw two individual portals. We'll need a `LayerMask` (aptly named `layerMask`) to tell the physics engine which layers we want to be considered or ignored during the raycast. We'll also reference a new `Crosshair` object, which is a UI element placed in the scene so a) we can see where the centre of the screen is, and b) we can see which of the two portals are active. Finally, we'll reference the `CameraMove` object attached to the player so that we use the player's `targetRotation` instead of its current rotation when shooting portals - that will cover the edge case in which a player exits a portal and shoots another one while their rotation is being reoriented. We don't want portals to be placed strangely because of that.
+This class needs access to each of the two portal objects so it can communicate when the player presses the left or right mouse button to place a portal. We're requesting the `PortalPair` object (storing it in the `portals` variable), which contains references to the two individual portals. We'll need a `LayerMask` (aptly named `layerMask`) to tell the physics engine which layers we want to be considered or ignored during the raycast. We'll also reference a new `Crosshair` object, which is a UI element placed in the scene so a) we can see where the centre of the screen is, and b) we can see which of the two portals are active. Finally, we'll reference the `CameraMove` object attached to the player so that we use the player's `targetRotation` instead of its current rotation when shooting portals - that will cover the edge case in which a player exits a portal and shoots another one while their rotation is being reoriented. We don't want portals to be placed strangely because of that.
 
 ~~~csharp
 private void Update()
@@ -84,9 +84,9 @@ private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
 }
 ~~~
 
-**Raycasting** is the process of shooting a **virtual "ray"** and detecting if a `Collider` was hit by the ray. There are several kind of casts we may use, but `Physics.Raycast` and `Physics.Linecast` are the most basic types and raycasting is the one that makes most sense here. We're casting from the player camera's position in the direction they're facing. We need to retrieve data about any colliders detected by the cast, so we also pass in a `RaycastHit` struct using the `out` keyword, which means the function will output (not `return`) a `RaycastHit` and store it in the `hit` variable. We'll specify a maximum raycast length of 250, and use layerMask to restrict the types of objects detected by the raycast. 
+**Raycasting** is the process of shooting a **virtual "ray"** and detecting if a `Collider` was hit by the ray. There are several kinds of casts we may use, but `Physics.Raycast` and `Physics.Linecast` are the most basic types and raycasting is the one that makes most sense here. We're casting from the player camera's position in the direction they're facing. We need to retrieve data about any colliders detected by the cast, so we also pass in a `RaycastHit` struct using the `out` keyword, which means the function will output (not `return`) a `RaycastHit` and store it in the `hit` variable. We'll specify a maximum raycast length of 250 and use `layerMask` to restrict the types of objects detected by the raycast. 
 
-Stepping outside of the code for a second and looking at the `PortalPlacement` component on the player camera, we'll see that the layer mask selects only the *LevelGeom* and *Portal* layers; the level's static geometry - anything we want a portal to attach to - is set to the *LevelGeom* layer, and the two portals (only their surface and not the graohical outline or border colliders from last tutorial) are labelled *Portal*. This means that we can stick most other objects in the Default layer and the portal will pass straight through them. If you wish to implement objects that can block portal shots, you can enable a separate layer on this mask and add some code to immediately `return` from the `FirePortal` method when an object in that layer is hit.
+Stepping outside of the code for a second and looking at the `PortalPlacement` component on the player camera, we'll see that the layer mask selects only the *LevelGeom* and *Portal* layers; the level's static geometry - anything we want a portal to attach to - is set to the *LevelGeom* layer, and the two portals (only their surface and not the graphical outline or border colliders from last tutorial) are labelled *Portal*. This means that we can stick most other objects in the Default layer and the portal will pass straight through them. If you wish to implement objects that can block portal shots, you can enable a separate layer on this mask and add some code to immediately `return` from the `FirePortal` method when an object in that layer is hit.
 
 Let's return to the code. We'll skip the if-statement which checks for objects tagged "Portal" until later as this code relates to shooting portals through portals. After that, the next bunch of code handles the positioning and rotation of the new portal.
 
@@ -114,7 +114,7 @@ var portalUp = -Vector3.Cross(portalRight, portalForward);
 var portalRotation = Quaternion.LookRotation(portalForward, portalUp);
 ~~~
 
-We'll retrieve the camera's `TargetRotation` as mentioned so that we're calculating the proper desired rotation. We can get the player's right-direction by multiplying `Vector3.right` by the camera's rotation. It's fairly simple to round that vector to the nearest 90 degrees by comparing its x- and z-components with each other to determine which of four possible quadrants the vector is pointing in, then setting the vector to be equal to one of the four cardinal directions. Now `portalRight` gives us a vector pointing along the desired x-axis of the portal.
+We'll retrieve the camera's `TargetRotation` as mentioned so that we're calculating the proper desired rotation. We can get the player's right-direction by multiplying `Vector3.right` by the camera's rotation. It's easy to round that vector to the nearest 90 degrees by comparing its x- and z-components with each other to determine which of four possible quadrants the vector is pointing in, then setting the vector to be equal to one of the four cardinal directions. Now `portalRight` gives us a vector pointing along the desired x-axis of the portal.
 
 The forward vector, `portalForward`, of the portal is the easiest of them all to calculate - it's the negative of the raycast's intersection point - we can use `-hit.normal` to retrieve this. Then, to get the up-direction - `portalUp` - we can use the vector cross product on `portalRight` and `portalForward` by calling `Vector3.Cross` with those as arguments. Remember that the cross product of two vectors returns a new vector perpendicular to those two.
 
@@ -169,9 +169,9 @@ And this is what happens when you shoot at a surface near a protruding section o
 
 Let's deal with overhangs first. There's no convenient method for detecting where an overhang exists and automatically moving the portal by the correct amount, so we're going to have to check manually. Our strategy for doing so will be to raycast from just behind the portal at each of its four edges, pointing inwards towards the portal's centre. If the start point already intersects a wall, then great - this edge doesn't overhang. If it does not, then we'll need to perform the raycast to check how far away the edge of the wall is. Then we'll nudge the portal in that direction by the distance from the raycast to the hit point. After repeating that for all four edges, the portal shouldn't overhang any more. However, this isn't a complete solution - check the Limitations section at the end for some improvements that need to be made to this code.
 
-First off, for these raycasts, we're going to need a different `LayerMask` attached to each `Portal` component. We'll call it `placementMask`, make it a serialized variable and assign only the *LevelGeom* layer to it, since we're only concerned with correcting the .
+First off, for these raycasts, we're going to need a different `LayerMask` attached to each `Portal` component. We'll call it `placementMask`, make it a serialized variable and assign only the *LevelGeom* layer to it, since we're only concerned with correcting the portal's position in relation to other sections of wall.
 
-Let's look at the code in the `FixOverhangs` function in `Portal`. We're going to consider four raycast start points and four directions, so we'll define those first.
+Let's look at the code in the `FixOverhangs` method in `Portal`. We're going to consider four raycast start points and four directions, so we'll define those first.
 
 ~~~csharp
 var testPoints = new List<Vector3>
@@ -218,7 +218,7 @@ else if(Physics.Raycast(raycastPos, raycastDir, out hit, 2.1f, placementMask))
 }
 ~~~
 
-We'll use `Physics.CheckSphere` to check whether the start point is already inside a wall collider. There's no `CheckPoint` function in the `Physics` class that allows us to pass in a single point, so we'll just use a tiny sphere instead. It uses the `placementMask` we defined earlier so only wall colliders get checked. If it's not inside a wall, we'll need to `Physics.Raycast` towards the portal centre. A distance of 2.1 Unity units should be enough to reach any overhang. The portal is translated along the raycast direction by the distance between the raycast origin and the raycasts's `hitPoint` - we need to specify `Space.World` to ensure it's translated in world space. Let's see it in action now:
+We'll use `Physics.CheckSphere` to check whether the start point is already inside a wall collider. There's no `CheckPoint` function in the `Physics` class that allows us to pass in a single point, so we'll just use a tiny sphere instead. It uses the `placementMask` we defined earlier so only wall colliders get checked. If it's not inside a wall, we'll need to `Physics.Raycast` towards the portal centre. 2.1 Unity units should be enough to reach any overhang. The portal is translated along the raycast direction by the distance between the raycast origin and the raycasts's `hit.point` - we need to specify `Space.World` to ensure it's translated in world space. Let's see it in action now:
 
 <div class="embed-responsive embed-responsive-16by9">
 <video loop autoplay controls class="lazyload embed-responsive-item">
@@ -283,7 +283,7 @@ It works as intended - we don't intersect the wall! Now, let's consider somethin
 
 # Shooting through portals
 
-In *Narbacular Drop*, you could shoot portals through other portals. There's a reason we allow our portal shooting raycast to detect objects in the *Portal* layer: if we detect a portal surface, we'll shoot through the portal. Let's revist the `PortalPlacement` class - recall there was a segment of code that we glossed over earlier in the `FirePortal` method.
+In *Narbacular Drop*, you could shoot portals through other portals. There's a reason we allow our portal shooting raycast to detect objects in the *Portal* layer: if we detect a portal surface, we'll shoot through the portal. Let's revisit the `PortalPlacement` class - recall there was a segment of code that we glossed over earlier in the `FirePortal` method.
 
 ~~~csharp
 if (hit.collider.tag == "Portal")
@@ -292,7 +292,7 @@ if (hit.collider.tag == "Portal")
 }
 ~~~
 
-First of all, the portal surfaces are also tagged "Portal" because it's easier to compare tags than layers inside the code. We'll start off by grabbing a reference to the Portal we've just fired at and ensure it exists, then get a reference to the exit portal.
+First, the portal surfaces are also tagged "Portal" because it's easier to compare tags than layers inside the code. We'll start off by grabbing a reference to the Portal we've just fired at and ensure it exists, then get a reference to the exit portal.
 
 ~~~csharp
 var inPortal = hit.collider.GetComponent<Portal>();
@@ -334,13 +334,13 @@ We've seen this pattern before in the rendering and portal physics articles. We'
 </video>
 </div>
 
-We can now fire through portals! If you want the option to turn this off, you can create a boolean flag to wrap around this portion of code.
+We can now fire through portals! If you want the option to turn this off, you can create a Boolean flag to wrap around this portion of code.
 
 <hr/>
 
 # Limitations
 
-Since we only used raycasts to check for intersections and overhangs, we're hampered by mankind's greatest enemy: corners. There's a few layers of checks we could implement on top of the ones I've showed so far, but in the interest of reducing the length of this article - and because setting up raycasts isn't exactly the most interesting of topics - I've left them out. If you're interested in polishing up this effect a bit more, try answering the following questions: what if we used `Boxcast` instead of `Raycast` to detect intersections and overhangs? What if we wanted to ensure that portals, once placed, cannot intersect other portals?
+Since we only used raycasts to check for intersections and overhangs, we're hampered by mankind's greatest enemy: corners. There are a few layers of checks we could implement on top of the ones I've showed so far, but in the interest of reducing the length of this article - and because setting up raycasts isn't exactly the most interesting of topics - I've left them out. If you're interested in polishing up this effect a bit more, try answering the following questions: what if we used `Boxcast` instead of `Raycast` to detect intersections and overhangs? What if we wanted to ensure that portals, once placed, cannot intersect other portals?
 
 <hr/>
 
