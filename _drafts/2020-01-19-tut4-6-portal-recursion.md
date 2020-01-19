@@ -2,7 +2,7 @@
 layout: post
 title: Portals | Part 6 - Portal Recursion
 subtitle: Picture-in-picture, portal-in-portal
-bigimg: /img/tut4/part6-banner.jpg
+bigimg: /img/tut4/part6-bigimg.jpg
 hdrimg: /img/tut4/part6-banner.jpg
 gh-repo: daniel-ilett/shaders-portal
 gh-badge: [star, fork, follow]
