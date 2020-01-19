@@ -30,8 +30,7 @@ The posting schedule for this series is as follows:
 **Part 3**: Matrix Clipping | [Out now!](https://danielilett.com/2019-12-18-tut4-3-matrix-matching/) | `Oblique Near-Plane Projection`
 **Part 4**: Portal Momentum | [Out now!](https://danielilett.com/2020-01-03-tut4-4-portal-momentum/) | `Physics`
 **Part 5**: Placing Portals | [Out now!](https://danielilett.com/2020-01-12-tut4-5-placing-portals/) | `Raycasting`, `Rotations`
-**Part 6**: Prettier Portals | **Jan 15th** | `Particles`, `Heat-haze`, `Dissolve`
-**Part 7**: Portal Recursion | **Jan 18th** | `Recursion`, `Screenspace Sampling`
+**Part 6**: Portal Recursion | [Out now!](https://danielilett.com/2020-01-19-tut4-6-portal-recursion/) | `Recursion`, `Screen-space Sampling`
 
 As always, there is a [GitHub repository](https://github.com/daniel-ilett/shaders-portal) for the series. Feel free to poke around while development is ongoing.
 

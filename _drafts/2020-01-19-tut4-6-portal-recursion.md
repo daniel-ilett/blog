@@ -14,6 +14,9 @@ idnum: 36
 
 We've now dealt with almost all of the moving parts of portals. We can fire portals at walls and floors, with **automatic position and rotation correction**. We can place a **virtual camera** at the correct place and paste a screenshot of the world on the portal's surface, with **correct oblique near-plane camera clipping**. And we can even throw objects including the player through the portals and **preserve their velocity** relative to their new location. Alas, we're unable to look through a chain of portal surfaces and seamlessly see a sequence of portal views through each - until now.
 
+{: .box-note}
+It's a good idea to make sure you have the latest version of the code, available [on GitHub](https://github.com/daniel-ilett/shaders-portal).
+
 <hr/>
 
 # Portal recursion
@@ -23,6 +26,8 @@ So far, we've been using the **stencil buffer** to cut portal holes in the image
 Instead of stencils, we can use **screen-space sampling**. When we were using stencils, the portal surface used a material which rendered nothing to the screen but set a stencil ID which defined a region that would be drawn over by the virtual camera during the postprocessing step. It required a second shader which read the stencil buffer to find pixels with those IDs. 
 
 The alternative method is a **preprocessing step**, not a postprocessing step - we'll map a texture onto the portal surface *before* the main camera renders the screen. The basic idea is that we'll do the inverse positioning method for the virtual camera, take a screenshot, then paste that image over the portal surface using **screen-space sampling**. We use the screen-space position of each pixel on the portal surface as a UV coordinate on the screen-sized image captured by the virtual camera - it's less complicated than using the stencil buffer if we want a non-recursive effect. 
+
+<img data-src="/img/tut4/part6-recursive-portals.jpg" class="center-image lazyload" alt="Recursive Portals">
 
 But here's the trick: if we want to perform recursive iterations, then we can do the inverse positioning step several times and take a capture after each repositioning. The caveat to this approach is that we must capture the iterations in reverse - the deepest iteration is done first and the texture applied to the portal, then the second-deepest iteration is performed *with the texture from the deepest iteration applied to the portal surface and visible to the camera*, and so on until the 'first' iteration. The key part here is that each iteration sees the result of the previous one when the virtual camera takes its screenshot.
 
@@ -195,6 +200,13 @@ if(portals[1].IsRendererVisible())
 ~~~
 
 And that's all there is to it. Running the game will result in portals that perfectly render the views through other portals recursively!
+
+<div class="embed-responsive embed-responsive-16by9">
+<video loop autoplay controls class="lazyload embed-responsive-item">
+    <source src="/img/tut4/part6-portal-recursion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+</div>
 
 <hr/>
 
