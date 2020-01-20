@@ -12,7 +12,7 @@ date: 2020-01-19
 idnum: 36
 ---
 
-We've now dealt with almost all of the moving parts of portals. We can fire portals at walls and floors, with **automatic position and rotation correction**. We can place a **virtual camera** at the correct place and paste a screenshot of the world on the portal's surface, with **correct oblique near-plane camera clipping**. And we can even throw objects including the player through the portals and **preserve their velocity** relative to their new location. Alas, we're unable to look through a chain of portal surfaces and seamlessly see a sequence of portal views through each - until now.
+We've now dealt with almost all the moving parts of portals. We can fire portals at walls and floors, with **automatic position and rotation correction**. We can place a **virtual camera** at the correct place and paste a screenshot of the world on the portal's surface, with **correct oblique near-plane camera clipping**. And we can even throw objects including the player through the portals and **preserve their velocity** relative to their new location. Alas, we're unable to look through a chain of portal surfaces and seamlessly see a sequence of portal views through each - until now.
 
 {: .box-note}
 It's a good idea to make sure you have the latest version of the code, available [on GitHub](https://github.com/daniel-ilett/shaders-portal).
@@ -25,7 +25,7 @@ So far, we've been using the **stencil buffer** to cut portal holes in the image
 
 Instead of stencils, we can use **screen-space sampling**. When we were using stencils, the portal surface used a material which rendered nothing to the screen but set a stencil ID which defined a region that would be drawn over by the virtual camera during the postprocessing step. It required a second shader which read the stencil buffer to find pixels with those IDs. 
 
-The alternative method is a **preprocessing step**, not a postprocessing step - we'll map a texture onto the portal surface *before* the main camera renders the screen. The basic idea is that we'll do the inverse positioning method for the virtual camera, take a screenshot, then paste that image over the portal surface using **screen-space sampling**. We use the screen-space position of each pixel on the portal surface as a UV coordinate on the screen-sized image captured by the virtual camera - it's less complicated than using the stencil buffer if we want a non-recursive effect. 
+The alternative method is a **pre-processing step**, not a postprocessing step - we'll map a texture onto the portal surface *before* the main camera renders the screen. The basic idea is that we'll do the inverse positioning method for the virtual camera, take a screenshot, then paste that image over the portal surface using **screen-space sampling**. We use the screen-space position of each pixel on the portal surface as a UV coordinate on the screen-sized image captured by the virtual camera - it's less complicated than using the stencil buffer if we want a non-recursive effect. 
 
 <img data-src="/img/tut4/part6-recursive-portals.jpg" class="center-image lazyload" alt="Recursive Portals">
 
@@ -102,7 +102,7 @@ The shader is now finished - so let's move on to the script that controls image 
 
 ## Recursive portal scripting
 
-Open *Scripts/RecursivePortal/RecursivePortalCamera.cs*. The `RecursivePortalCamera` script controls the capture of each portal iteration. It looks strikingly similar to the BasicPortalCamera script, but with a handful of differences. First of all, there's no `portalMaterial` because we're not doing a postprocessing effect, and there are no `maskID`s defined either. There is an additional `iterations` parameter for controlling the number of recursions and two `tempTexture` parameters for storing the screen captures of each virtual camera.
+Open *Scripts/RecursivePortal/RecursivePortalCamera.cs*. The `RecursivePortalCamera` script controls the capture of each portal iteration. It looks strikingly like the `BasicPortalCamera` script, but with a handful of differences. First, there's no `portalMaterial` because we're not doing a postprocessing effect, and there are no `maskID`s defined either. There is an additional `iterations` parameter for controlling the number of recursions and two `tempTexture` parameters for storing the screen captures of each virtual camera.
 
 ~~~csharp
 private RenderTexture tempTexture1;
@@ -129,9 +129,9 @@ private void Start()
 }
 ~~~
 
-Now let's jump to the `RenderCamera` function. As mentioned, it's similar to the same function on `BasicPortalCamera`, but with an added `iterationID` parameter. All code pertaining to oblique matrices onwards is the same - so let's focus on the virtual camera transformation code.
+Now let's jump to the `RenderCamera` function. As mentioned, it's like the same function on `BasicPortalCamera`, but with an added `iterationID` parameter. All code pertaining to oblique matrices onwards is the same - so let's focus on the virtual camera transformation code.
 
-We'll start off by caching a few things like last time, but with a few extra things. We'll keep a handle on the `cameraTransform` and use that as the initial reference point of each transformation step.
+We'll start off by caching a few things like last time. We'll keep a handle on the `cameraTransform` and use that as the initial reference point of each transformation step.
 
 ~~~csharp
 Transform inTransform = inPortal.transform;
@@ -173,7 +173,7 @@ private void OnPreRender()
 }
 ~~~
 
-Now we'll consider each portal separately. We mentioned earlier that we need to render the iterations in reverse order - this is where we'll set up the loop to do just that. We''ll check if the portal surface is visible at all, and if it is, we'll go ahead with the rendering loop. The `portalCamera`'s target is set to whichever `tempTexture` was allocated for the portal, then `RenderCamera` is called.
+Now we'll consider each portal separately. We mentioned earlier that we need to render the iterations in reverse order - this is where we'll set up the loop to do just that. We'll check if the portal surface is visible at all, and if it is, we'll go ahead with the rendering loop. The `portalCamera`'s target is set to whichever `tempTexture` was allocated for the portal, then `RenderCamera` is called.
 
 ~~~csharp
 if (portals[0].IsRendererVisible())
@@ -214,7 +214,7 @@ And that's all there is to it. Running the game will result in portals that perf
 
 We've reached the end of our journey with portal rendering, capping things off with fully recursive portals! We've come a long way - with a bit of extra polish and a few more edge cases crossed off the list, you could feasibly use these as a mechanic in your game. I hope you've learned something during our journey - we've explored many concepts while creating this effect. I had originally planned to include an article on particles and other effects to make our portals look a little nicer, but in the end I decided that it was more important to get this article out sooner - and I may return to do an article on particle effects in the future.
 
-I'm planning to take a break until early February in order to work on the next set of tutorial artcles. Until that time, I hope you have fun building on the foundations this series provided!
+I'm planning to take a break until early February in order to work on the next set of tutorial articles. Until that time, I hope you have fun building on the foundations this series provided!
 
 <hr/>
 
