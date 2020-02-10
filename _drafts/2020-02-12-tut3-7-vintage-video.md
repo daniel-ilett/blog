@@ -17,13 +17,15 @@ series-name: Ultra Effects
 
 Welcome back to the world of image effect shaders! In gaming today, nostalgia reigns supreme - not only are old games frequently remastered for modern hardware, but new properties pop up occasionally with an aesthetic based entirely on tech from the past. Those who grew up in the 80s and 90s probably watched films at home using VHS tapes and will surely remember the graphical artefacts those tapes suffered from. 
 
-
-
 <img data-src="/img/tut3/part7-vhs-tape.jpg" class="center-image lazyload" alt="VHS Tape">
 
 [Image by Joshua_Willson from Pixabay]("https://pixabay.com/users/Joshua_Willson-876211/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1322179")
 
 <hr/>
+
+# Scanlines
+
+# Visual Glitches
 
 # Conclusion
 
