@@ -21,7 +21,7 @@ On top of that, VHS tapes were predominantly viewed on **CRT TVs**. We've discus
 
 <img data-src="/img/tut3/part7-vhs-tape.jpg" class="center-image lazyload" alt="VHS Tape">
 
-[Image by Joshua_Willson from Pixabay]("https://pixabay.com/users/Joshua_Willson-876211/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1322179")
+[Image by Joshua_Willson from Pixabay](https://pixabay.com/users/Joshua_Willson-876211/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1322179)
 
 <hr/>
 
@@ -185,7 +185,12 @@ And with that out of the way, we can see what the effect looks like when applied
 
 Combining the scanline and interference effects, as well as adding noise to the full image, we can create a basic CRT effect - this project contains a composite effect in *Effects/CRT*:
 
-
+<div class="embed-responsive embed-responsive-16by9">
+<video loop autoplay controls class="lazyload embed-responsive-item">
+    <source src="/img/tut3/part7-crt-effect.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+</div>
 
 # Conclusion
 
