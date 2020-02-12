@@ -17,7 +17,7 @@ series-name: Ultra Effects
 
 Welcome back to the world of image effect shaders! In gaming today, nostalgia reigns supreme - not only are old games frequently remastered for modern hardware, but new properties pop up occasionally with an aesthetic based entirely on tech from the past. Those who grew up in the 80s and 90s probably watched films at home using **VHS tapes** and will surely remember the graphical artefacts those tapes suffered from.
 
-On top of that, VHS tapes were predominantly viewed on **CRT TVs**. We've discussed [CRT screens](https://danielilett.com/2019-05-15-tut1-5-smo-retro/) on here before - one of the characteristic features of a CRT is the presence of **scanlines**. Today we're going to create an effect that brings together both of these ancient technologies.
+On top of that, VHS tapes were predominantly viewed on **CRT TVs**. We've discussed [CRT screens](https://danielilett.com/2019-05-15-tut1-5-smo-retro/) on here before - one of the characteristic features of a CRT is the presence of **scanlines**. Today we're going to create an effect that brings together both ancient technologies.
 
 <img data-src="/img/tut3/part7-vhs-tape.jpg" class="center-image lazyload" alt="VHS Tape">
 
@@ -27,11 +27,11 @@ On top of that, VHS tapes were predominantly viewed on **CRT TVs**. We've discus
 
 # Scanlines
 
-CRT screens typically produce images in rows. Each row is filled in horizontally, left-to-right, and once a row is filled, the following row is filled. Each row is called a **scanline**. But when we talk about scanlines colloquially, you're probably thinking of the dark lines that appear over the image - these are actually gaps between the real scanlines. We're skipping over a lot of technical detail - not all CRTs had visible scanlines due to the arrangement of pixels - but as is now tradition with this series, we're more interested in people's *expectations* of what a scanline should look like when building the effect. We're going to overlay our source image with slightly darker lines. We'll have two modes in mind - relatively thick scanlines which will look best when faded, and thinner scanlines which will look better when dark. Inside the *Textures* folder are our two textures - *Scanlines.png* and *Scanlines2.png* - each of which has a resolution of only 4x4.
+CRT screens typically produce images in rows. Each row is filled in horizontally, left-to-right, and once a row is filled, the following row is filled. Each row is called a **scanline**. But when we talk about scanlines colloquially, you're probably thinking of the dark lines that appear over the image - the **gaps** between the *real* scanlines. We're skipping over a lot of technical detail - not all CRTs had visible scanlines due to the arrangement of pixels - but as is now tradition with this series, we're more interested in people's *expectations* of what a scanline should look like when building the effect. We're going to overlay our source image with slightly darker lines. We'll have two modes in mind - relatively thick scanlines which will look best when faded, and thinner scanlines which will look better when dark. Inside the *Textures* folder are our two textures - *Scanlines.png* and *Scanlines2.png* - each of which has a resolution of only 4x4.
 
 <img data-src="/img/tut3/part7-scanline-textures.jpg" class="center-image lazyload" alt="Scanline Textures">
 
-Let's jump into the Scanline shader, found at `Resources/Shaders/Scanlines.shader`. Since it's so basic, it's the perfect shader to warm ourselves up since the previous Ultra Effects article!
+Let's jump into the Scanline shader, found at *Resources/Shaders/Scanlines.shader*. Since it's so basic, it's the perfect shader to warm ourselves up since the previous *Ultra Effects* article!
 
 We're going to need four variables: `_MainTex` is the base image texture captured by the camera; `_ScanlineTex` is one of the two scanline textures above, or you can supply your own; `_Strength` controls how dark the scanlines will appear; and `_Size` controls how large the scanlines are. Put these declarations above the fragment shader.
 
@@ -44,7 +44,7 @@ int _Size;
 
 Now we're going to overlay `_ScanlineTex` on top of `_MainTex`. It's best to make sure any scanline texture you choose to use has its filter mode set to point filtering so that your scanlines look crisp. And you'll certainly want to set its wrap mode to repeat, because this tiny texture is going to be tiled many times across the screen.
 
-We're going to multiply the UV coordinates used to sample _ScanlineTex by using _Size as a multiplier inside the fragment shader.
+We're going to multiply the UV coordinates used to sample `_ScanlineTex` by using `_Size` as a multiplier inside the fragment shader.
 
 ~~~glsl
 float4 frag (v2f i) : SV_Target
@@ -70,7 +70,7 @@ Now we need to combine the two image samples. We could multiply the two images t
 return lerp(col, col * scanlines, _Strength);
 ~~~
 
-Now we must create a script called `ScanlinesEffect` to drive the effect. It's super simple so we won't go too in-depth, but take the time to re-familiarise yourself with the script format if you need to. It's at *Scripts/ScanlinesEffect.cs*. Its only function is to pass variables to the shader and perform a basic `Graphics.Blit` each frame.
+Now we must create a script called `ScanlinesEffect` to drive the effect. It's super simple so we won't go too in-depth but take the time to re-familiarise yourself with the script format if you need to. It's at *Scripts/ScanlinesEffect.cs*. Its only function is to pass variables to the shader and perform a basic `Graphics.Blit` each frame.
 
 ~~~csharp
 [SerializeField]
@@ -194,7 +194,7 @@ Combining the scanline and interference effects, as well as adding noise to the 
 
 # Conclusion
 
-We've taken a lot of inspiration from retro effects during this series, and this article is no exception - CRT screens and VHS tapes are hugely nostalgic for millenials in particular. CRT screens have many characteristic features, one of which is the presence of visible scanlines not present on modern LCD or LED screens. VHS tapes are often remembered for their poor quality artefacts compared to DVDs, including bands of fuzzy or missing information across the screen.
+We've taken a lot of inspiration from retro effects during this series, and this article is no exception - CRT screens and VHS tapes are hugely nostalgic for multiple generations. CRT screens have many characteristic features, one of which is the presence of visible scanlines not found on modern LCD or LED screens. VHS tapes are often remembered for their poor-quality artefacts compared to DVDs, including bands of fuzzy or missing information across the screen.
 
 Next time, we'll look at a kaleidoscope effect in which we mirror an image, or parts of it, several times at certain angles.
 

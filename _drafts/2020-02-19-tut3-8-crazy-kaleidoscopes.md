@@ -58,7 +58,7 @@ We're working in radians rather than degrees, so there are $$ 2\pi $$ radians in
 angle -= segmentAngle * floor(angle / segmentAngle);
 ~~~
 
-Next, we take the pixel `angle` and subtract `segmentAngle` until we are inside the 'first segment'. It's essentially a modulus operation.
+Next, we take the pixel's `angle` and subtract `segmentAngle` until we are inside the 'first segment'. It's essentially a modulus operation.
 
 ~~~glsl
 // Each segment contains one reflection.
@@ -110,7 +110,7 @@ Now we can see what the effect looks like. If you plug in *Effects/Kaleidoscope*
 
 <img data-src="/img/tut3/part8-kaleidoscope-star.jpg" class="center-image lazyload" alt="Kaleidoscope Star">
 
-Or with four segments, you can sort of create an abstract Unity logo:
+Or with three segments, you can sort of create an abstract Unity logo:
 
 <img data-src="/img/tut3/part8-kaleidoscope-unity.jpg" class="center-image lazyload" alt="Kaleidoscope Unity">
 
