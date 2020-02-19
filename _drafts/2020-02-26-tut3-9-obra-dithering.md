@@ -15,8 +15,6 @@ part-label: 9
 series-name: Ultra Effects
 ---
 
-Blue noise textures: http://momentsingraphics.de/BlueNoise.html
-
 I recently finished *Return of the Obra Dinn* by Lucas Pope, a fantastic detective game about an ill-fated ship and its crew. One of the distinguishing features of the game is its 1-bit early Macintosh graphical style, which is realised by an extremely in-depth dithering effect. You can read Lucas' excellent articles on [how to perfect the dithering effect](https://forums.tigsource.com/index.php?topic=40832.800) - today, we'll cover the basics.
 
 <hr/>
@@ -37,7 +35,7 @@ The dithering effect is produced via a **postprocessing shader** - the scene is 
 
 # Bayer Patterns and Blue Noise
 
-*Obra Dinn* uses more than one kind of dithering pattern. The **Bayer pattern** shown above results in very neat dithering, as the noise texture contains neatly ordered pixels. On the contrary, dithering with **blue noise** is extremely disorderly. In the following image, on the left is a Bayer pattern, and on the right is a blue noise pattern.
+*Obra Dinn* uses more than one kind of dithering pattern. The **Bayer pattern** shown above results in very neat dithering, as the noise texture contains neatly ordered pixels. On the contrary, dithering with **blue noise** is extremely disorderly. In the following image, on the left is a Bayer pattern, and on the right is a blue noise pattern - you can grab the one I used [here](http://momentsingraphics.de/BlueNoise.html).
 
 <img data-src="/img/tut3/part9-dither-comparison.jpg" class="center-image lazyload" alt="Noise comparison">
 
