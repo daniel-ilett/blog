@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ultra Effects | Part 9 - Obra Dithering
-subtitle:
+subtitle: Sea shaders on the seashore
 bigimg: /img/tut3/part9-bigimg.jpg
 hdrimg: /img/tut3/part9-banner.jpg
 gh-repo: daniel-ilett/image-ultra
@@ -93,7 +93,7 @@ float3 threshold = tex2D(_NoiseTex, noiseUV);
 float thresholdLum = dot(threshold, float3(0.299f, 0.587f, 0.114f));
 ~~~
 
-Now we'll perform the thresholding. We could use a hard cutoff as described, but even *Obra Dinn* cheats in places and blends colours slightly. Instead, we'll sample `_ColorRampTex` based on whether the image pixel overcomes the threshold, but take into account *by how much* it overcomes the threshold. It's a very small difference but I like it better this way. After the thresholding step, we're done with the shader.
+Now we'll perform the thresholding. We could use a hard cutoff as described, but even *Obra Dinn* cheats in places and blends colours slightly, resulting in an effect which isn’t strictly 1-bit. Instead, we'll sample `_ColorRampTex` based on whether the image pixel overcomes the threshold, but take into account *by how much* it overcomes the threshold. It's a very small difference but I like it better this way. After the thresholding step, we're done with the shader.
 
 ~~~glsl
 float rampVal = lum < thresholdLum ? thresholdLum - lum : 1.0f;
@@ -122,7 +122,7 @@ private bool useScrolling = false;
 private FilterMode filterMode = FilterMode.Bilinear;
 ~~~
 
-Let's skip straight to the `Render` method. The scrolling offset will be based on the camera's field of view and the `eulerAngles` representation of its rotation. To make sure the noise texture scrolls such that the noise 'anchors' itself to the same part of the image while the camera rotates, we divide the y-component of the camera's rotation by the camera's field of view to obtain the `xOffset` - it needs to be multiplied by four because of the size difference of the `RenderTexture`s we'll use (which will be covered in a moment). The `yOffset` is based on the camera's aspect ratio too, and uses a different multiplier. These calculations are only performed if we enabled the `useScrolling` flag.
+Let's skip straight to the `Render` method. The scrolling offset will be based on the camera's field of view and the `eulerAngles` representation of its rotation. To make sure the noise texture scrolls such that the noise 'anchors' itself to the same part of the image while the camera rotates, we divide the y-component of the camera's rotation by the camera's field of view to obtain the `xOffset` - it needs to be multiplied by four because of the size difference of the `RenderTexture`s we'll use (which will be covered in a moment). The `yOffset` uses a different multiplier and is based on the camera’s aspect ratio. These calculations are only performed if we enabled the `useScrolling` flag.
 
 ~~~csharp
 public override void Render(RenderTexture src, RenderTexture dst)

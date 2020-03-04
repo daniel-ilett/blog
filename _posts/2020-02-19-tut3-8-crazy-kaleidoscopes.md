@@ -62,7 +62,7 @@ Next, we take the pixel's `angle` and subtract `segmentAngle` until we are insid
 
 ~~~glsl
 // Each segment contains one reflection.
-angle = min(angle, segment - angle);
+angle = min(angle, segmentAngle - angle);
 ~~~
 
 Now that we know our position relative to a single segment, let's talk about what one image segment looks like. The full image will look like a single segment copy-pasted in a circle, where each segment is a wedge shape. If we converted back to Cartesian coordinates now, then the kaleidoscope won't look right - there won't be any reflection. Therefore, each segment must reflect itself through the middle. Using the `min` function, we'll keep the angle unchanged if it is less than halfway through a segment, otherwise we'll mirror it across the centre of the segment by subtracting it from `segmentAngle`.
