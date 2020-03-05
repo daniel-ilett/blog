@@ -5,24 +5,22 @@ title: Assets
 
 This is a list of the assets I've published on various storefronts, some paid and some for free. Some assets are provided as bonuses on [Patreon](https://www.patreon.com/danielilett) or [Ko-fi](https://ko-fi.com/danielilett).
 
-## Snapshot Shaders Pro (Unity HDRP) - $4.99
+## Snapshot Shaders Pro - $4.99
 
-<img data-src="/img/assets/snapshot-pro-hdrp.jpg" class="center-image lazyload" alt="Snapshot Shaders Pro HDRP"/>
+<a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shaders-pro-160556">
+<img data-src="/img/assets/snapshot-pro.jpg" class="center-image lazyload" alt="Snapshot Shaders Pro HDRP"/>
+</a>
 
-You can get Snapshot Shaders Pro for Unity's High Definition Render Pipeline on [itch.io](https://danielilett.itch.io/snapshot-shaders-pro-hdrp).
+*Snapshot Shaders Pro* is available on the [Unity Asset Store](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shaders-pro-160556) for both the High Definition Render Pipeline and for Post Processing Stack v2.
 
-<hr/>
-
-## Snapshot Shaders Pro (Unity LWRP & PPv2) - $4.99
-
-<img data-src="/img/assets/snapshot-pro-lwrp.jpg" class="center-image lazyload" alt="Snapshot Shaders Pro LWRP"/>
-
-You can get Snapshot Shaders Pro for Unity's Lightweight Render Pipeline on [itch.io](https://danielilett.itch.io/snapshot-shaders-pro-unity) or the [Unity Asset Store](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shaders-pro-ppv2-lwrp-160556).
+It is also available on itch.io for [HDRP](https://danielilett.itch.io/snapshot-shaders-pro-hdrp) and for [PPv2](https://danielilett.itch.io/snapshot-shaders-pro-unity).
 
 <hr/>
 
 ## Snapshot Shader Collection - Free
 
+<a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shader-collection-146666">
 <img data-src="/img/assets/snapshot-free.jpg" class="center-image lazyload" alt="Snapshot Shader Collection"/>
+</a>
 
-You can get the free version of Snapshot Shader Collection for Unity's built-in renderer on [itch.io](https://danielilett.itch.io/snapshot-shader-collection) or the [Unity Asset Store](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shader-collection-146666).
+You can get the free version of *Snapshot Shader Collection* for Unity's built-in renderer on [itch.io](https://danielilett.itch.io/snapshot-shader-collection) or the [Unity Asset Store](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shader-collection-146666).

@@ -1,12 +1,12 @@
 ---
 layout: post
 title: Ultra Effects | Part 10 - Dungeon Drawing
-subtitle:
+subtitle: Shaders straight out of a storybook
 bigimg: /img/tut3/part10-bigimg.jpg
 hdrimg: /img/tut3/part10-banner.jpg
 gh-repo: daniel-ilett/image-ultra
 gh-badge: [star, fork, follow]
-tags: [unity, shaders, image-effects, ultra-effects]
+tags: [unity, shaders, image-effects, ultra-effects, outline, edge-detect, drawing]
 nice-slug: Dungeon Drawing
 date: 2020-03-04
 idnum: 40
@@ -31,7 +31,7 @@ Let's go over the basic strategy. We'll sample the image in a cross pattern - ma
 
 ## Colour-based Edges
 
-let's jump into specifics. The shader for the **Outline** effect can be found at *Resources/Shaders/Outline.shader* in the [project repository on GitHub](https://github.com/daniel-ilett/image-ultra). First, we'll include the colour buffer - `_MainTex` - and its `_TexelSize` data. Alongside it, we'll include two parameters: `_ColorSensitivity` to control the threshold over which an edge is considered to be an edge, and `_ColorStrength` to control how strong colour-based edges will be. We're allowing all three methods of edge detection to have different thresholds and strengths, so if you want depth-based edges to be more prevalent, or for colour-based edges to be weaker, you'll be able to do so.
+Let's jump into some code. The shader for the **Outline** effect can be found at *Resources/Shaders/Outline.shader* in the [project repository on GitHub](https://github.com/daniel-ilett/image-ultra). First, we'll include the colour buffer - `_MainTex` - and its `_TexelSize` data. Alongside it, we'll include two parameters: `_ColorSensitivity` to control the threshold over which we consider a pixel to be an edge, and `_ColorStrength` to control how strong colour-based edges will be. We're allowing all three methods of edge detection to have different thresholds and strengths, so if you want depth-based edges to be more prevalent, or for colour-based edges to be weaker, you'll be able to do so.
 
 ~~~glsl
 sampler2D _MainTex;
@@ -68,18 +68,18 @@ float3 c0 = col1 - col0;
 float3 c1 = col3 - col2;
 ~~~
 
-Then we can use Pythagoras' Theorem to calculate the overall gradient strength and store it in a variable called `edgeCol`. Once we have calculated the gradient, we'll compare it to the `_ColorSensitivity` defined previously. If `edgeCol` is greater than the threshold, we'll set `edgeCol` to the `_ColorStrength` value we also defined previously. Otherwise, `edgeCol` is zero.
+Then we can use Pythagoras' Theorem to calculate the overall gradient strength and store it in a variable called `edgeCol`. Once we have calculated the gradient, we'll compare it to the `_ColorSensitivity` defined previously. If `edgeCol` is greater than the threshold, we'll set `edgeCol` to the `_ColorStrength` value we also defined previously. Otherwise, `edgeCol` is set to zero.
 
 ~~~glsl
 float edgeCol = sqrt(dot(c0, c0) + dot(c1, c1));
 edgeCol = edgeCol > _ColorSensitivity ? _ColorStrength : 0;
 ~~~
 
-We haven't written a script to drive the effect yet - we'll have that all at the end - but as a sneak peak, let's see what happens when we view an edge detection algorithm that only takes into account colours.
+We haven't written a script to drive the effect yet - we'll handle that all at the end - but as a sneak peak, let's see what happens when we view an edge detection algorithm that only considers colours.
 
 <img data-src="/img/tut3/part10-colour-edge.jpg" class="center-image lazyload" alt="Colour-based Edges">
 
-So far so good - we've got bold edges between differently-coloured regions of the image. However, we might not want to rely on this type of edge detector, as it returns strange results on shadowed areas of the image - as you can see below the catapult - and might not detect an edge where an object is placed in front of a similarly-coloured object, like some of the bushes in this image. We'll need additional information to draw edges here.
+So far so good - we've got bold edges between differently coloured regions of the image. However, we might not want to rely on this type of edge detector, as it returns strange results on shadowed areas of the image - as you can see below the catapult - and might not detect an edge where an object is placed in front of a similarly-coloured object, like some of the bushes in this image. We'll need additional information to draw edges here.
 
 ## Depth-based Edges
 
@@ -92,7 +92,7 @@ float _DepthSensitivity;
 float _DepthStrength;
 ~~~
 
-Continuing on below the code we wrote for colour-based edge detection, we'll sample the depth texture using the same four sampling points. We can sample from this texture like any other and grab just the red channel value because the image is greyscale and all we need is a single `float` to represent depth.
+Continuing below the code we wrote for colour-based edge detection, we'll sample the depth texture using the same four sampling points. We can sample from this texture like any other and grab just the red channel value because the image is greyscale and all we need is a single `float` to represent depth.
 
 ~~~glsl
 float depth0 = tex2D(_CameraDepthTexture, leftUV).r;
@@ -110,7 +110,7 @@ depth2 = Linear01Depth(depth2);
 depth3 = Linear01Depth(depth3);
 ~~~
 
-Now we can calculate gradients in exactly the same way as we did with the colour-based edge detection step. We'll use `_DepthSensitivity` and `_DepthStrength` to control how sensitive the edge detection is and how strong the edges are respectively.
+Now we can calculate gradients in the same way as we did with the colour-based edge detection step. We'll use `_DepthSensitivity` and `_DepthStrength` to control how sensitive the edge detection is and how strong the edges are respectively.
 
 ~~~glsl
 float d0 = depth1 - depth0;
@@ -128,7 +128,7 @@ Even with quite a low threshold value of 0.01, it's quite difficult to detect de
 
 ## Normal-based Edges
 
-Alongside the depth texture, Unity is able to generate a normals texture which stores the direction each pixel is 'facing' in 3D space. This is useful for us for detecting objects placed on the ground - the difference in the normal vectors of pixels near the contact point will be quite large. We'll need to instruct Unity to generate this texture inside a script, which we'll deal with later. For now, let's add `_CameraDepthNormalsTexture`, `_NormalsSensitivity` and `_NormalsStrength` to our properties section of the shader.
+Alongside the depth texture, Unity can generate a normal texture which stores the direction each pixel is 'facing' in 3D space. This is useful for us for detecting objects placed on the ground - the difference in the normal vectors of pixels near the contact point will be quite large. We'll need to instruct Unity to generate this texture inside a script, which we'll deal with later. For now, let's add `_CameraDepthNormalsTexture`, `_NormalsSensitivity` and `_NormalsStrength` to our properties section of the shader.
 
 ~~~glsl
 sampler2D _CameraDepthNormalsTexture;
@@ -160,7 +160,7 @@ Let's see what the effect looks like with only normals-based edge detection.
 
 <img data-src="/img/tut3/part10-normals-edge.jpg" class="center-image lazyload" alt="Normal-based Edges">
 
-This is great! Edges show up really well in general. However, the effect does fall flat when a section of the image obscures another section which is perpendicular, like the pool of water at the front of this image. It's clear we'll need to combine these approaches.
+This is great! Edges show up very well in general. However, the effect does fall flat when a section of the image obscures another section which is perpendicular, like the pool of water at the front of this image. It's clear we'll need to combine these approaches.
 
 ## Combining Techniques
 
@@ -171,7 +171,7 @@ float edge = max(max(edgeCol, edgeDepth), edgeNormal);
 return col * (1.0f - edge);
 ~~~
 
-Let's see what that looks like. I prefer to set the sensitivity of the colour- and normals-based detection to 0.1 and use 0.01 for the depth-based detection, then make the colour-based detection strength a little less than the other two methods - values of 0.5 and 0.75 work well for a softer look overall.
+Let's see what that looks like. I prefer to set the sensitivity of the colour- and normal-based detection to 0.1 and use 0.01 for the depth-based detection, then make the colour-based detection strength a little less than the other two methods - values of 0.5 and 0.75 work well for a softer look overall.
 
 <img data-src="/img/tut3/part10-combined-edge.jpg" class="center-image lazyload" alt="Combined Edges">
 
@@ -221,7 +221,7 @@ That's all we need for the script. By creating a new **Outline** effect asset (o
 
 # Drawing Overlay
 
-The **Outline** effect by itself is very striking but we can do better. In *Mystery Dungeon*, the shadows below certain objects and characters appear as if they are sketched onto the scene using a pencil - we'll go the whole hog and make the entire scene look hald-drawn based on the luminance of the base image. The brighter the original pixel, the less apparent the sketch effect will be. The simplest way of achieving a sketch aesthetic is to create a sketch texture containing an arrangement of pencil/brush strokes, then overlaying it onto the image with differing transparency.
+The **Outline** effect by itself is very striking but we can do better. In *Mystery Dungeon*, the shadows below certain objects and characters appear as if they are sketched onto the scene using a pencil - we'll go the whole hog and make the entire scene look hand-drawn based on the luminance of the base image. The brighter the original pixel, the less apparent the sketch effect will be. The simplest way of achieving a sketch aesthetic is to create a sketch texture containing an arrangement of pencil/brush strokes, then overlaying it onto the image with differing transparency.
 
 <img data-src="/img/tut3/part10-drawing-texture.jpg" class="center-image lazyload" alt="Drawing Texture">
 
@@ -260,14 +260,14 @@ float2 texUV = i.uv + drawingCol * _Smudge;
 float4 col = tex2D(_MainTex, texUV);
 ~~~
 
-Then, we'll calculate the image luminance using the same calculation we've used a thousand times before. Based on the luminance, we'll choose between preserving the image colour as it is and multiplying it by the drawing texture - we'll use the `lerp` function for this, and use both the luminance and the `_Strength` as our interpolation factor. We'll need to subtract the luminance from 1 to make the effect work as intended.
+Then, we'll calculate the image luminance using the same calculation we've used a thousand times before. Based on the luminance, we'll choose between preserving the image colour as it is and multiplying it by the drawing texture - we'll use the `lerp` function for this and use both the luminance and the `_Strength` as our interpolation factor. We'll need to subtract the luminance from 1 to make the effect work as intended.
 
 ~~~glsl
 float lum = dot(col, float3(0.3f, 0.59f, 0.11f));
 float4 drawing = lerp(col, drawingCol * col, (1.0f - lum) * _Strength);
 ~~~
 
-Finally, we'll take into account the pixel depth. If we decide the scene stands out better without a textured sky, we can ignore the effect of the drawing texture for depth values over a threshold. If the depth value is below the threshold, we'll use the modified image texture - else, we'll just return `col`.
+Finally, we'll consider the pixel depth. If we decide the scene stands out better without a textured sky, we can ignore the effect of the drawing texture for depth values over a threshold. If the `depth` value is below the threshold, we'll use the modified image texture - else, we'll just return `col`.
 
 ~~~glsl
 float depth = tex2D(_CameraDepthTexture, i.uv).r;
@@ -276,7 +276,7 @@ depth = Linear01Depth(depth);
 return depth < _DepthThreshold ? drawing : col;
 ~~~
 
-That's it for the shader! Let's handle the `Drawing` script to drive the effect, found at *Scripts/Image Effects/Drawing.cs*. We'll start off by defining all of the variables we need to pass over to the shader. Most have the same names as above - the only differece is the inclusion of a `shiftCycleTime` variable, which denotes how long it takes for each animation cycle of the drawing effect. The animation is super simple - the UVs of the drawing texture will shift by 0.5 in both the u- and v-directions at the halfway-point of each cycle.
+That's it for the shader! Let's handle the `Drawing` script to drive the effect, found at *Scripts/Image Effects/Drawing.cs*. We'll start off by defining all the variables we need to pass over to the shader. Most have the same names as above - the only difference is the inclusion of a `shiftCycleTime` variable, which denotes how long it takes for each animation cycle of the drawing effect. The animation is super simple - the UVs of the drawing texture will shift by 0.5 in both the u- and v-directions at the halfway-point of each cycle.
 
 ~~~csharp
 [SerializeField]
