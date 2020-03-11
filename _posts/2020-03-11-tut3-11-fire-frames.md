@@ -15,7 +15,7 @@ part-label: 11
 series-name: Ultra Effects
 ---
 
-Fire. Its discovery was one of the first major milestones in humanity's long history. It's a source of life in the harsh winter, and a source of terror in warfare of old. And, as it turns out, it looks nice when you want your game screen to look like it's burning from the edges inwards. Today, we'll be dancing with fire... *in shaders*!
+Fire. Its discovery was one of the first major milestones in humanity's long history. And, as it turns out, it looks nice when you want your game screen to look like it's burning from the edges inwards. Today, we'll be dancing with fire... *in shaders*!
 
 <img data-src="/img/tut3/part11-fire-example.jpg" class="center-image lazyload" alt="Paper on fire">
 

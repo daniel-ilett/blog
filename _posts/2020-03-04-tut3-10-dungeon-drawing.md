@@ -366,12 +366,14 @@ Special thanks to my Patreon backers:
 - Gemma Louise Ilett
 - Jack Dixon
 - John Selig
-- Shaun Wall
-- FonzoUA
 - Chris Sims
+- FonzoUA
+- Jason Swearingen
+- Shaun Wall
 - Christopher Pereira
 - JacksonG
 - Pat
+- Zachary Alstadt
 
 And a shout-out to my top Ko-fi supporters:
 
