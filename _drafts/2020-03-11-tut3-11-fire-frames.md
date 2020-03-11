@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ultra Effects | Part 11 - Fire Frames
-subtitle:
+subtitle: A burning ring of fire
 bigimg: /img/tut3/part11-bigimg.jpg
 hdrimg: /img/tut3/part11-banner.jpg
 gh-repo: daniel-ilett/image-ultra
@@ -16,6 +16,10 @@ series-name: Ultra Effects
 ---
 
 Fire. Its discovery was one of the first major milestones in humanity's long history. It's a source of life in the harsh winter, and a source of terror in warfare of old. And, as it turns out, it looks nice when you want your game screen to look like it's burning from the edges inwards. Today, we'll be dancing with fire... *in shaders*!
+
+<img data-src="/img/tut3/part11-fire-example.jpg" class="center-image lazyload" alt="Paper on fire">
+
+[Image by Alicja from Pixabay](https://pixabay.com/photos/the-flame-fire-burn-glow-paper-3340762/)
 
 # Fire Shader
 
@@ -47,7 +51,7 @@ Now we can work on the fragment shader. We'll sample the main texture first.
 float4 col = tex2D(_MainTex, i.uv);
 ~~~
 
-Then, we'll extract a direction vector from the `_FlowMap` we passed into the shader. We did this for the *Underwater* effect earlier in this series. `_FlowMap` contains normal vector data, which we can extract using Unity's built-in `UnpackNormal` function, and since we'll be using these normals to animate the flames over time, we'll calculate an offset value, `flickerOffset`, based on `_Time` and `_FlickerDir`, then add that to the UVs used to sample the texture.
+Then, we'll extract a direction vector from the `_FlowMap` we passed into the shader. We did this for the [Underwater](https://danielilett.com/2019-10-22-tut3-2-sinking-feeling/) effect earlier in this series. `_FlowMap` contains normal vector data, which we can extract using Unity's built-in `UnpackNormal` function, and since we'll be using these normals to animate the flames over time, we'll calculate an offset value, `flickerOffset`, based on `_Time` and `_FlickerDir`, then add that to the UVs used to sample the texture.
 
 ~~~glsl
 float2 flickerOffset = _Time.x * _FlickerDir;
@@ -55,7 +59,7 @@ half3 normal = UnpackNormal(tex2D(_FlowMap, (i.uv + flickerOffset) % 1.0));
 float2 uvOffset = normal * _Strength;
 ~~~
 
-Now we can use the offset to sample the main noise texture. This will form the basis of the dissolve effect. To avoid visible tiling of the noise texture and make the effect a bit more varied, we'll repeat the trick we made in the last tutorial where we sampled the texture a second time at a higher resolution and took the average of both. We'll only add the `uvOffset` and `flickerOffset` to the high-resolution sample - we're adding *both* for even more variation!
+Now we can use the offset to sample the main noise texture. This will form the basis of the dissolve effect. To avoid visible tiling of the noise texture and make the effect a bit more varied, we'll repeat the trick we made in the [previous tutorial](https://danielilett.com/2020-03-04-tut3-10-dungeon-drawing/) where we sampled the texture a second time at a higher resolution and took the average of both. We'll only add the `uvOffset` and `flickerOffset` to the high-resolution sample - we're adding *both* for even more variation!
 
 ~~~glsl
 float2 dissolveUV = i.uv * _Tiling;
@@ -70,7 +74,7 @@ float2 distance = (i.uv - 0.5f) * 2.0f;
 float dissolveDist = sqrt(distance.x*distance.x + distance.y*distance.y);
 ~~~
 
-Now, we can calculate a final `dissolve` value to denote 'how burnt' the pixel should be. We'll use that value to sample `_ColorRamp` and `_AlphaRamp` - the colour and transparency textures.
+Now, we can calculate a final `dissolve` value to denote how 'burnt' the pixel should be. We'll use that value to sample `_ColorRamp` and `_AlphaRamp` - the colour and transparency textures.
 
 ~~~glsl
 float dissolve = (dissolveBase + _Size) * dissolveDist;
@@ -145,6 +149,8 @@ And that's the script finished! Let's see what the effect looks like in action.
 In *Effects/Fire.asset*, we've created a fire effect which uses two ramps included in the Textures folder - *FireColorRamp.png* and *FireAlphaRamp.png*. We've set the size to 0.75 and the strength to a low value of 0.01, the tiling is at the default value of 1, and the flicker direction is pointing roughly in the bottom-left corner (the movement direction of the flames acts in the opposite direction to these values because we're adding these values to the UV coordinates used to sample a texture). Finally, the background colour is set to black. Tweak these values to your heart's content!
 
 # Conclusion
+
+We've put together a highly customisable fire effect using several textures working together. By separating out all the parts of the fire effect to their own textures and variables, you can change the look and feel of the effect drastically by changing only one value or swapping out a single texture. 
 
 <hr/>
 
