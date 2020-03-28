@@ -119,6 +119,12 @@ series-list:
       link: https://danielilett.com/2020-01-12-tut4-5-placing-portals/
     - label: 6
       link: https://danielilett.com/2020-01-19-tut4-6-portal-recursion/
+- series-name: URP
+  series-parts:
+    - label: 1
+      link: https://danielilett.com/2020-03-21-tut5-urp-cel-shading/
+    - label: 2
+      link: https://danielilett.com/2020-03-27-tut5-2-urp-metaballs/
 
 # --- Background colour/image options --- #
 

@@ -10,6 +10,9 @@ tags: [unity, shaders, cel-shading, urp, shader-graph]
 nice-slug: URP Cel-shading
 date: 2020-03-21
 idnum: 42
+
+part-label: 1
+series-name: URP
 ---
 
 Recently, rendering in Unity has been totally revolutionised by the addition of **Scriptable Render Pipelines** - in short, SRP lets developers completely control how Unity renders a scene. While it's possible to roll your own custom renderer, there are two presets which most people will probably use - **High Definition Render Pipeline** (HDRP), which targets high-end consoles and PC, and **Universal Render Pipeline** (URP, previously known as **Lightweight Render Pipeline**, LWRP), which is designed to scale across a broad range of devices, including mobile platforms. SRP also brings support for **Shader Graph**, Unity's new node-based shader editor. We've been using the old basic renderer so far on this website - today, we're going to leave it behind and build a brand new cel-shader in URP and Shader Graph!
