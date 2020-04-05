@@ -1,14 +1,14 @@
 ---
 layout: post
-title: 2D Metaballs in Unity URP
-subtitle: 
+title: 2D Metaballs and Custom Post Process in Unity URP
+subtitle: Flaunting a fast fluid simulation technique
 bigimg: /img/tut5/part2-bigimg.jpg
 hdrimg: /img/tut5/part2-banner.jpg
 gh-repo: daniel-ilett/metaballs-urp
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, metaballs, urp, post-process]
 nice-slug: URP Metaballs
-date: 2020-03-27
+date: 2020-03-28
 idnum: 43
 
 part-label: 2
