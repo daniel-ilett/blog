@@ -22,7 +22,9 @@ For many years, the most common way of dealing with object transparency in 3D ga
 
 UPDATE: I've made my YouTube debut and turned this article into a video! I'm so excited to make more videos if people enjoy this one - let me know what you think!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VG-Ux8RHMoA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/VG-Ux8RHMoA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
 
 # Dither Transparency
 

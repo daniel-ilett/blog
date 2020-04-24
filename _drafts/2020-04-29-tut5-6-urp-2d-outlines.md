@@ -15,7 +15,7 @@ part-label: 6
 series-name: URP
 ---
 
-
+Outlines are an extremely popular method for making objects stand out in games. Plenty of developers choose to add outlines to advance an aesthetic like a comic book style. In this tutorial, we'll take a SpriteRenderer and add outlines to it using Shader Graph. As always, the source code for this shader is available [on GitHub](https://github.com/daniel-ilett/2d-outlines-urp).
 
 # Acknowledgements
 
