@@ -17,6 +17,10 @@ series-name: URP
 
 Outlines are an extremely popular method for making objects stand out in games. Plenty of developers choose to add outlines to advance an aesthetic like a comic book style. In this tutorial, we'll take a SpriteRenderer and add outlines to it using Shader Graph. As always, the source code for this shader is available [on GitHub](https://github.com/daniel-ilett/2d-outlines-urp).
 
+# Outline Shader
+
+The approach we'll take for this effect will be familiar to anyone who has used the `Outline` component bundled with Unity's UI system. That script works by duplicating the UI element's visual elements four times, tinting the duplicates a colour (usually black), then moving them up, down, left and right very slightly. Since the duplicates are drawn behind the UI element, it looks as if that element has an outline. We're going to do something similar in Shader Graph for sprites. We'll sample the texture normally for the base colour. Then, we'll sample the pixels to the top, bottom, left and right of the current pixel and add together their alpha values. Assuming everything is fully opaque or fully transparent for a second, if the main texture sample has an alpha value of zero and the total alpha of the surrounding four pixels is above zero, then the current pixel is just one off the edge of the opaque section of the sprite and it should be drawn in the outline colour.
+
 # Acknowledgements
 
 ### Assets
