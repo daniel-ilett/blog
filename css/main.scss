@@ -753,28 +753,28 @@ td.gutter {
 .box-note, .box-warning, .box-error, .box-success {
   padding: 15px 15px 15px 10px;
   margin: 20px 20px 20px 5px;
-  border: 1px solid #eee;
+  border: 1px solid $main-text-color;
   border-left-width: 5px;
   border-radius: 5px 3px 3px 5px;
 }
 
 .box-note {
-  background-color: #eee;
+  background-color: $main-background-color;
   border-left-color: #2980b9;
 }
 
 .box-warning {
-  background-color: #fdf5d4;
+  background-color: $main-background-color;
   border-left-color: #f1c40f;
 }
 
 .box-error {
-  background-color: #f4dddb;
+  background-color: $main-background-color;
   border-left-color: #c0392b;
 }
 
 .box-success {
-  background-color: #98FB98;
+  background-color: $main-background-color;
   border-left-color: #3CB371;
 }
 
