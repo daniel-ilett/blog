@@ -4,21 +4,21 @@ layout: null
 @import url("pygment_highlights.css");
 
 /* --- Variables ---*/
-$main-background-color: hsl(0, 0, 100%);
-$second-background-color: hsl(0, 0, 90%);
+$main-background-color: hsl(0, 0, 15%);
+$second-background-color: hsl(0, 0, 20%);
 $code-background-color: hsl(0, 0, 97%);
 $code-background-color-accent: hsl(0, 0, 99%);
 $code-border-color: hsl(0, 0, 25%);
-$code-short-background-color: hsl(0, 0, 95%);
+$code-short-background-color: hsl(0, 0, 25%);
 
-$main-text-color:  hsl(0, 0, 10%);
-$light-text-color: hsl(0, 0, 25%);
-$lighter-text-color: hsl(0, 0, 40%);
-$dark-text-color: hsl(0, 0, 5%);
+$main-text-color:  hsl(0, 0, 90%);
+$light-text-color: hsl(0, 0, 85%);
+$lighter-text-color: hsl(0, 0, 75%);
+$dark-text-color: hsl(0, 0, 100%);
 $code-text-color: hsl(0, 0, 10%);
 
 $light-border-color: hsl(0, 0, 80%);
-$link-col: rgb(0, 90, 255);
+$link-col: rgb(86, 187, 255);
 $underline-color: hsl(0, 0, 60%);
 $box-background-color: hsl(0, 0, 95%);
 $highlight-color: hsl(0, 0, 60%);
@@ -655,23 +655,23 @@ table {
   padding: 0;
 }
 table tr {
-  border-top: 1px solid #cccccc;
-  background-color: #ffffff;
+  border-top: 1px solid $light-text-color;
+  background-color: $main-background-color;
   margin: 0;
   padding: 0;
 }
 table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  background-color: $second-background-color;
 }
 table tr th {
   font-weight: bold;
-  border: 1px solid #cccccc;
+  border: 1px solid $light-text-color;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
 }
 table tr td {
-  border: 1px solid #cccccc;
+  border: 1px solid $light-text-color;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
@@ -695,7 +695,7 @@ pre code {
   white-space: pre;
 }
 pre.highlight, .highlight > pre, td.code pre {
-  background-color: #FAFAFA;
+  background-color: $main-background-color;
   background-image: linear-gradient($code-background-color 50%, $code-background-color-accent 50%);
   background-repeat: repeat;
   background-size: 3em 3em;
@@ -706,7 +706,7 @@ code table, code table td, code table th, code table tbody, code table tr,
 td.gutter pre {
   padding: 0;
   border: none;
-  background-color: #fff;
+  background-color: $main-background-color;
 }
 .highlight > pre {
   padding: 0;
@@ -877,27 +877,27 @@ td.gutter {
 .series-part
 {
   display: inline-block;
-  background-color: #ffffff;
-  color: #221144;
+  background-color: $main-background-color;
+  color: $main-text-color;
   height: 2em;
   line-height: 2em;
   width: 2em;
-  border: solid #221144;
+  border: solid $main-text-color;
   border-radius: 100%;
   border-width: 2px 2px;
 }
 
 .series-part-this
 {
-  background-color: #221144;
-  color: white;
+  background-color: $main-text-color;
+  color: $main-background-color;
 }
 
 .series-part:hover
 {
   color: white;
   text-shadow: none;
-  background-color: #005aff;
+  background-color: $link-col;
 }
 
 .profile-pic
@@ -939,9 +939,20 @@ td.gutter {
 .asset-btn 
 {
   padding-top: 5px;
+
+  .btn
+  {
+    background-color: $main-background-color;
+    color: $main-text-color;
+  }
+
+  .btn:hover
+  {
+    color: $link-col;
+  }
 }
 
-//.highlighter-rouge
-//{
-//  background-color: $code-short-background-color;
-//}
+.highlighter-rouge
+{
+  background-color: $code-short-background-color;
+}
