@@ -3,7 +3,7 @@ layout: null
 ---
 @import url("pygment_highlights.css");
 
-/* --- Variables ---*/
+/* --- Variables ---
 $main-background-color: hsl(0, 0, 15%);
 $second-background-color: hsl(0, 0, 20%);
 $code-background-color: hsl(0, 0, 97%);
@@ -25,15 +25,66 @@ $highlight-color: hsl(0, 0, 60%);
 
 $footer-circle-color: $main-text-color;
 $footer-icon-color: $main-background-color;
+*/
+
+:root
+{
+  --main-background-color: #ffffff;
+  --second-background-color: #e6e6e6;
+  --code-background-color: #f7f7f7;
+  --code-background-color-accent: #fcfcfc;
+  --code-border-color: #404040;
+  --code-short-background-color: #f9f2f4;
+
+  --main-text-color:  #1a1a1a;
+  --light-text-color: #404040;
+  --lighter-text-color: #666666;
+  --dark-text-color: #0d0d0d;
+  --code-text-color: #1a1a1a;
+
+  --light-border-color: #cccccc;
+  --link-col: #005AFF;
+  --underline-color: #999999;
+  --box-background-color: #f2f2f2;
+  --highlight-color: #999999;
+
+  --footer-circle-color: #221144;
+  --footer-icon-color: #ffffff;
+}
+
+[data-theme="dark"]
+{
+  --main-background-color: #262626;
+  --second-background-color: #333333;
+  --code-background-color: #f7f7f7;
+  --code-background-color-accent: #fcfcfc;
+  --code-border-color: #404040;
+  --code-short-background-color: #404040;
+
+  --main-text-color: #e6e6e6;
+  --light-text-color: #d9d9d9;
+  --lighter-text-color: #bfbfbf;
+  --dark-text-color: #ffffff;
+  --code-text-color: #1a1a1a;
+
+  --light-border-color: #cccccc;
+  --link-col: #2896FF;
+  --underline-color: #999999;
+  --box-background-color: #f2f2f2;
+  --highlight-color: #999999;
+
+  --footer-circle-color: var(--main-text-color);
+  --footer-icon-color: var(--main-background-color);
+}
 
 /* --- General --- */
 
 body {
   font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 18px;
-  color: $main-text-color;
+  color: var(--main-text-color);
   position: relative;
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
   {% if site.page-img %}
   background-image: url({{ site.page-img }});
   background-attachment: fixed;
@@ -47,14 +98,14 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 800;
 }
 a {
-  color: $link-col;
+  color: var(--link-col);
 }
 a:hover,
 a:focus {
-  color: $link-col;
+  color: var(--link-col);
 }
 blockquote {
-  color: $box-background-color;
+  color: var(--box-background-color);
   font-style: italic;
 }
 blockquote p:first-child {
@@ -90,12 +141,12 @@ hr.small {
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background-color: $link-col;
+  background-color: var(--link-col);
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background-color: $link-col;
+  background-color: var(--link-col);
 }
 img::selection {
   color: white;
@@ -118,7 +169,7 @@ img {
 /* --- Navbar --- */
 
 .navbar-custom {
-  background-color: $second-background-color;
+  background-color: var(--second-background-color);
   border-bottom: 1px solid #EAEAEA;
   {% if site.navbar-img %}
   background-image: url({{ site.navbar-img }});
@@ -135,14 +186,14 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
   font-weight: 800;
-  color: $light-text-color;
+  color: var(--light-text-color);
 }
 
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus ,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: $link-col;
+  color: var(--link-col);
 }
 
 .navbar-custom .navbar-brand-logo {
@@ -291,7 +342,7 @@ footer {
   border-top: 1px #EAEAEA solid;
   margin-top: 50px;
   font-size: 14px;
-  background-color: $second-background-color;
+  background-color: var(--second-background-color);
   {% if site.footer-img %}
   background-image: url({{ site.footer-img }});
   background-attachment: fixed;
@@ -299,26 +350,26 @@ footer {
 }
 
 footer p.text-muted {
-  color: $lighter-text-color;
+  color: var(--lighter-text-color);
 }
 
 footer a 
 {
-  color: $footer-circle-color;
+  color: var(--footer-circle-color);
 
   .fa-circle
   {
-    color: $footer-circle-color;
+    color: var(--footer-circle-color);
   }
 
   .fab
   {
-    color: $footer-icon-color;
+    color: var(--footer-icon-color);
   }
 
   .fab:hover
   {
-    color: $link-col;
+    color: var(--link-col);
   }
 }
 
@@ -366,13 +417,13 @@ footer .theme-by {
 
 .post-preview a {
   text-decoration: none;
-  color: $main-text-color;
+  color: var(--main-text-color);
 }
 
 .post-preview a:focus,
 .post-preview a:hover {
   text-decoration: none;
-  color: $link-col;
+  color: var(--link-col);
 }
 
 .post-preview .post-title {
@@ -386,7 +437,7 @@ footer .theme-by {
 }
 .post-preview .post-meta,
 .post-heading .post-meta {
-  color: $light-text-color;
+  color: var(--light-text-color);
   font-size: 18px;
   margin: 0 0 10px;
 }
@@ -426,20 +477,20 @@ footer .theme-by {
 /* --- Tags --- */
 
 .blog-tags {
-  color: $light-text-color;
+  color: var(--light-text-color);
   font-size: 15px;
   margin-bottom: 30px;
 }
 
 .blog-tags a {
-  color: $link-col;
+  color: var(--link-col);
   text-decoration: none;
   padding: 0px 5px;
 }
 
 .blog-tags a:hover {
   border-radius: 2px;
-  color: $link-col;
+  color: var(--link-col);
   background-color: #EEE;
 }
 
@@ -648,8 +699,8 @@ footer .theme-by {
 .pager li a:hover,
 .pager li a:focus {
   color: #FFF;
-  border: 1px solid $link-col;
-  background-color: $link-col;
+  border: 1px solid var(--link-col);
+  background-color: var(--link-col);
 }
 
 .pager {
@@ -674,23 +725,23 @@ table {
   padding: 0;
 }
 table tr {
-  border-top: 1px solid $light-text-color;
-  background-color: $main-background-color;
+  border-top: 1px solid var(--light-text-color);
+  background-color: var(--main-background-color);
   margin: 0;
   padding: 0;
 }
 table tr:nth-child(2n) {
-  background-color: $second-background-color;
+  background-color: var(--second-background-color);
 }
 table tr th {
   font-weight: bold;
-  border: 1px solid $light-text-color;
+  border: 1px solid var(--light-text-color);
   text-align: left;
   margin: 0;
   padding: 6px 13px;
 }
 table tr td {
-  border: 1px solid $light-text-color;
+  border: 1px solid var(--light-text-color);
   text-align: left;
   margin: 0;
   padding: 6px 13px;
@@ -714,18 +765,19 @@ pre code {
   white-space: pre;
 }
 pre.highlight, .highlight > pre, td.code pre {
-  background-color: $main-background-color;
-  background-image: linear-gradient($code-background-color 50%, $code-background-color-accent 50%);
+  background-color: var(--main-background-color);
+  background-image: linear-gradient(var(--code-background-color) 50%, var(--code-background-color-accent) 50%);
+  //background-image: var(--code-background-color);
   background-repeat: repeat;
   background-size: 3em 3em;
   background-position: 0px 10px;
-  border-left: 7px solid $link-col;
+  border-left: 7px solid var(--link-col);
 }
 code table, code table td, code table th, code table tbody, code table tr,
 td.gutter pre {
   padding: 0;
   border: none;
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
 }
 .highlight > pre {
   padding: 0;
@@ -736,7 +788,7 @@ td.gutter pre {
 td.code pre {
   border-width: 0 0 0 2px;
   border-style: solid;
-  border-color: $code-border-color;
+  border-color: var(--code-border-color);
   border-radius: 0;
 }
 td.gutter {
@@ -753,28 +805,28 @@ td.gutter {
 .box-note, .box-warning, .box-error, .box-success {
   padding: 15px 15px 15px 10px;
   margin: 20px 20px 20px 5px;
-  border: 1px solid $main-text-color;
+  border: 1px solid var(--main-text-color);
   border-left-width: 5px;
   border-radius: 5px 3px 3px 5px;
 }
 
 .box-note {
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
   border-left-color: #2980b9;
 }
 
 .box-warning {
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
   border-left-color: #f1c40f;
 }
 
 .box-error {
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
   border-left-color: #c0392b;
 }
 
 .box-success {
-  background-color: $main-background-color;
+  background-color: var(--main-background-color);
   border-left-color: #3CB371;
 }
 
@@ -896,27 +948,27 @@ td.gutter {
 .series-part
 {
   display: inline-block;
-  background-color: $main-background-color;
-  color: $main-text-color;
+  background-color: var(--main-background-color);
+  color: var(--main-text-color);
   height: 2em;
   line-height: 2em;
   width: 2em;
-  border: solid $main-text-color;
+  border: solid var(--main-text-color);
   border-radius: 100%;
   border-width: 2px 2px;
 }
 
 .series-part-this
 {
-  background-color: $main-text-color;
-  color: $main-background-color;
+  background-color: var(--main-text-color);
+  color: var(--main-background-color);
 }
 
 .series-part:hover
 {
   color: white;
   text-shadow: none;
-  background-color: $link-col;
+  background-color: var(--link-col);
 }
 
 .profile-pic
@@ -961,17 +1013,17 @@ td.gutter {
 
   .btn
   {
-    background-color: $main-background-color;
-    color: $main-text-color;
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
   }
 
   .btn:hover
   {
-    color: $link-col;
+    color: var(--link-col);
   }
 }
 
 .highlighter-rouge
 {
-  background-color: $code-short-background-color;
+  background-color: var(--code-short-background-color);
 }
