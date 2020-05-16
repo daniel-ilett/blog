@@ -143,9 +143,6 @@ link-col: "#008AFF"
 hover-col: "#0085A1"
 footer-link-col: "#221144"
 
-# Use a dark mode?
-dark-enabled: false
-
 # --- Footer options --- #
 
 # Change all these values or delete the ones you don't want.

@@ -16,29 +16,31 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
-      {% for link in site.navbar-links %}
-        {% if link[1].first %}
-          <li class="navlinks-container">
-            <a class="navlinks-parent" href="javascript:void(0)">{{ link[0] }}</a>
-            <div class="navlinks-children">
-              {% for childlink in link[1] %}
-                {% for linkparts in childlink %}
-                  {% include navbarlink.html link=linkparts %}
+        {% for link in site.navbar-links %}
+          {% if link[1].first %}
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">{{ link[0] }}</a>
+              <div class="navlinks-children">
+                {% for childlink in link[1] %}
+                  {% for linkparts in childlink %}
+                    {% include navbarlink.html link=linkparts %}
+                  {% endfor %}
                 {% endfor %}
-              {% endfor %}
-            </div>
-          </li>
-        {% else %}
-          <li>
-            {% include navbarlink.html link=link %}
-          </li>
-        {% endif %}
+              </div>
+            </li>
+          {% else %}
+            <li>
+              {% include navbarlink.html link=link %}
+            </li>
+          {% endif %}
         {% endfor %}
-        {% if site.dark-enabled %}
-          <li>
-            <a href="" id="colorChanger"></a>
-          </li>
-        {% endif %}
+
+        <li onclick="toggleTheme()" data-toggle="tooltip" data-placement="bottom" title="Toggle theme">
+          <span class="fa-stack fa-lg" aria-hidden="true">
+            <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="far fa-lightbulb fa-stack-1x fa-inverse"></i>
+          </span>
+        </li>
       </ul>
     </div>
 

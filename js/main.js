@@ -1,4 +1,5 @@
 // Dean Attali / Beautiful Jekyll 2016
+// Additions coutesy of https://medium.com/visualnaut/implementing-dark-mode-on-a-website-using-css-variable-and-javascript-part-2-65a3f628364
 
 var main = {
 
@@ -6,6 +7,9 @@ var main = {
   numImgs : null,
 
   init : function() {
+    
+    main.initTheme();
+
     // Shorten the navbar after scrolling a little bit down
     $(window).scroll(function() {
         if ($(".navbar").offset().top > 50) {
@@ -132,16 +136,64 @@ var main = {
 	} else {
 	  $(".img-desc").hide();
 	}
+  },
+
+  initTheme : function()
+  {
+    // Define the media query for checking user colour scheme.
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
+    // Check local storage, then media query, to set theme initially.
+    if(localStorage.getItem('theme') === 'dark' || 'light')
+    {
+      changeTheme(localStorage.getItem('theme'))
+    }
+    else
+    {
+      if(mediaQuery.matches)
+      {
+        changeTheme('dark')
+      }
+      else
+      {
+        changeTheme('light')
+      }
+    }
+
+    // Add a listener for realtime theme preference changes.
+    mediaQuery.addListener(e => {
+      if(e.matches)
+      {
+        changeTheme('dark')
+      }
+      else
+      {
+        changeTheme('light')
+      }
+    })
   }
 };
 
-function toggleTheme() {
-  // If document have an attribute data-theme with value dark, set attribute to light, else set to dark.
+// Press the theme toggle button.
+function toggleTheme() 
+{
+  // Flip the data-theme attribute from light<->dark.
   if (document.documentElement.getAttribute('data-theme') === 'dark')
-   document.documentElement.setAttribute('data-theme', 'light')
+  {
+    changeTheme('light')
+  }
   else
-   document.documentElement.setAttribute('data-theme', 'dark')
- }
+  {
+    changeTheme('dark')
+  }
+}
+
+// Change the theme here.
+function changeTheme(theme)
+{
+  document.documentElement.setAttribute('data-theme', theme)
+  localStorage.setItem('theme', theme)
+}
 
 // 2fc73a3a967e97599c9763d05e564189
 
