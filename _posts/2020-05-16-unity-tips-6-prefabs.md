@@ -7,7 +7,7 @@ hdrimg: /img/unity-tips/part6-banner.jpg
 tags: [unity, unity-tips, prefabs, instantiation, object-pooling]
 nice-slug: Prefabs
 date: 2020-05-16
-idnum: 50
+idnum: 48
 
 part-label: 6
 series-name: Unity Tips
@@ -107,6 +107,7 @@ This Unity Tips was a little shorter than usual! We discussed the different type
 Special thanks to my Patreon backers:
 
 - Gemma Louise Ilett
+- Jesper Kuutti
 - Jack Dixon
 - BVR
 - John Selig
@@ -114,6 +115,7 @@ Special thanks to my Patreon backers:
 - Chris Sims
 - FonzoUA
 - Jason Swearingen
+- Moishi Rand
 - Shaun Wall
 - Christopher Pereira
 - Patrick A Farnach

@@ -76,6 +76,8 @@ series-list:
       link: https://danielilett.com/2019-10-07-unity-tips-4-scriptableobjects/
     - label: 5
       link: https://danielilett.com/2019-10-26-unity-tips-5-persistent-data/
+    - label: 6
+      link: https://danielilett.com/2020-05-16-unity-tips-6-prefabs/
 - series-name: Ultra Effects
   series-parts:
     - label: i
