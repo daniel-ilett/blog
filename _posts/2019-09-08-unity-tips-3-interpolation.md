@@ -343,7 +343,6 @@ For texture samples $$ T_{0,0} $$, $$ T_{0,1} $$, $$ T_{1,0} $$, $$ T_{1,1} $$ a
 
 Let’s look at an example. We’ll take a 2x2 texture and work out what would be the colour of an additional pixel in the centre of them – the interpolation factor is $$ (\frac{1}{2},\frac{1}{2}) $$. In this texture, all values are greyscale and $$ T_{0,0} $$ is `80%` white; $$ T_{1,0} $$ is `60%` white; $$ T_{0,1} $$ is `30%` white; and $$ T_{1,1} $$ is `10%` white.
 
-![Blerp Texture](/img/unity-tips/part3-blerp-texture.jpg){: .center-image }
 <img data-src="/img/unity-tips/part3-blerp-texture.jpg" class="center-image lazyload" alt="Blerp Texture">
 
 Because both interpolation factors are $$ \frac{0}{2} $$, all interpolation steps end up being unweighted averages of two colours. Let’s follow the algorithm steps we outlined above, recalling the formula for Lerp, to obtain the greyscale colour at $$ T_{0.5,0.5} $$.

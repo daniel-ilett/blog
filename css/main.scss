@@ -81,7 +81,8 @@ a:focus {
   color: var(--link-col);
 }
 blockquote {
-  color: var(--box-background-color);
+  background-color: var(--box-background-color);
+  color: var(--light-text-color);
   font-style: italic;
 }
 blockquote p:first-child {
