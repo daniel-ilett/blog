@@ -25,6 +25,12 @@ The shader graph created in this tutorial is [available as part of the project's
 
 <script>(function(d, s, id) {var js, shaderjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src ='https://shadergraph.stelabouras.com/scripts/embed.js';shaderjs.parentNode.insertBefore(js, shaderjs);}(document, 'script', 'shadergraph-jssdk'));</script><div class='shadergraph-embed' data-shadergraphid='d4fba3eab2080e53763414aa354449c0' style='height:400px'></div>
 
+**Also edit**: I've also put this tutorial on my YouTube channel - please give it a watch alongside this written tutorial!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/0NuesGD0msI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 Also, it's almost the first anniversary of this website! My first post was on April 20th 2019, and since then, I've been pumping out primarily Unity tutorials at a rate of just less than one a week. This is now the 45th article - I'm extremely grateful to everyone who has read and shared my work! If you enjoy what I do, I would greatly appreciate if you could take 5 minutes to take a look at [my Patreon](https://www.patreon.com/danielilett?fan_landing=true) - I aim to keep the bulk of my content free, but Patrons get a few little extras as a thank you for their support. All of their names are at the bottom of each article!
 
 <hr/>
