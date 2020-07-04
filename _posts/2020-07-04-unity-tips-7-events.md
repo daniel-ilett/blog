@@ -6,7 +6,7 @@ bigimg: /img/unity-tips/part7-bigimg.jpg
 hdrimg: /img/unity-tips/part7-banner.jpg
 tags: [unity, unity-tips, events]
 nice-slug: Events
-date: 2020-06-20
+date: 2020-07-04
 idnum: 51
 
 part-label: 7
@@ -342,11 +342,11 @@ Gemma Louise Ilett<br/>
 
 Jesper Kuutti<br/>
 
-Jack Dixon $$\cdot$$ BVR $$\cdot$$ John Selig $$\cdot$$ Pablo Ruiz<br/>
+BVR $$\cdot$$ Jack Dixon $$\cdot$$ John Selig $$\cdot$$ Pablo Ruiz<br/>
 
 Chris Sims $$\cdot$$ FonzoUA $$\cdot$$ Jason Swearingen $$\cdot$$ Moishi Rand $$\cdot$$ Shaun Wall $$\cdot$$ Udons<br/>
 
-Anna Voronova $$\cdot$$ Gabriella Pimenta $$\cdot$$ Srikar $$\cdot$$ James Poole $$\cdot$$ Christopher Pereira $$\cdot$$ Pat $$\cdot$$ Zachary Alstadt
+Anna Voronova $$\cdot$$ Gabriella Pimenta $$\cdot$$ James Poole $$\cdot$$ Christopher Pereira $$\cdot$$ Zachary Alstadt
 </p>
 
 #### And a shout-out to my top Ko-fi supporters!

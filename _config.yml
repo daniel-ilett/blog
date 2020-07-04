@@ -78,6 +78,8 @@ series-list:
       link: https://danielilett.com/2019-10-26-unity-tips-5-persistent-data/
     - label: 6
       link: https://danielilett.com/2020-05-16-unity-tips-6-prefabs/
+    - label: 7
+      link: https://danielilett.com/2020-07-04-unity-tips-7-events/
 - series-name: Ultra Effects
   series-parts:
     - label: i
