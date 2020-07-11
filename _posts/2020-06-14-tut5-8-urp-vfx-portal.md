@@ -17,6 +17,12 @@ series-name: URP
 
 Back in Unity 3.5, an era that feels a lifetime away, a brand-new "Shuriken" particle system launched, replacing the legacy particle tools with a configurable and performant upgrade. That system has stuck around for about 8 years now, receiving incremental updates over that time; Shuriken is capable of rendering thousands of particles on-screen, but it's limited by running on the CPU. With **Visual Effect Graph**, the new way of creating particle systems which became production-ready in Unity 2019.3, those particles now run on the GPU with *millions* of particles on-screen at a time. Today, we're going to see if a million particles is a realistic goal for particles in your games.
 
+UPDATE: This tutorial is also available on my YouTube!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/abGzzDka9j0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 <hr/>
 
 # Setup
