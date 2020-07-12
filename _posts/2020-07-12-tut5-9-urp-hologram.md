@@ -1,14 +1,14 @@
 ---
 layout: post
 title: Holograms in Shader Graph and URP
-subtitle: 
+subtitle: Virtually real
 bigimg: /img/tut5/part9-bigimg.jpg
 hdrimg: /img/tut5/part9-banner.jpg
 gh-repo: daniel-ilett/shaders-hologram
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, hologram, shader-graph]
 nice-slug: Holograms
-date: 2020-07-13
+date: 2020-07-12
 idnum: 52
 
 part-label: 9
@@ -21,7 +21,7 @@ One of the many staples of sci-fi games is the humble hologram. It's always been
 
 # Holograms
 
-Making holograms is surprisingly simple. Well, maybe not in real life, but in URP certainly! If we use the default scene after creating a URP project, then the post processing effects are already set up to use bloom, which we'll need for making the hologram glow appropriately. The holographic object needs only a handful of components to look convincing. One: a bright edge. Because of the way light works, holograms will appear brighter on grazing edges, so we'll use a bright fresnel to bring out the edges. Two: holographic scanlines. Holograms usually feature scanlines moving downwards, as if it's constantly being drawn and redrawn. It's similar to how scanlines move down a CRT screen. We could programmatically generate a regular scaline pattern, but we'll use a texture so we have more control over the variation in distance and brightness between the scanlines. We'll tint the scanline texture so that it also glows brightly under the bloom filter.
+Making holograms is surprisingly simple. Well, maybe not in real life, but in URP certainly! If we use the default scene after creating a URP project, then the post processing effects are already set up to use bloom, which we'll need for making the hologram glow appropriately. The holographic object needs only a handful of components to look convincing. One: a bright edge. Because of the way light works, holograms will appear brighter on grazing edges, so we'll use a bright fresnel to bring out the edges. Two: holographic scanlines. Holograms usually feature scanlines moving downwards, as if it's constantly being drawn and redrawn. It's like how scanlines move down a CRT screen. We could programmatically generate a regular scanline pattern, but we'll use a texture so we have more control over the variation in distance and brightness between the scanlines. We'll tint the scanline texture so that it also glows brightly under the bloom filter.
 
 ## Fresnel Lighting
 
@@ -48,9 +48,9 @@ Let's move ahead with the shader. Now that step 1 is out of the way, it's time t
 <img data-src="/img/tut5/part9-hologram-lines.jpg" class="center-image lazyload" alt="Scanline Texture">
 *The original is 32x32, but you might want to use a higher resolution texture.*
 
-Firstly, add a new `Texture2D` property called `Hologram Scanlines` and assign the scanline texture as the default value. As usual, we'll need a regular `Sample Texture 2D` node in order to read the texture, so create one and pass `Hologram Scanlines` into the **Texture** pin. We can't just sample this texture using the object's UVs - we want the scanlines to move down the object along the world y-axis. For this, we're going to get the world-space position using a `Position` node with the **Space** set to **World**, then use a `Split` node to separate the y-component (using the **G** output pin). We also want to scroll the texture down over time. Add a `Scroll Speed` property of type `Vector1`, give it a default value of aboput 0.05, then `Multiply` it together with the regular **Time** output of a `Time` node. `Add` this to the y-component we just separated out from the world position, and use this as the y-input to a new `Vector2` node. I've set the x-component to 0.5, but it shouldn't matter because the texture is uniform in the x-direction.
+Firstly, add a new `Texture2D` property called `Hologram Scanlines` and assign the scanline texture as the default value. As usual, we'll need a regular `Sample Texture 2D` node to read the texture, so create one and pass `Hologram Scanlines` into the **Texture** pin. We can't just sample this texture using the object's UVs - we want the scanlines to move down the object along the world y-axis. For this, we're going to get the world-space position using a `Position` node with the **Space** set to **World**, then use a `Split` node to separate the y-component (using the **G** output pin). We also want to scroll the texture down over time. Add a `Scroll Speed` property of type `Vector1`, give it a default value of about 0.05, then `Multiply` it together with the regular **Time** output of a `Time` node. `Add` this to the y-component we just separated out from the world position and use this as the y-input to a new `Vector2` node. I've set the x-component to 0.5, but it shouldn't matter because the texture is uniform in the x-direction.
 
-Almost there now! The final property we need to add is a `Vector2` called `Hologram Tiling`. The amount you'll need to tile the scanline texture by will depend on the resolution and how thick you want the individual scanlines to appear on the object, but for my 32x32 texture I set the default to (64, 64). From the `Vector2` we just contructed, drag out a new `Tiling And Offset` node and connect the `Vector2` to the **UV** input. Plug `Hologram Tiling` into the **Tiling** input, then connect the `Tiling And Offset` node's output to the **UV** input of the `Sample Texture 2D` node.
+Almost there now! The final property we need to add is a `Vector2` called `Hologram Tiling`. The amount you'll need to tile the scanline texture by will depend on the resolution and how thick you want the individual scanlines to appear on the object, but for my 32x32 texture I set the default to (64, 64). From the `Vector2` we just constructed, drag out a new `Tiling And Offset` node and connect the `Vector2` to the **UV** input. Plug `Hologram Tiling` into the **Tiling** input, then connect the `Tiling And Offset` node's output to the **UV** input of the `Sample Texture 2D` node.
 
 <img data-src="/img/tut5/part9-scanlines-graph.jpg" class="center-image lazyload" alt="Scanlines Graph">
 *Feel free to use a different kind of `Time` output if you want different scanline behaviour.*
