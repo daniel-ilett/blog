@@ -17,6 +17,12 @@ series-name: URP
 
 One of the many staples of sci-fi games is the humble hologram. It's always been a fascination of film directors and game developers alike to make stuff out of bright light, from people to virtual landscapes, to anchor the movie or game into the far-flung future. Today, using the power of Shader Graph, we'll make some holograms of our own.
 
+UPDATE: This tutorial is also available on my YouTube!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/wtZ5WcrV-9A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 <hr/>
 
 # Holograms
