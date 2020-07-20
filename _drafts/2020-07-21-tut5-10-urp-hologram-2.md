@@ -1,13 +1,13 @@
 ---
 layout: post
 title: More Holograms in Shader Graph and URP
-subtitle:
+subtitle: 
 bigimg: /img/tut5/part10-bigimg.jpg
 hdrimg: /img/tut5/part10-banner.jpg
 gh-repo: daniel-ilett/shaders-hologram
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, hologram, shader-graph]
-nice-slug: Holograms
+nice-slug: More Holograms
 date: 2020-07-21
 idnum: 53
 
@@ -21,7 +21,7 @@ Last time, we took a look at holograms using a bright fresnel shell around the o
 
 Holograms, of course, emit light. One of the oversights in the previous tutorial - one I noticed almost immediately after posting it - is that objects with this shader receive shadows, which looks strange. Unfortunately for us, it's a bit more cumbersome to turn off receiving shadows in URP - while it's as easy as unticking a box on any renderer component in the built-in pipeline, we now must add a **keyword** to the shader graph and then use the **Debug Mode** in the Inspector to add the keyword to each material using the shader. Yes, really. I found this workaround in [a forum post requesting an easy way to do this](https://forum.unity.com/threads/turn-off-receive-shadows-on-custom-pbr-graph-lwrp.657814/) - go figure! You could also use an `Unlit Master` node instead of `PBR Master`, but then we'd lose the **Emission** channel.
 
-Open up the hologram graph from last time. Under the **Blackboard**'s plus arrow drop-down, pick the *Keyword -> Boolean* option at the very bottom and give your new keyword a reference of `_RECEIVE_SHADOWS_OFF` - the capitalisation and position of the underscores is important. By default, leave it ticked. Then, go to the Inspector and, using the small three-dot menu in the upper-right corner, change the Inspector to **Debug Mode**. This unlocks a few more options usually hidden from view. Select all materials using the hologram shader and you'll notice one of those new options called "Shader Keywords"; type `_RECEIVE_SHADOWS_OFF` in the text box. Now, all your holograms should be shadow-free - you can change your Inpector back to **Normal Mode**.
+Open up the hologram graph from last time. Under the **Blackboard**'s plus arrow drop-down, pick the *Keyword -> Boolean* option at the very bottom and give your new keyword a reference of `_RECEIVE_SHADOWS_OFF` - the capitalisation and position of the underscores is important. By default, leave it ticked. Then, go to the Inspector and, using the small three-dot menu in the upper-right corner, change the Inspector to **Debug Mode**. This unlocks a few more options usually hidden from view. Select all materials using the hologram shader and you'll notice one of those new options called "Shader Keywords"; type `_RECEIVE_SHADOWS_OFF` in the text box. Now, all your holograms should be shadow-free - you can change your Inspector back to **Normal Mode**.
 
 <hr/>
 
@@ -33,7 +33,7 @@ In games and movies, holograms often distort and look a bit hazy, presumably due
 
 Unfortunately, it's not possible to move the position of the object in the fragment-shading stage of our shader, only the vertex-shading stage. For those who haven't encountered vertex and fragment shader terminology before, this means that we can't move individual pixels to the side to model distortion, only model vertices. Because of this, this approach isn't recommended for use on models with a low number of vertices - only use it on models with a high poly-count such as characters, landscapes or versions of models deliberately modelled with a higher-than-usual number of vertices - I'll be using the latter approach on a sphere. A feasible alternative for anyone wanting to explore this space further could be reached using a post process effect and moving individual pixels, but they're already cumbersome in URP so I chose not to explore that avenue.
 
-Let's start adding nodes to the shader. Our tactic will be to calculate a horizontal offset based on the y-position of each vertex, then apply the offset in screen/view space. You'll notice `PBR Master` has three pins for the vertex stage, named **Vertex Position**, **Vertex Normal** and **Vertex Tangent** respectively. We're going to be using **Vertex Position**. Start off by creating a new property of type `Vector1` called `Glitch Strength` to control how far the vertices move - I've given it a default value of zero. Use a `Position` node to get the **Object** space position of each vertex, then output it immediately to a `Split` node. Then, use the G-component for the UV channel of a new `Simple Noise` node. What we're doing here is seeding a random number generator using only the y-position of the vertex, since we need all pixels sharing the same y-position to shift horizontally the same amount. Following this, `Multiply` the noise together with `Glitch Strength` and contruct a new `Vector3` using the result as the x-component and leaving the other two components zeroed out. This vector represents the offset we'll add to the vertex.
+Let's start adding nodes to the shader. Our tactic will be to calculate a horizontal offset based on the y-position of each vertex, then apply the offset in screen/view space. You'll notice `PBR Master` has three pins for the vertex stage, named **Vertex Position**, **Vertex Normal** and **Vertex Tangent** respectively. We're going to be using **Vertex Position**. Start off by creating a new property of type `Vector1` called `Glitch Strength` to control how far the vertices move - I've given it a default value of zero. Use a `Position` node to get the **Object** space position of each vertex, then output it immediately to a `Split` node. Then, use the G-component for the UV channel of a new `Simple Noise` node. What we're doing here is seeding a random number generator using only the y-position of the vertex, since we need all pixels sharing the same y-position to shift horizontally the same amount. Following this, `Multiply` the noise together with `Glitch Strength` and construct a new `Vector3` using the result as the x-component and leaving the other two components zeroed out. This vector represents the offset we'll add to the vertex.
 
 Now that we have calculated the offset, what do we add it to? The original `Position` node retrieved the vertex position in **object space**, but we want to apply the offset in **view space** so that it appears horizontal relative to the camera rather than relative to the object. From that original `Position` node, use a `Transform` node to convert the **Position** from **Object** to **View** space, then `Add` it to the final offset value we just calculated. After that, use another `Transform` to convert back from **View** to **Object** space. Output that to the **Vertex Position** pin on `PBR Master`.
 
@@ -44,7 +44,7 @@ With that, we've implemented a distortion effect to our holograms. Next up, we'l
 
 ## Noise Grain
 
-We'll be using the same Simple Noise node as before, but for a slightly different purpose. Rather than using it for offset values, we'll add the noise as a colour to the original scanline texture sample. Before we kick off with the noise grain, we're quickly going to add a new property called `Scanline Offset` of type `Vector1` and insert an additional `Add` node between the existing `Add` and `Vector2` nodes in the scanline calculation. If we're using an external script to add random glitches to our hologram, it'll be nice to shift the position of the scanlines at the same time we add distortion.
+We'll be using the same `Simple Noise` node as before, but for a slightly different purpose. Rather than using it for offset values, we'll add the noise as a colour to the original scanline texture sample. Before we kick off with the noise grain, we're quickly going to add a new property called `Scanline Offset` of type `Vector1` and insert an additional `Add` node between the existing `Add` and `Vector2` nodes in the scanline calculation. If we're using an external script to add random glitches to our hologram, it'll be nice to shift the position of the scanlines at the same time we add distortion.
 
 <img data-src="/img/tut5/part10-additional-add.jpg" class="center-image lazyload" alt="Scanline Offset">
 *Adding a scanline offset makes it easier to get across the glitch effect.*
