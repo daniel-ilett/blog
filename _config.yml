@@ -133,7 +133,7 @@ series-list:
     - label: 4
       link: https://danielilett.com/2020-04-15-tut5-4-urp-dissolve/
     - label: 5
-      link:  https://danielilett.com/2020-04-19-tut5-5-urp-dither-transparency/
+      link: https://danielilett.com/2020-04-19-tut5-5-urp-dither-transparency/
     - label: 6
       link: https://danielilett.com/2020-04-27-tut5-6-urp-2d-outlines/
     - label: 7
@@ -142,6 +142,8 @@ series-list:
       link: https://danielilett.com/2020-06-14-tut5-8-urp-vfx-portal/
     - label: 9
       link: https://danielilett.com/2020-07-12-tut5-9-urp-hologram/
+    - label: 10
+      link: https://danielilett.com/2020-07-21-tut5-10-urp-hologram-2/
 
 # --- Background colour/image options --- #
 
