@@ -1,7 +1,7 @@
 ---
 layout: post
 title: More Holograms in Shader Graph and URP
-subtitle: 
+subtitle: Hollow Light
 bigimg: /img/tut5/part10-bigimg.jpg
 hdrimg: /img/tut5/part10-banner.jpg
 gh-repo: daniel-ilett/shaders-hologram
