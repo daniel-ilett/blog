@@ -79,7 +79,11 @@ Now we want to apply the hatching value to modify the colour of the model. For t
 </video>
 </div>
 
+<hr/>
+
 # Conclusion
+
+As with most of my tutorials, you can go a long way by just using textures in a novel and weird way. We started off by creating geometry-based outlines, which is a bit more complicated in Shader Graph and URP than you'd expect. Then, using just a basic drawing stroke texture in screen space, we modified the UVs of the base texture and the luminance of the image to arrive at an animated drawing aesthetic.
 
 # Acknowledgements
 
