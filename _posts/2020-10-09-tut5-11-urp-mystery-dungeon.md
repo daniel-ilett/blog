@@ -7,7 +7,7 @@ hdrimg: /img/tut5/part11-banner.jpg
 gh-repo: daniel-ilett/shaders-pmd
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, drawing, mystery-dungeon, shader-graph]
-nice-slug: 
+nice-slug: Mystery Dungeon
 date: 2020-10-09
 idnum: 54
 

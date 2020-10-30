@@ -7,7 +7,7 @@ hdrimg: /img/tut5/part12-banner.jpg
 gh-repo: daniel-ilett/shaders-retro
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, retro, nes, snes, gameboy, palette, shader-graph]
-nice-slug: 
+nice-slug: Retro Consoles
 date: 2020-10-31
 idnum: 55
 
