@@ -1,14 +1,14 @@
 ---
 layout: post
 title: Mystery Dungeon-style Drawing Effect in Shader Graph
-subtitle: 
+subtitle: Looking sketchy
 bigimg: /img/tut5/part11-bigimg.jpg
 hdrimg: /img/tut5/part11-banner.jpg
 gh-repo: daniel-ilett/shaders-pmd
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, drawing, mystery-dungeon, shader-graph]
 nice-slug: 
-date: 2020-10-04
+date: 2020-10-09
 idnum: 54
 
 part-label: 11
@@ -16,6 +16,12 @@ series-name: URP
 ---
 
 Lately, I've been really into Pokémon. I've been playing *Pokémon Sword and Shield*, two games which are unanimously loved by the fanbase, and for the first time ever in a Pokémon game I even finished the Pokédex, including the *Isle of Armour* DLC. But that's not the only Pokémon game that's been on my mind lately. Earlier this year, *Pokémon Mystery Dungeon: Rescue Team DX*, a remake of the Game Boy Advance and Nintendo DS originals, released on Nintendo Switch, with full 3D models and a fetching hand-drawn art style. I promise this tutorial isn't just a sales pitch for the Pokémon series - today, we're going to make a shader similar to (but not exactly mimicking) the hand-drawn style of *PMD*.
+
+Also check out this same tutorial over on my YouTube channel:
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/U51yrbgBmAo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
 
 <hr/>
 
@@ -28,7 +34,7 @@ Let's run down the components of this effect. A drawing effect like this is comm
 <img data-src="/img/tut5/part11-shocked-pikachu.jpg" class="center-image lazyload" alt="Pikachu Shadows">
 *An appropriate usage of the Shocked Pikachu meme.*
 
-If you play the game or watch a trailer, you'll probably also notice that the texturing on the Pokémon seems to stay static - it looks like the painting texture is applied in screenspace. Finally, most of the objects in the game have a cartoonish outline so that everything stand out. I'm going to combine the spirit of the shadow lines with the paint texture to arrive at an effect which slathers pencil lines over whatever object you'd like. I like the idea of animating the pencil lines over time to look like the model is being sketched in realtime. We'll start with a quick outline shader.
+If you play the game or watch a trailer, you'll probably also notice that the texturing on the Pokémon seems to stay static - it looks like the painting texture is applied in screen-space. Finally, most of the objects in the game have a cartoonish outline so that everything stand out. I'm going to combine the spirit of the shadow lines with the paint texture to arrive at an effect which slathers pencil lines over whatever object you'd like. I like the idea of animating the pencil lines over time to look like the model is being sketched in realtime. We'll start with a quick outline shader.
 
 ## Geometry Outlines
 
@@ -70,7 +76,7 @@ Start off with a `UV` node to get the model's UVs. To this, we're going to add a
 Now we want to apply the hatching value to modify the colour of the model. For that, we can use the value between -0.5 and 0.5 that we just calculated and `Multiply` it by the texture sample we also just calculated. `Lerp` between the pure texture sample and the multiplied texture sample in the **A** and **B** slots respectively using the `Drawing Strength` in the **T** slot. Output that to the **Color** slot on `Unlit Master` and we're done! Save the asset in the top-left corner and look at the result in the Scene View.
 
 <img data-src="/img/tut5/part11-apply-hatching.jpg" class="center-image lazyload" alt="Apply Hatching">
-*.*
+*Finally applying some Pikachu colour.*
 
 <div class="embed-responsive embed-responsive-16by9">
 <video loop autoplay controls class="lazyload embed-responsive-item">
