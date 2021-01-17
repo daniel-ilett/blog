@@ -148,6 +148,12 @@ series-list:
       link: https://danielilett.com/2020-10-09-tut5-11-urp-mystery-dungeon/
     - label: 12
       link: https://danielilett.com/2020-10-31-tut5-12-urp-retro-consoles/
+    - label: 13
+      link: https://danielilett.com/
+- series-name: Unity Basics
+  series-parts:
+    - label: 1
+      link: https://danielilett.com/
 
 # --- Background colour/image options --- #
 
