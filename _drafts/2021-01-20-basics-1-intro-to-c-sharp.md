@@ -6,7 +6,7 @@ bigimg: /img/unity-basics/part1-bigimg.jpg
 hdrimg: /img/unity-basics/part1-banner.jpg
 #gh-repo: daniel-ilett/shaders-pmd
 #gh-badge: [star, fork, follow]
-tags: [unity]
+tags: [unity, basics, c-sharp, scripting]
 nice-slug: 
 date: 2021-01-20
 idnum: 56
@@ -36,7 +36,7 @@ Also check out this tutorial on my YouTube channel if reading isn't your thing:
 Scripts are used to make objects in your game do something. In Unity, a `GameObject` contains a list of `Component`s, each of which are little bundles of behaviour that the `GameObject` can do - with scripting, we can create one of these `Component`s. If I were to create a new `Scene` (by going to *File -> New Scene*) and select the default Main Camera (by left-clicking it in the Hierarchy), I might see something like this in the Inspector:
 
 <img data-src="/img/unity-basics/part1-components.jpg" class="center-image lazyload" alt="Main Camera properties." title="Example Main Camera component list which shows attached Transform, Camera, Audio Listener and Simple Camera Controller components.">
-*.*
+*The Main Camera's component list shows attached Transform, Camera, Audio Listener and Simple Camera Controller components.*
 
 Those Components - `Transform`, `Camera`, and so on - are provided by Unity, and we can add our own via scripting. To create a new script, right-click in the Project View and select *Create -> C# Script* - we're going to create a movement script, so name it "Movement". Let's go over the absolute basics. When you open the script (by double-clicking it, which should open it in Visual Studio by default), you'll be presented with this template:
 

@@ -150,10 +150,14 @@ series-list:
       link: https://danielilett.com/2020-10-31-tut5-12-urp-retro-consoles/
     - label: 13
       link: https://danielilett.com/
+    - label: 14
+      link: https://danielilett.com/
 - series-name: Unity Basics
   series-parts:
     - label: 1
-      link: https://danielilett.com/
+      link: https://danielilett.com/2021-01-20-basics-1-intro-to-c-sharp/
+    - label: 2
+      link: https://danielilett.com/2021-01-27-basics-2-intro-to-shader-graph/
 
 # --- Background colour/image options --- #
 
