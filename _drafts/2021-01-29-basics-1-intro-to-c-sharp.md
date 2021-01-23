@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Unity Basics - Introduction to C# Scripting
-subtitle: 
+subtitle: Starting Scripting
 bigimg: /img/unity-basics/part1-bigimg.jpg
 hdrimg: /img/unity-basics/part1-banner.jpg
 #gh-repo: daniel-ilett/shaders-pmd
 #gh-badge: [star, fork, follow]
 tags: [unity, basics, c-sharp, scripting]
 nice-slug: 
-date: 2021-01-20
-idnum: 56
+date: 2021-01-29
+idnum: 57
 
 part-label: 1
 series-name: Unity Basics
@@ -21,7 +21,7 @@ Unity Basics aims to teach you a little part of Unity in an easy-to-understand a
 {: .box-warning}
 This tutorial is aimed at people who have never scripted/coded before, but may have some familiarity with the Unity Editor.
 
-Everyone starts somewhere. Scripting is not necessary for making games, but it can be extremely helpful to know just a little bit of programming, even if you don't intend to become a programmer - you'll have more insight into the coding mindset, which will help you communicate more effectively in a team. Or you do want become a programmer, in which case, it's time to get you up to speed on how scripting in Unity works. Introductory programming tutorials can be a little dry, but stick with it and over time we'll do more and more interesting things with code!
+Everyone starts somewhere. Scripting is not necessary for making games, but it can be extremely helpful to know just a little bit of programming, even if you don't intend to become a programmer - you'll have more insight into the coding mindset, which will help you communicate more effectively in a team. Or you do want to become a programmer, in which case, it's time to get you up to speed on how scripting in Unity works. Introductory programming tutorials can be a little dry but stick with it and over time we'll do more and more interesting things with code!
 
 Also check out this tutorial on my YouTube channel if reading isn't your thing:
 
@@ -79,7 +79,7 @@ Next, the `public` keyword. In coding, when we have two scripts that are interac
 
 That leaves two things - the colon `:` and `MonoBehaviour`. We won't go into too much detail about this, but classes can **inherit** certain characteristics from other classes. In Unity, `MonoBehaviour` is the **base class** for all scripts that you want to use as a Component, and the colon means "inherits from". So `Movement : MonoBehaviour` means "`Movement` inherits from `MonoBehaviour`" or, more naturally, "`Movement` is a Component". Phew, that's a lot of concepts packed into just one line!
 
-This is a tangent, but often I feel like one of the things that puts people off coding is the amount of things that "will make sense later". However, like a "real" language, programming languages have their own grammar which seems alien at first, but the more you write, the more it becomes natural, and before long, you'll (hopefully) subconsciously begin "speaking" C# in your own head! If you need time to write code that breaks a lot before it clicks, that's natural - and the advantage of Unity being so widely-used is that you can usually just Google an error message or code snippet and find that someone else treaded that ground already.
+This is a tangent, but often I feel like one of the things that puts people off coding is the number of things that "will make sense later". However, like a "real" language, programming languages have their own grammar which seems alien at first, but the more you write, the more it becomes natural, and before long, you'll (hopefully) subconsciously begin "speaking" C# in your own head! If you need time to write code that breaks a lot before it clicks, that's natural - and the advantage of Unity being so widely-used is that you can usually just Google an error message or code snippet and find that someone else treaded that ground already.
 
 <hr/>
 
@@ -93,7 +93,7 @@ using System.Collections.Generic;
 using UnityEngine;
 ```
 
-A **namespace** is, essentially, a collection of classes which do a similar thing. For example, if you wrote a bunch of classes related to databases, you might put them in a namespace called `Databases`. Similarly, the core Unity features - including the `MonoBehaviour` class - are in a namespace called `UnityEngine`. To use it, we have a handy keyword - `using`. The script template also includes two non-Unity C# namespace, `System.Collections` and `System.Collections.Generic`, because they're so commonly used in Unity scripts, but they're not necessary for the default code to work. Those two namespaces contain classes that let us manage collections of data. You'll rarely need to include other namespaces when you're just starting out, and most tutorials will let you know when you do.
+A **namespace** is, essentially, a collection of classes which do a similar thing. For example, if you wrote a bunch of classes related to databases, you might put them in a namespace called `Databases`. Similarly, the core Unity features - including the `MonoBehaviour` class - are in a namespace called `UnityEngine`. To use it, we have a handy keyword - `using`. The script template also includes two non-Unity C# namespaces, `System.Collections` and `System.Collections.Generic`, because they're so commonly used in Unity scripts, but they're not necessary for the default code to work. Those two namespaces contain classes that let us manage collections of data. You'll rarely need to include other namespaces when you're just starting out, and most tutorials will let you know when you do.
 
 <hr/>
 
@@ -115,7 +115,7 @@ private bool tallerThanDan = true;
 public float speed = 1.0f;
 ```
 
-Let's go over each of these. A `string` is a bunch of text. It can be a single word, a sentence, a paragraph, or even completely empty, and we define strings by writing text in a pair of quotes, as we have here with `"Ellen"`. A `bool`, which is short for "Boolean", is a variable which can be either `true` or `false`. We use variables like those in logical statements. And if we need non-integer numbers, we use floating-point numbers by using the `float` keyword. To define one of these, we put an `f` after the number - in this case, `1.0f`. There are other types we haven't covered here, but don't worry about those for now.
+Let's go over each of these. A `string` is a bunch of text. It can be a single word, a sentence, a paragraph, or even completely empty, and we define strings by writing text in a pair of quotes, as we have here with `"Ellen"`. A `bool`, which is short for "Boolean", is a variable which can be either `true` or `false`. We use variables like those in logical statements. And if we need non-integer numbers, we use floating-point numbers by using the `float` keyword. To define one of these, we put an `f` after the number - in this case, `1.0f`. There are other types we haven't covered here, but these ones should give you a good idea of the types of variable you can use.
 
 If we want to use instances of a class in our code, we use the same syntax.
 
@@ -154,7 +154,9 @@ float x = Input.GetAxis("Horizontal");
 float z = Input.GetAxis("Vertical");
 ```
 
-You'll probably recognise those as variables! But it's slightly more complex now. We have two variables named `x` and `z`, both of which are `float`-type. We're assigning values to both using `=`, but in both examples, we're **calling a method** and assigning its **return value** to the variable. The `Input` class is specific to Unity, and it defines several methods for reading player input, including `GetAxis`, which is used to read input axes such as horizontal movement, vertical movement, and so on. The syntax for calling a method is to write its name, then use parentheses to include a list of parameters - in this case, we need to pass in a string. The "Horizontal" and "Vertical" axes are already available by default and they're the WASD keys or arrow keys on your keyboard. So, in effect: Unity is reading how much the A and D keys are pressed and returning a value between -1 and 1 to determine how far between left and right the player is pressing, and it's doing the same with W and S for vertical movement.
+You'll probably recognise those as variables! But it's slightly more complex now. We have two variables named `x` and `z`, both of which are `float`-type. We're assigning values to both using `=`, but in both examples, we're **calling a method** and assigning its **return value** to the variable. The `Input` class is specific to Unity, and it defines several methods for reading player input, including `GetAxis`, which is used to read input axes such as horizontal movement, vertical movement, and so on. 
+
+The syntax for calling a method is to write its name, then use parentheses to include a list of parameters - in this case, we need to pass in a string. The "Horizontal" and "Vertical" axes are already available by default and they're the WASD keys or arrow keys on your keyboard. So, in effect: Unity is reading how much the A and D keys are pressed and returning a value between -1 and 1 to determine how far between left and right the player is pressing, and it's doing the same with W and S for vertical movement.
 
 Finally, to actually move our cube, we need to add this line after reading the input, but still inside the `Update` curly braces:
 
@@ -166,7 +168,7 @@ There's a lot happening here. On the left hand side, we're taking our `cube` - w
 
 On the right-hand-side, we need to create something that can be added to the position. Position is a vector in 3D space, and Unity provides a type called `Vector3` to represent those. So to start off, we need to create a brand new `Vector3` - and to do that, we need to use a keyword called `new` to assign space in memory for it. Then we need to tell it what values to use for its three components, so we pass in the `x` and `z` variables. This is a special type of method called a **constructor**, because it is called when we're creating a new **instance** of that class and we can pass in data so that it has the correct initial values.
 
-We've got a vector which represents which keys are being pressed, but we need to know how fast the player should move. Luckily, we added a variable called speed earlier, so we can multiply by that by using the `*` operator. Then the only thing left to consider is this: how often does the code get called? Unity rund Update every frame, but it has a variable framerate - so on slow computers, it might be called 30 times a second, but faster computers will run it at 60 times a second, and beyond. To ensure the cube moves the same distance, regardless of framerate, we need to multiply by 1 divided by the framerate. Unity provides that value in the `Time` class, in a variable called `deltaTime`.
+We've got a vector which represents which keys are being pressed, but we need to know how fast the player should move. Luckily, we added a variable called `speed` earlier, so we can multiply by that by using the `*` operator. Then the only thing left to consider is this: how often does the code get called? Unity runs `Update` every frame, but it has a variable framerate - so on slow computers, it might be called 30 times a second, but faster computers will run it at 60 times a second, and beyond. To ensure the cube moves the same distance, regardless of framerate, we need to multiply by 1 divided by the framerate. Unity provides that value in the `Time` class, in a variable called `deltaTime`.
 
 Congratulations, you're just written your first script!
 

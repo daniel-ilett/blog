@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Ice Refraction in Shader Graph and URP
-subtitle: 
+subtitle: Frosty Refractions
 bigimg: /img/tut5/part14-bigimg.jpg
 hdrimg: /img/tut5/part14-banner.jpg
 gh-repo: daniel-ilett/shaders-ice
 gh-badge: [star, fork, follow]
 tags: [unity, shader-graph, ice, refraction]
 nice-slug: Ice Refraction
-date: 2021-01-30
-idnum: 58
+date: 2021-02-04
+idnum: 59
 
 part-label: 14
 series-name: URP
@@ -86,10 +86,17 @@ Finally, we can take the output from the `Normal From Texture` node we added rig
 <img data-src="/img/tut5/part14-preview-hack.jpg" class="center-image lazyload" alt="Preview Node redirection." title="We can use Preview nodes in our graph to see what everything looks like at that point.">
 *We can use Preview nodes in our graph to see what everything looks like at that point.*
 
-Back in our game, if we apply this shader to a material, place that on an object, and very slightly raise the Refraction Strength, we will start to see the objects behind the ice distort, just like we want them to.
+Back in our game, if we apply this shader to a material, place that on an object, and very slightly raise the `Refraction Strength`, we will start to see the objects behind the ice distort, just like we want them to.
 
 <img data-src="/img/tut5/part14-complete-ice.jpg" class="center-image lazyload" alt="Completed Ice refraction." title="The strength of the refraction at each point is based on the color of the ice texture.">
 *The strength of the refraction at each point is based on the color of the ice texture.*
+
+<div class="embed-responsive embed-responsive-16by9">
+<video loop autoplay controls class="lazyload embed-responsive-item">
+    <source src="/img/tut5/part14-demonstration.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+</div>
 
 <hr/>
 

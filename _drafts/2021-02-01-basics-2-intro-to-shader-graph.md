@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Unity Basics - Introduction to Shader Graph
-subtitle: 
+subtitle: Node Way!
 bigimg: /img/unity-basics/part2-bigimg.jpg
 hdrimg: /img/unity-basics/part2-banner.jpg
 #gh-repo: daniel-ilett/shaders-pmd
 #gh-badge: [star, fork, follow]
 tags: [unity, basics, shader-graph]
 nice-slug: 
-date: 2021-01-27
-idnum: 57
+date: 2021-02-01
+idnum: 58
 
 part-label: 2
 series-name: Unity Basics
@@ -122,7 +122,7 @@ However, by default, the alpha will not change the transparency, because the mat
 
 We're most interested in the **Surface** option, which we can change to **Transparent** to start rendering this object with alpha-blended transparency. Transparent rendering is slightly more computationally expensive than opaque rendering, but it shouldn't be so obvious that it slows your game down.
 
-For this shader, we're going to read color data from a texture. Add a new property - this time, we'll add a Texture2D. I'm going to name mine "Main Texture", then give it a reference value of `_MainTexture`, which is a special reference, because C# scripts can access this very easily through `material.mainTexture` rather than needing to use `material.GetTexture("_MainTexture")`. I'll leave the other defaults as they are.
+For this shader, we're going to read color data from a texture. Add a new property - this time, we'll add a `Texture2D`. I'm going to name mine "Main Texture", then give it a reference value of `_MainTexture`, which is a special reference, because C# scripts can access this very easily through `material.mainTexture` rather than needing to use `material.GetTexture("_MainTexture")`. I'll leave the other defaults as they are.
 
 <img data-src="/img/unity-basics/part2-pbr-properties.jpg" class="center-image lazyload" alt="PBR shader properties." title="Adding texture properties is as easy as adding color properties.">
 *Adding texture properties is as easy as adding color properties.*

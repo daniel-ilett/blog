@@ -8,7 +8,7 @@ gh-repo: daniel-ilett/shaders-octocamo
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, octocamo]
 nice-slug: 
-date: 2020-12-25
+date: 2021-01-26
 idnum: 56
 
 part-label: 13
@@ -80,7 +80,7 @@ private Dictionary<Texture2D, Color> camoColours
     = new Dictionary<Texture2D, Color>();
 ```
 
-We need two more methods. One for accessing the terrain color, given an input Texture2D, and another for registering a new texture-color database entry, which also takes in a Texture2D.
+We need two more methods. One for accessing the terrain color, given an input `Texture2D`, and another for registering a new texture-color database entry, which also takes in a `Texture2D`.
 
 ```csharp
 public Color GetCamoColour(Texture2D texture)
@@ -112,7 +112,7 @@ The `AddCamoColour` method is a bit more complicated. It needs to iterate over e
 <img data-src="/img/tut5/part13-read-write-enabled.jpg" class="center-image lazyload" alt="Read/Write enabled setting." title="Make sure Read/Write Enabled is ticked on every camouflage texture, since we're using GetPixels().">
 *Make sure Read/Write Enabled is ticked on every camouflage texture, since we're using GetPixels().*
 
-I store the intermediate summation values inside a `Vector3` because `Color` can't contain large enough values, then convert back to a `Color` after division. Now, whenever we encounter an unseen texture and try to grab its color, we will
+I store the intermediate summation values inside a `Vector3` because `Color` can't contain large enough values, then convert back to a `Color` after division. Now, whenever we encounter an unseen texture and try to grab its color, we will be able to automatically add its color to the database.
 
 ```csharp
 var pixels = texture.GetPixels();
@@ -206,7 +206,7 @@ private Texture2D GetTerrainTexture()
 }
 ```
 
-The Terrain object has an attached terrainData member of type TerrainData, which contains all the underlying data related to terrain textures, heights and so on. What we're interested in is the `alphamaps`, which store the relative strengths of the terrain textures at each point on the terrain. The code to retrieve those maps is as follows:
+The `Terrain` object has an attached `terrainData` member of type `TerrainData`, which contains all the underlying data related to terrain textures, heights and so on. What we're interested in is the `alphamaps`, which store the relative strengths of the terrain textures at each point on the terrain. The code to retrieve those maps is as follows:
 
 ```csharp
 TerrainData tData = terrain.terrainData;
@@ -219,7 +219,7 @@ int textureID = 0;
 float[,,] alphamaps = tData.GetAlphamaps((int)position.x, (int)position.z, 1, 1);
 ```
 
-There's a lot going on here! We're calculating the exact position of the player on the terrain and storing it in the `position` variable. Once we have that, we're using the GetAlphamaps method to get the correct alphamap data. The first two parameters determine where on the XZ plane we are starting from - so we use the `position` - and the last two parameters are how many positions on the terrain we're polling, so we use (1, 1) to poll a single point.
+There's a lot going on here! We're calculating the exact position of the player on the terrain and storing it in the `position` variable. Once we have that, we're using the `GetAlphamaps` method to get the correct alphamap data. The first two parameters determine where on the XZ plane we are starting from - so we use the `position` - and the last two parameters are how many positions on the terrain we're polling, so we use (1, 1) to poll a single point.
 
 The data returned by `GetAlphamaps` is a three-dimensional array, where the first two dimensions represent the x and z position *relative to the start point we specified*, and the third dimension is the ID of a texture on the terrain. We have two textures on our terrain, so this array will contain two values at `(0, 0, 0)` and `(0, 0, 1)`. The first value is how strong texture 0 is at `(position.x, position.z)`, and the second value is how strong texture 1 is at `(position.x, position.z)`. I hope that makes sense because the return value is a little strange!
 
@@ -303,7 +303,7 @@ private void UpdateCamoIndex()
 }
 ```
 
-We can use whatever approach we'd like to comparing the two colours for similarity, but I'm going to use Pythagoras' Theorem, as it's the most straightforward. Once we have recalculated the `camoIndex` with the similarity value, we can update the `camoIndexText` and `camoIndexImage` accordingly; `camoIndexText` displays the `camoIndex` as a percentage, and the `camoIndexImage` gets more transparent the more well-camouflaged the player is.
+We can use whatever approach we'd like to compare the two colours for similarity, but I'm going to use Pythagoras' Theorem, as it's the most straightforward. Once we have recalculated the `camoIndex` with the similarity value, we can update the `camoIndexText` and `camoIndexImage` accordingly; `camoIndexText` displays the `camoIndex` as a percentage, and the `camoIndexImage` gets more transparent the more well-camouflaged the player is.
 
 ```csharp
 camoIndex = 1.0f - Mathf.Sqrt(Mathf.Pow(terrainColor.r - camoColor.r, 2) +
@@ -333,7 +333,7 @@ if (Input.GetButtonDown("Fire1") && setCamoRoutine == null)
 }
 ```
 
-Else, we will check if enough time has passed to automatically try updating the camo index. If `camoIndexUpdateTime` exceeds `camoIndexUpdateThreshold`, we'll call `UpdateCamoIndex`, but only if the player is moving to avoid unnecessary checks. Ourside the if-else-statements, we will advance the `camoIndexUpdateTime` timer.
+Else, we will check if enough time has passed to automatically try updating the camo index. If `camoIndexUpdateTime` exceeds `camoIndexUpdateThreshold`, we'll call `UpdateCamoIndex`, but only if the player is moving to avoid unnecessary checks. Outside the if-else-statements, we will advance the `camoIndexUpdateTime` timer.
 
 ```csharp
 else if(camoIndexUpdateTime > camoIndexUpdateThreshold && playerController.IsMoving())
@@ -364,7 +364,7 @@ The core lesson in this tutorial is that very simple shaders can often be made m
 
 # Conclusion
 
-Unity contains so many systems, many of which can be paired together to make interesting effects. The Octocamo mechanis relies of many of Unity's systems - the shader graph is perhaps one of the easier parts of the entire package, and the heavy lifting is done by some C# scripting. Shaders can't do anything, which is why we often use scripts to augment the capabilities of shaders.
+Unity contains so many systems, many of which can be paired together to make interesting effects. The Octocamo mechanic relies of many of Unity's systems - the shader graph is perhaps one of the easier parts of the entire package, and the heavy lifting is done by some C# scripting. Shaders can't do anything, which is why we often use scripts to augment the capabilities of shaders.
 
 <hr/>
 
@@ -374,7 +374,7 @@ Unity contains so many systems, many of which can be paired together to make int
 
 [Support me on Patreon](https://www.patreon.com/danielilett) or [buy me a coffee on Ko-fi](https://ko-fi.com/danielilett) for PDF versions of each article and to access certain articles early! Some tiers also get early access to my [YouTube videos](https://www.youtube.com/channel/UClgoE54W_4rX7jzZGiCmrXw) or even copies of my [asset packs](https://itch.io/c/798909/my-asset-packs)!
 
-#### Special thanks to my Patreon backers!
+#### Special thanks to my Patreon backers for January 2021!
 
 <p style="text-align: center;">
 Gemma Louise Ilett<br/>
