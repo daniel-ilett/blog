@@ -26,6 +26,17 @@ Check out this tutorial over on YouTube too!
 <iframe src="https://www.youtube.com/embed/inht8WYX-A4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Setting Up
@@ -60,6 +71,17 @@ Now we will use those normals to approximate light refraction through the ice me
 
 <img data-src="/img/tut5/part14-refraction-calculation.jpg" class="center-image lazyload" alt="Refraction Calculation." title="The output so far should give us the distorted scene color.">
 *The output so far should give us the distorted scene color.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 So far, the output should return the pixels rendered behind the ice, distorted slightly. However, even if we were to plug this into **Albedo** on the `PBR Master` node, we'd just see black right now. That's because we're using opaque rendering, which means the scene texture - which `Scene Color` reads from - doesn't contain anything so far. Click the cog drop-down menu on `PBR Master` and change the **Surface** option to **Transparent**; all transparent materials are drawn after all opaque ones, so the scene texture will now contain whatever opaque objects were drawn behind the ice.
 
@@ -97,6 +119,17 @@ Back in our game, if we apply this shader to a material, place that on an object
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

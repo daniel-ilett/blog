@@ -48,6 +48,17 @@ We've replaced the `Ref 1` lines and linked the `_ID` property to the stencils. 
 
 This gives us a lot more control of how outlines appear on objects. I'd recommend taking a Borderlands style approach for this - bold outlines over the edge of the object as a whole, setting individual meshes to have the same ID values, while baking finer outline details into individual textures for performance.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Lighting Texture Ramp
@@ -82,6 +93,17 @@ float3 diffuseSmooth = tex2D(_LightingRamp, float2(diffuse * 0.5 + 0.5, 0.5));
 That's all we need to do inside the shader. The other key thing is to set the Wrap Mode of the ramp texture in the Inspector importer to 'Clamp', else you'll encounter strange artefacts on the model where the `diffuse` dot product equals -1 or 1.
 
 <img data-src="/img/tut2/part5-lighting-ramp.jpg" class="center-image lazyload" alt="Lighting Ramp">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

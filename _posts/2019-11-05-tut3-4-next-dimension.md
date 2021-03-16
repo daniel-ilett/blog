@@ -20,6 +20,17 @@ series-name: Ultra Effects
 
 [Photo by Nesnad on Wikimedia Commons](https://commons.wikimedia.org/wiki/Anaglyph#/media/File:Anaglyph-tabata-torii-2013.jpg)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # An Extra Dimension
@@ -121,6 +132,17 @@ Our shader is complete! If we create an `Anaglyph` effect asset and give it a st
 The effect works, although there are some problems involving colours bleeding between each eye. Since we're just moving image UVs horizontally, the effect is more like an approximation than a true anaglyph - the real thing relies on angling two viewpoints so this version will always be slightly incorrect, although it is efficient since the screen only needs to be rendered once. Results may vary depending on the glasses you're using - but this effect can be improved a little.
 
 <img data-src="/img/tut3/part4-3d-glasses.jpg" class="center-image lazyload" alt="Red-blue 3D Glasses">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -232,6 +254,17 @@ RenderTexture.ReleaseTemporary(rightTexture);
 Our effect should be complete now! Let's see what it looks like.
 
 <img data-src="/img/tut3/part4-camera-anaglyph.jpg" class="center-image lazyload" alt="Camera Anaglyph">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

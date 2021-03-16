@@ -54,6 +54,17 @@ The menu is available by right-clicking in the **Project view** or using the **A
 
 Let's look at a few ways we can use this powerful tool to overhaul our projects.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Asset-based Variables
@@ -144,6 +155,17 @@ Let’s evaluate the changes we’ve made. `Player` and `PlayerUI` are now decou
 
 Be mindful that changes to the `IntVariable` will persist when you exit Play Mode. To avoid this, you could choose to use this variable to represent maximum health and never change its value at runtime or opt to copy the public-facing value to non-serialised copy at runtime and use that during Play Mode.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Event Systems
@@ -227,6 +249,17 @@ public class PlayerUI : MonoBehaviour
 
 Using events in this way decouples the state change on `Player` from the concrete classes listening for that change of state. `Player` has no idea who is listening to its events – nor does it need to know. Additionally, no two classes listening to the event have knowledge of each other. Events are an implementation of the `Observer` design pattern, which is best described in Robert Nystrom’s book, [Game Programming Patterns](http://gameprogrammingpatterns.com/observer.html). For all the benefits of events, however, they are geared exclusively towards the programmer, not the designer. Furthermore, the subscribing class must access the publishing class directly in order to register itself; a one-way dependency between those classes is created, so only half the coupling between the two classes is removed. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## ScriptableObject Events
 
 There’s another way to implement events in a designer-friendly manner – this is a tutorial on scriptable objects after all! This is also based on Ryan’s Unite talk. We shall encapsulate the event inside a scriptable object. Essentially, where C# events acted as a one-way messaging system, where a class had ownership of firing the event, a scriptable object-based event system separates the act of firing an event from the event itself. The subscribers only need to access the event itself, so they do not know which class will fire the event, nor do they need to.
@@ -302,6 +335,17 @@ For some of Unity’s built-in components, such as UI buttons, you may recall th
 Let’s recap. We create a `GameEvent` asset in our project. Any given object can reference that and choose to invoke the event. The `GameEvent` loops through all `GameEventSubscriber`s that have subscribed to it and calls their corresponding `OnEventFired` methods, which in turn calls each of their `UnityEvents`. A `UnityEvent` can consist of any public function on any referenced `GameObject`, although if your project is well-architected, the function will probably be on that `GameObject` itself or a child, contained in a sensible prefab hierarchy. In fact, a single `UnityEvent` can contain several function calls with additional parameters, lending a designer significant amounts of flexibility.
 
 Let’s look at what we’ve gained. A programmer only needs to implement two things. Firstly, a variable on any event-firing class that a designer may assign a `GameEvent` to, giving the designer flexibility to choose which event is fired by each class. Secondly, public functions on objects which might be controlled through events. Then, a designer can add a `GameEventSubscriber` to any `GameObject` and hook up those functions – and any built into Unity – to the corresponding `UnityEvent`. The benefits are all about increasing the flexibility for the designer to control the behaviour of the game through the Unity Editor. If they need to swap out the even for some placeholder event, it’s dead easy to do so. Plus, event assets can be named for easier searching and increased descriptiveness. It’s easy to debug the response of the subscribers by adding a dummy script that fires the event on demand, making it far easier to produce automated tests for the event.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -382,6 +426,17 @@ public class InventorySystem : ScriptableObject
 ~~~
 
 To properly reference the inventory, include a public variable on any class that uses it – for example, `Player` – instead of accessing it at runtime using a singleton. In the case of `Player`, you would probably have a prefab instance you can modify, which automatically rolls out the change to all instances of your player character in all scenes. Now, there is no need to add a near-empty `GameObject` to each scene. This reduces the build size because now, only a single instance of `InventorySystem` needs to be included in the compiled project instead of a `GameObject`, associated variables, and an `InventorySystem` per scene. Secondly, a designer could swap out the default `InventorySystem` asset for a test inventory to play around with specific items. As we have seen before, using a scriptable object has benefits for non-programmers without taking power away from the programmer.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

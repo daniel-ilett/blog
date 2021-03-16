@@ -26,6 +26,19 @@ UPDATE: I've made my YouTube debut and turned this article into a video! I'm so 
 <iframe src="https://www.youtube.com/embed/VG-Ux8RHMoA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr/>
+
 # Dither Transparency
 
 We've covered dithering as a technique on this site before when we wrote a [*Return of the Obra Dinn*-style post processing effect](https://danielilett.com/2020-02-26-tut3-9-obra-dithering/). To recap, dithering can be used to "fake" the appearance of intermediate colours using a limited colour palette by arranging pixels in a particular pattern. Usually this involves the use of a Bayer matrix to provide threshold values which the source image pixels are tested against. An example of a smooth greyscale gradient after thresholding can be seen below:
@@ -70,6 +83,17 @@ We're actually done with the graph now - let's test it out on an example model:
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

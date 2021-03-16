@@ -7,7 +7,7 @@ hdrimg: /img/unity-basics/part2-banner.jpg
 #gh-repo: daniel-ilett/shaders-pmd
 #gh-badge: [star, fork, follow]
 tags: [unity, basics, shader-graph]
-nice-slug: 
+nice-slug: Shader Graph Basics
 date: 2021-02-01
 idnum: 58
 
@@ -28,6 +28,17 @@ Also check out this tutorial on my YouTube channel if reading isn't your thing:
 <div class="video-embed">
 <iframe src="https://www.youtube.com/embed/u9pbpypdq0Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -77,6 +88,17 @@ That's the basic editor layout - now it's time to start making our own shaders. 
 <img data-src="/img/unity-basics/part2-unlit-master-red.jpg" class="center-image lazyload" alt="Unlit Master node - red." title="We can change the inputs to these pins directly.">
 *We can change the inputs to these pins directly.*
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 We can also use the output of other nodes to feed these pins. To create your own nodes, right-click anywhere in the empty space on the graph and select *Create Node*, then use the menus or type the desired node into the search bar. The one we'll add is called `Color`, and we can just type "Color" into the bar or find it under *Input -> Basic -> Color*. This gives us a node with a pin on the right-hand-side labelled "Out", a box we can click to change the color, and a **Mode** dropdown. Leave the **Mode** as Default, then change the color to whatever you want, and when you're done, left-click-drag from the **Out** pin onto the **Color** pin on the `Unlit Master` node.
 
 <img data-src="/img/unity-basics/part2-color-node.jpg" class="center-image lazyload" alt="Using a Color node." title="Color nodes let us create new colors to use. There are other nodes like this.">
@@ -103,6 +125,17 @@ Once we're back in Scene View, we can create a material, apply the shader to it,
 
 <img data-src="/img/unity-basics/part2-unlit-material.jpg" class="center-image lazyload" alt="Unlit material applied to sphere." title="Now our shader output can be customised in the Inspector.">
 *Now our shader output can be customised in the Inspector.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -145,6 +178,17 @@ Back in the Scene View, I've created a material using this shader and used one o
 
 <img data-src="/img/unity-basics/part2-pbr-applied.jpg" class="center-image lazyload" alt="PBR shader applied to object." title="The UV mapping on the cube is better, but the texture has successfully been applied to both objects.">
 *The UV mapping on the cube is better, but the texture has successfully been applied to both objects.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

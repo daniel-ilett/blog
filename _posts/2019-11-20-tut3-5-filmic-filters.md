@@ -20,6 +20,17 @@ Several games could be described as 'cinematic'. Usually, that means heavy appli
 
 [Photo by Donald Tong on Pexels](https://www.pexels.com/@donaldtong94)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Imperfect Film
@@ -113,6 +124,17 @@ float dot11 = dot(rand11, pos11 - pixel);
 
 The next step was to interpolate between these four values. I've written a guide to [interpolation in Unity](https://danielilett.com/2019-09-08-unity-tips-3-interpolation/) in the past, so for a refresher I'd recommend checking that out. Since we have two dimensions, we'll need to interpolate in each dimension separately, so we start off by interpolating between `dot00` and `dot10` - the bottom two dot products - in the x-direction using the pixel's x-position as the **interpolation factor**, then we interpolate `dot01` and `dot11` using the same interpolation factor. Using both those results, we finally interpolate in the y-direction using the pixel's y-position as the interpolation factor to obtain the final Perlin value.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The classic Perlin noise function interpolates using a **cubic Hermite curve**. However, in order to ensure a smoother transition from one cell to the next, we'll need to change the polynomial we use to one that has a second derivative of 0 at the start and endpoints of the interpolation - a **quintic curve** is required. If that's all a bit too mathsy, the only takeaway you'll need is that the new interpolation function will have fewer direction artefacts than the old one! You can read in more detail about it in *[Improving Noise](https://mrl.nyu.edu/~perlin/paper445.pdf)*, Ken Perlin's follow-up to the original noise implementation. I'll name our new interpolation function `quinterp`, short for "quintic interpolation".
 
 $$
@@ -188,6 +210,17 @@ As with many of the previous scripts, it just plugs in the values we'll need for
 
 <img data-src="/img/tut3/part5-film-grain-anim.gif" class="center-image lazyload" alt="Film Grain">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 ## Film Bars
@@ -209,6 +242,17 @@ The real aspect ratio, `aspect`, is just the x-resolution of the screen divided 
 <img data-src="/img/tut3/part5-film-grain-bars.jpg" class="center-image lazyload" alt="Film Bars">
 
 Remember than an aspect ratio of 1.777... is the same as an aspect ratio of 16:9 (with an imperceptible loss of accuracy due to floating-point errors).
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -274,6 +318,17 @@ fixed4 frag (v2f i) : SV_Target
 When used in the **Old Filmic** composite effect, the screen looks like this:
 
 <img data-src="/img/tut3/part5-film-sepia.jpg" class="center-image lazyload" alt="Sepia Film">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Conclusion
 

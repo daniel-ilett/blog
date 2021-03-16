@@ -17,6 +17,12 @@ Coroutines are special types of function that do not need to complete execution 
 {: .box-warning}
 This article was available to [$5+ Patreon supporters](https://www.patreon.com/bePatron?u=1011297) two weeks early.
 
+Also check out a newer video about Coroutines over on YouTube:
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/hp-8TgTmkTI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 <hr/>
 
 # Writing Coroutines
@@ -51,6 +57,17 @@ StopAllCoroutines();
 ~~~
 
 Now we’ve seen the basics of how to create, start and stop a coroutine, let’s look at some use cases.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Controlling a loop
 
@@ -127,6 +144,17 @@ private IEnumerator MyFunc2(int param1, float waitTime)
 }
 ~~~
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Coroutine chaining
 
 It’s possible to `yield` one coroutine in order to wait for another to execute and exit. Classes such as `WaitForSeconds` inherit from a class called `YieldInstruction`, which in turn inherits from `IEnumerator` – the same as the return type of all coroutines. That’s useful, because we can use a call to `StartCoroutine` in place of a `YieldInstruction`.
@@ -174,6 +202,17 @@ private IEnumerator Start()
 Functions tied to an update loop of any kind typically can’t be labelled as coroutines – that includes `Update`, `FixedUpdate`, `LateUpdate` and `OnGUI`. Nor can `Awake` or `OnEnable` become coroutines, or `OnDisable`, or `OnDestroy`. However, many functions not tied to the object’s lifecycle, such as `OnCollisionXXX`, `OnTriggerXXX` or `OnMouseXXX`, can return an `IEnumerator`. Check the `Messages` subsection of the [`MonoBehaviour` Scripting API](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html) if you’re unsure whether a function can be a coroutine.
 
 It’s best practice to use `Start` for initialising an instance of a class, so this functionality is great when your initialisation requires a few frames. Outside of setup, you’d be best off using `StartCoroutine` inside a `void`-returning `Start` function to maintain code readability. The same goes for other callbacks – use coroutines wisely!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Creating a fixed update loop
 
@@ -250,6 +289,17 @@ private IEnumerator WaitForDownload(string url)
 
 The `UnityWebRequest` class provides an easy way to communicate via HTTP over the internet. The class resides in the `UnityEngine.Networking` namespace, so you’ll have to tell Unity you’re `using` it. The `SendWebRequest` function returns a special type of `AsyncOperation`, which itself inherits `YieldInstruction` – that means it can be yielded on. This is most useful if you need to download, say, entries on a leaderboard to display in-game – realtime communication between players would be completely infeasible using this method. For more information on how to use the data returned by the request, check the [Unity documentation](https://docs.unity3d.com/ScriptReference/Networking.UnityWebRequest.Get.html).
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Custom YieldInstructions
@@ -317,6 +367,17 @@ private IEnumerator MyFunc(string buttonName)
 ~~~
 
 A discussion about custom instructions in coroutines can be found on the [Unity Blog](https://blogs.unity3d.com/2015/12/01/custom-coroutines/).
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

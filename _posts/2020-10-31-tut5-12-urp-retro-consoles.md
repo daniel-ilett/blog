@@ -31,6 +31,17 @@ As always, this project is [available on GitHub](https://github.com/daniel-ilett
 
 The original Game Boy could only display four colours, each one a different shade of green. The easiest way for us to make a shader to automatically transform an object to Game Boy colours would be to calculate the luminance of each pixel, then match that up to the four colours, from darkest to lightest. So that's what we're going to do! There are two main ways of doing this, so we'll do both. 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Property-driven Version
 
 For the first method, start by creating a new **Unlit Graph** by going to the Project View and selecting *Create -> Shader -> Unlit Graph*, and name it "GameBoy". We are going to write a shader which takes lighting into account, but we don't want Unity to automatically apply lighting, so we won't be using a **PBR Graph**.
@@ -115,6 +126,17 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color,
 }
 ~~~
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Return to the GameBoy shader graph and create a new `Custom Function` node. By clicking the cog menu, we can insert custom shader code into this node and modify the inputs and outputs to the node to match the parameters of the function we just wrote. Go ahead and add a single input called `WorldPos`, of type `Vector3`, then four outputs called `Direction`, `Color`, `DistanceAtten` and `ShadownAtten`, of types `Vector3`, `Vector3`, `Vector1` and `Vector1` respectively. We'll need to type the name of the function in the **Name** field, but leave out the `_half` and just type `MainLight`, then attach the Lighting.hlsl file we just wrote to the **Source** field. Finally, we need to set the precision at the top to **Half**, and your node should turn an off-green colour. If you had created an alternative function called `MainLight_float`, this is where you would pick between them.
 
 Now we can create a new `Position` node in **World** space and hook that up to the **WorldPos** input on the `Custom Function` node. Now that we can access diffuse lighting information, we need to apply that to our mesh by using the dot product between the `Normal Vector` of the mesh and the direction of the light. On the preview, you'll see it shows us a lit sphere as intended. Use a `Saturate` node to make sure the values are bound between 0 and 1, then we'll apply **ShadowAtten**, **DistanceAtten** and **Color** by multiplying them all together using two new `Multiply` nodes, then finally use another `Multiply` node to tie everything together. I'm also going to go one step further and `Add` the scene's `Ambient Light`. We can output this all to the **Color** pin on the `Unlit Master` node to see the final preview of what the lighting looks like.
@@ -144,6 +166,17 @@ Finally, to factor in the final two colors, create a third `Comparison` node to 
 <img data-src="/img/tut5/part12-gameboy1-comparison.jpg" class="center-image lazyload" alt="Comparison & Branch">
 *Pretty straightforward, compared to other methods.*
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Ramp-controlled Version
 
 As I mentioned, I want to show you two ways of achieving a Game Boy effect, so I've duplicated the Game Boy shader graph and named the new one "GameBoyRamp" - you'll see why it's named that shortly. Go to the end of the graph and delete the group of `Comparison` and `Branch` nodes after we calculate the luminance. Also, for this second technique, we don't need the four `Color` properties, so also delete these. 
@@ -161,6 +194,17 @@ Use a `Saturate` node to ensure the luminance is clamped between 0 and 1, then c
 It's down to preference which approach you take, but each has advantages: the property-driven version gives you full control within the material inspector to change the colour values however you'd like, but the ramp texture approach supports an arbitrary colour ramp, so you can encode more than 4 colours at whatever luminance thresholds you'd like.
 
 Now that we've completed the Game Boy shader, we'll move on to a SNES-style shader.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -189,6 +233,17 @@ Back on the SNES graph, connect the `Quantisation` property to the `Quantisation
 *Channel-by-channel quantisation.*
 
 We can play around with different textures and toggle the lighting to see the difference it makes to the output. The same goes for the Game Boy shader - the difference between lit and unlit is interesting. Furthermore, if we want to make this look more like the NES, with its far more restrictive colour space, we can just tone down the `Quantisation` level. See if you can integrate more interesting lighting using the remainder of [Alex's tutorial](https://blogs.unity3d.com/2019/07/31/custom-lighting-in-shader-graph-expanding-your-graphs-in-2019/).
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

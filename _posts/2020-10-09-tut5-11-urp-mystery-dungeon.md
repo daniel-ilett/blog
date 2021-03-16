@@ -36,6 +36,17 @@ Let's run down the components of this effect. A drawing effect like this is comm
 
 If you play the game or watch a trailer, you'll probably also notice that the texturing on the Pokémon seems to stay static - it looks like the painting texture is applied in screen-space. Finally, most of the objects in the game have a cartoonish outline so that everything stand out. I'm going to combine the spirit of the shadow lines with the paint texture to arrive at an effect which slathers pencil lines over whatever object you'd like. I like the idea of animating the pencil lines over time to look like the model is being sketched in realtime. We'll start with a quick outline shader.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Geometry Outlines
 
 There are many ways to paint outlines on objects in Unity and Shader Graph. One way, if you're using post processing, is to run a shader that detects the edges of an object by calculating the difference in colour, normal vector or depth of the neighbouring pixels - this gets you very accurate edges, but it's a bit harder to do in URP with Shader Graph and it's a bit overkill for our effect. Instead, we're going to do an age-old trick: copy the object geometry, scale it up slightly, and render only back-faces which are tinted dark.
@@ -54,6 +65,17 @@ If we put this material on the Pikachu mesh, we get something like this. It's de
 
 <img data-src="/img/tut5/part11-pikachu-outline.jpg" class="center-image lazyload" alt="Pikachu Outline">
 *Copyright infringement.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Hatching
 
@@ -84,6 +106,17 @@ Now we want to apply the hatching value to modify the colour of the model. For t
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

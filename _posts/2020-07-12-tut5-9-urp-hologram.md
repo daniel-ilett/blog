@@ -29,6 +29,17 @@ UPDATE: This tutorial is also available on my YouTube!
 
 Making holograms is surprisingly simple. Well, maybe not in real life, but in URP certainly! If we use the default scene after creating a URP project, then the post processing effects are already set up to use bloom, which we'll need for making the hologram glow appropriately. The holographic object needs only a handful of components to look convincing. One: a bright edge. Because of the way light works, holograms will appear brighter on grazing edges, so we'll use a bright fresnel to bring out the edges. Two: holographic scanlines. Holograms usually feature scanlines moving downwards, as if it's constantly being drawn and redrawn. It's like how scanlines move down a CRT screen. We could programmatically generate a regular scanline pattern, but we'll use a texture so we have more control over the variation in distance and brightness between the scanlines. We'll tint the scanline texture so that it also glows brightly under the bloom filter.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Fresnel Lighting
 
 Let's get started. If you're following along using [the GitHub project](https://github.com/daniel-ilett/shaders-hologram), then you'll find the shader at *Shaders/Hologram.shadergraph*, but if you're working from scratch, right-click in the Project window and go to *Create->Shader->PBR Graph*.
@@ -73,6 +84,17 @@ With that, the graph should be complete! If we create a few materials and fill t
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

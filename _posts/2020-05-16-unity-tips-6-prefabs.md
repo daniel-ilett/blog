@@ -21,6 +21,17 @@ Prefabs have been a core Unity feature since the very first release of the engin
 
 If you come from a programming background, you might find it useful to think of a prefab and its instances in the same way you think of a class and instances of that class. If you're not a programmer, the prefab is like a blueprint for a house which defines its layout, dimensions, positions of doors and windows, and so on; the built houses themselves are instances of that blueprint which we can interact with. Prefabs, at their core, are `GameObject`s with scripts, meshes, textures, materials, colliders and all manner of other `Component`s attached with their variable values tweaked, and we are telling Unity: "I want to use this object, with these exact components and values, in my scene at least once". The powerful thing about prefabs is that we can create several instances of them and they'll all be clones of the prefab, and any changes we make to the prefab will be propagated across each instance. The non-prefab alternative is to copy and paste a basic `GameObject` a bunch of times, but the big drawback is that changes to the original `GameObject` don't get propagated to the copies.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Creating Prefabs
 
 Let's talk about using prefabs in practice. Prefabs are held inside the Project window as **prefab assets** - to create one, drag any `GameObject` from the Hierarchy to the Project window - any attached scripts and child `GameObject`s will also be included in that prefab. The small icon for the object in the hierarchy will change to a blue cube and its name will turn blue - this is an easy way to tell which objects in your scene are prefabs. Conversely, if you were to then delete the source prefab, then the object's name in the Hierarchy will turn red to signify that its source prefab is missing. If we want to create multiple instances of the prefab, then that's easy - we can duplicate any instance that's already in the scene, or we can drag the prefab asset from the Project window onto the Hierarchy or into the Scene View.
@@ -44,6 +55,17 @@ Unity displays which properties have changed by making script variable names bol
 *Changes and additions are marked in blue, and removals are greyed out.*
 
 There are a few things you can't override. For starters, you can't delete child `GameObject`s of the prefab instance which are part of the prefab asset (but you can add new child `GameObject`s), and you can't rearrange the order of prefab children in the Hierarchy. Deactivating them or adding/removing components to/from any child is fine - you just can't delete or rearrange them.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Nested Prefabs
 
@@ -70,6 +92,17 @@ If you have a regular prefab instance in your scene and you want to turn it into
 
 <hr/>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 # Instantiate
 
 Now that we've covered all the basics, it's time to create prefab instances at runtime. As you'll very well know if you've been using Unity for a while, the `Instantiate` function can be used to create a clone of any `GameObject`, including prefabs: all we need is a reference to the prefab. A very basic script that takes a prefab and creates a new instance looks like this:
@@ -91,6 +124,17 @@ public class CreateObject : MonoBehaviour
 Generally speaking, you'll use `Instantiate` to spawn objects into the scene at runtime wherever the player, an enemy or any other entity needs to create new objects which weren't already present in the scene when it was loaded. You can also specify the position and rotation of the clone in world space - if you leave those out, the position and rotation of the prefab will be used. By default, Unity will place the clone in the object hierarchy with no parent, but you can specify a parent object and choose whether to position the clone relative to that parent or in world space. See more details on the [Scripting API page for `Instantiate`](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
 
 However, `Instantiate` gets a lot of flak for being slow, and that's because it gets used a lot for things like spawning bullets from a gun, which, if you have several people shooting in your game, could end up spawning several objects every frame. The problem is two-fold: firstly, cloning an entire object is quite slow, because you need to create the base `GameObject` and all scripts attached to it, as well as all child objects. The more complicated the prefab, the more expensive this is. Then there's a second hit when the object is removed from the game - usually, if you're using `Instantiate` to create objects on the fly, you're probably also using `Destroy` to remove them once you're done with them. Doing this often can result in huge garbage collection issues. We actually discussed the problems with `Instantiate` and `Destroy` back in [Unity Tips Part 1](https://danielilett.com/2019-08-05-unity-tips-1-garbage-collection/), so please check that out if you want to know more!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

@@ -16,6 +16,17 @@ series-name: Image Effects
 
 Shaders are a bit of a passion within a passion for me. Out of everything involved in game development, shaders are the one thing that call out to me the strongest - they're making things pretty with maths! I’ve wanted to improve my skills for a long time, so on top of making experimental games, my Patreon will involve creating tutorial projects for a bunch of shader effects. I hope you’ll stick with me on this journey - I’ll be giving away FREE CODE with each post!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 Super Mario Odyssey was one of my absolute favourite games of 2017. Despite being a huge Nintendo fan, I've not got round to playing all of the main-series 3D Mario games yet, so when this game was revealed in the year the Nintendo Switch launched, I was excited to be able to play one at launch - and it certainly didn't disappoint!

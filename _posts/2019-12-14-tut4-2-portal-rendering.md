@@ -21,6 +21,23 @@ I recently played *Manifold Garden*, a game based on Escher-esque architecture. 
 
 *Screenshot from [Manifold Garden](https://manifold.garden/)*
 
+Check out my recreation of the portal effect in URP over on YouTube too!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/PkGjYig8avo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Portal Surfaces
@@ -95,6 +112,17 @@ portalCamera.transform.rotation = outTransform.rotation * relativeRot;
 
 Those transformations will put the camera in the correct position. Now, we'll deal with rendering.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Portal Rendering
@@ -123,11 +151,22 @@ Stencil
 {
     Ref [_MaskID]
     Comp Always
-    Pass replace
+    Pass Replace
 }
 ~~~
 
 Inside the stencil, we provide a **reference value** using the `Ref` keyword. In our case, we'll want to use the `_MaskID` property as our reference value. The stencil uses a comparison function, `Comp`, to determine whether it should render a pixel by comparing the value already in the stencil buffer to the reference value. In our case, we're using the `Always` function, which means the pixel will be drawn regardless of the stencil value (and provided it passes a depth test too). If the stencil test passes (which it will) and so does the depth test, the `Pass` function determines what happens to the stencil buffer value for this pixel after the shader pass has completed. It's possible to increment or decrement it, or write a value of zero, but we'll want to replace the existing value with the reference value. For that, we use the `Replace` function.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Inside the `CGPROGRAM...ENDCG` block, we'll use the standard image effect vertex shader and structs. For the fragment shader, all we do is output the `_Colour` we defined above.
 
@@ -225,6 +264,17 @@ That's everything! Now, if we play the scene, you'll be able to see the correct 
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

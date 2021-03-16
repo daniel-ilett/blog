@@ -27,6 +27,17 @@ The Great Sea is made up of a great expanse of blue, broken up by rings of foam,
 {: .box-note}
 [Download the GitHub repository](https://github.com/daniel-ilett/water-urp) for this project if you're following along at home!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Flow Map
 
 We'll be using Shader Graph for this project. The graph can be found in the **Assets** folder under *Shaders/StylisedWater.shadergraph* - if you're working from scratch, then create a new **Unlit Graph**. We'll go through each section of the graph in order, starting with the flow map. The foamy surface of the water needs to be animated slightly to look as if the water has motion - if we kept a static texture, then even once we've added waves via vertex displacement (that's much later on in this article!) then the foam will look a bit rigid. To animate the foam, we'll distort the UV coordinates used to sample the foam texture according to a 'flow map'. This flow map contains normal data arranged in such a way that each pixel normal describes which direction a fluid will flow toward, and we can use those normal vectors to offset the UVs we use to sample the foam texture. In fact, this process will look familiar if you read by [underwater post process effect article](https://danielilett.com/2019-10-22-tut3-2-sinking-feeling/) - we'll even use the same flow map.
@@ -69,6 +80,17 @@ Now we can combine everything we've done so far. Plug the result of the dark foa
 
 <img data-src="/img/tut5/part3-water-basic.jpg" class="center-image lazyload" alt="Basic Water">
 *The colours are all correct and the surface texture animates slowly.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Intersection Foam
 
@@ -113,6 +135,17 @@ I'm pleasantly surprised by the performance of this effect - I spawned in 1024 s
 
 <img data-src="/img/tut5/part3-many-objects.jpg" class="center-image lazyload" alt="1024 Meshes">
 *This effect is surprisingly performant!*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

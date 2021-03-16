@@ -83,6 +83,17 @@ $$
 L_{total} = L_{ambient} + L_{diffuse} + L_{specular}
 $$
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Other Types of Lighting
@@ -112,6 +123,17 @@ $$
 # Unity Surface Shaders
 
 In this series, we're also going to be using a new kind of shader built into Unity. `Surface shaders` give us the flexibility to write lighting-aware code once and let Unity automatically compile it such that it is compatible with multiple rendering paths. Unity provides some functionality for us, such as supplying the vectors and light parameters we need through some predefined include files. We'll go into a bit more detail throughout the series, but if you'd like to take a look at surface shaders ahead of the series, there's [plenty of material](https://docs.unity3d.com/Manual/SL-SurfaceShaders.html) to get you started.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

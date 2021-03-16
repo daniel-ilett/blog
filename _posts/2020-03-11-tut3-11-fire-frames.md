@@ -21,6 +21,17 @@ Fire. Its discovery was one of the first major milestones in humanity's long his
 
 [Image by Alicja from Pixabay](https://pixabay.com/photos/the-flame-fire-burn-glow-paper-3340762/)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 # Fire Shader
 
 The effect we'll build will make our scene look as if it's printed on a piece of paper that's burning from the edges inwards. There are a lot more moving parts than you'd expect, and a lot more design decisions - what happens to pixels where the image has been 'burnt' completely? Should the fire be animated? What colours should the edges of the fire be? We'll make as many of those decisions flexible as possible.
@@ -147,6 +158,19 @@ And that's the script finished! Let's see what the effect looks like in action.
 </div>
 
 In *Effects/Fire.asset*, we've created a fire effect which uses two ramps included in the Textures folder - *FireColorRamp.png* and *FireAlphaRamp.png*. We've set the size to 0.75 and the strength to a low value of 0.01, the tiling is at the default value of 1, and the flicker direction is pointing roughly in the bottom-left corner (the movement direction of the flames acts in the opposite direction to these values because we're adding these values to the UV coordinates used to sample a texture). Finally, the background colour is set to black. Tweak these values to your heart's content!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr/>
 
 # Conclusion
 

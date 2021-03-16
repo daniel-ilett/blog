@@ -49,6 +49,17 @@ float4 frag(v2f_img i) : COLOR
 
 If you followed the shader primer, you'll notice the struct passed into this fragment shader, `v2f_img`, is slightly different to the one described in the primer; this one is predefined in `UnityCG.cginc`, so there's no need to reimplement it ourselves. There's also no vertex shader definition in the template file, since `UnityCG.cginc` defines one called `vert_img`. For our image effects, there isn't much use in redefining the vertex shader, because it is the most basic type; the interesting processing we do is all found in the fragment shader.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 <img data-src="/img/tut1/part1-sepia.jpg" class="center-image lazyload" alt="Sepia-tone Filter">
@@ -75,6 +86,17 @@ return half4(sepia, tex.a);
 ~~~
 
 If you're looking to further your shader-writing skills, I'd recommend brushing up on your linear algebra - stuff like vector and matrix operations - before going too deep. There are tons of crash-courses available online; [this one](http://metalbyexample.com/linear-algebra/) seems to cover the important topics.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## A small note about floating-points
 

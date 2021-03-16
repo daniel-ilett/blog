@@ -18,9 +18,20 @@ As with last week's filmic effects, we can derive many pleasing postprocessing e
 
 Depending on the lens and the construction of the camera, a phenomenon called **vignetting** can occur where the field-of-view is restricted, causing shadows at the edges of the photo. On top of that, different wavelengths of light may not share the same focal point, resulting in different colour channels seemingly separating at the edge of the photo. This is called **chromatic aberration**, and today we'll look at that alongside **vignetting**.
 
-<img data-src="/img/tut3/part6-jewellery-example.jpg" class="center-image lazyload" alt="Jewellery Photo">
+<img data-src="/img/tut3/part6-jewellery-example.JPG" class="center-image lazyload" alt="Jewellery Photo">
 
 [Photo by Slavica Panova on Wikimedia Commons](https://en.wikipedia.org/wiki/File:Filigranski_nakit_02_edit.JPG)
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -127,6 +138,17 @@ I've created two examples of the vignette effect inside the *Effects* folder - t
 
 A value of somewhere around 0.7 to 0.8 tends to work well for the `_Size` property, somewhere around 0.25 for the `_Falloff` property produces a smooth falloff and the value of `_Strength` depends on how intense you'd like the effect but I found that approximately 0.5 worked well.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Chromatic Aberration
@@ -195,6 +217,17 @@ You should be able to see the effect most strongly on the left-hand side of this
 For funsies, I also included an effect inside the *Effects* folder called *VignetteAberration.asset*, which combines both effects.
 
 <img data-src="/img/tut3/part6-vignette-aberration.jpg" class="center-image lazyload" alt="Vignette Aberration">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

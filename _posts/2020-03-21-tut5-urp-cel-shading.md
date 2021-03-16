@@ -34,6 +34,17 @@ The other main benefit to using Shader Graph is that certain types of node gener
 
 For this tutorial, we'll be using a handful of the nodes and features of Shader Graph which should give you a good grasp on how Shader Graph differs from code, or - if you've never written shaders before - be a solid base to start writing your own shaders!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Shader Graph Basics
 
 Let's create our first graph. First, make sure you're using **Universal Render Pipeline** in your project - either select the URP template when creating the project or find it in the **Package Manager** (*Window->Package Manager*) - it's listed as "Universal RP". Right-click in the Project window and under *Create->Shader* there will be a handful of graph presets:
@@ -59,6 +70,17 @@ The best way to get to grips with Shader Graph is to start using it, so let's ju
 
 {: .box-note}
 Download the source files from GitHub [here](https://github.com/daniel-ilett/cel-shading-urp)!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -97,6 +119,17 @@ We'll connect the new `Albedo` node to the `Texture` input pin of the `Sample Te
 *We can use default values to visualise the output.*
 
 Let's group all our nodes so far apart from the master node. Left-click and drag a box around all the nodes, right-click and select **Group Selection** from the menu. We can use grouping to make it clearer what large groups of nodes are doing - it's good for organisation. Now, with the basics of Shader Graph out of the way, we're ready to think about lighting.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Lighting Models
 
@@ -141,6 +174,17 @@ L_{Fresnel} = 1 - v \cdot n
 $$
 
 Now that we've got our complete lighting model in mind, we can start to implement it in Shader Graph.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Implementing Ambient Lighting
 
@@ -230,6 +274,17 @@ Now we can add a `Custom Function` node to use this code. Click the cog menu in 
 <img data-src="/img/tut5/custom-function.jpg" class="center-image lazyload" alt="Custom Function node">
 *`Custom Function` requires you to specify the inputs and outputs.*
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Creating a Sub Graph
 
 As a final step, we'll wrap this in a `Sub Graph` for ease of use. Right-click the `Custom Function` node and select **Convert to Sub-graph**. You'll be asked to create a new asset - I called mine *MainLighting.shadersubgraph*. Your code will break temporarily because the Sub Graph isn't connected properly yet, so double-click the Sub Graph in the Project panel to open it. Like we just did for the `Custom Function`, we need to configure the `Output` node on this graph by clicking the cog menu and adding the same three outputs as the custom node, then connecting the pins. You should pass the `Direction` through a `Normalize` pin first so that our dot product calculations are correct.
@@ -300,6 +355,17 @@ Let's see what this looks like on an object. If your Fresnel doesn't appear on t
 <img data-src="/img/tut5/mat04-fresnel.jpg" class="center-image lazyload" alt="Fresnel Lighting">
 *The edges of the sphere appear white on the side facing the light.*
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Lighting Ramp
 
 Now that we've finished the lighting model, you'll notice the material isn't cel-shaded at all. We haven't added any 'hard cut' to the lighting yet, which is central to the cel-shaded aesthetic. There are several ways to do that, but we're going to use a lighting ramp texture - I've based this on what Ciro Continisio did in [his tutorial](https://connect.unity.com/p/zelda-inspired-toon-shading-in-shadergraph). I've opted to use a different ramp texture for a slightly smoother shading effect; the hard cut is crucial for cel-shading, but there's no reason it can't have a subtly smooth transition rather than an immediate switch between light and dark. It's down to personal preference which you pick. 
@@ -322,6 +388,17 @@ Then, we'll need to do all of the above between the output of the `Specular Ligh
 
 <img data-src="/img/tut5/specular-lighting-ramp.jpg" class="center-image lazyload" alt="Specular Lighting Sample">
 *The specular ramp sampling is identical, apart from the UV coordinates.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Normal Mapping
 
@@ -347,6 +424,19 @@ With that, we've completed our cel-shading Shader Graph - congratulations for ma
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr/>
 
 # Conclusion
 

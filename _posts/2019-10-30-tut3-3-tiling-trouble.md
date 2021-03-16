@@ -20,6 +20,17 @@ Mosaics have their roots in ancient culture. Floor mosaics comprised of tiny squ
 
 [Photo found on Pixabay](https://pixabay.com/photos/mosaic-ruins-ephesus-ancient-roman-315841/)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Little squares
@@ -75,6 +86,17 @@ Graphics.Blit(tmp, dst, baseMaterial);
 That's it for `Render`. Now, let's assume `baseMaterial` doesn't modify anything and you'll see screen output like this:
 
 <img data-src="/img/tut3/part3-pixelation.jpg" class="center-image lazyload" alt="Pixelated Image">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -173,6 +195,17 @@ It takes the same format as the other `XYZEffect.cs` scripts. We pass in the x- 
 Looking at the scene using a smaller tile count and at a different angle, you'll get different results:
 
 <img data-src="/img/tut3/part3-mosaic-complete-small.jpg" class="center-image lazyload" alt="Overlay Small">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

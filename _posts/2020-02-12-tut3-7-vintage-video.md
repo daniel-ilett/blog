@@ -23,6 +23,17 @@ On top of that, VHS tapes were predominantly viewed on **CRT TVs**. We've discus
 
 [Image by Joshua_Willson from Pixabay](https://pixabay.com/users/Joshua_Willson-876211/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1322179)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Scanlines
@@ -105,6 +116,17 @@ public override void Render(RenderTexture src, RenderTexture dst)
 When we run the scene with this effect activated (the effect can be found at *Effects/Scanlines*) using the thin scanline texture variant and a medium strength of around 0.4, the result looks like this:
 
 <img data-src="/img/tut3/part7-scanlines.jpg" class="center-image lazyload" alt="Scanline Effect">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -191,6 +213,17 @@ Combining the scanline and interference effects, as well as adding noise to the 
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Conclusion
 

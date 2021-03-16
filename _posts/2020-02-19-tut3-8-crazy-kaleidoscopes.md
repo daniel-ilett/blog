@@ -21,6 +21,17 @@ Kaleidoscopes work by reflecting light in at least two angled mirrors to form sy
 
 [Image by Lisa Yount from Skitterphoto](https://skitterphoto.com/photos/7494/kaleidoscope-design-95)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Polar coordinates
@@ -66,6 +77,17 @@ angle = min(angle, segmentAngle - angle);
 ~~~
 
 Now that we know our position relative to a single segment, let's talk about what one image segment looks like. The full image will look like a single segment copy-pasted in a circle, where each segment is a wedge shape. If we converted back to Cartesian coordinates now, then the kaleidoscope won't look right - there won't be any reflection. Therefore, each segment must reflect itself through the middle. Using the `min` function, we'll keep the angle unchanged if it is less than halfway through a segment, otherwise we'll mirror it across the centre of the segment by subtracting it from `segmentAngle`.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Now we can convert back to Cartesian coordinates. We haven't sampled the image yet - to do that, we'll need our UVs back in the classic Cartesian format. We'll do the inverse of all the transformations we made previously - we'll use `cos` and `sin` on the `angle` to get back the `x` and `y` components of the `float2` respectively, multiply by the `radius` to place them at the correct position, and add 0.5 to put the origin point back where it belongs.
 
@@ -113,6 +135,17 @@ Now we can see what the effect looks like. If you plug in *Effects/Kaleidoscope*
 Or with three segments, you can sort of create an abstract Unity logo:
 
 <img data-src="/img/tut3/part8-kaleidoscope-unity.jpg" class="center-image lazyload" alt="Kaleidoscope Unity">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

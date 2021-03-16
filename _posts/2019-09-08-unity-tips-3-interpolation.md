@@ -100,7 +100,18 @@ private IEnumerator ChangeValue(float startVal, float endVal, float speed)
 }
 ~~~
 
-The `t` variable inside the loop is used to control the third parameter of the `Lerp` function. The speed variable passed as a parameter to `ChangeValue` and `Time.deltaTime` are used to control the rate of change of `t`; by using `yield return null`, the coroutine resumes execution immediately after `Update` each frame. The final line is used to correct for the loop timer under-shooting. 
+The `t` variable inside the loop is used to control the third parameter of the `Lerp` function. The speed variable passed as a parameter to `ChangeValue` and `Time.deltaTime` are used to control the rate of change of `t`; by using `yield return null`, the coroutine resumes execution immediately after `Update` each frame. The final line is used to correct for the loop timer under-shooting.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Rigidbody Interpolation
 
@@ -127,7 +138,18 @@ The other option is `interpolation` – that’s why this section is included in
 rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 ~~~
 
-Unlike `extrapolation` the ‘rendering position’ calculated via `interpolation` is accurate, although there is a latency of one physics timestep. [The documentation](https://docs.unity3d.com/ScriptReference/Rigidbody-interpolation.html) recommends enabling `interpolation` only for the main character or any other object being followed by the main camera. 
+Unlike `extrapolation` the ‘rendering position’ calculated via `interpolation` is accurate, although there is a latency of one physics timestep. [The documentation](https://docs.unity3d.com/ScriptReference/Rigidbody-interpolation.html) recommends enabling `interpolation` only for the main character or any other object being followed by the main camera.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Lerp Smoothing
 
@@ -165,6 +187,17 @@ This example function call would return `-2.0`.
 Sometimes the numbers you are interpolating represent angles. If you interpolate an angle just below `360°` towards an angle just above `0°`, the intended behaviour would be to increase the angle slightly, as angles “wrap around” at the `360°` mark. Tracing the interpolation of those angles over time would leave a very small arc crossing the `360°` threshold. However, `Mathf.Lerp` receives no contextual information regarding the input numbers so it would greatly decrease the angle – tracing would leave a massive arc starting at under `360°`, crossing the `180°` mark and ending at the angle just above `0°`. 
 
 `Mathf.LerpAngle` performs the interpolation correctly. For any two angles, there is a choice of interpolating across the shortest or longest arc – `Mathf.LerpAngle` always chooses the shortest. For the edge case in which the two angles are `180°` apart, the function will take the clockwise arc. The value you receive after the operation won’t be necessarily bound between `0°` and `360°`, but it will be correct modulo `360°`.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -217,6 +250,17 @@ Mathf.SmoothDamp(float value, float target, ref float velocity,
 “The most common use is for smoothing a follow camera.” - Unity Documentation
 
 There are two optional parameters. `maxSpeed` limits the velocity and `deltaTime` (which, by default, is `Time.deltaTime`) tells Unity the time since the function was last called. You should modify this if you utilise the function outside of `Update`. `SmoothDamp` is supported by `float`, `Vector2` and `Vector3`, but oddly not `Vector4`. It’s recommended by the [Unity Documentation](https://docs.unity3d.com/ScriptReference/Vector3.SmoothDamp.html) for use with a follow camera.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Animation Curves
 
@@ -273,6 +317,17 @@ AnimationCurve.EaseInOut(float startTime, float startVal, float endTime,
 
 If a `Linear` curve is parallel to `Lerp`, then `EaseInOut` is parallel to `SmoothStep`. This type of `AnimationCurve` takes the same parameters as the `Linear` curve but produces a curve with steeper gradient in the middle than the endpoints, making it useful for natural-looking movement in one dimension.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ### Evaluation
 
 In order to use the values of the curve at a specific point in time, we use the `Evaluate` function. As with previous interpolation methods, a common use case is inside a coroutine. 
@@ -317,7 +372,18 @@ animCurve.postWrapMode = WrapMode.Loop;
 
 <img data-src="/img/unity-tips/part3-curve-custom.jpg" class="center-image lazyload" alt="AnimCurve Custom">
 
-We’re not restricted to the types of curve provided by Unity. Inside the editor, we can add `keyframes` wherever we like and mess with the shape of the curve by selecting one of the keyframe control points and moving the handles that appear either side of it. As with other types of curves, it’s possible to set the behaviour of the curve before the start and after the end – select the small cog drop-down menus next to the endpoint keyframes to pick an option. 
+We’re not restricted to the types of curve provided by Unity. Inside the editor, we can add `keyframes` wherever we like and mess with the shape of the curve by selecting one of the keyframe control points and moving the handles that appear either side of it. As with other types of curves, it’s possible to set the behaviour of the curve before the start and after the end – select the small cog drop-down menus next to the endpoint keyframes to pick an option.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Bilinear Interpolation
 
@@ -372,6 +438,17 @@ $$
 $$
 
 This extends to higher dimensions. [Trilinear interpolation](https://en.wikipedia.org/wiki/Trilinear_interpolation) operates in three dimensions and requires the nearest eight data points and three interpolation factors.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

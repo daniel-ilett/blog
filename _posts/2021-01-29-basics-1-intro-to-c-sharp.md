@@ -7,7 +7,7 @@ hdrimg: /img/unity-basics/part1-banner.jpg
 #gh-repo: daniel-ilett/shaders-pmd
 #gh-badge: [star, fork, follow]
 tags: [unity, basics, c-sharp, scripting]
-nice-slug: 
+nice-slug: C# Scripting Basics
 date: 2021-01-29
 idnum: 57
 
@@ -28,6 +28,17 @@ Also check out this tutorial on my YouTube channel if reading isn't your thing:
 <div class="video-embed">
 <iframe src="https://www.youtube.com/embed/u_mHOUIZwF4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -81,6 +92,17 @@ That leaves two things - the colon `:` and `MonoBehaviour`. We won't go into too
 
 This is a tangent, but often I feel like one of the things that puts people off coding is the number of things that "will make sense later". However, like a "real" language, programming languages have their own grammar which seems alien at first, but the more you write, the more it becomes natural, and before long, you'll (hopefully) subconsciously begin "speaking" C# in your own head! If you need time to write code that breaks a lot before it clicks, that's natural - and the advantage of Unity being so widely-used is that you can usually just Google an error message or code snippet and find that someone else treaded that ground already.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Namespaces
@@ -124,6 +146,17 @@ public GameObject cube;
 ```
 
 In this example, we're defining a variable named `cube`, whose type is `GameObject`. This tells C# that it should expect this variable to have all the state and behaviour of a `GameObject` (a class provided by Unity), and we'll be able to access that object to change its state and cause it to do some behaviour. We'll see how that works in the next section.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -179,6 +212,17 @@ Congratulations, you're just written your first script!
 Now that we've written the script, we need to attach it to an object. In the Unity Editor, we can left-click-drag the script from the Project View onto any one of the GameObjects in the Hierarchy - I added mine on a cube object I added from the toolbar via *GameObject -> 3D Object -> Cube*. On of Unity's most powerful features is the ability to interact with code via the Editor, and when you attach this script, you'll notice that there are two fields on the component named "Cube" and "Speed". That's because we made those two variables `public`, and Unity has taken their names, capitalised them, and placed them here, with boxes next to them where we can put things according to the variable's type. 
 
 The Cube field requires a GameObject, so take the Cube from the Hierarchy and left-click-drag it onto the field. The cube is now, in fact, referencing itself; there are ways to do that purely inside the code, but I wanted to show you how to do it in-Editor. For the Speed field, we can just type in a value ourselves - something around 4 or 5 will do. If you press the Play button at the top of the Editor, you should now be able to use the WASD or arrow keys to move the cube around. It's possible to tweak the Speed variable while the game is playing, but all changes will be reverted when you exit Play Mode - it's great for non-destructive testing, but make sure you're out of Play Mode if you're making lots of changes you want to be permanent!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

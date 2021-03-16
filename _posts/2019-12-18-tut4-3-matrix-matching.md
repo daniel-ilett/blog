@@ -17,6 +17,12 @@ series-name: Portals
 
 In the last tutorial, we managed to render a realistic portal using stencil buffers. We skipped over a few things to talk about in future tutorials, but I asked one key question: what happens to all the stuff between the portal camera and the portal surface? Wouldn't the stuff behind the portal get rendered unless we do something to exclude it? The answer is yes - and today we're going to explore how to prevent the scene behind the out-portal being rendered onto the in-portal surface.
 
+Check out my recreation of the portal effect in URP over on YouTube too!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/PkGjYig8avo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 <hr/>
 
 # Camera Clipping
@@ -46,6 +52,17 @@ It'll be easier to demonstrate the problem if we scale the portals by 2x. Now, w
 <img data-src="/img/tut4/part3-wrong-clip-2.jpg" class="center-image lazyload" alt="Incorrect Clipping 2">
 
 So, what gives? When we set the near clipping plane as we did, it's **perpendicular** to the camera's **forward direction**. The artefacts we're seeing here where bits of the portal view are missing are parts of the portal surface that have been **clipped**, as they are behind the camera's near clipping plane. The bright colours that are getting rendered inside the portal are the ones we defined in `PortalMask` (see [Part 2](https://danielilett.com/2019-12-14-tut4-2-portal-rendering/)) - those parts are meant to be behind the near clipping plane, but they're being rendered erroneously. We need to angle the near plane slightly, so it rests over the portal surface's plane - in most circumstances this won't be perpendicular to the camera's forward direction. This requires some complex maths.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -87,6 +104,17 @@ If we run the scene now, there ought to be no rendering oddities!
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

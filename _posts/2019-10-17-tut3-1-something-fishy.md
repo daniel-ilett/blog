@@ -20,6 +20,17 @@ series-name: Ultra Effects
 
 [Photo taken by The Squirrels.](https://commons.wikimedia.org/wiki/File:The_Squirrels_0048.jpg)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Virtual lenses
@@ -38,6 +49,17 @@ Please download the project repository from [GitHub](https://github.com/daniel-i
 In the last series, I provided two shader files for each shader: one complete, and one with gaps for you to fill in using these tutorials. There were a handful of scripts to facilitate special features on some of the shaders, such as `Gaussian blur`. This time, I've simplified things - the [GitHub repository](https://github.com/daniel-ilett/image-ultra) will only include complete versions of the shaders and the associated scripts will be less confusing.
 
 Each shader has a corresponding script that includes Inspector-accessible variables for each of the special features of the shader. Those scripts use `ScriptableObject` as a base class, so you can create assets directly inside the Editor - this will allow you to create multiple instances of each effect with different parameters. Think of them as presets! You can create these directly in the Project pane using the **Create** menu. I'll detail exactly how these assets and scripts are created throughout these tutorials.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -98,6 +120,17 @@ return tex2D(_MainTex, uv);
 
 That's all we need to do for the shader code itself. Let's now look at the scripting required to drive the effect.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Scripting
@@ -149,6 +182,17 @@ public override void Render(RenderTexture src, RenderTexture dst)
 
 This is the simplest `Render` functionality - just call `Graphics.Blit` using the two `RenderTextures` and `baseMaterial`.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Putting it together
@@ -179,6 +223,17 @@ public class ImageEffect : MonoBehaviour
 This script is essentially a wrapper around the assets we just created. Drag this script onto the camera and drag an effect onto the `effect` field in the **Inspector** and hit that play button. With a `pow` value of 2, you should see something similar to the screenshot below.
 
 <img data-src="/img/tut3/part1-fisheye-complete.jpg" class="center-image lazyload" alt="Fisheye Effect">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

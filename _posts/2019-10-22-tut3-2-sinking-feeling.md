@@ -20,6 +20,17 @@ A common trope in videogames is the infamous water level. All good games must ha
 
 [Photo by Mohamed Ahzam on Unsplash](https://unsplash.com/@mohamed_ahzam)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Waves and Fog
@@ -84,6 +95,17 @@ At this stage, we obtain an image like the one below.
 
 <img data-src="/img/tut3/part2-waves.jpg" class="center-image lazyload" alt="Waves">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Blue Shift
@@ -124,6 +146,17 @@ col = lerp(col, _WaterColour, depth * _FogStrength);
 Now, the output of the fragment shader looks a lot more like this:
 
 <img data-src="/img/tut3/part2-waves-complete.jpg" class="center-image lazyload" alt="Waves Complete">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -213,6 +246,17 @@ public class CompositeEffect : BaseEffect
 Here's the entire class definition. Its `OnCreate` method initialises each of the sub-effects, and the `Render` method evaluates each effect in turn by creating two temporary textures and constantly swapping between the two. This means we can create arbitrary composite effects in the Editor and add as many effects - even multiple of the same type of effect - to the effects list. This is what a hybrid underwater-fisheye effect looks like - note that the order of operations does matter so the underwater effect is applied first in this case.
 
 <img data-src="/img/tut3/part2-underwater-fisheye.jpg" class="center-image lazyload" alt="Composite Effects">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

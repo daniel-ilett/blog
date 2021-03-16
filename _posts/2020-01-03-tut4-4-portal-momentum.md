@@ -17,11 +17,28 @@ series-name: Portals
 
 What happens when an object travels through a portal? There are tons of videos and articles online discussing the conservation of momentum when portals are in operation. Some common thought experiments include "what happens if a portal moves into another portal" or "what happens when a portal crushes an object", but it's simpler to restrict things to non-moving portals - as games often do. It's easier to design around a smaller possibility space so there's fewer cases to program. Thus, the portals in our universe can't move, and the only momentum we must consider is that of the object travelling through the portal.
 
+Check out my recreation of the portal effect in URP over on YouTube too!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/PkGjYig8avo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 # Breaking the Law
 
 Let's talk basic physics. The **momentum** of an object is the product of its mass and velocity and in a closed system, the law of conservation of momentum stipulates that the total momentum stays constant. If a 5kg mass lurches to the left at a velocity of 2 meters per second, a mass of 10kg should lurch to the right at a speed of one meter per second to compensate. Now think of an object entering a portal travelling to the right and exiting a portal facing upwards - in order to conserve momentum, the portals (or anything else in the system) should also move to the left and downwards respectively. But the portals are supposedly stationary, so perhaps they have a near-infinite mass and move a negligible distance. That'd probably create a black hole and destroy the entire game.
 
 But we're getting ahead of ourselves. Games are about suspending the player's disbelief. It's fun to think about how portals in *Portal* would actually work, but as game designers we can just say "thing goes in, thing comes out" and leave the thinking to the players. Our portals are made of hand-wave-ium and objects conserve their **local momentum** upon portal entry.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Local momentum
 
@@ -60,6 +77,17 @@ public virtual void Warp()
 ~~~
 
 You might notice that the method is `virtual` - that's because `PlayerController` will **inherit** `PortalableObject` and we'll need to consider an edge case related to it later. Otherwise, these chunks of code will look familiar by now if you've read the previous parts of this tutorial series - the position, rotation and velocity of the object will be transformed from the `inPortal`'s local space to the `outPortal`'s local space.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Considering collisions
 
@@ -158,6 +186,17 @@ If you have a keen eye, then you'll notice a small problem: the object seems to 
 
 The sphere physically exists on the right-hand side, falling downwards into the portal. That means the lower half has clipped through the portal surface and *should* be visible in the left-hand portal, but because of the way we're rendering the portal surface it's been clipped out of existence. Likewise, we can't see the lower half of the sphere in the right-hand portal because no physical version of it exists on the left, which is where the portal view is being rendered. We're going to need to create a 'cloned' version of the object on the opposite side of the portal.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Object cloning
 
 Let's talk about the `cloneObject` we skipped over, contained in the `PortalableObject` class. It's a **visual clone** of the object - a distinct `GameObject` with the same mesh and materials, but no other physical properties like rigidbodies or colliders, and no other scripts. It's created in `Awake` and immediately deactivated:
@@ -226,6 +265,17 @@ This positioning code is starting to look very familiar - it's essentially the s
 <img data-src="/img/tut4/part4-clone-obj.jpg" class="center-image lazyload" alt="Cloned object">
 
 Note that there are some graphical oddities across the portal boundary. That's to do with the lighting being different on each portal surface. If you're going to use these portals, it might be a good idea not to rely on just a single directional light for your scene and to find an alternative lighting method that faithfully lights up objects on both sides of the portal.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## The Player
 
@@ -300,6 +350,17 @@ Now let's see what the world looks like from a player's perspective. Note that t
 The other issue to deal with is large objects. If we disable collision between the wall and a large object, won't it clip through the wall partially while travelling through the portal? That's possible - and to counteract this, the portal also contains a non-trigger collider frame around itself which blocks objects that are detected by the portal trigger but are too large to fit through the portal. Here's what the mesh for the collider looks like in *Blender*:
 
 <img data-src="/img/tut4/part4-portal-frame.jpg" class="center-image lazyload" alt="Portal frame">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Conclusion
 

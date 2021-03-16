@@ -91,6 +91,17 @@ The word 'lerp' is short for 'linear interpolation', and here we'll see it in ac
 
 <img data-src="/img/tut1/part2-scene-silhouette.jpg" class="center-image lazyload" alt="Silhouette Effect">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## A note about drawing transparent objects
 
 When I introduced the depth buffer at the start of this post, I described the process of drawing objects as just picking random objects out of the scene and drawing them in that random order. In cases where only totally opaque objects are being drawn, this is sufficient; we are wholly replacing colour values in the framebuffer when we draw a pixel. It gets more complicated with transparent objects. Typically, one would draw all opaque objects to the screen and update the depth buffer accordingly, then draw transparent objects. Those are drawn in order, usually starting with the furthest-back objects and ending with those closest to the camera (or the reverse order), and you blend colours with the existing framebuffer values rather than overwrite them. Luckily, we're not dealing with transparency at all - image effect shaders only draw to a fullscreen quad (i.e. two triangles covering the entire screen space).

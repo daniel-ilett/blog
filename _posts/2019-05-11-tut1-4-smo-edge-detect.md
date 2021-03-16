@@ -78,6 +78,17 @@ return sqrt(x * x + y * y);
 
 If you wanted it to look more like the Line Drawing effect in Super Mario Odyssey, then try inverting the colours and perhaps make the lines grey.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 <img data-src="/img/tut1/part4-neon.jpg" class="center-image lazyload" alt="Neon">
@@ -134,6 +145,17 @@ Run the shader now, and the neon colours should pop! The conversion makes pixels
 
 The neon effect looks great, but we would usually expect such an effect to glow, especially the brightest parts of the image. We can do that by implementing another step on top of what we've done so far - let's discuss a simplified bloom shader.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Bloom
@@ -189,6 +211,17 @@ Graphics.Blit(src, thresholdTex, material, thresholdPass);
 ~~~
 
 Back in Unity's Scene View, remove all Image Effect scripts from your camera for now, and attach this brand-new script. Place the Bloom shader in the shader slot and hit Play - all that should be visible are the brightest scene elements.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The second component of the Bloom effect is blurring the thresholded image. This is where we'll unlock the secrets of using `Pass`es from other shaders: `UsePass`. From here on, I'll assume you've followed Part 3 and implemented the Blur shaders the same way I have - if not, you'll have to tweak a few names.
 
@@ -314,6 +347,17 @@ RenderTexture.ReleaseTemporary(blurTex);
 Now run the shader - it's the bloom we've been seeking all this time! We opted to write a cheap blur effect because we really don't need the highest fidelity, nor are we paying particular attention to HDR (High Dynamic Range) rendering in this example, but if you'd like to iterate on this design and create a better bloom effect, there are [plenty of resources](https://catlikecoding.com/unity/tutorials/advanced-rendering/bloom/) to take a look at. Good luck if you attempt something cool!
 
 <img data-src="/img/tut1/part4-scene-bloom.jpg" class="center-image lazyload" alt="Bloom">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Multiple image effects
 

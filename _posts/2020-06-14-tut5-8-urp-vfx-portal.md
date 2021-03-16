@@ -29,6 +29,17 @@ UPDATE: This tutorial is also available on my YouTube!
 
 For this tutorial, I'll be using **Universal Render Pipeline**, although this should also work on **High Definition Render Pipeline**. We'll need to download Visual Effect Graph using the Package Manager alongside one of the render pipelines, since VFX Graph is incompatible with the built-in renderer. Once it's finished downloading, we can crack on with the tutorial. We'll be creating a particle system for a portal which generates one million particles a second - if that's likely to melt your computer, then I'd recommend tweaking the numbers in the tutorial to scale with your hardware's capabilities!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Portal Particles
@@ -49,6 +60,17 @@ There's not much to change on the **Output Particle Quad** context - we won't be
 *Only small tweaks are needed on the Output context.*
 
 Now we will create the shape of our particle system and start spawning in a greater number of particles. In the **Initialize Particle** context, first add a new `Set Lifetime` block and set the lifetime to 5 seconds. While testing the limits of VFX Graph for this tutorial, I originally planned to have a million particles on screen at a time, but the system is very resilient and I managed to spawn that many *per second* and still run at about 160 frames per second! In the **Spawn** context, I've set the **Constant Spawn Rate** to one million, and in **Initialize Particle** I've set the **Capacity** to five million (equal to the spawn rate multiplied by the lifetime). At this stage, you might see a lot of slowdown because those particles are overlapping so much. We'll need to **Set Size** to something very small - 0.0045 does it for me, although you'll want to make this bigger if you want to use fewer particles.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Then we'll set the proper spawn positions of our particles and remove a bit of that slowdown. We'll add a `Position (Circle)` block, then expand the **Arc Circle** dropdown, then the **Circle** dropdown, and set the **Radius** to 1.1 - just a bit higher than the default. Things should be looking a lot smoother now, and we can position the particle system so that the circle intersects with the portal frame.
 
@@ -83,6 +105,17 @@ The final step is optional, but it might look nice for the portal surface to tap
 </div>
 
 Running the full effect in Game View with all five million particles on screen at once, the effect holds up well at around 160 frames per second on my GTX 1070. I'm very surprised by how silky smooth an effect of this magnitude runs!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

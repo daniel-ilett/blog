@@ -88,6 +88,17 @@ r.variance = length(variance);
 return r;
 ~~~
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Now we'll construct the for-loops to do the summations, running over the bounds supplied to the function via `int2 lower` and `int2 upper`. The `int2` datatype is similar `float2`, except it holds integers rather than floating points. We'll sample the texture at each pixel position in the region and add its colour value to `sum`, and the square of its colour sum to `squareSum`. Cast your mind back to Part 3's Blur shaders, when we used the `_TexelSize` of `_MainTex` to ensure we sample the correct part of the image. We also pass the `uv` into the function as a parameter for this purpose.
 
 ~~~glsl
@@ -153,6 +164,17 @@ return fixed4(col, 1.0);
 I don't bother setting `minVar` on the final check, because there are no further checks that would use it. Pulling it all together, we've created a Kuwahara filter that should do what we want. Attach the shader to an `ImageEffectBase` component on your main camera and see the results speak for themselves! Like I mentioned, you'll probably find it works best on noisy, busy scenes with lots of details.
 
 <img data-src="/img/tut1/part6-scene-painting-trees.jpg" class="center-image lazyload" alt="Kuwahara Trees">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

@@ -17,11 +17,24 @@ series-name: URP
 
 Last time, we took a look at holograms using a bright fresnel shell around the object and scanlines passing vertically through it. In many interpretations of holographic technology, artists often add glitches and other effects to make the effect look more believable - a perfect hologram can look *too* good. Today, we're going to make a bunch of alterations to our hologram to remove shadows and add imperfections such as distortion and noise grain.
 
+<hr/>
+
 # Removing Shadows
 
 Holograms, of course, emit light. One of the oversights in the previous tutorial - one I noticed almost immediately after posting it - is that objects with this shader receive shadows, which looks strange. Unfortunately for us, it's a bit more cumbersome to turn off receiving shadows in URP - while it's as easy as unticking a box on any renderer component in the built-in pipeline, we now must add a **keyword** to the shader graph and then use the **Debug Mode** in the Inspector to add the keyword to each material using the shader. Yes, really. I found this workaround in [a forum post requesting an easy way to do this](https://forum.unity.com/threads/turn-off-receive-shadows-on-custom-pbr-graph-lwrp.657814/) - go figure! You could also use an `Unlit Master` node instead of `PBR Master`, but then we'd lose the **Emission** channel.
 
 Open up the hologram graph from last time. Under the **Blackboard**'s plus arrow drop-down, pick the *Keyword -> Boolean* option at the very bottom and give your new keyword a reference of `_RECEIVE_SHADOWS_OFF` - the capitalisation and position of the underscores is important. By default, leave it ticked. Then, go to the Inspector and, using the small three-dot menu in the upper-right corner, change the Inspector to **Debug Mode**. This unlocks a few more options usually hidden from view. Select all materials using the hologram shader and you'll notice one of those new options called "Shader Keywords"; type `_RECEIVE_SHADOWS_OFF` in the text box. Now, all your holograms should be shadow-free - you can change your Inspector back to **Normal Mode**.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -64,6 +77,17 @@ Now we've added everything we wanted! If we were to write a script which occasio
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

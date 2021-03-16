@@ -7,7 +7,7 @@ hdrimg: /img/tut5/part13-banner.jpg
 gh-repo: daniel-ilett/shaders-octocamo
 gh-badge: [star, fork, follow]
 tags: [unity, shaders, urp, octocamo]
-nice-slug: 
+nice-slug: MGS4 Octocamo
 date: 2021-01-26
 idnum: 56
 
@@ -25,6 +25,17 @@ Also check out this same tutorial over on my YouTube channel:
 <div class="video-embed">
 <iframe src="https://www.youtube.com/embed/EwkNOyrk_aQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -134,6 +145,17 @@ return returnColor;
 
 If I wanted to pretend this has real-world advantages, this would work in a game where players can upload their own textures to use on the terrain - I hope someone makes that idea one day! For now, let's move on to the system that will interact between the player and the terrain - the `CamoController` script.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Interacting with the Terrain: the CamoController script
@@ -220,6 +242,17 @@ float[,,] alphamaps = tData.GetAlphamaps((int)position.x, (int)position.z, 1, 1)
 ```
 
 There's a lot going on here! We're calculating the exact position of the player on the terrain and storing it in the `position` variable. Once we have that, we're using the `GetAlphamaps` method to get the correct alphamap data. The first two parameters determine where on the XZ plane we are starting from - so we use the `position` - and the last two parameters are how many positions on the terrain we're polling, so we use (1, 1) to poll a single point.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The data returned by `GetAlphamaps` is a three-dimensional array, where the first two dimensions represent the x and z position *relative to the start point we specified*, and the third dimension is the ID of a texture on the terrain. We have two textures on our terrain, so this array will contain two values at `(0, 0, 0)` and `(0, 0, 1)`. The first value is how strong texture 0 is at `(position.x, position.z)`, and the second value is how strong texture 1 is at `(position.x, position.z)`. I hope that makes sense because the return value is a little strange!
 
@@ -361,6 +394,17 @@ The core lesson in this tutorial is that very simple shaders can often be made m
 </div>
 
 <hr/>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Conclusion
 

@@ -27,9 +27,31 @@ I recently finished *Return of the Obra Dinn* by Lucas Pope, a fantastic detecti
 
 [Image by martinsh](http://devlog-martinsh.blogspot.com/2011/03/glsl-8x8-bayer-matrix-dithering.html)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 When *Obra Dinn* is described as having a '1-bit' aesthetic, people are referring to the fact the colour palette is made up of two colours - you could represent the colour used by each pixel using a single bit of information. In *Obra Dinn*'s case, there are several options for which two colours are used, all of which are based on classic computer colour schemes. Of course, *Obra Dinn* uses a comprehensive dithering effect instead of smooth gradient shading, with a wireframe outline effect on top to aid visual clarity.
 
 The dithering effect is produced via a **postprocessing shader** - the scene is rendered with smooth lighting to begin with, then a **noise texture** which uses that dithering pattern is used to **threshold** each pixel of the smoothly-shaed image. Pixels with a luminance above the noise texture become light, and those below become dark.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -104,6 +126,17 @@ return float4(rgb, 1.0f);
 
 We can now move on to the script to drive the effect.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 In *Scripts/DitherEffect.cs*, we'll include four member variables: `ditherTex` and `rampTex` for the noise texture and colour ramp texture respectively, and a `useScrolling` flag to control whether the noise texture should move along with the camera rotation. We'll also include a `filterMode` variable to control whether the final image should smooth between pixels.
@@ -168,6 +201,17 @@ Now we can modify the effect, found at *Effects/Dither*, to see what it looks li
 And here's it with blue noise:
 
 <img data-src="/img/tut3/part9-dither-blue.jpg" class="center-image lazyload" alt="Blue Noise dithering">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

@@ -38,6 +38,17 @@ The first thing we'll do is sample the main texture. Since we're attaching this 
 
 Next, we'll implement the 'base case', where we only want outlines to show up in the four cardinal directions. Since we're going to be repeating the same process of sampling the texture and reading the alpha value four times (plus four more when we factor in the corners) with only slight differences in input, it's a good idea to create a **subgraph**. That way, the main graph will be less cluttered than it would otherwise be. In the source project, you can find this subgraph under *Shaders/OutlineSample.shadersubgraph*, and if you're creating a subgraph from scratch then go to *Create->Shader->Sub Graph*.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The subgraph will sample the main texture with an offset value which is based on the desired thickness of the outline and the 'direction' for this sample. For that, it will need a set of properties: `Main Texture` of type `Texture2D`; `Outline Thickness` of type `Vector1`; and `Direction` of type `Vector2`. Those will act as 'inputs' when we place a node of this subgraph on the main graph. Let's work backwards. The subgraph will have two outputs - the RGBA colour value and the alpha value. The second one is just for ease so we don't need to use a `Split` node to separate out the alpha channel. To add outputs, find the `Output` node and use the cog menu to add one output called `RGBA` of type `Vector4` and another called `A` (for "Alpha") of type `Vector1`. Feeding into that node is a `Sample Texture 2D` node with the `Main Texture` property as its texture input.
 
 <img data-src="/img/tut5/part6-subgraph-texture-sample.jpg" class="center-image lazyload" alt="Subgraph Texture Sample">
@@ -73,6 +84,17 @@ With the corner outlines enabled, let's see the effect in motion:
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 # Conclusion
 

@@ -17,6 +17,12 @@ series-name: Portals
 
 Placing portals and ensuring they're positioned correctly is more involved than you may expect. The basic idea is to point in a direction and press shoot to move a portal to that point on the wall. But there are many questions to ask: what types of object can block the portal shot? What if that position would hang over the edge of a surface or intersect another wall? And how do we make sure the portal has the correct rotation?
 
+Check out my recreation of the portal effect in URP over on YouTube too!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/PkGjYig8avo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
 <hr/>
 
 # Proper placement
@@ -88,6 +94,17 @@ private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
 
 Stepping outside of the code for a second and looking at the `PortalPlacement` component on the player camera, we'll see that the layer mask selects only the *LevelGeom* and *Portal* layers; the level's static geometry - anything we want a portal to attach to - is set to the *LevelGeom* layer, and the two portals (only their surface and not the graphical outline or border colliders from last tutorial) are labelled *Portal*. This means that we can stick most other objects in the Default layer and the portal will pass straight through them. If you wish to implement objects that can block portal shots, you can enable a separate layer on this mask and add some code to immediately `return` from the `FirePortal` method when an object in that layer is hit.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Let's return to the code. We'll skip the if-statement which checks for objects tagged "Portal" until later as this code relates to shooting portals through portals. After that, the next bunch of code handles the positioning and rotation of the new portal.
 
 We'll handle portal rotation a little differently than you might expect. Because we can place portals on a wall, floor or ceiling, we need to be careful with how we calculate the portal's rotation. If we were only able to place portals on vertical walls, we could just make the up-direction the same as the world up-direction - but that wouldn't work on floors and ceilings. We also want to orient the portal along the cardinal grid directions if it's on the floor or ceiling. That means we'll need to 'round' the rotation along certain axes to the nearest 90 degrees.
@@ -115,6 +132,17 @@ var portalRotation = Quaternion.LookRotation(portalForward, portalUp);
 ~~~
 
 We'll retrieve the camera's `TargetRotation` as mentioned so that we're calculating the proper desired rotation. We can get the player's right-direction by multiplying `Vector3.right` by the camera's rotation. It's easy to round that vector to the nearest 90 degrees by comparing its x- and z-components with each other to determine which of four possible quadrants the vector is pointing in, then setting the vector to be equal to one of the four cardinal directions. Now `portalRight` gives us a vector pointing along the desired x-axis of the portal.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 The forward vector, `portalForward`, of the portal is the easiest of them all to calculate - it's the negative of the raycast's intersection point - we can use `-hit.normal` to retrieve this. Then, to get the up-direction - `portalUp` - we can use the vector cross product on `portalRight` and `portalForward` by calling `Vector3.Cross` with those as arguments. Remember that the cross product of two vectors returns a new vector perpendicular to those two.
 
@@ -164,6 +192,17 @@ This is the result when you shoot near the edge of a surface. Not so great. The 
 <img data-src="/img/tut4/part5-portals-intersect.jpg" class="center-image lazyload" alt="Portal intersection">
 
 And this is what happens when you shoot at a surface near a protruding section of wall. The portal intersects the wall.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Fixing overhangs
 
@@ -229,6 +268,17 @@ We'll use `Physics.CheckSphere` to check whether the start point is already insi
 
 We're able to place portals near edges properly now! Let's fix intersections next.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Fixing intersections
 
 The idea behind intersections is similar, but now we're raycasting from slightly in front of the portal's centre outwards in four directions. We'll need to raycast by different amount in each direction, so rather than declaring positions and directions as in `FixOverhangs`, this time we'll state directions and distances.
@@ -278,6 +328,17 @@ If we raycast and end up hitting a wall collider, then we're intersecting in tha
 </div>
 
 It works as intended - we don't intersect the wall! Now, let's consider something that *Portal* doesn't allow, but curiously its prototype student project *Narbacular Drop* does: shooting portals through other portals.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -335,6 +396,17 @@ We've seen this pattern before in the rendering and portal physics articles. We'
 </div>
 
 We can now fire through portals! If you want the option to turn this off, you can create a Boolean flag to wrap around this portion of code.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

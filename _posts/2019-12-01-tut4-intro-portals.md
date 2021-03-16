@@ -23,6 +23,23 @@ Ever since student project *Narbacular Drop* was adopted by Valve and spun into 
 
 This series will explore several complicated concepts: shaders, physics, maths. *Portal* isn't the only game to feature portals, of course - the first article will act as a taster and will feature a portal effect similar to classic *Spyro* - in those games, portals were, visually, just a glimpse at the skybox of another level. Then, we'll ramp things up and move onto constructing *Portal*-style portals piece by piece, starting with non-recursive portals seen in games like *Manifold Garden* and building up to recursion-based portals, as seen in *Portal*. I'll do my best to explain each step in full.
 
+Check out my recreation of the portal effect in URP over on YouTube too!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/PkGjYig8avo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 The posting schedule for this series is as follows:
 
 **Part 1**: Spyro Skyboxes | [Out now!](https://danielilett.com/2019-12-11-tut4-1-spyro-skyboxes/) | `Spyro-style Portals`

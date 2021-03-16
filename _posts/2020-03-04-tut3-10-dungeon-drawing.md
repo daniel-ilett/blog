@@ -21,6 +21,17 @@ series-name: Ultra Effects
 
 Screenshot from *Pokémon Mystery Dungeon: Rescue Team DX*.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Edge Detection
@@ -81,6 +92,17 @@ We haven't written a script to drive the effect yet - we'll handle that all at t
 
 So far so good - we've got bold edges between differently coloured regions of the image. However, we might not want to rely on this type of edge detector, as it returns strange results on shadowed areas of the image - as you can see below the catapult - and might not detect an edge where an object is placed in front of a similarly-coloured object, like some of the bushes in this image. We'll need additional information to draw edges here.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Depth-based Edges
 
 The second source of data is the depth buffer. We have also [used the depth buffer before](https://danielilett.com/2019-05-08-tut1-3-smo-blur/) on this website, but we haven't used it for drawing edges before. We have access to the camera's depth texture (which itself is a representation of the depth buffer) via `_CameraDepthTexture`, which we will include above the fragment shader with the other parameters alongside `_DepthSensitivity` and `_DepthStrength`, like the parameters we defined for colour-based edges.
@@ -126,6 +148,17 @@ Let's take a sneak peak at what the effect would look like with only depth-based
 
 Even with quite a low threshold value of 0.01, it's quite difficult to detect depth-based edges where object intersect other objects, for example objects on the ground. We'll need to combine the results of this with the third and final technique.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Normal-based Edges
 
 Alongside the depth texture, Unity can generate a normal texture which stores the direction each pixel is 'facing' in 3D space. This is useful for us for detecting objects placed on the ground - the difference in the normal vectors of pixels near the contact point will be quite large. We'll need to instruct Unity to generate this texture inside a script, which we'll deal with later. For now, let's add `_CameraDepthNormalsTexture`, `_NormalsSensitivity` and `_NormalsStrength` to our properties section of the shader.
@@ -160,7 +193,16 @@ Let's see what the effect looks like with only normals-based edge detection.
 
 <img data-src="/img/tut3/part10-normals-edge.jpg" class="center-image lazyload" alt="Normal-based Edges">
 
-This is great! Edges show up very well in general. However, the effect does fall flat when a section of the image obscures another section which is perpendicular, like the pool of water at the front of this image. It's clear we'll need to combine these approaches.
+This is great! Edges show up very well in general. However, the effect does fall flat when a section of the image obscures another section which is perpendicular, like the pool of water at the front of this image. It's clear we'll need to combine these approaches.<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Combining Techniques
 
@@ -216,6 +258,17 @@ Graphics.Blit(src, dst, baseMaterial);
 ~~~
 
 That's all we need for the script. By creating a new **Outline** effect asset (or attaching the one at *Effects/Outline.asset* to the camera image effect script), you'll be able to see the effect for yourself in the Unity Editor.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -340,6 +393,17 @@ When combined with the outline (as you can see if you attach *Effects/MysteryDun
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

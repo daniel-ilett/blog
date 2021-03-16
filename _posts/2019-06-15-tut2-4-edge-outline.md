@@ -105,6 +105,17 @@ If we run the shader now, after setting the `_OutlineSize` to something like 0.0
 
 Something's not right. If you look very closely, you'll notice the entirety of Ethan is shaded with the `_OutlineColour`, which might not be what you wanted. Let's fix it by introducing a powerful new tool: stencils.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Stencil Buffer
@@ -180,6 +191,17 @@ Comp notequal
 We can modify `Pass` or `Fail` parameters if we wish, but the defaults are also fine. Now, when we run our shader, we should have the outline effect we've been aiming for!
 
 <img data-src="/img/tut2/part4-ethan-complete.jpg" class="center-image lazyload" alt="Ethan Good Outline">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

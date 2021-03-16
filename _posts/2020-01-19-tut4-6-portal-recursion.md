@@ -10,12 +10,21 @@ tags: [unity, shaders, portals, screenspace-sampling, recursion]
 nice-slug: Portal Recursion
 date: 2020-01-19
 idnum: 36
+
+part-label: 6
+series-name: Portals
 ---
 
 We've now dealt with almost all the moving parts of portals. We can fire portals at walls and floors, with **automatic position and rotation correction**. We can place a **virtual camera** at the correct place and paste a screenshot of the world on the portal's surface, with **correct oblique near-plane camera clipping**. And we can even throw objects including the player through the portals and **preserve their velocity** relative to their new location. Alas, we're unable to look through a chain of portal surfaces and seamlessly see a sequence of portal views through each - until now.
 
 {: .box-note}
 It's a good idea to make sure you have the latest version of the code, available [on GitHub](https://github.com/daniel-ilett/shaders-portal).
+
+Check out my recreation of the portal effect in URP over on YouTube too!
+
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/PkGjYig8avo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
+</div>
 
 <hr/>
 
@@ -33,6 +42,17 @@ But here's the trick: if we want to perform recursive iterations, then we can do
 
 {: .box-note }
 Note that we will still include a stencil on the screen-space sampling shader. We aren't using the stencil for portal rendering - we're using it to correctly cull parts of the portal outline.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Recursive portal shader
 
@@ -99,6 +119,17 @@ fixed4 frag(v2f i) : SV_Target
 ~~~
 
 The shader is now finished - so let's move on to the script that controls image capture.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Recursive portal scripting
 
@@ -207,6 +238,17 @@ And that's all there is to it. Running the game will result in portals that perf
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

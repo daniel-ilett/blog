@@ -33,6 +33,17 @@ The shader graph created in this tutorial is [available as part of the project's
 
 Also, it's almost the first anniversary of this website! My first post was on April 20th 2019, and since then, I've been pumping out primarily Unity tutorials at a rate of just less than one a week. This is now the 45th article - I'm extremely grateful to everyone who has read and shared my work! If you enjoy what I do, I would greatly appreciate if you could take 5 minutes to take a look at [my Patreon](https://www.patreon.com/danielilett?fan_landing=true) - I aim to keep the bulk of my content free, but Patrons get a few little extras as a thank you for their support. All of their names are at the bottom of each article!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Dissolve Effect
@@ -106,6 +117,17 @@ Rather than modify the cutoff threshold in the graph, as the Brackeys example do
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

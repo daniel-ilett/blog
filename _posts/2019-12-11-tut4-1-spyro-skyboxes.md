@@ -19,6 +19,17 @@ series-name: Portals
 
 <img data-src="/img/tut4/part1-spyro-portals.jpg" class="center-image lazyload" alt="Spyro Portal">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Skyboxes and Cubemaps
@@ -83,6 +94,17 @@ Let's see what this looks like assigned to an object in Unity. First, we must cr
 In the `SpyroPortals` scene, found at *Scene/SpyroPortals.unity*, you'll find those materials attached to the portal and skybox already. The 'skybox' in this case is a huge sphere attached to the camera as a child object, and the portal surface is a flat plane in the centre of a portal frame model. Entering Play Mode and panning around the scene will let you see the innards of the portal in action - try looking into it at all sorts of angles!
 
 <img data-src="/img/tut4/part1-portal-frame.jpg" class="center-image lazyload" alt="Portal Frame">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -210,6 +232,17 @@ All that's left to do is to swap the two materials once we've walked through the
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

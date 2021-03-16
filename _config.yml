@@ -149,15 +149,15 @@ series-list:
     - label: 12
       link: https://danielilett.com/2020-10-31-tut5-12-urp-retro-consoles/
     - label: 13
-      link: https://danielilett.com/
+      link: https://danielilett.com/2021-01-26-tut5-13-urp-octocamo/
     - label: 14
-      link: https://danielilett.com/
+      link: https://danielilett.com/2021-02-04-tut5-14-ice-refraction/
 - series-name: Unity Basics
   series-parts:
     - label: 1
-      link: https://danielilett.com/2021-01-20-basics-1-intro-to-c-sharp/
+      link: https://danielilett.com/2021-01-29-basics-1-intro-to-c-sharp/
     - label: 2
-      link: https://danielilett.com/2021-01-27-basics-2-intro-to-shader-graph/
+      link: https://danielilett.com/2021-02-01-basics-2-intro-to-shader-graph/
 
 # --- Background colour/image options --- #
 

@@ -60,6 +60,17 @@ Run the shader effect by dragging an `ImageEffectBase` component onto your main 
 
 <img data-src="/img/tut1/part5-scene-nes.jpg" class="center-image lazyload" alt="NES">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Pixelation
 
 We looked at downsampling an image back in the Blur tutorial. The effect we're looking for is to make our image smaller, perform the colour transformation on the smaller image, then expand the image back to screen size - but if we did this the same way as before, it'd blur the result. As a starting point, we shall do the same as before and then discuss how to avoid the blurring. We'll create a new C# script called `ImageEffectPixelate.cs` and let it inherit from `ImageEffectBase`.
@@ -123,6 +134,17 @@ return float4(r / 5.0, g / 5.0, b / 5.0, 1.0);
 Looking good so far! Together with `ImageEffectPixelate`, the effect is looking quite strong. However, I think we can go one step further with the effect - NES and SNES games were played on CRTs, which certainly don't look this crisp. We're going to implement features to make our effect more like the Snapshot Mode effect, then go above and beyond.
 
 <img data-src="/img/tut1/part5-scene-snes.jpg" class="center-image lazyload" alt="SNES">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## CRT
 
@@ -274,6 +296,17 @@ To emulate the look and feel of an NES or SNES game, I recommend attaching - in 
 
 <img data-src="/img/tut1/part5-scene-snes-crt-bloom.jpg" class="center-image lazyload" alt="SNES with CRT & Bloom">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 <img data-src="/img/tut1/part5-gb.jpg" class="center-image lazyload" alt="GB Filter">
@@ -319,6 +352,17 @@ return float4(col, 1.0);
 We have seen `saturate` before - it bounds the value passed into it between 0 and 1. We have also seen `lerp` before, which gives us a value between its first and second parameters based on its third parameter. Since our input is an integer, the first line here asks the question "is `gb` greater than 0" - if not, set `col` equal to `_GBDarkest`, and if so, set `col` to `_GBDark` (since the third parameter to `lerp` is bounded to 1 by `saturate`). We then do this again, but after subracting 1 from `gb`. Now we're asking "is `gb` greater than 1" - if not, don't change the value of `col`, and if so, set `col` to `_GBLight`. This process of cascading through `lerp` calls and subtracting from a `saturate` is something you may see often.
 
 <img data-src="/img/tut1/part5-scene-gb.jpg" class="center-image lazyload" alt="Game Boy">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

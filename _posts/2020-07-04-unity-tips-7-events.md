@@ -23,6 +23,17 @@ My favourite programming book, hands-down, is *[Game Programming Patterns](https
 
 This pattern exists to replace direct function calls with a system where **observers** (a class which wishes to receive messages) *subscribe* to a **subject** (the class sending the messages). In this pattern, a subject doesn't know any details about who is subscribing to it - it just maintains a list of some `Observer` type or similar. This is good because the subject can send the same message to any number of observers, and those observers can implement custom event-processing behaviour on their end. Without this pattern, the event-processing logic occurs on the subject's end, which strongly couples together the subject and all its observers. We'll go into more detail about this pattern later.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Unity SendMessage
@@ -102,6 +113,17 @@ public void GetHit()
 
 In this example, an **observer** pattern doesn't make much sense - that would mean all objects capable of being hit need to subscribe to all objects that could hit them. The sender would still need to know which object it hit anyway, so that all other subscribers can ignore the message since they're not being hit. However, an alternative scenario sees an object updating some UI element when it is hit, such as a health bar. Here, the health bar is just watching the health value of the first object and will spring into action when it changes, but the object shouldn't need to know that. The object ought to broadcast some message to the wider world mentioning its health has changed without worrying who is listening. That's where **events** come in.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # C# Events
@@ -162,6 +184,17 @@ private void OnDestroy()
 ~~~
 
 Basic events are as easy as that! However, you probably noticed we didn't send any useful data to the subscribers. Let's look at two ways to send extra data - the "custom delegate" way and the "custom `EventArgs`" way.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Custom delegates
 
@@ -233,6 +266,17 @@ private void UpdateHealthBar(object sender, HealthEventArgs e)
 And that's how to use custom `EventArgs`. We established in the `SendMessage` section that there are problems that don't really fit the **Observer** pattern, but if you've found a problem where you can reasonably choose between normal method calls, `SendMessage` and C# events, then there are advantages of using C# events. Compared to `SendMessage`, there is no reflection so it's much faster, and we can take advantage of compile-time type checking to avoid common errors like misspelling a method name. And compared to a traditional method call, we've removed the burden on the publisher to keep a list of all the objects it needs to send messages to; it makes a lot more sense for the subscribers to locate the publisher and register themselves as a listener. With events, a wide range of different classes can become subscribers, as long as they contain a matching method - with direct method calls, all 'subscribers' would have to be the same type, or otherwise inherit a common `interface`. In my opinion, events deal with this more elegantly. The drawback is that they take a bit longer to get used to, but hopefully this tutorial goes some way to alleviating that issue.
 
 The other major drawback of C# events is that they exist solely within code, so they are not quite as friendly for non-programmers. Luckily, C# events are not the only mechanism for event invocation in Unity.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -320,6 +364,17 @@ The `HealthChangedEvent` type is essentially just a `UnityEvent<int>`, and by la
 <img data-src="/img/unity-tips/part7-unity-event-inspector-int.jpg" class="center-image lazyload" alt="Dynamic int">
 
 The other useful feature of `UnityEvent` is that we can also add methods which *don't* match the parameter list - they will just fire normally without receiving the data passed into `Invoke`. You can add up to four parameters by using `UnityEvent<int, string>`, or `UnityEvent<float, int, bool>` and so on - just use the "extension class" trick above to make it pop up in the Inspector.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

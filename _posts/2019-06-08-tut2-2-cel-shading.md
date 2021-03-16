@@ -68,6 +68,17 @@ float4 LightingCel(SurfaceOutput s, half3 lightDir, half atten)
 
 Now our surface shader is ready to build a cel-shaded effect on!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Cel-shading implementation
 
 The most basic way of implementing two-tone cel-shading - that is, cel-shading with one light section and one dark section - is to specify a cutoff point on the dot product value - above the cutoff, the material is lit, and below the cutoff, it's in shade.
@@ -109,6 +120,17 @@ You'll see I've kept the same `diffuse` calculation, but I've used it to calcula
 You should now have a very small lighting falloff that gives our object a less harsh transition from light to dark. It's fully controllable from the material in the Inspector. Beware that large values for the `_Antialiasing` variable (called `Band smoothing` in the Inspector) look atrocious, so keep it low!
 
 <img data-src="/img/tut2/part2-cel-shaded-falloff-surf.jpg" class="center-image lazyload" alt="Smooth Falloff Surf">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Specular lighting
 
@@ -160,6 +182,17 @@ return float4(col, s.Alpha);
 ~~~
 
 <img data-src="/img/tut2/part2-cel-shaded-surf.jpg" class="center-image lazyload" alt="Specular Surf">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -223,6 +256,17 @@ fixed4 frag (v2f i) : SV_Target
 With that, you should see a cel-shaded object like the surface shader version.
 
 <img data-src="/img/tut2/part2-cel-shaded-frag.jpg" class="center-image lazyload" alt="Specular Frag">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

@@ -18,6 +18,17 @@ Throughout May, I released [a series of image effect shaders]({% post_url 2019-0
 
 The philosophy of the series was to take apart each effect and get to the fundamentals of how they worked - the maths behind each and the shader techniques required. I'd like to return to image effects, but rather than cleaning up the rest of SMO's shaders, I'll open this series up to effects not seen in the game. That means more variety!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 The posting schedule for this series is as follows:

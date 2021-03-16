@@ -23,6 +23,17 @@ This article was available to [$5+ Patreon supporters](https://www.patreon.com/b
 
 Garbage Collection is a process used by several programming languages and software tools to clean up portions of memory that are no longer being used by the application. Without a garbage collector, these programs will be unable to allocate new variables and objects because old, unused data will be taking up all the allotted memory – before long, the program will crash. But garbage collection can also be a slow process and may result in CPU spikes; there are several common operations in Unity that are deceptively heavy on the garbage collector. This article will explain how memory is managed by Unity, look at why garbage collection can be slow and explore methods for minimising GC calls.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Memory Management in Unity
@@ -36,6 +47,17 @@ When persistent resources are created at runtime in C# - be it strings, objects 
 A garbage collector operates on heap memory. In languages without garbage collection (GC), a programmer must manually free memory that is no longer in use – if you’ve heard of `memory leaks`, those occur when memory no longer in use is erroneously left un-freed. GC handles this process for us by keeping track of which memory is still in use then releasing blocks when they become unused. GC in Unity pauses the execution of all your program code until it has finished all its work. This is known as a `stop-the-world` garbage collector, which is great for software with a lot of downtime between user actions, but for games targeting at least 60 frames per second (fps) excessive GC can cause such significant CPU spikes that frames are dropped and the game stutters briefly. That’s obviously not ideal because a player might feel the game is not running smoothly. Microsoft provides [more details on how GC works](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals) in `.NET` languages such as `C#`.
 
 GC could be triggered via explicit function call in your code or implicitly by the memory manager whenever the system is running low on memory or the memory usage of your program has reached some threshold. From our perspective as game designers, we can consider the garbage collector to be a black box that could be invoked at a time outside our control, so we will concentrate on identifying actions that generate erroneous `garbage` – that is, they needlessly `allocate` and `free` blocks on the heap.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
@@ -118,6 +140,17 @@ public string GetPositionString(float[] positions)
 
 Strings are `immutable` in C#. That means the contents of a `string` cannot be modified once it is in memory and that’s why, so far, each new string has allocated brand-new heap memory. On the other hand, `StringBuilder` reserves a buffer in memory and modifies its contents in-place, so it is a `mutable` string. There’s overhead involved with reserving a bulk of memory, but without `StringBuilder` a new string would be allocated on the heap every iteration the size of the entire built string at that stage – the overall usage with `StringBuilder` is vastly reduced for big loops.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Object Instantiation and Destruction
@@ -190,6 +223,17 @@ This code provides a possible implementation of an object pool. It’s not fancy
 
 The pool should be created with enough objects to cover the ‘worst case’ maximum number of objects that might co-exist in the scene. If the game requests an object from the pool and none are inactive, there are two options: don’t spawn an object, or extend the pool. In cases such as a particle system, it might be preferable to stop spawning objects because they’re not crucial to gameplay. For something like spawning enemies, it might be acceptable to perform a one-off `Instantiate/Destroy` and rely on GC for clean-up, or you might opt to extend the pool by creating an ‘overflow’ pool.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Finding Components and GameObjects
@@ -239,6 +283,17 @@ With this solution, the GC hit is absorbed in `Awake`. If you’d like to optimi
 # Incremental Garbage Collection
 
 A new experimental feature in Unity runs the garbage collector in Incremental Mode, splitting up the GC process over several frames. One of the big issues in a demanding realtime application like a game is that the GC spike could last long enough to cause a frame drop, so one of the best mitigation strategies is to perform manual GC calls outside of normal gameplay so the player does not notice. Incremental GC goes a step further and smooths out the spikes over a few frames. There is extra overhead due to the way the work needs to be split, but the trade-off would probably be worth it if no frames are dropped. You can read more about this experimental feature on the [Unity Blog](https://blogs.unity3d.com/2018/11/26/feature-preview-incremental-garbage-collection/).
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 

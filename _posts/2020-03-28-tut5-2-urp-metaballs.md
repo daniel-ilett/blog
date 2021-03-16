@@ -27,6 +27,17 @@ There's a range of algorithms for creating metaball systems. The basic one is [m
 
 We will add a set of `GameObject`s with `Rigidbody2D` components attached and throw them into a scene, but without any `Renderer` component attached - those are our metaballs. Then, we'll pass the position and radius of each metaball to a post-processing shader, which will calculate the distance between each pixel and each metaball. Based on those distances, we'll try to find a distance threshold value which includes pixels between two metaballs, as well as pixels directly intersecting the metaball itself - pixels over the threshold get recoloured. And here we meet the elephant in the room: there is currently no official support for custom post processing in URP. But there is a work-around.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Custom Post Process in URP
@@ -140,6 +151,17 @@ public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingD
 
 That covers the setup required for a new render feature - if you were writing from scratch, this should already be visible on your **Forward Renderer**, although nothing will happen if you add it to the feature list. This setup was inspired by [Sebastien Hein's URP Kawase Blur project](https://github.com/sebastianhein/urp_kawase_blur) - do give it a look on GitHub! Now, we'll talk about metaballs.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <hr/>
 
 # Metaballs Post Process
@@ -231,6 +253,17 @@ float4 frag (v2f_img i) : SV_Target
 ~~~
 
 Now, we'll discuss what the strategy is. For each metaball, we'll measure the distance between it and the pixel and calculate how many metaball radiuses that is. If it's less than one radius, the pixel is inside a metaball and it'll fall below a threshold value. In order to account for pixels in between two metaballs, we will actually use a distance of two radiuses in the check and modify the threshold value accordingly.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 Let's write the shader and explain in detail why each stage works. We start by defining the `dist` variable, which keeps track of whether a pixel falls inside a metaball, then we'll create a for-loop to iterate over the metaball data list. The smaller the final value of `dist`, the closer we are to the centre of a metaball.
 
@@ -348,6 +381,17 @@ Or, we can add a bouncy physics material to all of them and watch them connect, 
     Your browser does not support the video tag.
 </video>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <hr/>
 
