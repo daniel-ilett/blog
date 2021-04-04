@@ -15,13 +15,13 @@ part-label: 1
 series-name: Unity Basics
 ---
 
+Everyone starts somewhere. Scripting is not necessary for making games, but it can be extremely helpful to know just a little bit of programming, even if you don't intend to become a programmer - you'll have more insight into the coding mindset, which will help you communicate more effectively in a team. Or you do want to become a programmer, in which case, it's time to get you up to speed on how scripting in Unity works. Introductory programming tutorials can be a little dry but stick with it and over time we'll do more and more interesting things with code!
+
 {: .box-note}
 Unity Basics aims to teach you a little part of Unity in an easy-to-understand and clear format.
 
 {: .box-warning}
 This tutorial is aimed at people who have never scripted/coded before, but may have some familiarity with the Unity Editor.
-
-Everyone starts somewhere. Scripting is not necessary for making games, but it can be extremely helpful to know just a little bit of programming, even if you don't intend to become a programmer - you'll have more insight into the coding mindset, which will help you communicate more effectively in a team. Or you do want to become a programmer, in which case, it's time to get you up to speed on how scripting in Unity works. Introductory programming tutorials can be a little dry but stick with it and over time we'll do more and more interesting things with code!
 
 Also check out this tutorial on my YouTube channel if reading isn't your thing:
 

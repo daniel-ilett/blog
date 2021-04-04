@@ -15,13 +15,13 @@ part-label: 2
 series-name: Unity Basics
 ---
 
+Shader Graph is a tool for creating shaders in a visual way - without code. Unity provides the most common and useful operations in the form of nodes, which we can place on a graph and connect together to make more complex behaviour, and in this tutorial, we'll learn how Shader Graph works and how you can create your very first shader! I'm using Shader Graph 7.3.1, so this tutorial may not be fully accurate for later versions of Shader Graph, but many of the concepts will be the same.
+
 {: .box-note}
 Unity Basics aims to teach you a little part of Unity in an easy-to-understand and clear format.
 
 {: .box-warning}
 This tutorial is aimed at people who have never used Shader Graph before, but ideally you have a bit of experience with the Unity Editor.
-
-Shader Graph is a tool for creating shaders in a visual way - without code. Unity provides the most common and useful operations in the form of nodes, which we can place on a graph and connect together to make more complex behaviour, and in this tutorial, we'll learn how Shader Graph works and how you can create your very first shader! I'm using Shader Graph 7.3.1, so this tutorial may not be fully accurate for later versions of Shader Graph, but many of the concepts will be the same.
 
 Also check out this tutorial on my YouTube channel if reading isn't your thing:
 

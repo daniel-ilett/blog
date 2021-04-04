@@ -152,12 +152,36 @@ series-list:
       link: https://danielilett.com/2021-01-26-tut5-13-urp-octocamo/
     - label: 14
       link: https://danielilett.com/2021-02-04-tut5-14-ice-refraction/
+    - label: 15
+      link: https://danielilett.com/2021-03-19-tut5-15-wall-cutout/
+    - label: 16
+      link: https://danielilett.com/2021-03-25-tut5-16-snow-layers/
 - series-name: Unity Basics
   series-parts:
     - label: 1
       link: https://danielilett.com/2021-01-29-basics-1-intro-to-c-sharp/
     - label: 2
       link: https://danielilett.com/2021-02-01-basics-2-intro-to-shader-graph/
+    - label: 3
+      link: https://danielilett.com/2021-04-02-basics-3-shaders-in-urp/
+    #- label: 4
+    #  link: https://danielilett.com/2021-04-12-basics-4-reverse-engineering-effects/
+- series-name: Bytesize Gamedev
+  series-parts:
+    - label: 1
+      link: https://danielilett.com/2021-04-05-bytesize-1-easy-outlines/
+    #- label: 2
+    #  link: https://danielilett.com/2021-04-06-bytesize-2-sprite-wobble/
+    #- label: 3
+    #  link: https://danielilett.com/2021-04-07-bytesize-3-minecraft-enchantment/
+    #- label: 4
+    #  link: https://danielilett.com/2021-04-08-bytesize-4-easy-refraction/
+    #- label: 5
+    #  link: https://danielilett.com/2021-04-09-bytesize-5-serialize-field/
+    #- label: 6
+    #  link: https://danielilett.com/2021-04-10-bytesize-6-mesh-explosion/
+    #- label: 7
+    #  link: https://danielilett.com/2021-04-11-bytesize-7-animated-properties/
 
 # --- Background colour/image options --- #
 

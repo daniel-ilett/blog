@@ -8,17 +8,17 @@ gh-repo: daniel-ilett/shaders-wall-cutout
 gh-badge: [star, fork, follow]
 tags: [unity, shader-graph, wall, cutout]
 nice-slug: Wall Cutout
-date: 2021-03-29
+date: 2021-03-19
 idnum: 60
 
 part-label: 15
 series-name: URP
 ---
 
+Many games need to show the player something on the other side of a wall. There are several solutions to this: a platformer might snap the camera just past the wall and zoom in on the target, whereas a stealth game might use "x-ray" vision to render enemies or other points of interest over the walls. There's another approach we can use: just cut a big old hole in the wall using shaders. In this tutorial, we're going to be using some shader techniques to do just that.
+
 {: .box-warning}
 This tutorial is aimed at people who have at least some experience with Shader Graph. We are using Unity 2020.1 and URP/Shader Graph 10.2.2.
-
-Many games need to show the player something on the other side of a wall. There are several solutions to this: a platformer might snap the camera just past the wall and zoom in on the target, whereas a stealth game might use "x-ray" vision to render enemies or other points of interest over the walls. There's another approach we can use: just cut a big old hole in the wall using shaders. In this tutorial, we're going to be using some shader techniques to do just that.
 
 Check out this tutorial over on YouTube too!
 
@@ -169,18 +169,18 @@ This project uses the [3D Free Modular Kit](https://assetstore.unity.com/package
 
 [Support me on Patreon](https://www.patreon.com/danielilett) or [buy me a coffee on Ko-fi](https://ko-fi.com/danielilett) for PDF versions of each article and to access certain articles early! Some tiers also get early access to my [YouTube videos](https://www.youtube.com/channel/UClgoE54W_4rX7jzZGiCmrXw) or even copies of my [asset packs](https://itch.io/c/798909/my-asset-packs)!
 
-#### Special thanks to my Patreon backers for January 2021!
+#### Special thanks to my Patreon backers for March 2021!
 
 <p style="text-align: center;">
 Gemma Louise Ilett<br/>
 
-JP<br/>
+JP $$\cdot$$ Pablo Ruiz<br/>
 
-Jack Dixon $$\cdot$$ Tuomas Männistö<br/>
+Jack Dixon $$\cdot$$ Paul Froggatt $$\cdot$$ Tuomas Männistö $$\cdot$$ Sébastien Perouffe<br/>
 
 Chris Sims $$\cdot$$ FonzoUA $$\cdot$$ Jesper Kuutti $$\cdot$$ MR MD HARDING $$\cdot$$ Maya Nedeljkovich $$\cdot$$ Moishi Rand $$\cdot$$ Shaun Wall<br/>
 
-Anna Voronova $$\cdot$$ James Poole $$\cdot$$ Christopher Pereira $$\cdot$$ sadizeng $$\cdot$$ Zachary Alstadt
+Anna Voronova $$\cdot$$ Christopher Pereira $$\cdot$$ Harshad $$\cdot$$ James Poole $$\cdot$$ sadizeng $$\cdot$$ Zachary Alstadt
 </p>
 
 #### And a shout-out to my top Ko-fi supporters!

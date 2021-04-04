@@ -15,10 +15,10 @@ part-label: 13
 series-name: URP
 ---
 
+The Octocamo mechanic in *Metal Gear Solid 4: Guns of the Patriots* is an extension of the same mechanic from *MGS3*, with the additional feature where your camouflage *automatically* adjusts to your environment. In this tutorial, we will interact with Unity's terrain system to figure out which texture the player is stood on, then automatically change the texture on the player's camouflage material with a bit of interpolation.
+
 {: .box-warning}
 This tutorial is aimed at people who have at least some experience with Shader Graph and C# scripting. We are using Unity 2019.4 and URP 7.3.1. It may also help if you have some knowledge of the terrain system, but it's not required here.
-
-The Octocamo mechanic in *Metal Gear Solid 4: Guns of the Patriots* is an extension of the same mechanic from *MGS3*, with the additional feature where your camouflage *automatically* adjusts to your environment. In this tutorial, we will interact with Unity's terrain system to figure out which texture the player is stood on, then automatically change the texture on the player's camouflage material with a bit of interpolation.
 
 Also check out this same tutorial over on my YouTube channel:
 

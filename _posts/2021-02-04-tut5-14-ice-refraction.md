@@ -15,10 +15,10 @@ part-label: 14
 series-name: URP
 ---
 
+Ice levels are a staple of videogame culture. Like the classic fire levels and water temples of the gaming world, ice mechanics are universally loved by gamers everywhere. But there are many ways to render ice, and today, we're going to see a cheap - but effective - way to fake ice refraction using simple trickery.
+
 {: .box-warning}
 This tutorial is aimed at people who have at least some experience with Shader Graph. We are using Unity 2019.4 and URP 7.3.1.
-
-Ice levels are a staple of videogame culture. Like the classic fire levels and water temples of the gaming world, ice mechanics are universally loved by gamers everywhere. But there are many ways to render ice, and today, we're going to see a cheap - but effective - way to fake ice refraction using simple trickery.
 
 Check out this tutorial over on YouTube too!
 
