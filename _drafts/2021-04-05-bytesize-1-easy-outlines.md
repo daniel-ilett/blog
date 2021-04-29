@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bytesize Gamedev #1 - Easy Outlines"
+title: "Bytesize Gamedev #1 - Easy Outlines in Shader Graph"
 subtitle: 
 bigimg: /img/bytesize/part1-bigimg.jpg
 hdrimg: /img/bytesize/part1-banner.jpg
@@ -41,7 +41,54 @@ Also check out this tutorial on my YouTube channel maybe? Remember to subscribe 
 
 <hr/>
 
+# Easy Outlines
 
+We'll start by creating a new graph by right-clicking in the Project View and selecting *Create -> Shader -> Universal Render Pipeline -> Unlit Shader Graph* (or *Create -> Shader -> Unlit Graph* on older Unity versions).
+
+<img data-src="/img/bytesize/part1-create-shader.jpg" class="center-image lazyload" alt="Create Shader." title="We want an unlit shader because the outline should have a block colour.">
+*We want an unlit shader because the outline should have a block colour.*
+
+We can set the output colour to black. Or, you could make this into a property if you want.
+
+<img data-src="/img/bytesize/part1-black-color.jpg" class="center-image lazyload" alt="Black Main Color." title="The outline will just be a single colour.">
+*The outline will just be a single colour.*
+
+Then we need to enable double-sided rendering. On older Unity versions, we use the drop-down cog menu on the master node. On newer versions, we just choose the Graph Settings. Either way, tick the "Two Sided" box.
+
+<img data-src="/img/bytesize/part1-two-sided.jpg" class="center-image lazyload" alt="Two Sided Rendering." title="There's two sides to every story.">
+*There's two sides to every story.*
+
+Now we'll disable front-facing triangles so that only back-faces are visible. Add an `Is Front Face` node, then pass it into the **Predicate** input on a `Branch` node - the **True** and **False** inputs are 0 and 1 respectively. That gets passed into the **Alpha** field on the Master node, and the **Alpha Clip Threshold** is set to 0.5.
+
+<img data-src="/img/bytesize/part1-remove-front.jpg" class="center-image lazyload" alt="Remove Front Faces." title="Pixels with alpha below Alpha Clip Threshold are deleted.">
+*Pixels with alpha below Alpha Clip Threshold are deleted.*
+
+Now we'll extend the shape of the mesh along its surface normals. Start by adding an `Outline Thickness` property - it's a `Float`/`Vector1`.
+
+We'll take a `Normal Vector` node - in **Object** space - and `Normalize` it, so its length is 1. We can `Multiply` by `Outline Thickness`, then we'll `Add` all this to a `Position` node in **Object** space. This gives us a new position for the vertex, which gets output to the **Vertex Position** pin on the Master.
+
+<img data-src="/img/bytesize/part1-extend-normals.jpg" class="center-image lazyload" alt="Extend Vertex Normals." title="This is normally the easiest way to add outlines.">
+*This is normally the easiest way to add outlines.*
+
+Attach a material using this shader to an object - as well as another material using your usual shader for the object - and here's the result:
+
+<img data-src="/img/bytesize/part1-completed-material.jpg" class="center-image lazyload" alt="Completed Material." title="Pikachu looks so happy to be highlighted like this!">
+*Pikachu looks so happy to be highlighted like this!*
+
+Thanks for reading Bytesize Gamedev, where I bring you short game development tips in an easy to digest format!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5101496396569275"
+     data-ad-slot="3740606711"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<hr/>
 
 # Acknowledgements
 
