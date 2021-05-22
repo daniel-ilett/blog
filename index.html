@@ -27,7 +27,7 @@ use-site-title: true
 
       <a href="{{ post.url | prepend: site.baseurl }}">
 
-        <div class="col-lg-6 col-md-12 nopadding">
+        <div class="col-lg-4 col-md-12 nopadding">
           {% if post.hdrimg %}
             <img data-src="{{ post.hdrimg }}" class="post-bigimg lazyload" alt="{{ post.title }}">
           {% else if post.bigimg %}
@@ -35,14 +35,22 @@ use-site-title: true
           {% endif %}
         </div>
 
-        <div class="col-lg-6 col-md-12 nopadding post-info">
+        <div class="col-lg-8 col-md-12 nopadding post-info">
 
-          <h2 class="post-title">{{ post.title }}</h2>
+          <h3 class="post-title">{{ post.title }}</h3>
 
+          <h4 class="post-meta">
+            {% if post.subtitle %}
+              {{ post.subtitle }} |
+            {% endif %}
+            Posted on {{ post.date | date: "%B %-d, %Y" }}
+          </h4>
+
+          <!--
           {% if post.subtitle %}
-          <h3 class="post-subtitle">
+          <h4 class="post-subtitle">
             {{ post.subtitle }}
-          </h3>
+          </h4>
           {% endif %}
 
           <p class="post-meta">
@@ -51,6 +59,7 @@ use-site-title: true
             {% endif %}
             Posted on {{ post.date | date: "%B %-d, %Y" }}
           </p>
+          -->
 
           <div class="post-entry-container">
             <div class="post-entry">
@@ -63,6 +72,7 @@ use-site-title: true
 
     </div>
 
+    <!--
     {% if post.tags.size > 0 %}
       <div class="blog-tags">
         Tags:
@@ -75,7 +85,7 @@ use-site-title: true
         {% endif %}
       </div>
     {% endif %}
-
+    -->
     
     
     

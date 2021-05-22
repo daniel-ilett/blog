@@ -248,7 +248,7 @@ markdown: kramdown
 mathjax: true
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
-paginate: 10
+paginate: 25
 
 kramdown:
   input: GFM
