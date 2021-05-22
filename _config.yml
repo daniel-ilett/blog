@@ -182,6 +182,10 @@ series-list:
     #  link: https://danielilett.com/2021-04-10-bytesize-6-mesh-explosion/
     #- label: 7
     #  link: https://danielilett.com/2021-04-11-bytesize-7-animated-properties/
+- series-name: Deep Dives
+  series-parts:
+    - label: 1
+      link: https://danielilett.com/2021-05-20-every-shader-graph-node/
 
 # --- Background colour/image options --- #
 

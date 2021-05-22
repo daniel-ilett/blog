@@ -20,9 +20,7 @@ Some games like [scribbl.io](https://skribbl.io/) have a cute sprite 'wobble' ef
 {: .box-note}
 Bytesize Gamedev is a series of shorter game development tutorials.
 
-By the way, I have a [Discord server](https://discord.gg/tPQEUwPpb3) for people who are making things using shaders! If you want to share something you've worked on, see what others are doing, ask questions about shaders or otherwise just wanna hang out with others who like shaders, come join us!
-
-Also check out this tutorial on my YouTube channel maybe? Remember to subscribe too!
+Hang out with me and other shader enthusiasts over on [Discord]((https://discord.gg/tPQEUwPpb3)) and share what you're working on! And check out this tutorial over on YouTube:
 
 <div class="video-embed">
 <iframe src="https://www.youtube.com/embed/xDCRah7BbIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
