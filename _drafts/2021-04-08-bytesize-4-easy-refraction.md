@@ -80,7 +80,7 @@ And the last step is to make sure our material uses transparent rendering - if w
 <img data-src="/img/bytesize/part4-transparent.png" class="center-image lazyload" alt="Transparent Surface." title="After doing this, we're clearly done.">
 *After doing this, we're clearly done.*
 
-I'd recommend not overdoing it with the effect. Just a little bit of distortion looks great.
+I'd recommend not overdoing it with the effect. Just a little bit of distortion looks great - I set the strength to 0.002.
 
 <img data-src="/img/bytesize/part4-complete.png" class="center-image lazyload" alt="Completed Effect." title="If you distort much more than this, it'll look too strong.">
 *If you distort much more than this, it'll look too strong.*
