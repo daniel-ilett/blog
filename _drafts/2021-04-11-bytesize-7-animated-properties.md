@@ -15,12 +15,12 @@ part-label: 7
 series-name: Bytesize Gamedev
 ---
 
+Once you've created your shader, you'll probably have a bunch of properties on it. But how do we control those properties at runtime? You could use a script, sure, but it might find Unity's animation tools more useful.
+
 {: .box-note}
 Bytesize Gamedev is a series of shorter game development tutorials.
 
-By the way, I have a [Discord server](https://discord.gg/tPQEUwPpb3) for people who are making things using shaders! If you want to share something you've worked on, see what others are doing, ask questions about shaders or otherwise just wanna hang out with others who like shaders, come join us!
-
-Also check out this tutorial on my YouTube channel maybe? Remember to subscribe too!
+Hang out with me and other shader enthusiasts over on [Discord]((https://discord.gg/tPQEUwPpb3)) and share what you're working on! And check out this tutorial over on YouTube:
 
 <div class="video-embed">
 <iframe src="https://www.youtube.com/embed/E8PasPdW70k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center-image lazyload"></iframe>
@@ -39,7 +39,25 @@ Also check out this tutorial on my YouTube channel maybe? Remember to subscribe 
 
 <hr/>
 
+Let's start with a shader which uses a few properties, some of which need to be animated at runtime. Here I'm using an old `Hologram` shader.
 
+
+
+Once you've attached the shader to an object, go ahead and create a new animation on the object.
+
+
+
+In the **Animation** window, click **Add Property** and pick one of your shader properties. In this case, I chose `Glitch Strength`.
+
+
+
+Start recording the animation using the red dot. Once you've done that, you can add new keyframes on the animation timeline and tweak the shader's properties on each keyframe. Right-click the keyframe icons for more options.
+
+
+
+And that's how you can use the **Animator** alongside shaders! This works for conventional shaders too, not just Shader Graph. Thanks for reading *Bytesize Gamedev*, your one-stop shop for shorter game development tips, tricks and tutorials!
+
+<hr/>
 
 # Acknowledgements
 

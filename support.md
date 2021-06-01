@@ -3,12 +3,33 @@ layout: page
 title: Support Me
 ---
 
-I'm supported by kind people like you! I'd like to keep this site ad-free and I write these tutorials on the side of my PhD work, so it would mean the world to me if you could consider supporting me on my **Patreon** or **Ko-fi** accounts!
+I'm supported by amazing people like you! I'm able to keep the site free and keep publishing articles because of those who can donate, and if you can't, then every share on social media goes a long way too!
 
-# Patreon
+<a href="https://www.patreon.com/bePatron?u=1011297">
+<img data-src="/img/support-patreon-banner.png" class="center-image lazyload" alt="Patreon Support Banner." title="">
+</a>
 
-**Patrons** will receive **PDF versions** of my articles if they pledge at least **$1** a month. Additionally, **$5+ backers** received each tutorial in my *Unity Tips* series a fortnight before everyone else. All articles eventually find their way onto this site for free; the PDFs are duplicates of existing articles for convenience offline.
+# <a href="https://www.patreon.com/bePatron?u=1011297"> Patreon </a>
+Lots of goodies are up for grabs on my Patreon, depending on the tier you choose - from early access and your name in the credits, all the way to bonus copies of my asset packs.
 
+<a href="https://ko-fi.com/danielilett">
+    <img data-src="/img/support-kofi-banner.png" class="center-image lazyload" alt="Ko-Fi Support Banner." title="">
+</a>
+
+# <a href="https://ko-fi.com/danielilett"> Ko-Fi </a>
+
+If you don't want to pledge every month, then maybe Ko-Fi is for you. If you really enjoyed one of my tutorials or videos and want to give a small contribution, then you can buy me approximately a coffee. Trust me, I appreciate the coffee!
+
+# Email Newsletter
+
+And of course, a great way to support the site is to stay on top of new articles. You can do that with good old-fashioned email!
+
+<div class="ml-form-embed"
+  data-account="3184597:y8s9f0k4m1"
+  data-form="4162900:h3f8o9">
+</div>
+
+<!--
 <div markdown="0">
     <a href="https://www.patreon.com/bePatron?u=1011297" id="patreon-button-link" target="_blank">
     <div class="patreon-button">
@@ -16,11 +37,9 @@ I'm supported by kind people like you! I'd like to keep this site ad-free and I 
     </div>
     </a>
 </div>
+-->
 
-# Ko-fi
-
-If the idea of pledging money each month is off-putting for you, **Ko-fi** lets you give a one-off tip to the creators you want to support! Better still, **Ko-fi** takes *zero percent* of your pledge, unlike **Patreon**, which has platform fees. I'll use **Ko-fi** in a similar way to my **Patreon**: you'll get a small number of articles early and exclusive PDF copies of articles. All articles will make their way onto [danielilett.com](https://danielilett.com/).
-
+<!--
 <div markdown="0">
     <script type='text/javascript' src='https://ko-fi.com/widgets/CounterWidget.js'>
     </script>
@@ -29,6 +48,7 @@ If the idea of pledging money each month is off-putting for you, **Ko-fi** lets 
         counterwidget.draw();
     </script>
 </div>
+-->
 
 <!--
 <div markdown="0">

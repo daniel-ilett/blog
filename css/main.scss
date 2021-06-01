@@ -1024,3 +1024,34 @@ td.gutter {
 {
   background-color: var(--code-short-background-color);
 }
+
+// Shopify button
+
+.shopify-buy__product__title
+{
+  color: var(--main-text-color);
+}
+
+.shopify-buy__product__price
+{
+  color: var(--main-text-color);
+}
+
+.shopify-box
+{
+  width: 100%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+// Snapshot Shaders Pro
+
+.snapshot-intro
+{
+  margin-bottom: 20px;
+}

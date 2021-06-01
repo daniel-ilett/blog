@@ -1,15 +1,15 @@
 ---
 layout: page
-title: Asset Packs
+title: Snapshot Shaders Pro
 ---
-
-Here are all the assets or asset packs I've published. Some of them are still receiving updates so check back every now and then for more details! Some are even provided as bonuses for certain tiers on [Patreon](https://www.patreon.com/danielilett).
 
 <div class="posts-list" markdown="0">
     <article class="post-preview">
         <div class="row nopadding">
-            <div class="col-lg-12 col-md-12 nopadding">
-                <div class="col-lg-5 col-md-12 nopadding">
+            <h2 class="text-center">For Unity 2019.3+ | URP | HDRP | Built-in</h2>
+            <br/>
+            <div class="col-lg-12 col-md-12 nopadding snapshot-intro">
+                <div class="col-lg-4 col-md-12">
                     <!--<a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shaders-pro-160556">
                         <img data-src="/img/assets/snapshot-pro.jpg" class="post-bigimg lazyload"/>
                     </a>-->
@@ -81,36 +81,18 @@ Here are all the assets or asset packs I've published. Some of them are still re
                     })();
                     /*]]>*/
                     </script>
-                </div>
-                <div class="col-lg-7 col-md-12 nopadding post-info">
-                    <h2 class="post-title">
-                        Snapshot Shaders Pro
-                    </h2>
-                    <!--<h3 class="post-subtitle">
-                        $13.99
-                    </h3>-->
-                    <h4>
-                        Unity 2019.3+ | URP, HDRP, Built-in (PPv2)
-                    </h4>
-                    <div>
-                        <i>Snapshot Shaders Pro</i> is an asset pack that adds <b>23 new post processing effects</b> (plus variants) to Unity, including <b>Painting, Outline, Dither and more!</b>
-                    </div>
-                    <div class="asset-btn">
+                    <!--<div class="asset-btn text-center">
                         <a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shaders-pro-160556" class="btn btn-default" role="button">
-                            <i class="fab fa-unity"></i>Get it on the Unity Asset Store!
+                            <i class="fab fa-unity"></i> Get it on the Unity Asset Store!
                         </a>
                     </div>
-                    <div class="asset-btn">
+                    <div class="asset-btn text-center">
                         <a href="https://danielilett.itch.io/snapshot-shaders-pro-hdrp" class="btn btn-default" role="button">
-                            <i class="fab fa-itch-io"></i>Get it on itch.io!
+                            <i class="fab fa-itch-io"></i> Get it on itch.io!
                         </a>
-                    </div>
-                    <br/>
-                    <div><span class="label label-primary">New in Version 1.4!</span> Cutout, Sharpen, Invert, Radial Blur, Glitch and Light Streaks effects! </div> <br/>
-                    <div><span class="label label-success">Coming in Version 1.5!</span> Barrel Distortion, Colorize, Vortex and Halftone effects! </div>
+                    </div>-->
                 </div>
-                <br/>
-                <div class="col-lg-12 col-md-12 nopadding">
+                <div class="col-lg-8 col-md-12 nopadding post-info">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
@@ -230,41 +212,77 @@ Here are all the assets or asset packs I've published. Some of them are still re
                     </div>
                 </div>
             </div>
-        </div>
-    </article>
-    <article class="post-preview">
-        <div class="row nopadding">
-            <div class="col-lg-5 col-md-12 nopadding">
-                <a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shader-collection-146666">
-                    <img data-src="/img/assets/snapshot-free.jpg" class="post-bigimg lazyload" alt="Snapshot Shaders (Free)"/>
-                </a>
+            <div class="col-lg-12 col-md-12 nopadding">
+                <p>
+                    <i>Snapshot Shaders Pro</i> adds <b>23 new post processing effects</b> (plus variants) to Unity, including <b>Painting, Outline, Dither and more!</b>
+                    <br/>
+                    Compatible with all modern versions of Unity and each render pipeline, including built-in.
+                    <br/>
+                    Here you will find all the documentation needed to create powerful effects to supercharge your game's appearence.
+                </p>
+                <!--<br/>
+                <div><span class="label label-primary">New in Version 1.4!</span> Cutout, Sharpen, Invert, Radial Blur, Glitch and Light Streaks effects! </div> <br/>
+                <div><span class="label label-success">Coming in Version 1.5!</span> Barrel Distortion, Colorize, Vortex and Halftone effects! </div>-->
             </div>
-            <div class="col-lg-7 col-md-12 nopadding post-info">
-                <h2 class="post-title">
-                    Snapshot Shader Collection
-                </h2>
-                <h3 class="post-subtitle">
-                    Free
-                </h3>
-                <h4>
-                        Unity 2019.2+ | Built-in
-                    </h4>
-                <div>
-                    <i>Snapshot Shader Collection</i> is a small collection of image effects for Unity's built-in renderer.
+            <div class="col-lg-12 col-md-12 nopadding">
+                <hr/>
+            </div>
+            <div class="col-lg-12 col-md-12 nopadding doc-page">
+                <div class="col-lg-3 col-md-12 nopadding doc-nav">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="/snapshot">Snapshot Shaders Pro</a></li>
+                        <li><a href="/snapshot/snapshot-install">Installation Guide</a></li>
+                        <li><a href="#">Scripting Guide</a></li>
+                        <hr/>
+                        <li><a href="#">Halftone <span class="badge">1.5</span></a></li>
+                        <li><a href="#">Barrel Distortion <span class="badge">1.5</span></a></li>
+                        <li><a href="#">Vortex <span class="badge">1.5</span></a></li>
+                        <li><a href="#">Dither 3D <span class="badge">1.5</span></a></li>
+                        <li><a href="#">Colorize <span class="badge">1.5</span></a></li>
+                        <hr/>
+                        <li><a href="#">Cutout <span class="badge">1.4</span></a></li>
+                        <li><a href="#">Glitch <span class="badge">1.4</span></a></li>
+                        <li><a href="#">Invert <span class="badge">1.4</span></a></li>
+                        <li><a href="#">Light Streaks <span class="badge">1.4</span></a></li>
+                        <li><a href="#">Radial Blur <span class="badge">1.4</span></a></li>
+                        <li><a href="#">Sharpen <span class="badge">1.4</span></a></li>
+                        <hr/>
+                        <li><a href="#">Drawing <span class="badge">1.2</span></a></li>
+                        <li><a href="#">Dither (Basic) <span class="badge">1.2</span></a></li>
+                        <li><a href="#">Kaleidoscope <span class="badge">1.2</span></a></li>
+                        <li><a href="#">Scalines <span class="badge">1.2</span></a></li>
+                        <li><a href="#">Outlines (Fancy) <span class="badge">1.2</span></a></li>
+                        <li><a href="#">Neon (Fancy) <span class="badge">1.2</span></a></li>
+                        <hr/>
+                        <li><a href="#">Oil Painting <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Underwater <span class="badge">1.0</span></a></li>
+                        <li><a href="#">SNES <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Game Boy <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Outline (Sobel) <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Neon (Sobel) <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Silhouette <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Mosaic <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Pixelate <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Film Bars <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Blur <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Greyscale <span class="badge">1.0</span></a></li>
+                        <li><a href="#">Sepia Tone <span class="badge">1.0</span></a></li>
+                    </ul>
                 </div>
-                <div class="asset-btn">
-                    <a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/snapshot-shader-collection-146666" class="btn btn-default" role="button">
-                        <i class="fab fa-unity"></i>Get it on the Unity Asset Store!
-                    </a>
-                </div>
-                <div class="asset-btn">
-                    <a href="https://danielilett.itch.io/snapshot-shader-collection" class="btn btn-default" role="button">
-                        <i class="fab fa-itch-io"></i>Get it on itch.io!
-                    </a>
+                <div class="col-lg-9 col-md-12 doc-content">
+                    <h2>What is Snapshot Shaders Pro?</h2>
+                    <i>Snapshot Shaders Pro</i> contains many new post-processing features for your games. It's intended for PC game usage - while some effects may work on mobile or VR, neither of those platforms are officially supported. 
+                    <p>
+                        I made this shader pack because I wanted a set of plug-and-play image effect shaders I could use in my own games. It evolved into <i>Snapshot Shaders Pro</i>, which started out as a pack for the built-in post-processing stack and eventaully gained support for URP and HDRP in later updates.
+                    </p>
+                    <p>
+                        On this page, you'll find documentation on individual effects. Here are the bigger features:
+                    </p>
+                    <h3>✨ Works out of the box</h3>
+                    <h3>✨ Volume Support</h3>
+                    <h3>✨ Customise effects with additional options</h3>
                 </div>
             </div>
         </div>
     </article>
 </div>
-
-
