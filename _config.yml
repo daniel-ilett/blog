@@ -18,6 +18,7 @@ navbar-links:
   Snapshot Shaders Pro: "snapshot"
   Support Me: "support"
   About: "aboutme"
+  Mailing List: "mailing-list"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
@@ -170,9 +171,9 @@ series-list:
 - series-name: Bytesize Gamedev
   series-parts:
     - label: 1
-      link: https://danielilett.com/2021-04-05-bytesize-1-easy-outlines/
-    #- label: 2
-    #  link: https://danielilett.com/2021-04-06-bytesize-2-sprite-wobble/
+      link: https://danielilett.com/2021-06-09-bytesize-1-easy-outlines/
+    - label: 2
+      link: https://danielilett.com/2021-06-18-bytesize-2-sprite-wobble/
     #- label: 3
     #  link: https://danielilett.com/2021-04-07-bytesize-3-minecraft-enchantment/
     #- label: 4

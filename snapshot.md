@@ -231,10 +231,10 @@ title: Snapshot Shaders Pro
                 <div class="col-lg-3 col-md-12 nopadding doc-nav">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a href="/snapshot">Snapshot Shaders Pro</a></li>
-                        <li><a href="/snapshot/snapshot-install">Installation Guide</a></li>
+                        <li><a href="/snapshot/install">Installation Guide</a></li>
                         <li><a href="#">Scripting Guide</a></li>
                         <hr/>
-                        <li><a href="#">Halftone <span class="badge">1.5</span></a></li>
+                        <li><a href="/snapshot/halftone">Halftone <span class="badge">1.5</span></a></li>
                         <li><a href="#">Barrel Distortion <span class="badge">1.5</span></a></li>
                         <li><a href="#">Vortex <span class="badge">1.5</span></a></li>
                         <li><a href="#">Dither 3D <span class="badge">1.5</span></a></li>
@@ -270,17 +270,25 @@ title: Snapshot Shaders Pro
                     </ul>
                 </div>
                 <div class="col-lg-9 col-md-12 doc-content">
-                    <h2>What is Snapshot Shaders Pro?</h2>
+                    <h1>What is Snapshot Shaders Pro?</h1>
                     <i>Snapshot Shaders Pro</i> contains many new post-processing features for your games. It's intended for PC game usage - while some effects may work on mobile or VR, neither of those platforms are officially supported. 
+                    <p>
+                        The following is a demo of the URP version of the pack - you might want to fullscreen it! However, Unity WebGL isn't officially supported on mobile.
+                    </p>
+                    <!--
+                    <div class="video-embed">
+                        <iframe src="/snapshot/webgl" width="100%"></iframe>
+                    </div>
+                    -->
                     <p>
                         I made this shader pack because I wanted a set of plug-and-play image effect shaders I could use in my own games. It evolved into <i>Snapshot Shaders Pro</i>, which started out as a pack for the built-in post-processing stack and eventaully gained support for URP and HDRP in later updates.
                     </p>
                     <p>
                         On this page, you'll find documentation on individual effects. Here are the bigger features:
                     </p>
-                    <h3>✨ Works out of the box</h3>
-                    <h3>✨ Volume Support</h3>
-                    <h3>✨ Customise effects with additional options</h3>
+                    <h2>✨ Works out of the box</h2>
+                    <h2>✨ Volume Support</h2>
+                    <h2>✨ Customise effects with additional options</h2>
                 </div>
             </div>
         </div>
